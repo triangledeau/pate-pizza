@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+def appVersion = Integer.parseInt(System.getenv("VERSION_CODE") ?: "1")
+
 android {
     namespace = "fr.triangledeau.patepizza"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -7,8 +9,8 @@ android {
         applicationId "fr.triangledeau.patepizza"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode (System.getenv("VERSION_CODE") ?: "1").toInteger()
-        versionName "1." + (System.getenv("VERSION_CODE") ?: "0")
+        versionCode = appVersion
+        versionName = "1." + appVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
