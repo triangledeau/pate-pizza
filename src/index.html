@@ -79,6 +79,8 @@ a.link{color:var(--basilic);font-weight:600}
 .prod{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--trait-doux)}
 .prod .tx b{display:block;font-weight:600;font-size:15.5px;line-height:1.3}
 .prod.off .tx b{color:var(--encre-3);font-weight:400}
+.prod .tx .pour{display:block;font-size:13px;color:var(--basilic);font-weight:600;line-height:1.35;margin-top:2px}
+.sub-h.rayon{padding:14px 16px 6px;font-size:13.5px;color:var(--encre-3);border-bottom:1px solid var(--trait-doux);background:var(--surface-2)}
 .qty{display:flex;align-items:center;gap:2px}
 .qty button{width:38px;height:38px;border:1px solid var(--trait);background:var(--surface-2);border-radius:10px;font-size:18px;line-height:1}
 .qty span{min-width:28px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
@@ -407,26 +409,94 @@ function periodeRange() {
   if (ui.periode.startsWith("w:")) { const s = parse(ui.periode.slice(2)); return [s, addDays(s, 6)]; }
   return [t, addDays(t, 6)];
 }
+/* Articles (config/articles) : un même produit sous plusieurs noms de recette (« beurre froid », « beurre »)
+   devient une seule ligne de courses, avec ses quantités converties dans une unité commune et son rayon. */
+const cleArt = s => norm(s).replace(/\s+/g, " ").trim();
+let idxArt = null;
+function articleDe(n) {
+  const ref = st.articles?.articles || {};
+  if (!idxArt || idxArt.ref !== ref) {
+    const exact = new Map();
+    for (const [nom, a] of Object.entries(ref)) { exact.set(cleArt(nom), nom); for (const al of a.alias || []) exact.set(cleArt(al), nom); }
+    idxArt = {ref, exact, pref: [...exact.keys()].sort((a, b) => b.length - a.length)};
+  }
+  let k = cleArt(n);
+  if (idxArt.exact.has(k)) return idxArt.exact.get(k);
+  k = cleArt(norm(n).replace(/\([^)]*\)/g, " ").split(",")[0]);
+  if (idxArt.exact.has(k)) return idxArt.exact.get(k);
+  const p = idxArt.pref.find(x => k.startsWith(x + " "));
+  return p ? idxArt.exact.get(p) : null;
+}
+function ajouterQ(a, q, u, art) {
+  u = u || "";
+  if (art && art.u != null && u !== art.u && art.conv?.[u] != null) { q *= art.conv[u]; if (art.conv[u] !== 1) a.approx = true; u = art.u; }
+  a.qs[u] = (a.qs[u] || 0) + q;
+}
+function texteQ(a) {
+  if (a.sansQ) return "";
+  const arrondi = (q, u) => !a.approx ? q : (u === "g" || u === "ml") && q > 50 ? Math.round(q / 5) * 5 : (u === "c. à s." || u === "c. à c.") ? Math.ceil(q * 2 - 0.1) / 2 : q;
+  const parts = Object.entries(a.qs).map(([u, q]) => fmtQ(arrondi(q, u), u));
+  return parts.length ? (a.approx ? "≈ " : "") + parts.join(" + ") : "";
+}
 function listeCourses() {
   const [d0, d1] = periodeRange(), meals = repasEntre(d0, d1), c = coursesDoc();
-  const agg = {};
+  const arts = st.articles?.articles || {}, prods = st.drive?.produits || [];
+  const agg = {}, besoins = {};
   for (const x of meals) {
     const r = st.recettes[x.m.r]; if (!r) continue;
     const f = (x.m.p || r.portions) / (r.portions || 1);
     for (const ing of r.ingredients || []) {
       if (ing.e === "RES" || ing.e === "NON") continue;
       let e = ing.e; const surg = e === "PIC"; if (surg && !c.picard) e = "LEC";
-      const key = norm(ing.n) + "|" + (ing.u || "") + "|" + e;
-      const a = agg[key] || (agg[key] = {key: "i:" + key, n: ing.n, u: ing.u, e, q: 0, hasQ: false, pour: [], surg});
-      if (typeof ing.q === "number") { a.q += ing.q * f; a.hasQ = true; }
+      const nomA = articleDe(ing.n), art = nomA ? arts[nomA] : null;
+      let a;
+      if (art?.drive && e === "LEC" && prods.some(p => p.id === art.drive)) {
+        // Produit habituel du drive : le besoin des recettes s'ajoute à sa ligne.
+        a = besoins[art.drive] || (besoins[art.drive] = {n: nomA, qs: {}, approx: false, pour: []});
+      } else {
+        const key = nomA ? cleArt(nomA) + "|" + e : cleArt(ing.n) + "|" + (ing.u || "") + "|" + e;
+        a = agg[key] || (agg[key] = {key: "i:" + key, n: nomA || ing.n, e, qs: {}, approx: false, pour: [], surg,
+          sansQ: !!art?.sansQ, rayon: surg && e === "LEC" ? "Surgelés" : (art?.r || "")});
+      }
+      if (typeof ing.q === "number") ajouterQ(a, ing.q * f, ing.u, art);
       if (!a.pour.includes(r.nom)) a.pour.push(r.nom);
     }
   }
   const items = Object.values(agg);
-  for (const a of c.ajouts) items.push({key: "a:" + a.id, n: a.n, e: a.e, q: null, pour: ["Ajout"], ajout: a.id});
-  return {meals, items};
+  for (const a of items) a.qtxt = texteQ(a);
+  for (const b of Object.values(besoins)) b.qtxt = texteQ(b);
+  for (const a of c.ajouts) { const nomA = articleDe(a.n); items.push({key: "a:" + a.id, n: a.n, e: a.e, qtxt: "", pour: ["Ajout"], ajout: a.id, rayon: nomA ? arts[nomA].r : ""}); }
+  return {meals, items, besoins};
 }
-function produitsQte(p) { const c = coursesDoc(); const v = c.driveQte[p.id]; return v == null ? (p.statut === "Base" ? p.qte : 0) : v; }
+// Contenance d'un produit du drive d'après son format (« x6 · 210 g », « 2 x 93 g », « 1,25 kg »).
+function contenance(fmt) {
+  const f = String(fmt || "").toLowerCase().replace(/,/g, ".");
+  const n = f.match(/^x\s*(\d+)/) || f.match(/^(\d+)\s*x/);
+  const m = f.match(/(?:(\d+)\s*x\s*)?(\d+(?:\.\d+)?)\s*(kg|g|l|cl|ml)\b/);
+  return {n: n ? Number(n[1]) : null, g: m ? (m[1] ? Number(m[1]) : 1) * Number(m[2]) * {kg: 1000, g: 1, l: 1000, cl: 10, ml: 1}[m[3]] : null};
+}
+function paquets(p, b) {
+  const c = contenance(p.format); let n = 1;
+  for (const [u, q] of Object.entries(b.qs)) {
+    if ((u === "g" || u === "ml") && c.g) n = Math.max(n, Math.ceil(q / c.g - 0.05));
+    else if ((u === "" || u === "tranches") && c.n) n = Math.max(n, Math.ceil(q / c.n - 0.05));
+  }
+  return n;
+}
+function produitsQte(p, besoins) {
+  const v = coursesDoc().driveQte[p.id]; if (v != null) return v;
+  const base = p.statut === "Base" ? p.qte : 0, b = (besoins || listeCourses().besoins)[p.id];
+  return b ? Math.max(base, paquets(p, b)) : base;
+}
+// Classe des lignes {rayon, nom, html} selon l'ordre des rayons de l'enseigne.
+function parRayon(e, lignes) {
+  const ordre = st.articles?.rayons?.[e] || [], g = {};
+  for (const l of lignes) if (l.html) (g[l.rayon || "Divers"] ||= []).push(l);
+  const rang = r => r === "Divers" ? 1e4 : (ordre.indexOf(r) + 1 || 1e3);
+  return Object.keys(g).sort((a, b) => rang(a) - rang(b) || a.localeCompare(b, "fr"))
+    .map(r => `<div class="sub-h rayon">${esc(r)}</div>` + g[r].sort((a, b) => a.nom.localeCompare(b.nom, "fr")).map(l => l.html).join("")).join("");
+}
+const rangRayon = (e, r) => { const o = st.articles?.rayons?.[e] || []; return !r ? 1e4 : (o.indexOf(r) + 1 || 1e3); };
 
 /* ================= rendu : semaine ================= */
 function prochainRepas() {
@@ -532,7 +602,7 @@ function renderCourses() {
   const opts = [["3", "3 prochains jours"], ["7", "7 prochains jours"], ["14", "14 prochains jours"]]
     .concat(weeks.map(w => ["w:" + w, "Semaine du " + fmtDay(parse(w))]));
   if (!opts.some(o => o[0] === ui.periode)) ui.periode = "7";
-  const {meals, items} = listeCourses();
+  const {meals, items, besoins} = listeCourses();
   const [d0, d1] = periodeRange();
   $("#cs-top").innerHTML = `<div class="period" role="group" aria-label="Période">${opts.map(o => `<button class="chip" data-act="periode" data-v="${o[0]}" aria-pressed="${ui.periode === o[0]}">${esc(o[1])}</button>`).join("")}</div>
     <p class="cs-sum">${meals.length ? `${meals.length} repas du ${fmtDay(d0)} au ${fmtDay(d1)} : ${esc(meals.map(m => (st.recettes[m.m.r]?.nom || m.m.libre || "?")).filter((v, i, a) => a.indexOf(v) === i).join(", "))}.` : "Aucun repas planifié sur cette période. Les produits habituels du drive restent listés."}</p>
@@ -541,25 +611,31 @@ function renderCourses() {
   let html = "";
   for (const e of ORDRE) {
     if (e === "PIC" && !c.picard) continue;
-    const its = items.filter(x => x.e === e).sort((a, b) => a.n.localeCompare(b.n, "fr"));
+    const its = items.filter(x => x.e === e);
     const prods = e === "LEC" ? (st.drive?.produits || []) : [];
+    const qte = new Map(prods.map(p => [p.id, produitsQte(p, besoins)]));
+    const pris = prods.filter(p => qte.get(p.id) > 0), restants = prods.filter(p => !qte.get(p.id));
     if (!its.length && !prods.length) continue;
-    const done = its.filter(x => c.coches[x.key]).length + prods.filter(p => produitsQte(p) > 0 && c.coches["p:" + p.id]).length;
-    const total = its.length + prods.filter(p => produitsQte(p) > 0).length;
+    const done = its.filter(x => c.coches[x.key]).length + pris.filter(p => c.coches["p:" + p.id]).length;
+    const total = its.length + pris.length;
     const ec = e.toLowerCase();
     html += `<section class="store${total && done === total ? " fini" : ""}" style="--c:var(--${ec});--cd:var(--${ec}-doux)"><div class="store-h"><span class="ens-ico">${window.Illus ? Illus.enseigne(e) : ""}</span><h3>${ENS[e].nom}</h3><span class="cnt">${done} / ${total}</span></div>
       <div class="store-prog" aria-hidden="true"><span style="width:${total ? Math.round(done / total * 100) : 0}%"></span></div>`;
     let note = ENS[e].note;
     if (e === "LEC" && !c.picard) note += " Semaine sans Picard : les surgelés sont ici.";
     html += `<div class="store-note">${esc(note)}</div>`;
-    if (e === "LEC" && its.length) html += `<div class="sub-h">Pour les repas</div>`;
-    for (const x of its) {
-      const dn = !!c.coches[x.key]; if (dn && ui.hideDone) continue;
-      const q = x.hasQ ? fmtQ(x.q, x.u) : "";
-      html += `<label class="it ${dn ? "done" : ""} ${ui.vientDe === x.key ? "vient-de-cocher" : ""}"><input type="checkbox" data-act="check" data-key="${esc(x.key)}" ${dn ? "checked" : ""}>
-        <span class="tx"><b>${esc(x.n)}${x.surg && e === "LEC" ? " (surgelé)" : ""}</b><small>${esc(x.pour.join(" · "))}</small></span><span class="q">${esc(q)}</span></label>`;
+    const lignes = its.map(x => {
+      const dn = !!c.coches[x.key];
+      return {rayon: x.rayon, nom: x.n, html: dn && ui.hideDone ? "" : `<label class="it ${dn ? "done" : ""} ${ui.vientDe === x.key ? "vient-de-cocher" : ""}"><input type="checkbox" data-act="check" data-key="${esc(x.key)}" ${dn ? "checked" : ""}>
+        <span class="tx"><b>${esc(x.n)}${x.surg && e === "LEC" ? " (surgelé)" : ""}</b><small>${esc(x.pour.join(" · "))}</small></span><span class="q">${esc(x.qtxt)}</span></label>`};
+    }).concat(pris.map(p => ({rayon: p.rayon, nom: p.nom, html: ligneProduit(p, qte.get(p.id), besoins[p.id])})));
+    html += parRayon(e, lignes);
+    if (e === "LEC" && prods.length) {
+      const tri = restants.sort((a, b) => rangRayon(e, a.rayon) - rangRayon(e, b.rayon) || a.nom.localeCompare(b.nom, "fr"));
+      const tot = pris.reduce((s, p) => s + qte.get(p.id) * p.prix, 0);
+      html += `<details class="more"><summary>Autres produits habituels (${tri.length})</summary>${tri.map(p => ligneProduit(p, 0, besoins[p.id])).join("")}</details>
+        <div class="total"><span>Produits habituels estimés</span><b>${num(tot)} €</b></div>`;
     }
-    if (e === "LEC" && prods.length) html += renderProduits(prods);
     html += `</section>`;
   }
   if (!html) html = vide("Rien à acheter pour l'instant. Planifie des repas dans l'onglet Semaine, ou ajoute un article ci-dessous.");
@@ -568,22 +644,14 @@ function renderCourses() {
     <button class="btn" data-act="copyGF">Copier la liste Grand Frais</button><button class="btn ghost danger" data-act="askReset">Nouvelle liste</button></div>
     <p class="muted" style="font-size:13.5px;margin-top:8px">« Copier pour Claude » prépare un message à coller dans la conversation : je remplis alors ton panier Leclerc Drive.</p><div id="resetZone"></div>`;
 }
-function renderProduits(prods) {
-  const c = coursesDoc();
-  const row = p => {
-    const q = produitsQte(p), dn = q > 0 && !!c.coches["p:" + p.id];
-    if (dn && ui.hideDone) return "";
-    return `<div class="prod ${q ? "" : "off"} ${dn ? "done" : ""} ${ui.vientDe === "p:" + p.id ? "vient-de-cocher" : ""}">
+function ligneProduit(p, q, b) {
+  const dn = q > 0 && !!coursesDoc().coches["p:" + p.id];
+  if (dn && ui.hideDone) return "";
+  const pour = b ? `<span class="pour">Pour ${esc(b.pour.join(", "))}${b.qtxt ? " : " + esc(b.qtxt) : ""}</span>` : "";
+  return `<div class="prod ${q ? "" : "off"} ${dn ? "done" : ""} ${ui.vientDe === "p:" + p.id ? "vient-de-cocher" : ""}">
       <input type="checkbox" data-act="check" data-key="p:${p.id}" ${dn ? "checked" : ""} ${q ? "" : "disabled"} aria-label="${esc(p.nom)} pris">
-      <span class="tx"><b>${esc(p.nom)}</b><small>${esc(p.format)} · ${num(p.prix)} €${p.note ? " · " + esc(p.note) : ""}</small></span>
+      <span class="tx"><b>${esc(p.nom)}</b><small>${esc(p.format)} · ${num(p.prix)} €${p.note ? " · " + esc(p.note) : ""}</small>${pour}</span>
       <span class="qty"><button data-act="pq" data-id="${p.id}" data-d="-1" aria-label="Moins">−</button><span>${q}</span><button data-act="pq" data-id="${p.id}" data-d="1" aria-label="Plus">+</button></span></div>`;
-  };
-  const base = prods.filter(p => p.statut === "Base"), autres = prods.filter(p => p.statut !== "Base");
-  const tot = prods.reduce((s, p) => s + produitsQte(p) * p.prix, 0);
-  const nAutres = autres.filter(p => produitsQte(p) > 0).length;
-  return `<div class="sub-h">Drive de base</div>${base.map(row).join("")}
-    <details class="more" ${nAutres ? "open" : ""}><summary>Autres produits habituels (${autres.length})${nAutres ? " · " + nAutres + " choisis" : ""}</summary>${autres.map(row).join("")}</details>
-    <div class="total"><span>Produits habituels estimés</span><b>${num(tot)} €</b></div>`;
 }
 
 /* ================= rendu : recettes ================= */
@@ -948,19 +1016,22 @@ async function copyText(txt, label) {
   }
 }
 function texteClaude() {
-  const c = coursesDoc(), {items} = listeCourses(), [d0, d1] = periodeRange();
+  const c = coursesDoc(), {items, besoins} = listeCourses(), [d0, d1] = periodeRange();
   const lec = items.filter(x => x.e === "LEC" && !c.coches[x.key]);
-  const prods = (st.drive?.produits || []).filter(p => produitsQte(p) > 0 && !c.coches["p:" + p.id]);
+  const prods = (st.drive?.produits || []).map(p => [p, produitsQte(p, besoins)]).filter(([p, q]) => q > 0 && !c.coches["p:" + p.id]);
   let t = `Remplis mon panier Leclerc Drive (Blois) pour les repas du ${fmtDay(d0)} au ${fmtDay(d1)}.\n\nProduits habituels (id drive) :\n`;
-  t += prods.map(p => `- ${produitsQte(p)} × ${p.nom}, ${p.format} (id ${p.id})${p.note ? " — " + p.note : ""}`).join("\n") || "- aucun";
-  t += `\n\nÀ trouver pour les recettes (règle bio ≤ +30 %, sinon marques nationales) :\n` + (lec.map(x => `- ${x.n}${x.surg ? " (surgelé)" : ""}${x.hasQ ? " : " + fmtQ(x.q, x.u) : ""}`).join("\n") || "- rien");
+  t += prods.map(([p, q]) => `- ${q} × ${p.nom}, ${p.format} (id ${p.id})${p.note ? " — " + p.note : ""}${besoins[p.id] ? " — aussi pour " + besoins[p.id].pour.join(", ") : ""}`).join("\n") || "- aucun";
+  t += `\n\nÀ trouver pour les recettes (règle bio ≤ +30 %, sinon marques nationales) :\n` + (lec.map(x => `- ${x.n}${x.surg ? " (surgelé)" : ""}${x.qtxt ? " : " + x.qtxt : ""}`).join("\n") || "- rien");
   const pla = items.filter(x => x.e === "PLA" && !c.coches[x.key]);
   if (pla.length) t += `\n\nPlacard non coché, à vérifier ou à ajouter :\n` + pla.map(x => `- ${x.n}`).join("\n");
   return t;
 }
 function texteGF() {
   const c = coursesDoc(), {items} = listeCourses();
-  return "Grand Frais\n" + items.filter(x => x.e === "GF" && !c.coches[x.key]).sort((a, b) => a.n.localeCompare(b.n, "fr")).map(x => `- ${x.n}${x.hasQ ? " : " + fmtQ(x.q, x.u) : ""}`).join("\n");
+  const its = items.filter(x => x.e === "GF" && !c.coches[x.key]).sort((a, b) => rangRayon("GF", a.rayon) - rangRayon("GF", b.rayon) || a.n.localeCompare(b.n, "fr"));
+  let t = "Grand Frais", r = null;
+  for (const x of its) { if ((x.rayon || "Divers") !== r) { r = x.rayon || "Divers"; t += "\n\n" + r; } t += `\n- ${x.n}${x.qtxt ? " : " + x.qtxt : ""}`; }
+  return t;
 }
 
 /* ================= rendu global ================= */
@@ -1034,7 +1105,7 @@ document.addEventListener("click", ev => {
     case "periode": ui.periode = b.dataset.v; saveUi(); renderCourses(); break;
     case "picard": c.picard = !c.picard; saveCourses(true); renderCourses(); break;
     case "hideDone": ui.hideDone = !ui.hideDone; saveUi(); renderCourses(); break;
-    case "pq": { const p = (st.drive?.produits || []).find(x => x.id === b.dataset.id); if (!p) break; c.driveQte[p.id] = Math.max(0, Math.min(20, produitsQte(p) + Number(b.dataset.d))); saveCourses(); renderCourses(); break; }
+    case "pq": { const p = (st.drive?.produits || []).find(x => x.id === b.dataset.id); if (!p) break; c.driveQte[p.id] = Math.max(0, Math.min(20, produitsQte(p, listeCourses().besoins) + Number(b.dataset.d))); saveCourses(); renderCourses(); break; }
     case "copyClaude": copyText(texteClaude(), "Liste pour Claude"); break;
     case "copyGF": copyText(texteGF(), "Liste Grand Frais"); break;
     case "askReset": $("#resetZone").innerHTML = `<div class="confirm">Tout décocher, retirer les ajouts et revenir aux quantités habituelles ?<button class="btn danger" data-act="reset">Nouvelle liste</button><button class="btn ghost" data-act="noReset">Annuler</button></div>`; break;
@@ -1091,6 +1162,7 @@ async function connect() {
   const err = () => {};
   db.collection("recettes").onSnapshot(s => { const o = {}; s.docs.forEach(d => o[d.id] = d.data()); st.recettes = o; st.loaded.r = true; if (!sheet) rerender(); }, err);
   db.collection("semaines").onSnapshot(s => { const o = {}; s.docs.forEach(d => o[d.id] = d.data()); st.semaines = o; st.loaded.s = true; if (!sheet) render(); majRappels(); }, err);
+  db.doc("config/articles").onSnapshot(d => { st.articles = d.exists ? d.data() : null; if (ui.view === "courses" && !sheet) renderCourses(); }, err);
   db.doc("config/drive").onSnapshot(d => { st.drive = d.exists ? d.data() : null; st.loaded.d = true; if (ui.view === "courses" && !sheet) renderCourses(); }, err);
   db.doc("config/reglages").onSnapshot(d => { if (d.exists) st.reglages = {...st.reglages, ...d.data()}; st.loaded.g = true; if (ui.view === "semaine" && !sheet) renderSemaine(); }, err);
   db.doc("config/reperes").onSnapshot(d => { st.reperes = d.exists ? d.data() : {}; if (ui.view === "reperes" && !sheet) renderReperes(); }, err);

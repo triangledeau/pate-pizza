@@ -1,9 +1,9 @@
 {
- "maj": "2026-11-18T16:00:00Z",
+ "maj": "2026-11-19T14:58:34Z",
  "note": "Données de l'appli Cuisine. Chaque document : t = date de modification (ISO), d = contenu. Voir CLAUDE.md.",
  "docs": {
   "config/drive": {
-   "t": "2026-10-28T14:09:47.116724Z",
+   "t": "2026-11-19T14:58:34Z",
    "d": {
     "magasin": "Blois (034101)",
     "maj": "2026-10-28",
@@ -15,7 +15,8 @@
       "note": "",
       "prix": 3.81,
       "qte": 2,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Boissons"
      },
      {
       "format": "x10 · 350 g",
@@ -24,7 +25,8 @@
       "note": "",
       "prix": 1.66,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Charcuterie et traiteur"
      },
      {
       "format": "x10 · 350 g",
@@ -33,7 +35,8 @@
       "note": "",
       "prix": 1.38,
       "qte": 4,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Boulangerie et viennoiserie"
      },
      {
       "format": "500 g",
@@ -42,7 +45,8 @@
       "note": "",
       "prix": 8.72,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Épicerie sucrée"
      },
      {
       "format": "400 g",
@@ -51,7 +55,8 @@
       "note": "",
       "prix": 4.53,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Crèmerie, œufs et fromages"
      },
      {
       "format": "500 g",
@@ -60,7 +65,8 @@
       "note": "",
       "prix": 1.29,
       "qte": 3,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Boulangerie et viennoiserie"
      },
      {
       "format": "x4 · 140 g",
@@ -69,7 +75,8 @@
       "note": "Indisponible au 28/10",
       "prix": 2.8,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Charcuterie et traiteur"
      },
      {
       "format": "190 g",
@@ -78,7 +85,8 @@
       "note": "",
       "prix": 1.88,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Sauces et condiments"
      },
      {
       "format": "400 g",
@@ -87,7 +95,8 @@
       "note": "",
       "prix": 4.82,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Crèmerie, œufs et fromages"
      },
      {
       "format": "x6 · 210 g",
@@ -96,7 +105,8 @@
       "note": "",
       "prix": 3.18,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Charcuterie et traiteur"
      },
      {
       "format": "6 x 1 L",
@@ -105,7 +115,8 @@
       "note": "",
       "prix": 8.28,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Crèmerie, œufs et fromages"
      },
      {
       "format": "335 g",
@@ -114,7 +125,8 @@
       "note": "Remplace la fraise des bois, retirée du catalogue",
       "prix": 1.92,
       "qte": 2,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Épicerie sucrée"
      },
      {
       "format": "1,25 kg",
@@ -123,7 +135,8 @@
       "note": "",
       "prix": 8.34,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Boucherie et volaille"
      },
      {
       "format": "x4 · 160 g",
@@ -132,7 +145,8 @@
       "note": "",
       "prix": 2.7,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Charcuterie et traiteur"
      },
      {
       "format": "2 x 93 g",
@@ -141,7 +155,8 @@
       "note": "",
       "prix": 3.02,
       "qte": 1,
-      "statut": "Base"
+      "statut": "Base",
+      "rayon": "Conserves"
      },
      {
       "format": "750 ml",
@@ -150,7 +165,8 @@
       "note": "",
       "prix": 3.43,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Boissons"
      },
      {
       "format": "1 L",
@@ -159,7 +175,8 @@
       "note": "",
       "prix": 2.88,
       "qte": 2,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Boissons"
      },
      {
       "format": "70 cl",
@@ -168,7 +185,8 @@
       "note": "",
       "prix": 3.2,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Boissons"
      },
      {
       "format": "200 g",
@@ -177,7 +195,8 @@
       "note": "",
       "prix": 2.92,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Charcuterie et traiteur"
      },
      {
       "format": "x6 · 210 g",
@@ -186,7 +205,8 @@
       "note": "",
       "prix": 2.93,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Charcuterie et traiteur"
      },
      {
       "format": "250 g",
@@ -195,7 +215,8 @@
       "note": "",
       "prix": 3.18,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Boucherie et volaille"
      },
      {
       "format": "x4 · 160 g",
@@ -204,7 +225,8 @@
       "note": "",
       "prix": 3.15,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Charcuterie et traiteur"
      },
      {
       "format": "265 g",
@@ -213,7 +235,8 @@
       "note": "",
       "prix": 1.59,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Conserves"
      },
      {
       "format": "260 g",
@@ -222,7 +245,8 @@
       "note": "",
       "prix": 1.42,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Sauces et condiments"
      },
      {
       "format": "220 g",
@@ -231,7 +255,8 @@
       "note": "",
       "prix": 2.07,
       "qte": 2,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Conserves"
      },
      {
       "format": "175 g",
@@ -240,7 +265,8 @@
       "note": "",
       "prix": 1.64,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Apéritif"
      },
      {
       "format": "500 g",
@@ -249,7 +275,8 @@
       "note": "",
       "prix": 1.65,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Pâtes, riz et farines"
      },
      {
       "format": "500 g",
@@ -258,7 +285,8 @@
       "note": "",
       "prix": 1.49,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Pâtes, riz et farines"
      },
      {
       "format": "375 g",
@@ -267,7 +295,8 @@
       "note": "",
       "prix": 3.07,
       "qte": 2,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Conserves"
      },
      {
       "format": "140 g",
@@ -276,7 +305,8 @@
       "note": "",
       "prix": 2.62,
       "qte": 2,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Conserves"
      },
      {
       "format": "175 g",
@@ -285,7 +315,8 @@
       "note": "",
       "prix": 1.72,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Apéritif"
      },
      {
       "format": "650 g",
@@ -294,7 +325,8 @@
       "note": "",
       "prix": 7.13,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Épicerie sucrée"
      },
      {
       "format": "750 g",
@@ -303,7 +335,8 @@
       "note": "",
       "prix": 1.75,
       "qte": 2,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Épicerie sucrée"
      },
      {
       "format": "1,4 kg",
@@ -312,7 +345,8 @@
       "note": "",
       "prix": 1.53,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Pâtes, riz et farines"
      },
      {
       "format": "400 g",
@@ -321,7 +355,8 @@
       "note": "",
       "prix": 1.7,
       "qte": 3,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Boulangerie et viennoiserie"
      },
      {
       "format": "500 g",
@@ -330,7 +365,8 @@
       "note": "",
       "prix": 2.67,
       "qte": 3,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Boulangerie et viennoiserie"
      },
      {
       "format": "190 g",
@@ -339,7 +375,8 @@
       "note": "",
       "prix": 3.02,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Épicerie sucrée"
      },
      {
       "format": "230 g",
@@ -348,7 +385,8 @@
       "note": "",
       "prix": 1.48,
       "qte": 2,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Épicerie sucrée"
      },
      {
       "format": "680 g",
@@ -357,7 +395,8 @@
       "note": "",
       "prix": 2.84,
       "qte": 2,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Épicerie sucrée"
      },
      {
       "format": "75 ml",
@@ -366,7 +405,8 @@
       "note": "",
       "prix": 2.64,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Hygiène et maison"
      },
      {
       "format": "16 x 125 g",
@@ -375,7 +415,8 @@
       "note": "",
       "prix": 4.53,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Crèmerie, œufs et fromages"
      },
      {
       "format": "250 g",
@@ -384,7 +425,8 @@
       "note": "",
       "prix": 3.29,
       "qte": 1,
-      "statut": "Régulier"
+      "statut": "Régulier",
+      "rayon": "Crèmerie, œufs et fromages"
      }
     ]
    }
@@ -3632,6 +3674,644 @@
       "note": "Gyozas cuits directement surgelés",
       "p": 2,
       "r": "gyozas-riz"
+     }
+    }
+   }
+  },
+  "config/articles": {
+   "t": "2026-11-19T14:58:34Z",
+   "d": {
+    "rayons": {
+     "GF": [
+      "Fruits et légumes",
+      "Herbes fraîches",
+      "Boucherie et volaille",
+      "Poissonnerie",
+      "Crèmerie et fromages",
+      "Pâtes et traiteur frais",
+      "Épicerie"
+     ],
+     "LEC": [
+      "Fruits et légumes",
+      "Boucherie et volaille",
+      "Charcuterie et traiteur",
+      "Crèmerie, œufs et fromages",
+      "Boulangerie et viennoiserie",
+      "Pâtes, riz et farines",
+      "Conserves",
+      "Sauces et condiments",
+      "Épicerie du monde",
+      "Épicerie sucrée",
+      "Apéritif",
+      "Boissons",
+      "Surgelés",
+      "Hygiène et maison"
+     ],
+     "PIC": [
+      "Viandes et poissons",
+      "Légumes et frites",
+      "Plats et entrées"
+     ],
+     "PLA": [
+      "Huiles et vinaigres",
+      "Sauces et condiments",
+      "Épices et assaisonnements",
+      "Épicerie japonaise",
+      "Farines, sucres et levures",
+      "Riz et semoules"
+     ]
+    },
+    "articles": {
+     "brocoli": {
+      "r": "Fruits et légumes"
+     },
+     "carottes": {
+      "r": "Fruits et légumes",
+      "alias": [
+       "carotte"
+      ],
+      "u": ""
+     },
+     "champignons de Paris": {
+      "r": "Fruits et légumes",
+      "u": "g"
+     },
+     "chou pointu ou blanc": {
+      "r": "Fruits et légumes",
+      "alias": [
+       "chou pointu ou chou blanc"
+      ],
+      "u": "g"
+     },
+     "citron": {
+      "r": "Fruits et légumes"
+     },
+     "citron vert": {
+      "r": "Fruits et légumes"
+     },
+     "concombre": {
+      "r": "Fruits et légumes"
+     },
+     "gousses d'ail": {
+      "r": "Fruits et légumes",
+      "alias": [
+       "gousse d'ail",
+       "ail"
+      ],
+      "u": ""
+     },
+     "gingembre frais": {
+      "r": "Fruits et légumes",
+      "u": "cm"
+     },
+     "oignons": {
+      "r": "Fruits et légumes",
+      "alias": [
+       "oignon"
+      ],
+      "u": ""
+     },
+     "oignon rouge": {
+      "r": "Fruits et légumes"
+     },
+     "oignons nouveaux": {
+      "r": "Fruits et légumes",
+      "alias": [
+       "oignon nouveau"
+      ],
+      "u": ""
+     },
+     "poivron": {
+      "r": "Fruits et légumes"
+     },
+     "échalote": {
+      "r": "Fruits et légumes",
+      "alias": [
+       "echalotes"
+      ]
+     },
+     "pommes de terre": {
+      "r": "Fruits et légumes",
+      "alias": [
+       "pomme de terre",
+       "pomme de terre moyenne",
+       "pommes de terre moyennes",
+       "pommes de terre a puree"
+      ],
+      "u": "g",
+      "conv": {
+       "": 150
+      }
+     },
+     "pommes de terre grenaille": {
+      "r": "Fruits et légumes",
+      "u": "g"
+     },
+     "potimarron": {
+      "r": "Fruits et légumes"
+     },
+     "salade verte": {
+      "r": "Fruits et légumes"
+     },
+     "poireau": {
+      "r": "Fruits et légumes",
+      "alias": [
+       "vert de poireau"
+      ]
+     },
+     "thym": {
+      "r": "Herbes fraîches",
+      "alias": [
+       "botte de thym"
+      ],
+      "sansQ": true
+     },
+     "basilic": {
+      "r": "Herbes fraîches",
+      "alias": [
+       "bouquet de basilic",
+       "feuilles de basilic"
+      ],
+      "sansQ": true
+     },
+     "persil plat": {
+      "r": "Herbes fraîches",
+      "alias": [
+       "bouquet de persil plat",
+       "brins de persil plat"
+      ],
+      "sansQ": true
+     },
+     "carcasses, cous et ailes de poulet": {
+      "r": "Boucherie et volaille"
+     },
+     "cuisse de poulet désossée": {
+      "r": "Boucherie et volaille",
+      "u": "g"
+     },
+     "hauts de cuisse de poulet": {
+      "r": "Boucherie et volaille"
+     },
+     "poitrine de porc sans os": {
+      "r": "Boucherie et volaille",
+      "u": "g"
+     },
+     "échine de porc sans os": {
+      "r": "Boucherie et volaille",
+      "u": "g"
+     },
+     "pavés de saumon": {
+      "r": "Poissonnerie"
+     },
+     "nouilles udon fraîches": {
+      "r": "Pâtes et traiteur frais",
+      "alias": [
+       "nouilles udon fraiches ou precuites"
+      ],
+      "u": "g"
+     },
+     "nouilles à ramen fraîches": {
+      "r": "Pâtes et traiteur frais",
+      "u": "g"
+     },
+     "farine tipo 00": {
+      "r": "Épicerie",
+      "alias": [
+       "farina tipo 00"
+      ],
+      "u": "g"
+     },
+     "aiguillettes de poulet Label Rouge": {
+      "r": "Boucherie et volaille",
+      "u": "g"
+     },
+     "poulet Label Rouge": {
+      "r": "Boucherie et volaille",
+      "drive": "34188"
+     },
+     "saucisses de Toulouse": {
+      "r": "Boucherie et volaille"
+     },
+     "beurre": {
+      "r": "Crèmerie, œufs et fromages",
+      "alias": [
+       "beurre froid",
+       "beurre doux"
+      ],
+      "u": "g",
+      "conv": {
+       "c. à s.": 15,
+       "c. à c.": 5
+      }
+     },
+     "cheddar râpé": {
+      "r": "Crèmerie, œufs et fromages",
+      "u": "g"
+     },
+     "comté": {
+      "r": "Crèmerie, œufs et fromages",
+      "u": "g"
+     },
+     "fromage à raclette": {
+      "r": "Crèmerie, œufs et fromages",
+      "alias": [
+       "fromage a raclette en tranches"
+      ],
+      "u": "g"
+     },
+     "mozzarella": {
+      "r": "Crèmerie, œufs et fromages",
+      "u": "g"
+     },
+     "parmesan": {
+      "r": "Crèmerie, œufs et fromages",
+      "alias": [
+       "parmesan rape"
+      ],
+      "u": "g"
+     },
+     "emmental râpé": {
+      "r": "Crèmerie, œufs et fromages",
+      "u": "g",
+      "drive": "86940"
+     },
+     "crème fraîche épaisse": {
+      "r": "Crèmerie, œufs et fromages",
+      "u": "cl",
+      "conv": {
+       "c. à s.": 1.5,
+       "c. à c.": 0.5
+      }
+     },
+     "crème liquide": {
+      "r": "Crèmerie, œufs et fromages",
+      "u": "cl",
+      "conv": {
+       "c. à s.": 1.5,
+       "ml": 0.1
+      }
+     },
+     "lait entier": {
+      "r": "Crèmerie, œufs et fromages",
+      "alias": [
+       "lait ou creme liquide"
+      ],
+      "u": "ml",
+      "conv": {
+       "c. à s.": 15,
+       "c. à c.": 5,
+       "cl": 10
+      }
+     },
+     "œufs": {
+      "r": "Crèmerie, œufs et fromages",
+      "alias": [
+       "œuf"
+      ],
+      "u": ""
+     },
+     "levure de boulanger fraîche": {
+      "r": "Crèmerie, œufs et fromages",
+      "alias": [
+       "levure boulangere fraiche"
+      ],
+      "u": "g"
+     },
+     "chorizo doux": {
+      "r": "Charcuterie et traiteur",
+      "u": "g",
+      "drive": "49800"
+     },
+     "lardons fumés": {
+      "r": "Charcuterie et traiteur",
+      "u": "g"
+     },
+     "jambon blanc": {
+      "r": "Charcuterie et traiteur",
+      "alias": [
+       "tranches de jambon blanc"
+      ],
+      "u": "tranches",
+      "conv": {
+       "": 1
+      },
+      "drive": "194064"
+     },
+     "galettes de blé noir": {
+      "r": "Charcuterie et traiteur"
+     },
+     "pain de mie": {
+      "r": "Boulangerie et viennoiserie",
+      "alias": [
+       "tranches de pain de mie"
+      ],
+      "u": "tranches",
+      "conv": {
+       "": 1
+      },
+      "drive": "86586"
+     },
+     "farine T45": {
+      "r": "Pâtes, riz et farines",
+      "u": "g",
+      "drive": "48603"
+     },
+     "farine T65": {
+      "r": "Pâtes, riz et farines",
+      "alias": [
+       "farine de ble t65"
+      ],
+      "u": "g"
+     },
+     "farine de seigle": {
+      "r": "Pâtes, riz et farines",
+      "alias": [
+       "farine de seigle t130"
+      ],
+      "u": "g"
+     },
+     "riz à risotto": {
+      "r": "Pâtes, riz et farines",
+      "alias": [
+       "riz arborio ou carnaroli"
+      ],
+      "u": "g"
+     },
+     "spaghetti": {
+      "r": "Pâtes, riz et farines",
+      "alias": [
+       "tonnarelli ou spaghetti epais"
+      ],
+      "u": "g"
+     },
+     "tagliatelles": {
+      "r": "Pâtes, riz et farines",
+      "u": "g"
+     },
+     "nouilles aux œufs sèches": {
+      "r": "Pâtes, riz et farines",
+      "u": "g"
+     },
+     "haricots verts extra-fins": {
+      "r": "Conserves",
+      "u": "g",
+      "drive": "94052"
+     },
+     "petits pois-carottes": {
+      "r": "Conserves",
+      "u": "g"
+     },
+     "tomates pelées": {
+      "r": "Conserves",
+      "u": "g"
+     },
+     "sauce tartare": {
+      "r": "Sauces et condiments",
+      "alias": [
+       "pot de sauce tartare"
+      ],
+      "drive": "52633"
+     },
+     "beurre de cacahuète": {
+      "r": "Épicerie du monde",
+      "alias": [
+       "beurre de cacahuete 100 % cacahuete"
+      ],
+      "u": "c. à s."
+     },
+     "feuilles de nori": {
+      "r": "Épicerie du monde"
+     },
+     "menma": {
+      "r": "Épicerie du monde",
+      "u": "g"
+     },
+     "roux de curry japonais": {
+      "r": "Épicerie du monde",
+      "alias": [
+       "roux de curry japonais doux"
+      ],
+      "u": "g"
+     },
+     "soupe miso instantanée": {
+      "r": "Épicerie du monde",
+      "alias": [
+       "sachets de soupe miso instantanee"
+      ]
+     },
+     "tortillas de blé": {
+      "r": "Épicerie du monde"
+     },
+     "cacahuètes grillées concassées": {
+      "r": "Apéritif",
+      "u": "g"
+     },
+     "cerneaux de noix": {
+      "r": "Épicerie sucrée",
+      "u": "g"
+     },
+     "bœuf haché": {
+      "r": "Viandes et poissons",
+      "alias": [
+       "bœuf hache surgele"
+      ],
+      "u": "g"
+     },
+     "dos de cabillaud": {
+      "r": "Viandes et poissons",
+      "alias": [
+       "dos de cabillaud surgele"
+      ],
+      "u": "g"
+     },
+     "frites": {
+      "r": "Légumes et frites",
+      "alias": [
+       "frites surgelees"
+      ],
+      "u": "g"
+     },
+     "petits pois": {
+      "r": "Légumes et frites",
+      "alias": [
+       "petits pois surgeles"
+      ],
+      "u": "g"
+     },
+     "gyozas": {
+      "r": "Plats et entrées",
+      "alias": [
+       "gyozas surgeles porc ou poulet"
+      ]
+     },
+     "huile d'olive": {
+      "r": "Huiles et vinaigres",
+      "u": "c. à s.",
+      "conv": {
+       "c. à c.": 0.3333333333333333,
+       "ml": 0.06666666666666667,
+       "g": 0.07142857142857142
+      }
+     },
+     "huile neutre": {
+      "r": "Huiles et vinaigres",
+      "alias": [
+       "huile de colza ou de tournesol"
+      ],
+      "u": "c. à s.",
+      "conv": {
+       "c. à c.": 0.3333333333333333,
+       "ml": 0.06666666666666667
+      }
+     },
+     "huile de sésame grillé": {
+      "r": "Huiles et vinaigres",
+      "u": "c. à c."
+     },
+     "huile pimentée": {
+      "r": "Huiles et vinaigres",
+      "u": "c. à c."
+     },
+     "vinaigre de riz": {
+      "r": "Huiles et vinaigres",
+      "u": "c. à s."
+     },
+     "vinaigre de vin": {
+      "r": "Huiles et vinaigres",
+      "u": "c. à s."
+     },
+     "sauce soja japonaise": {
+      "r": "Sauces et condiments",
+      "alias": [
+       "sauce soja"
+      ],
+      "u": "c. à s.",
+      "conv": {
+       "c. à c.": 0.3333333333333333,
+       "ml": 0.06666666666666667
+      }
+     },
+     "mirin": {
+      "r": "Sauces et condiments",
+      "u": "c. à s.",
+      "conv": {
+       "ml": 0.06666666666666667
+      }
+     },
+     "saké de cuisine": {
+      "r": "Sauces et condiments",
+      "u": "ml"
+     },
+     "ketchup": {
+      "r": "Sauces et condiments",
+      "u": "c. à s."
+     },
+     "moutarde": {
+      "r": "Sauces et condiments",
+      "u": "c. à c."
+     },
+     "sauce Worcestershire": {
+      "r": "Sauces et condiments",
+      "u": "c. à s."
+     },
+     "concentré de tomates": {
+      "r": "Sauces et condiments",
+      "u": "c. à s."
+     },
+     "sel fin": {
+      "r": "Épices et assaisonnements",
+      "u": "g"
+     },
+     "gros sel": {
+      "r": "Épices et assaisonnements",
+      "u": "g"
+     },
+     "poivre noir": {
+      "r": "Épices et assaisonnements",
+      "alias": [
+       "poivre noir en grains"
+      ],
+      "u": "c. à c."
+     },
+     "muscade": {
+      "r": "Épices et assaisonnements"
+     },
+     "paprika": {
+      "r": "Épices et assaisonnements",
+      "u": "c. à c."
+     },
+     "épices tex-mex": {
+      "r": "Épices et assaisonnements",
+      "u": "c. à c."
+     },
+     "graines de sésame": {
+      "r": "Épices et assaisonnements",
+      "u": "c. à s.",
+      "conv": {
+       "c. à c.": 0.3333333333333333
+      }
+     },
+     "bouillon de volaille": {
+      "r": "Épices et assaisonnements",
+      "alias": [
+       "bouillon de volaille en poudre",
+       "cube de bouillon de volaille"
+      ],
+      "u": "c. à c.",
+      "conv": {
+       "": 2
+      }
+     },
+     "dashi en poudre": {
+      "r": "Épicerie japonaise",
+      "u": "c. à c."
+     },
+     "kombu": {
+      "r": "Épicerie japonaise",
+      "u": "cm"
+     },
+     "katsuobushi": {
+      "r": "Épicerie japonaise",
+      "u": "g"
+     },
+     "farine": {
+      "r": "Farines, sucres et levures",
+      "u": "g"
+     },
+     "levure de boulanger sèche": {
+      "r": "Farines, sucres et levures",
+      "u": "g"
+     },
+     "sucre": {
+      "r": "Farines, sucres et levures",
+      "u": "g",
+      "conv": {
+       "c. à c.": 4,
+       "c. à s.": 12
+      }
+     },
+     "miel": {
+      "r": "Farines, sucres et levures",
+      "u": "c. à s."
+     },
+     "sirop d'érable": {
+      "r": "Farines, sucres et levures",
+      "u": "c. à s."
+     },
+     "chapelure panko": {
+      "r": "Farines, sucres et levures",
+      "u": "g"
+     },
+     "semoule fine": {
+      "r": "Farines, sucres et levures",
+      "alias": [
+       "semoule fine de ble dur"
+      ],
+      "u": "c. à s."
+     },
+     "riz japonais": {
+      "r": "Riz et semoules",
+      "u": "g"
      }
     }
    }
