@@ -81,11 +81,17 @@ public class SerieBtPlugin extends Plugin {
             return;
         }
         JSArray liste = new JSArray();
-        for (BluetoothDevice d : a.getBondedDevices()) {
-            JSObject o = new JSObject();
-            o.put("nom", d.getName());
-            o.put("adresse", d.getAddress());
-            liste.put(o);
+        try {
+            for (BluetoothDevice d : a.getBondedDevices()) {
+                JSObject o = new JSObject();
+                String nom = d.getName();
+                o.put("nom", nom == null ? "" : nom);
+                o.put("adresse", d.getAddress());
+                liste.put(o);
+            }
+        } catch (SecurityException e) {
+            call.reject("Autorisation « Appareils à proximité » manquante");
+            return;
         }
         JSObject r = new JSObject();
         r.put("appareils", liste);
@@ -124,6 +130,17 @@ public class SerieBtPlugin extends Plugin {
         }
         fermer();
         new Thread(() -> {
+            try {
+                connecterDans(call, a, adresse);
+            } catch (Throwable t) {
+                call.reject("Connexion impossible : " + t.getClass().getSimpleName() + " " + t.getMessage());
+            }
+        }).start();
+    }
+
+    @SuppressLint("MissingPermission")
+    private void connecterDans(PluginCall call, BluetoothAdapter a, String adresse) {
+        {
             BluetoothDevice d;
             try {
                 d = a.getRemoteDevice(adresse);
@@ -131,12 +148,16 @@ public class SerieBtPlugin extends Plugin {
                 call.reject("Adresse du robot invalide");
                 return;
             }
-            a.cancelDiscovery();
+            try {
+                a.cancelDiscovery();
+            } catch (SecurityException ignore) {
+                // Android 12+ : demande BLUETOOTH_SCAN, inutile ici (pas de recherche en cours)
+            }
             BluetoothSocket s = null;
             try {
                 s = d.createRfcommSocketToServiceRecord(SPP);
                 s.connect();
-            } catch (IOException e1) {
+            } catch (IOException | SecurityException e1) {
                 try {
                     if (s != null) s.close();
                 } catch (IOException ignore) {
@@ -167,7 +188,7 @@ public class SerieBtPlugin extends Plugin {
                 }
                 call.reject("Connexion interrompue : " + e.getMessage());
             }
-        }).start();
+        }
     }
 
     private void lire(BluetoothSocket s, InputStream entree) {
@@ -183,7 +204,7 @@ public class SerieBtPlugin extends Plugin {
                         notifyListeners("donnees", o);
                     }
                 }
-            } catch (IOException ignore) {
+            } catch (Throwable ignore) {
             }
             boolean actif;
             synchronized (this) {
