@@ -101,9 +101,9 @@ fieldset:disabled{opacity:.55}
 .locked{font-size:14px;margin:0 0 14px;padding:10px 12px;border-radius:10px;background:var(--accent-soft)}
 
 /* suivi */
-.run{position:fixed;inset:0;z-index:18;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch}
+.run{position:fixed;inset:0 0 calc(var(--nav-h) + var(--sab)) 0;z-index:14;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch}
 .run-in{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px;
-  padding-top:calc(12px + var(--sat));padding-bottom:calc(28px + var(--sab));
+  padding-top:calc(12px + var(--sat));padding-bottom:20px;
   padding-left:max(16px, var(--sal));padding-right:max(16px, var(--sar))}
 .run-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .run-clock{font-family:var(--display);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;color:var(--muted)}
@@ -128,7 +128,7 @@ fieldset:disabled{opacity:.55}
 /* gros boutons pour les doigts pleins de pâte */
 .run .btn{min-height:64px;font-size:18px;border-radius:12px;padding:14px 20px}
 .run .run-top .btn{min-height:52px;font-size:16px}
-.run-foot{position:sticky;bottom:0;margin:0 -18px -20px;padding:14px 18px calc(14px + var(--sab));background:var(--surface);border-top:1px solid var(--line);border-radius:0 0 var(--r) var(--r);display:flex;gap:14px}
+.run-foot{position:sticky;bottom:0;margin:0 -18px -20px;padding:14px 18px;background:var(--surface);border-top:1px solid var(--line);border-radius:0 0 var(--r) var(--r);display:flex;gap:14px}
 .run-foot .btn.ghost{flex:0 0 auto;min-width:88px}
 .checklist label{min-height:60px}
 .checklist input{width:28px;height:28px}

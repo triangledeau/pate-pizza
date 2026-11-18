@@ -154,7 +154,7 @@ details.more summary::-webkit-details-marker{display:none}
 .prog svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
 
 /* ---------- mode cuisine : une étape à la fois, en grand ---------- */
-.cuisiner{position:fixed;inset:0;z-index:25;background:var(--fond);display:flex;flex-direction:column}
+.cuisiner{position:fixed;inset:0 0 calc(var(--nav-h) + var(--sab)) 0;z-index:14;background:var(--fond);display:flex;flex-direction:column}
 .cu-tete{display:flex;align-items:center;gap:10px;padding:calc(10px + var(--sat)) max(16px,var(--sar)) 10px max(16px,var(--sal))}
 .cu-tete .nom{flex:1;min-width:0;font-weight:700;font-size:15px;color:var(--encre-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cu-barre{display:flex;gap:3px;padding:0 max(16px,var(--sar)) 0 max(16px,var(--sal))}
@@ -166,7 +166,7 @@ details.more summary::-webkit-details-marker{display:none}
 .cu-num{font-family:var(--titre);font-weight:780;font-size:48px;line-height:1;color:var(--basilic);margin-top:8px;font-variant-numeric:tabular-nums}
 .cu-num small{font-size:20px;color:var(--encre-3);font-weight:600}
 .cu-texte{font-size:23px;line-height:1.45;margin:12px 0 16px;text-wrap:pretty}
-.cu-pied{display:flex;gap:12px;padding:12px max(16px,var(--sar)) calc(14px + var(--sab)) max(16px,var(--sal));border-top:1px solid var(--trait);background:var(--surface)}
+.cu-pied{display:flex;gap:12px;padding:12px max(16px,var(--sar)) 12px max(16px,var(--sal));border-top:1px solid var(--trait);background:var(--surface)}
 .cu-pied .btn{min-height:68px;font-size:19px;border-radius:16px}
 .cu-pied .btn.ghost{flex:0 0 96px}
 .cu-pied .btn.primary{flex:1}
@@ -989,6 +989,7 @@ document.addEventListener("submit", ev => {
   }
 });
 $("#scrim").addEventListener("click", closeSheet);
+document.querySelector(".barre-bas").addEventListener("click", () => { if (cu) fermerCuisine(); if (sheet) closeSheet(); });
 document.addEventListener("keydown", ev => { if (ev.key === "Escape") { if (cu) fermerCuisine(); else if (sheet) closeSheet(); } });
 document.addEventListener("visibilitychange", () => { if (!document.hidden && cu) window.Natif?.garderAllume(true); if (!document.hidden && ui.view === "semaine" && !sheet) renderSemaine(); });
 
