@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Robot · Cuisine</title>
+<link rel="stylesheet" href="commun/theme.css">
+<link rel="stylesheet" href="robot/css/style.css">
+<script src="commun/natif.js"></script>
+</head>
+<body>
+<header class="entete"><div class="entete-in">
+  <h1>Robot</h1>
+  <div class="pastilles">
+    <button id="pastille-robot" class="pastille outil" type="button">Robot</button>
+    <button id="pastille-balance" class="pastille outil" type="button">Balance</button>
+  </div>
+</div></header>
+
+<main class="page">
+<nav class="onglets" aria-label="Sections du robot">
+      <button data-vue="piloter" class="actif" type="button">
+        Piloter
+      </button>
+      <button data-vue="recettes" type="button">
+        Recettes
+      </button>
+      <button data-vue="balance" type="button">
+        Balance
+      </button>
+      <button data-vue="plus" type="button">
+        Plus
+      </button>
+    </nav>
+      <div id="alerte-navigateur" class="bandeau" hidden></div>
+
+      <!-- Piloter -->
+      <section id="vue-piloter" class="vue">
+        <div class="plaque eteinte" id="carte-etat">
+          <div class="etat-titre" id="etat-titre">Robot non connecté</div>
+          <div class="etat-grand chiffres" id="etat-temps">—</div>
+          <div class="etat-details chiffres"><span id="etat-temp"></span><span id="etat-vit"></span></div>
+          <div class="defauts" id="etat-defauts"></div>
+        </div>
+
+        <div id="bandeau-auto" class="bandeau ok" hidden>Programme prêt : appuie sur <strong>AUTO</strong> sur le robot.</div>
+
+        <div class="carte">
+          <h2>Programme Expert</h2>
+          <div id="reglage-piloter"></div>
+          <div class="erreur" id="erreur-piloter" hidden></div>
+          <div class="rangee">
+            <button class="btn" id="btn-favori" type="button">Garder en favori</button>
+            <button class="btn principal" id="btn-envoyer" type="button">Envoyer au robot</button>
+          </div>
+        </div>
+
+        <div class="carte">
+          <h2>Favoris</h2>
+          <ul class="liste" id="liste-favoris"></ul>
+        </div>
+
+        <div class="carte">
+          <h2>Touches du robot</h2>
+          <div class="grille-touches">
+            <button class="btn" data-touche="gauche" type="button" aria-label="Gauche">◀</button>
+            <button class="btn" data-touche="ok" type="button">OK</button>
+            <button class="btn" data-touche="droite" type="button" aria-label="Droite">▶</button>
+            <button class="btn" data-touche="retour" type="button" aria-label="Retour">↩</button>
+          </div>
+          <button class="btn-stop" data-touche="stop" type="button">STOP</button>
+        </div>
+      </section>
+
+      <!-- Recettes -->
+      <section id="vue-recettes" class="vue" hidden>
+        <div class="carte">
+          <h2>Recettes guidées</h2>
+          <ul class="liste" id="liste-recettes"></ul>
+        </div>
+        <button class="btn principal plein" id="btn-nouvelle-recette" type="button">Nouvelle recette guidée</button>
+      </section>
+
+      <!-- Balance -->
+      <section id="vue-balance" class="vue" hidden>
+        <div class="carte">
+          <div class="poids-grand chiffres" id="poids">—</div>
+          <p class="discret" style="text-align: center" id="poids-info">Balance non connectée</p>
+          <div class="rangee">
+            <button class="btn" id="btn-unite" type="button">Unité : g</button>
+            <button class="btn principal" id="btn-tare" type="button">Tare</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Plus -->
+      <section id="vue-plus" class="vue" hidden>
+        <div class="carte">
+          <h2>Sauvegarde</h2>
+          <p class="discret">Recettes guidées et favoris du robot sont enregistrés sur ce téléphone. Exporte-les pour les garder ou les transférer.</p>
+          <div class="rangee">
+            <button class="btn" id="btn-exporter" type="button">Exporter</button>
+            <button class="btn" id="btn-importer" type="button">Importer</button>
+          </div>
+          <input type="file" id="fichier-import" accept="application/json,.json" hidden />
+        </div>
+        <div class="carte">
+          <h2>Notifications</h2>
+          <p class="discret">Prévenir quand un programme se termine pendant que le téléphone est en veille.</p>
+          <button class="btn plein" id="btn-notifs" type="button">Activer les notifications</button>
+        </div>
+        <div class="carte">
+          <h2>Sécurité</h2>
+          <p class="discret">L'appli règle les programmes mais ne démarre jamais le moteur ni la chauffe : c'est toi qui appuies sur AUTO devant le robot. STOP reste disponible ici. Ferme l'appli Magimix avant de te connecter : le robot n'accepte qu'une connexion à la fois.</p>
+        </div>
+        <div class="carte">
+          <div class="rangee" style="align-items:center;margin-bottom:8px">
+            <h2 style="margin:0">Journal</h2>
+            <button class="btn petit" id="btn-copier-journal" type="button" style="flex:0 0 auto">Copier</button>
+          </div>
+          <ul class="journal" id="journal"></ul>
+        </div>
+        <p class="discret" style="text-align: center">
+          Protocole : <a href="https://github.com/Julien-Deudon/cookexpert-bt">cookexpert-bt</a> (MIT). Projet indépendant, sans lien avec Magimix.<br /><span id="version"></span>
+        </p>
+      </section>
+    </main>
+
+<nav class="barre-bas" aria-label="Sections"><div class="barre-bas-in">
+<a href="index.html#semaine"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><span>Semaine</span></a>
+<a href="index.html#recettes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h10.5A3.5 3.5 0 0 1 19 8v12H8.5A3.5 3.5 0 0 1 5 16.5z"/><path d="M5 16.5A3.5 3.5 0 0 1 8.5 13H19"/></svg><span>Recettes</span></a>
+<a href="index.html#courses"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8h15l-1.4 11.2a1.5 1.5 0 0 1-1.5 1.3H7.4a1.5 1.5 0 0 1-1.5-1.3z"/><path d="M8.5 8a3.5 3.5 0 0 1 7 0"/></svg><span>Courses</span></a>
+<a href="pizza.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8 7.2c5.3-3 11.1-3 16.4 0L12 21.2z"/><path d="M5.6 10.3c4.2-2 8.6-2 12.8 0"/><circle cx="10.4" cy="13.4" r="1"/><circle cx="13.9" cy="16.2" r="1"/></svg><span>Pizza</span></a>
+<a href="robot.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10.5h14v4.5a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5z"/><path d="M3.5 10.5h17M9 7.5c0-1.5 1-1.5 1-3M14 7.5c0-1.5 1-1.5 1-3"/></svg><span>Robot</span></a>
+</div></nav>
+
+<div id="ecran" class="ecran" hidden></div>
+<div id="toast" role="status"></div>
+<script type="module" src="robot/js/app.js"></script>
+</body>
+</html>

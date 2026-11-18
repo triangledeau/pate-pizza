@@ -3,6 +3,9 @@ name: APK
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "data/**"
+      - "**.md"
   workflow_dispatch:
 
 permissions:
@@ -38,13 +41,13 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon --stacktrace
-          cp app/build/outputs/apk/release/app-release.apk ../pate-pizza.apk
+          cp app/build/outputs/apk/release/app-release.apk ../cuisine.apk
 
       - name: Publication
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "v1.${{ github.run_number }}" pate-pizza.apk \
-            --title "Pâte à pizza 1.${{ github.run_number }}" \
-            --notes "Ouvre ce lien sur ton téléphone et installe pate-pizza.apk." \
+          gh release create "v1.${{ github.run_number }}" cuisine.apk \
+            --title "Cuisine 1.${{ github.run_number }}" \
+            --notes "Ouvre ce lien sur ton téléphone et installe cuisine.apk." \
             --latest

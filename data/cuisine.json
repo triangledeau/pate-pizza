@@ -1,0 +1,3640 @@
+{
+ "maj": "2026-11-18T16:00:00Z",
+ "note": "Données de l'appli Cuisine. Chaque document : t = date de modification (ISO), d = contenu. Voir CLAUDE.md.",
+ "docs": {
+  "config/drive": {
+   "t": "2026-10-28T14:09:47.116724Z",
+   "d": {
+    "magasin": "Blois (034101)",
+    "maj": "2026-10-28",
+    "produits": [
+     {
+      "format": "1 L",
+      "id": "56683",
+      "nom": "Pur jus d'ananas Bio Village",
+      "note": "",
+      "prix": 3.81,
+      "qte": 2,
+      "statut": "Base"
+     },
+     {
+      "format": "x10 · 350 g",
+      "id": "176847",
+      "nom": "Knacki Original Herta",
+      "note": "",
+      "prix": 1.66,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "x10 · 350 g",
+      "id": "38812",
+      "nom": "Pains au lait Pasquier",
+      "note": "",
+      "prix": 1.38,
+      "qte": 4,
+      "statut": "Base"
+     },
+     {
+      "format": "500 g",
+      "id": "75337",
+      "nom": "Café en grains Méo bio",
+      "note": "",
+      "prix": 8.72,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "400 g",
+      "id": "52704",
+      "nom": "Emmental Président Cœur de meule",
+      "note": "",
+      "prix": 4.53,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "500 g",
+      "id": "86586",
+      "nom": "Pain de mie Harrys extra moelleux",
+      "note": "",
+      "prix": 1.29,
+      "qte": 3,
+      "statut": "Base"
+     },
+     {
+      "format": "x4 · 140 g",
+      "id": "194081",
+      "nom": "Jambon Le Bon Paris fumé Herta sans nitrite",
+      "note": "Indisponible au 28/10",
+      "prix": 2.8,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "190 g",
+      "id": "16062",
+      "nom": "Pesto Genovese Barilla",
+      "note": "",
+      "prix": 1.88,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "400 g",
+      "id": "86940",
+      "nom": "Emmental râpé bio Bio Village",
+      "note": "",
+      "prix": 4.82,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "x6 · 210 g",
+      "id": "194064",
+      "nom": "Jambon Le Bon Paris Herta sans nitrite",
+      "note": "",
+      "prix": 3.18,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "6 x 1 L",
+      "id": "39276",
+      "nom": "Lait demi-écrémé bio Laiterie Verneuil",
+      "note": "",
+      "prix": 8.28,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "335 g",
+      "id": "76875",
+      "nom": "Confiture Bonne Maman fraise intense",
+      "note": "Remplace la fraise des bois, retirée du catalogue",
+      "prix": 1.92,
+      "qte": 2,
+      "statut": "Base"
+     },
+     {
+      "format": "1,25 kg",
+      "id": "34188",
+      "nom": "Poulet Label Rouge blanc",
+      "note": "",
+      "prix": 8.34,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "x4 · 160 g",
+      "id": "130667",
+      "nom": "Rôti de porc Fleury Michon sans nitrite",
+      "note": "",
+      "prix": 2.7,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "2 x 93 g",
+      "id": "97045",
+      "nom": "Thon entier Petit Navire au naturel",
+      "note": "",
+      "prix": 3.02,
+      "qte": 1,
+      "statut": "Base"
+     },
+     {
+      "format": "750 ml",
+      "id": "23000",
+      "nom": "Smoothie innocent fraise banane",
+      "note": "",
+      "prix": 3.43,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "1 L",
+      "id": "23179",
+      "nom": "Pur jus 7 fruits Bio Village",
+      "note": "",
+      "prix": 2.88,
+      "qte": 2,
+      "statut": "Régulier"
+     },
+     {
+      "format": "70 cl",
+      "id": "39617",
+      "nom": "Sirop de menthe Moulin de Valdonne",
+      "note": "",
+      "prix": 3.2,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "200 g",
+      "id": "49800",
+      "nom": "Chorizo doux César Moroni",
+      "note": "",
+      "prix": 2.92,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "x6 · 210 g",
+      "id": "153148",
+      "nom": "Jambon supérieur Fleury Michon sans nitrite",
+      "note": "",
+      "prix": 2.93,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "250 g",
+      "id": "1069",
+      "nom": "Saucisses de Montbéliard IGP",
+      "note": "",
+      "prix": 3.18,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "x4 · 160 g",
+      "id": "153248",
+      "nom": "Rôti de porc Fleury Michon extra tendre",
+      "note": "",
+      "prix": 3.15,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "265 g",
+      "id": "19211",
+      "nom": "Lentilles Cassegrain",
+      "note": "",
+      "prix": 1.59,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "260 g",
+      "id": "52633",
+      "nom": "Sauce tartare Bénédicta",
+      "note": "",
+      "prix": 1.42,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "220 g",
+      "id": "94052",
+      "nom": "Haricots verts Cassegrain extra-fins",
+      "note": "",
+      "prix": 2.07,
+      "qte": 2,
+      "statut": "Régulier"
+     },
+     {
+      "format": "175 g",
+      "id": "122792",
+      "nom": "Pringles crème et oignon",
+      "note": "",
+      "prix": 1.64,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "500 g",
+      "id": "209113",
+      "nom": "Farfalle Barilla Collezione",
+      "note": "",
+      "prix": 1.65,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "500 g",
+      "id": "16439",
+      "nom": "Riz basmati Bio Village",
+      "note": "",
+      "prix": 1.49,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "375 g",
+      "id": "93854",
+      "nom": "Aubergines cuisinées Cassegrain",
+      "note": "",
+      "prix": 3.07,
+      "qte": 2,
+      "statut": "Régulier"
+     },
+     {
+      "format": "140 g",
+      "id": "124272",
+      "nom": "Thon nature Saupiquet",
+      "note": "",
+      "prix": 2.62,
+      "qte": 2,
+      "statut": "Régulier"
+     },
+     {
+      "format": "175 g",
+      "id": "180041",
+      "nom": "Pringles paprika",
+      "note": "",
+      "prix": 1.72,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "650 g",
+      "id": "205344",
+      "nom": "Pâte à tartiner Nocciolata bio",
+      "note": "",
+      "prix": 7.13,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "750 g",
+      "id": "6390",
+      "nom": "Compotes Andros pomme banane",
+      "note": "",
+      "prix": 1.75,
+      "qte": 2,
+      "statut": "Régulier"
+     },
+     {
+      "format": "1,4 kg",
+      "id": "48603",
+      "nom": "Farine de blé Francine",
+      "note": "",
+      "prix": 1.53,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "400 g",
+      "id": "81768",
+      "nom": "Brioche tranchée bio La Boulangère",
+      "note": "",
+      "prix": 1.7,
+      "qte": 3,
+      "statut": "Régulier"
+     },
+     {
+      "format": "500 g",
+      "id": "113680",
+      "nom": "Brioche tressée Harrys",
+      "note": "",
+      "prix": 2.67,
+      "qte": 3,
+      "statut": "Régulier"
+     },
+     {
+      "format": "190 g",
+      "id": "229414",
+      "nom": "Chocolat Poulain maxi lait",
+      "note": "",
+      "prix": 3.02,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "230 g",
+      "id": "2930",
+      "nom": "Biscuits pomme noisette Gerblé",
+      "note": "",
+      "prix": 1.48,
+      "qte": 2,
+      "statut": "Régulier"
+     },
+     {
+      "format": "680 g",
+      "id": "166601",
+      "nom": "Compote bio Jardin Bio pomme banane",
+      "note": "",
+      "prix": 2.84,
+      "qte": 2,
+      "statut": "Régulier"
+     },
+     {
+      "format": "75 ml",
+      "id": "178620",
+      "nom": "Dentifrice L'Arbre Vert",
+      "note": "",
+      "prix": 2.64,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "16 x 125 g",
+      "id": "216123",
+      "nom": "Yaourts Panier de Yoplait panachés",
+      "note": "",
+      "prix": 4.53,
+      "qte": 1,
+      "statut": "Régulier"
+     },
+     {
+      "format": "250 g",
+      "id": "6199",
+      "nom": "Beurre Paysan Breton demi-sel",
+      "note": "",
+      "prix": 3.29,
+      "qte": 1,
+      "statut": "Régulier"
+     }
+    ]
+   }
+  },
+  "config/reglages": {
+   "t": "2026-11-11T10:46:08.518366Z",
+   "d": {
+    "gardeRef": "2026-11-06",
+    "migration": 2,
+    "periodeJours": 14
+   }
+  },
+  "config/reperes": {
+   "t": "2026-11-06T17:28:21.404858Z",
+   "d": {
+    "aCompleter": [
+     {
+      "fait": false,
+      "txt": "Relever marque et référence sur la plaque signalétique (sous l'appareil, ou dans l'encadrement de porte pour le four)"
+     },
+     {
+      "fait": false,
+      "txt": "Bouilloire, appareil à raclette : marque ?"
+     },
+     {
+      "fait": false,
+      "txt": "Service à fondue : électrique ou à réchaud ?"
+     },
+     {
+      "fait": false,
+      "txt": "Cylindre inox à côté de la machine à pâtes (tiroir 2) : moteur électrique ?"
+     },
+     {
+      "fait": false,
+      "txt": "Pas encore photographiés : plaque de cuisson, hotte, réfrigérateur, lave-vaisselle, micro-ondes éventuel"
+     },
+     {
+      "fait": true,
+      "txt": "Eau du robinet : seulement froide ou tiède (25 à 35 °C), pas de température précise"
+     }
+    ],
+    "courses": [
+     {
+      "t": "Semaine sans Picard",
+      "txt": "Les surgelés basculent sur le drive Leclerc, avec la même règle de choix."
+     },
+     {
+      "t": "Choix sur le drive",
+      "txt": "Bio si le surcoût reste à +30 % maximum par rapport au non bio (au prix au kilo), sinon marques nationales."
+     },
+     {
+      "t": "Quantités",
+      "txt": "Listes calculées pour 2 personnes."
+     },
+     {
+      "t": "Une liste par enseigne",
+      "txt": "Ni fruit, ni légume, ni viande ou poisson frais dans le panier Leclerc (sauf le poulet Label Rouge) ; pas de surgelés non plus, sauf semaine sans Picard."
+     },
+     {
+      "t": "Basiques",
+      "txt": "Riz, farine, épices, sauces… sont listés à part (Placard) pour que je coche ce que j'ai déjà."
+     },
+     {
+      "t": "Panier Leclerc",
+      "txt": "« Copier pour Claude » dans l'onglet Courses prépare le message pour que Claude remplisse le panier du drive."
+     }
+    ],
+    "enseignes": [
+     {
+      "nom": "Grand Frais",
+      "quoi": "Fruits et légumes, viande et poisson frais, farine 00",
+      "rythme": "Chaque semaine"
+     },
+     {
+      "nom": "Drive E.Leclerc (Blois)",
+      "quoi": "Épicerie, crèmerie, charcuterie emballée, conserves, boissons, hygiène, entretien ; poulet Label Rouge",
+      "rythme": "Chaque semaine"
+     },
+     {
+      "nom": "Picard",
+      "quoi": "Tous les surgelés (à l'essai)",
+      "rythme": "Toutes les 2 semaines"
+     }
+    ],
+    "regles": [
+     {
+      "t": "Garde",
+      "txt": "Une semaine sur deux, mon fils est là du vendredi soir au vendredi suivant (départ entre 17 h et 18 h 30) : 10 repas pour 2, menus et courses compris."
+     },
+     {
+      "t": "Repas couverts",
+      "txt": "7 dîners du vendredi d'arrivée au jeudi, midis du samedi et du dimanche, mercredi midi."
+     },
+     {
+      "t": "Vendredi d'arrivée",
+      "txt": "Dîner rapide, le transfert se fait entre 17 h et 18 h 30."
+     },
+     {
+      "t": "Temps en cuisine",
+      "txt": "15 à 20 min de cuisine active au maximum pour chacun des 10 repas, préparations de la veille comprises. Les cuissons longues sans surveillance restent possibles."
+     },
+     {
+      "t": "Pizzas",
+      "txt": "Toujours sur pâte maison à la farine 00 (Grand Frais), préparée le jour même sans frigo (fiche 05) : donc seulement le samedi ou le dimanche soir, même au-delà des 20 min actives. Jamais de pâte du commerce."
+     },
+     {
+      "t": "Heure du dîner",
+      "txt": "Prêt entre 19 h 15 et 19 h 45. Du lundi au vendredi, lancement à 18 h 30 au plus tôt, donc 1 h au plus cuisson comprise."
+     },
+     {
+      "t": "Rappel de lancement",
+      "txt": "Une notification à l'heure « Lancer à » de chaque dîner, avec ce qu'il faut sortir du congélateur pour le lendemain. Les jours de pizza, deux rappels de plus : pétrissage vers 11 h 30 et boulage vers 13 h 30."
+     },
+     {
+      "t": "Recettes",
+      "txt": "Chaque plat du menu a sa fiche dans l'onglet Recettes, avec des étapes détaillées (gestes, temps, températures, appareil)."
+     },
+     {
+      "t": "Soirée jeux",
+      "txt": "Si elle tombe pendant la semaine avec mon fils, je dis quel soir ; un dîner de moins de 20 min est prévu pour être déplacé. Le repas des joueurs reste de mon ressort."
+     },
+     {
+      "t": "Mon fils",
+      "txt": "Mange de tout sauf les choux de Bruxelles et les cœurs de palmier. Styles variés : japonais, classiques français, pizza maison."
+     },
+     {
+      "t": "Fromages",
+      "txt": "Seulement raclette, emmental, comté, beaufort, gruyère, abondance, parmesan, mozzarella cuite, cheddar, gouda et mimolette. Aucun autre fromage dans les plats (chèvre, brebis dont pecorino et feta, bleus, pâtes molles, fromages frais, mozzarella crue, burrata)."
+     },
+     {
+      "t": "Fraîcheur",
+      "txt": "Poisson et viande hachée fraîche dans les 2 premiers jours, sinon en surgelé (sorti du congélateur la veille au soir). Champignons et salade plutôt en début de semaine."
+     },
+     {
+      "t": "Variété",
+      "txt": "Aucun plat déjà servi dans les deux semaines précédentes. Produits de saison."
+     }
+    ],
+    "usages": [
+     {
+      "appareil": "Magimix Cook Expert",
+      "envie": "Soupes, mijotés, risottos, pâtes à pain et à pizza"
+     },
+     {
+      "appareil": "Air-fryer Cosori TurboBlaze",
+      "envie": "Croustillant rapide, légumes rôtis, poisson pané, réchauffer"
+     },
+     {
+      "appareil": "Four Smeg",
+      "envie": "Rôtis, gratins, pâtisserie, grandes quantités"
+     },
+     {
+      "appareil": "Pummarola",
+      "envie": "Pizza à pâte fine, cuisson très chaude"
+     },
+     {
+      "appareil": "Cuiseur YumAsia Panda Mini",
+      "envie": "Riz, plats japonais"
+     },
+     {
+      "appareil": "Raclette, fondue, gaufrier",
+      "envie": "Repas conviviaux"
+     }
+    ]
+   }
+  },
+  "courses/actuel": {
+   "t": "2026-11-11T10:48:22.374995Z",
+   "d": {
+    "ajouts": [],
+    "coches": {
+     "i:beurre de cacahuete 100 % cacahuete, non sucre|c. à s.|LEC": true,
+     "i:cacahuetes grillees concassees|g|LEC": true,
+     "i:citron vert (le jus)||GF": true,
+     "i:citron||GF": true,
+     "i:gingembre frais|cm|GF": true,
+     "i:gousse d'ail||GF": true,
+     "i:nouilles udon fraiches ou precuites|g|GF": true,
+     "i:oignon rouge||GF": true,
+     "i:oignons nouveaux eminces en biseau||GF": true,
+     "i:poivron||GF": true,
+     "i:salade verte||GF": true
+    },
+    "driveQte": {},
+    "picard": true
+   }
+  },
+  "equipement/air-fryer": {
+   "t": "2026-11-06T17:28:21.426045Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Plan de travail",
+    "modele": "Cosori TurboBlaze 6 L",
+    "nom": "Air-fryer",
+    "ordre": 3,
+    "ref": "",
+    "usages": "Frites, croustillant, réchauffage ; modes Proof et Bake"
+   }
+  },
+  "equipement/bouilloire": {
+   "t": "2026-11-06T17:28:21.462056Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Tiroir 2",
+    "modele": "À identifier (inox)",
+    "nom": "Bouilloire",
+    "ordre": 8,
+    "ref": "",
+    "usages": "Eau chaude"
+   }
+  },
+  "equipement/cafe": {
+   "t": "2026-11-06T17:28:21.41836Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Plan de travail",
+    "modele": "De'Longhi Magnifica S",
+    "nom": "Machine à café à grain",
+    "ordre": 2,
+    "ref": "",
+    "usages": "Expresso, lait moussé (buse vapeur)"
+   }
+  },
+  "equipement/cook-expert": {
+   "t": "2026-11-06T17:28:21.433084Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Plan de travail (accessoires : tiroir 3)",
+    "modele": "Magimix Cook Expert (bol 3,5 L, pétrin, programme PÉTRIN XL)",
+    "nom": "Robot cuiseur",
+    "ordre": 4,
+    "ref": "",
+    "usages": "Hacher, mixer, pétrir, cuire, vapeur"
+   }
+  },
+  "equipement/cuiseur-riz": {
+   "t": "2026-11-06T17:28:21.454556Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Tiroir 1",
+    "modele": "YumAsia Panda Mini (cuve céramique, 3,5 doses max)",
+    "nom": "Cuiseur à riz",
+    "ordre": 7,
+    "ref": "",
+    "usages": "Riz, programmes"
+   }
+  },
+  "equipement/fondue": {
+   "t": "2026-11-06T17:28:21.475098Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Tiroir 2",
+    "modele": "À confirmer (électrique ?)",
+    "nom": "Service à fondue",
+    "ordre": 10,
+    "ref": "",
+    "usages": "Fondue"
+   }
+  },
+  "equipement/four": {
+   "t": "2026-11-06T17:28:21.411887Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Colonne",
+    "modele": "Smeg, façade verre noir",
+    "nom": "Four encastrable",
+    "ordre": 1,
+    "ref": "",
+    "usages": "Cuisson au four"
+   }
+  },
+  "equipement/gaufrier": {
+   "t": "2026-11-06T17:28:21.446737Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Tiroir 1",
+    "modele": "Lagrange Premium Gaufres",
+    "nom": "Gaufrier",
+    "ordre": 6,
+    "ref": "",
+    "usages": "Gaufres"
+   }
+  },
+  "equipement/pummarola": {
+   "t": "2026-11-06T17:28:21.439375Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Tiroir 1",
+    "modele": "G3 Ferrari Pummarola (pierre de 31 cm)",
+    "nom": "Four à pizza",
+    "ordre": 5,
+    "ref": "",
+    "usages": "Pizza sur pierre, jusqu'à 420 °C"
+   }
+  },
+  "equipement/raclette": {
+   "t": "2026-11-06T17:28:21.467973Z",
+   "d": {
+    "achat": "",
+    "emplacement": "Tiroir 2",
+    "modele": "À identifier",
+    "nom": "Appareil à raclette",
+    "ordre": 9,
+    "ref": "",
+    "usages": "Raclette"
+   }
+  },
+  "recettes/cacio-e-pepe": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "num": "06",
+    "nom": "Cacio e pepe au parmesan",
+    "sousTitre": "Parmesan, poivre, eau de cuisson",
+    "categorie": "Italien",
+    "source": "carnet",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 20,
+    "total": 20,
+    "niveau": "Moyen",
+    "appareils": [
+     "Plaques"
+    ],
+    "resume": "Émulsion de parmesan, d'amidon et de poivre.",
+    "intro": "Trois ingrédients et aucune marge d'erreur. La sauce est une émulsion de fromage, d'amidon et de gras : trop chaude, le fromage file ; trop froide, elle reste granuleuse. On prépare donc une crème de fromage à part. Version au parmesan, sans pecorino.",
+    "blocs": [
+     {
+      "t": "Le ratio",
+      "txt": "2 pâtes sèches : 1 fromage râpé, et environ 1 L d'eau pour 200 g de pâtes, deux fois moins que d'habitude : l'amidon lie la sauce."
+     }
+    ],
+    "ingredients": [
+     {
+      "q": 100,
+      "u": "g",
+      "n": "parmesan (Parmigiano Reggiano), râpé très finement",
+      "e": "LEC",
+      "g": "Poivre et crème de parmesan"
+     },
+     {
+      "q": 2,
+      "u": "c. à c.",
+      "n": "poivre noir en grains",
+      "e": "PLA",
+      "g": "Poivre et crème de parmesan"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "huile d'olive (facultatif)",
+      "e": "PLA",
+      "g": "Poivre et crème de parmesan"
+     },
+     {
+      "q": 200,
+      "u": "g",
+      "n": "tonnarelli ou spaghetti épais",
+      "e": "LEC",
+      "g": "Les pâtes et la mantecatura"
+     },
+     {
+      "q": 1,
+      "u": "L",
+      "n": "eau",
+      "e": "NON",
+      "g": "Les pâtes et la mantecatura"
+     },
+     {
+      "q": 5,
+      "u": "g",
+      "n": "gros sel",
+      "e": "PLA",
+      "g": "Les pâtes et la mantecatura"
+     }
+    ],
+    "etapes": [
+     "## Poivre et crème de parmesan · 5 min, pendant que l'eau chauffe",
+     "Mettez 1 L d'eau à bouillir dans une casserole large et basse, ou une sauteuse.",
+     "Concassez le poivre grossièrement, au mortier ou sous le fond d'une casserole (le moulin donne une poudre trop fine).",
+     "Torréfiez-le à sec 1 à 2 min à feu moyen dans une grande poêle, jusqu'à ce qu'il sente fort. Coupez le feu et laissez-le dans la poêle.",
+     "Râpez le parmesan à la microplane dans un bol, aussi fin que de la neige.",
+     "Quand les pâtes ont cuit 3 à 4 min, prélevez 4 c. à s. d'eau de cuisson, laissez tiédir 1 min, versez sur le fromage et écrasez à la fourchette jusqu'à une pommade lisse.",
+     "## Les pâtes et la mantecatura · 12 min, tout se joue à la fin",
+     "Salez l'eau avec 5 g de gros sel seulement et plongez les pâtes. Remuez souvent les premières minutes.",
+     "Arrêtez la cuisson 2 min avant le temps du paquet.",
+     "Rallumez la poêle du poivre à feu moyen avec une louche d'eau de cuisson (et l'huile). Transférez les pâtes à la pince, sans égoutter, et faites-les sauter 1 à 2 min dans ce fond de liquide trouble.",
+     "Coupez le feu et attendez 30 s. Ajoutez la crème de parmesan et mélangez vivement à la pince, sans arrêt, pendant 1 min.",
+     "Trop épais : un peu d'eau de cuisson. Trop liquide : continuez à remuer, elle épaissit en tiédissant. Servez aussitôt dans des assiettes chaudes, avec un peu de parmesan et un tour de poivre.",
+     "> Si ça file : la poêle était trop chaude. Une cuillère d'eau froide et on remue énergiquement hors du feu ; la prochaine fois, attendez un peu plus."
+    ],
+    "points": [
+     {
+      "t": "Peu d'eau, peu de sel",
+      "txt": "L'eau doit être chargée d'amidon, et le parmesan sale déjà."
+     },
+     {
+      "t": "Jamais de fromage sur une surface brûlante",
+      "txt": "Crème préparée à l'eau tiède, ajoutée hors du feu."
+     },
+     {
+      "t": "Tout de suite",
+      "txt": "Ne se réchauffe pas. Pas plus de 4 personnes à la fois."
+     }
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/carbonara": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Spaghetti carbonara",
+    "categorie": "Italien",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 15,
+    "total": 15,
+    "appareils": [
+     "Plaques"
+    ],
+    "resume": "Version lardons et parmesan, crème d'œufs hors du feu.",
+    "ingredients": [
+     {
+      "q": 250,
+      "u": "g",
+      "n": "spaghetti",
+      "e": "LEC"
+     },
+     {
+      "q": 150,
+      "u": "g",
+      "n": "lardons fumés",
+      "e": "LEC"
+     },
+     {
+      "q": 3,
+      "u": "",
+      "n": "œufs (1 entier + 2 jaunes, ou 3 entiers)",
+      "e": "LEC"
+     },
+     {
+      "q": 50,
+      "u": "g",
+      "n": "parmesan",
+      "e": "LEC"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "salade verte",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "pincée",
+      "n": "poivre noir",
+      "e": "PLA"
+     }
+    ],
+    "etapes": [
+     "Portez 2 L d'eau à ébullition, salez légèrement (les lardons et le parmesan salent déjà) et lancez les spaghetti pour le temps du paquet moins 1 min.",
+     "Pendant ce temps, faites revenir les lardons à sec dans une grande poêle à feu moyen, 6 à 8 min, jusqu'à ce qu'ils soient dorés et que leur gras ait fondu. Coupez le feu.",
+     "Dans un bol, battez les œufs avec le parmesan râpé finement et beaucoup de poivre : vous obtenez une crème épaisse.",
+     "Lavez et essorez la salade, préparez une vinaigrette simple.",
+     "Prélevez une louche d'eau de cuisson, puis égouttez les pâtes et versez-les dans la poêle des lardons, feu éteint. Mélangez 30 s pour les enrober de gras.",
+     "Attendez 30 s que la poêle tiédisse, versez la crème d'œufs et 3 à 4 c. à s. d'eau de cuisson, puis mélangez vivement à la pince pendant 1 min : la sauce doit devenir nappante, sans grumeaux d'œuf cuit.",
+     "Trop épaisse : un peu d'eau de cuisson. Servez aussitôt avec un tour de poivre et la salade à côté.",
+     "> Jamais sur le feu : au-delà de 70 °C, l'œuf coagule en brouillade. C'est la chaleur des pâtes qui cuit la sauce."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/curry-japonais": {
+   "t": "2026-11-18T06:39:38.780616Z",
+   "d": {
+    "actif": 15,
+    "appareils": [
+     "Cuiseur à riz",
+     "Plaques"
+    ],
+    "categorie": "Japonais",
+    "etapes": [
+     "18 h 40 : rincez le riz dans un saladier d'eau froide en le frottant doucement, trois ou quatre eaux, jusqu'à ce qu'elle soit presque claire. Mettez-le dans la cuve du Panda Mini, eau jusqu'au repère 1,5, et lancez le programme riz blanc (45 à 50 min).",
+     "Émincez l'oignon en lamelles fines. Coupez le porc en cubes de 2 cm. Épluchez carottes et pommes de terre, coupez les carottes en rondelles biseautées de 1 cm et les pommes de terre en gros cubes de 3 cm.",
+     "Dans une cocotte, faites chauffer l'huile à feu moyen et faites revenir l'oignon 5 min en remuant, jusqu'à ce qu'il soit translucide et commence à dorer.",
+     "Montez le feu, ajoutez le porc et faites-le colorer 3 min sur toutes les faces. Ajoutez carottes et pommes de terre, remuez 1 min.",
+     "Versez les 450 ml d'eau, portez à ébullition, retirez l'écume grise à la cuillère, puis couvrez et laissez frémir à feu doux 20 min sans surveiller : la pointe d'un couteau doit entrer sans résistance dans une pomme de terre.",
+     "Coupez le feu, attendez 1 min que les bouillons s'arrêtent, puis ajoutez le roux cassé en morceaux. Remuez doucement jusqu'à ce qu'il soit entièrement fondu, sans grumeaux.",
+     "Rallumez à feu doux 5 min en remuant de temps en temps, avec le ketchup : la sauce doit napper la cuillère, brillante et épaisse. Si elle est trop épaisse, un trait d'eau.",
+     "Quand le cuiseur passe en maintien au chaud, aérez le riz à la spatule. Servez le riz d'un côté de l'assiette creuse et le curry de l'autre.",
+     "> Le roux ne se met jamais dans un liquide qui bout : il fait des grumeaux. Feu coupé d'abord, toujours."
+    ],
+    "ingredients": [
+     {
+      "e": "PLA",
+      "g": "Le riz",
+      "n": "riz japonais à grain court (1,5 dose)",
+      "q": 225,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "g": "Le curry",
+      "n": "échine de porc sans os",
+      "q": 300,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "g": "Le curry",
+      "n": "oignon",
+      "q": 1,
+      "u": ""
+     },
+     {
+      "e": "GF",
+      "g": "Le curry",
+      "n": "carottes",
+      "q": 2,
+      "u": ""
+     },
+     {
+      "e": "GF",
+      "g": "Le curry",
+      "n": "pommes de terre moyennes",
+      "q": 2,
+      "u": ""
+     },
+     {
+      "e": "LEC",
+      "g": "Le curry",
+      "n": "roux de curry japonais doux (2 à 3 carrés, type Golden Curry)",
+      "q": 50,
+      "u": "g"
+     },
+     {
+      "e": "NON",
+      "g": "Le curry",
+      "n": "eau",
+      "q": 450,
+      "u": "ml"
+     },
+     {
+      "e": "PLA",
+      "g": "Le curry",
+      "n": "huile neutre",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "g": "Le curry",
+      "n": "ketchup",
+      "q": 1,
+      "u": "c. à s."
+     }
+    ],
+    "lien": "",
+    "nom": "Curry japonais au porc (kare raisu)",
+    "portions": 2,
+    "resume": "Porc, carottes et pommes de terre mijotés, liés au roux de curry japonais, riz au Panda Mini.",
+    "source": "rapide",
+    "total": 50,
+    "unite": "portions"
+   }
+  },
+  "recettes/fish-chips": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Fish & chips",
+    "categorie": "Classique",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 15,
+    "total": 30,
+    "appareils": [
+     "Air-fryer",
+     "Four"
+    ],
+    "resume": "Cabillaud pané au panko à l'air-fryer, frites surgelées au four.",
+    "ingredients": [
+     {
+      "q": 300,
+      "u": "g",
+      "n": "dos de cabillaud surgelé",
+      "e": "PIC"
+     },
+     {
+      "q": 60,
+      "u": "g",
+      "n": "chapelure panko",
+      "e": "PLA"
+     },
+     {
+      "q": 30,
+      "u": "g",
+      "n": "farine",
+      "e": "PLA"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "œuf",
+      "e": "LEC"
+     },
+     {
+      "q": 500,
+      "u": "g",
+      "n": "frites surgelées",
+      "e": "PIC"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "pot de sauce tartare",
+      "e": "LEC"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "citron",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "huile neutre",
+      "e": "PLA"
+     }
+    ],
+    "etapes": [
+     "La veille au soir : sortez le cabillaud du congélateur et laissez-le décongeler au réfrigérateur, sur une assiette couverte.",
+     "Préchauffez le four Smeg à 220 °C chaleur tournante. Étalez les frites en une seule couche sur une plaque recouverte de papier cuisson et enfournez pour le temps du paquet (20 à 25 min), en les retournant à mi-cuisson.",
+     "Épongez soigneusement le cabillaud avec du papier absorbant (sec, il se pane mieux), coupez-le en 4 morceaux et salez légèrement.",
+     "Préparez trois assiettes creuses : la farine, l'œuf battu avec une pincée de sel, le panko.",
+     "Passez chaque morceau dans la farine (tapotez l'excès), puis l'œuf, puis le panko en appuyant bien.",
+     "Huilez légèrement le panier de l'air-fryer (ou vaporisez l'huile sur le poisson), posez les morceaux sans qu'ils se touchent. Air Fry 200 °C, 10 min, en les retournant délicatement à 6 min.",
+     "Le poisson est cuit quand il s'effeuille à la fourchette et que la panure est dorée. Servez avec les frites, des quartiers de citron et la sauce tartare.",
+     "> Programme : lancez les frites en premier, puis paner pendant qu'elles cuisent ; le poisson entre dans l'air-fryer 10 min avant la fin des frites."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/galettes-completes": {
+   "t": "2026-11-18T06:39:38.760817Z",
+   "d": {
+    "actif": 20,
+    "appareils": [
+     "Plaques"
+    ],
+    "categorie": "Classique",
+    "etapes": [
+     "Sortez les œufs, le jambon et l'emmental du frigo. Lavez la demi-salade, essorez-la et préparez la vinaigrette au fond du saladier : moutarde, vinaigre, une pincée de sel, puis l'huile en fouettant. Ne mélangez la salade qu'au moment de servir.",
+     "Faites chauffer la plus grande poêle antiadhésive (28 cm ou plus) à feu moyen 2 min, puis faites-y fondre une noisette de beurre (environ 5 g) en l'étalant au papier absorbant.",
+     "Posez une galette, face la plus foncée dessous. Dès qu'elle grésille (30 s), cassez un œuf au centre et étalez le blanc du dos de la cuillère sur un cercle de 15 cm, sans crever le jaune.",
+     "Répartissez autour du jaune 30 g d'emmental et une tranche de jambon déchirée en morceaux. Couvrez la poêle 1 min 30 : le blanc doit devenir opaque et l'emmental fondre.",
+     "Retirez le couvercle, rabattez quatre bords vers le centre pour former un carré qui laisse voir le jaune. Laissez encore 1 min : le dessous doit être brun et croustillant, le jaune encore brillant.",
+     "Glissez la galette sur une assiette chaude (ou gardez-la au four à 80 °C pendant la suivante). Recommencez trois fois avec le reste du beurre, en remettant une noisette à chaque galette.",
+     "Mélangez la salade avec la vinaigrette et servez-la à côté des galettes.",
+     "> Rythme : comptez 4 min par galette. Avec deux poêles en même temps, tout est prêt en 10 min."
+    ],
+    "ingredients": [
+     {
+      "e": "LEC",
+      "n": "galettes de blé noir (sarrasin)",
+      "q": 4,
+      "u": ""
+     },
+     {
+      "e": "LEC",
+      "n": "tranches de jambon blanc",
+      "q": 4,
+      "u": ""
+     },
+     {
+      "e": "LEC",
+      "n": "emmental râpé",
+      "q": 120,
+      "u": "g"
+     },
+     {
+      "e": "LEC",
+      "n": "œufs",
+      "q": 4,
+      "u": ""
+     },
+     {
+      "e": "LEC",
+      "n": "beurre",
+      "q": 20,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "n": "salade verte (laitue ou batavia)",
+      "q": 0.5,
+      "u": ""
+     },
+     {
+      "e": "PLA",
+      "n": "moutarde",
+      "q": 1,
+      "u": "c. à c."
+     },
+     {
+      "e": "PLA",
+      "n": "vinaigre de vin",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "n": "huile de colza ou de tournesol",
+      "q": 3,
+      "u": "c. à s."
+     }
+    ],
+    "lien": "",
+    "nom": "Galettes complètes et salade verte",
+    "portions": 2,
+    "resume": "Galettes de blé noir jambon, emmental, œuf miroir, à la poêle.",
+    "source": "rapide",
+    "total": 20,
+    "unite": "portions"
+   }
+  },
+  "recettes/gyozas-riz": {
+   "t": "2026-11-18T06:39:38.816606Z",
+   "d": {
+    "actif": 15,
+    "appareils": [
+     "Cuiseur à riz",
+     "Plaques"
+    ],
+    "categorie": "Japonais",
+    "etapes": [
+     "18 h 40 : rincez le riz trois ou quatre fois à l'eau froide en le frottant doucement, mettez-le dans la cuve du Panda Mini, eau jusqu'au repère 1,5, programme riz blanc (45 à 50 min).",
+     "Coupez le concombre en deux dans la longueur, retirez les graines à la petite cuillère et taillez-le en demi-rondelles fines. Salez-le d'une pincée, laissez 10 min, pressez-le dans les mains pour retirer l'eau, puis mélangez-le avec vinaigre de riz, sucre et sésame. Au frigo.",
+     "Préparez la sauce à tremper : 3 c. à s. de soja et 1 c. à s. de vinaigre de riz dans deux coupelles. Mettez de l'eau à chauffer à la bouilloire pour la soupe miso.",
+     "15 min avant la fin du riz : chauffez l'huile dans une grande poêle antiadhésive avec couvercle, à feu moyen-vif. Rangez les gyozas encore surgelés, côté plat dessous, serrés en rond.",
+     "Laissez-les griller 2 min sans y toucher : le dessous doit être doré. Versez les 100 ml d'eau d'un coup (attention aux projections), couvrez aussitôt et laissez cuire 6 à 7 min à feu moyen.",
+     "Retirez le couvercle et laissez l'eau restante s'évaporer 1 à 2 min : le fond redevient croustillant et doré, la pâte du dessus est translucide. Décollez-les à la spatule.",
+     "Délayez les sachets de miso dans 2 bols d'eau chaude (sans bouillir). Servez les gyozas côté grillé vers le haut, avec le riz, le concombre et la soupe."
+    ],
+    "ingredients": [
+     {
+      "e": "PLA",
+      "g": "Le riz",
+      "n": "riz japonais à grain court (1,5 dose)",
+      "q": 225,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "g": "Le concombre",
+      "n": "concombre",
+      "q": 1,
+      "u": ""
+     },
+     {
+      "e": "PLA",
+      "g": "Le concombre",
+      "n": "vinaigre de riz",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "g": "Le concombre",
+      "n": "sucre",
+      "q": 1,
+      "u": "c. à c."
+     },
+     {
+      "e": "PLA",
+      "g": "Le concombre",
+      "n": "graines de sésame",
+      "q": 1,
+      "u": "c. à c."
+     },
+     {
+      "e": "PIC",
+      "g": "Les gyozas",
+      "n": "gyozas surgelés porc ou poulet",
+      "q": 20,
+      "u": ""
+     },
+     {
+      "e": "PLA",
+      "g": "Les gyozas",
+      "n": "huile neutre",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "NON",
+      "g": "Les gyozas",
+      "n": "eau",
+      "q": 100,
+      "u": "ml"
+     },
+     {
+      "e": "PLA",
+      "g": "Les gyozas",
+      "n": "sauce soja",
+      "q": 3,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "g": "Les gyozas",
+      "n": "vinaigre de riz (pour la sauce)",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "LEC",
+      "g": "Les gyozas",
+      "n": "sachets de soupe miso instantanée",
+      "q": 2,
+      "u": ""
+     }
+    ],
+    "lien": "",
+    "nom": "Gyozas poêlés, riz et concombre au sésame",
+    "portions": 2,
+    "resume": "Gyozas surgelés grillés-vapeur à la poêle, riz au Panda Mini, salade de concombre, soupe miso.",
+    "source": "rapide",
+    "total": 50,
+    "unite": "portions"
+   }
+  },
+  "recettes/omuraisu": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "num": "03",
+    "nom": "Omuraisu au cuiseur",
+    "sousTitre": "オムライス · cuiseur YumAsia Panda Mini",
+    "categorie": "Japonais",
+    "source": "carnet",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 20,
+    "total": 60,
+    "niveau": "Facile",
+    "appareils": [
+     "Cuiseur à riz",
+     "Plaques"
+    ],
+    "resume": "Le riz au poulet cuit dans le Panda Mini pendant qu'on fait les omelettes.",
+    "intro": "Le riz au poulet ne passe pas par la poêle : il cuit dans le Panda Mini, façon takikomi gohan. Le cuiseur fait le travail pendant qu'on s'occupe de l'omelette.",
+    "blocs": [
+     {
+      "t": "Capacité du Panda Mini",
+      "txt": "2 doses de riz (2,5 grand maximum) pour une préparation garnie, et 10 % d'eau en moins qu'un riz nature. Rien n'est mélangé avant cuisson. Au-delà, le bouillon déborde par la valve."
+     }
+    ],
+    "retro": [
+     {
+      "h": "T−60",
+      "txt": "Rinçage du riz, découpe du poulet et de l'oignon."
+     },
+     {
+      "h": "T−50",
+      "txt": "Départ du cuiseur, mode riz blanc (45 à 50 min, trempage et repos compris)."
+     },
+     {
+      "h": "T−15",
+      "txt": "Sauce réduite, œufs battus et filtrés, assiettes au chaud."
+     },
+     {
+      "h": "T−8",
+      "txt": "Repos 10 min couvercle fermé, puis beurre, ketchup et poivre mélangés au riz."
+     },
+     {
+      "h": "T−3",
+      "txt": "Omelettes, une par assiette, l'une après l'autre."
+     }
+    ],
+    "ingredients": [
+     {
+      "q": 300,
+      "u": "g",
+      "n": "riz japonais à grain court (2 doses)",
+      "e": "PLA",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 330,
+      "u": "ml",
+      "n": "eau froide",
+      "e": "NON",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 200,
+      "u": "g",
+      "n": "cuisse de poulet désossée, en dés de 1 cm",
+      "e": "GF",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 0.5,
+      "u": "",
+      "n": "oignon en tout petits dés",
+      "e": "GF",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 60,
+      "u": "g",
+      "n": "champignons de Paris émincés (facultatif)",
+      "e": "GF",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "concentré de tomates",
+      "e": "PLA",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 1,
+      "u": "c. à c.",
+      "n": "bouillon de volaille en poudre",
+      "e": "PLA",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 1,
+      "u": "c. à c.",
+      "n": "sauce soja",
+      "e": "PLA",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 1,
+      "u": "c. à c.",
+      "n": "sucre",
+      "e": "PLA",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 15,
+      "u": "g",
+      "n": "beurre",
+      "e": "LEC",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "ketchup",
+      "e": "PLA",
+      "g": "Le riz au poulet, au cuiseur"
+     },
+     {
+      "q": 3,
+      "u": "c. à s.",
+      "n": "ketchup",
+      "e": "PLA",
+      "g": "La sauce"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "sauce Worcestershire",
+      "e": "PLA",
+      "g": "La sauce"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "eau (ou vin rouge)",
+      "e": "NON",
+      "g": "La sauce"
+     },
+     {
+      "q": 10,
+      "u": "g",
+      "n": "beurre froid",
+      "e": "LEC",
+      "g": "La sauce"
+     },
+     {
+      "q": 6,
+      "u": "",
+      "n": "œufs (3 par personne)",
+      "e": "LEC",
+      "g": "L'omelette et le montage"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "lait ou crème liquide",
+      "e": "LEC",
+      "g": "L'omelette et le montage"
+     },
+     {
+      "q": 20,
+      "u": "g",
+      "n": "beurre",
+      "e": "LEC",
+      "g": "L'omelette et le montage"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "bouquet de persil plat",
+      "e": "GF",
+      "g": "L'omelette et le montage"
+     }
+    ],
+    "etapes": [
+     "## Le riz au poulet, au cuiseur · 50 min, 10 min actives",
+     "Rincez le riz dans un saladier d'eau froide en le frottant doucement, trois ou quatre eaux, jusqu'à ce qu'elle soit presque claire. Égouttez 10 min en passoire.",
+     "Mettez le riz dans la cuve, versez l'eau, puis délayez dedans le bouillon, le soja et le sucre. Lissez la surface.",
+     "Posez par-dessus, sans mélanger : le poulet, l'oignon, les champignons, et le concentré de tomates en petits tas.",
+     "Lancez le programme riz blanc / grain court (pas le mode rapide, qui supprime le trempage). Comptez 45 à 50 min.",
+     "À la fin du cycle, laissez 10 min couvercle fermé sans toucher à rien.",
+     "Ajoutez le beurre, le ketchup et du poivre, puis mélangez à la spatule en coupant et en soulevant, jamais en rond. Goûtez, salez si besoin.",
+     "> Cuve céramique : rien de mélangé avant cuisson (le gras et la tomate au fond accrochent et faussent la sonde) et pas de ketchup dans la cuve (il caramélise et ralentit l'absorption d'eau).",
+     "## La sauce · 5 min, pendant la cuisson",
+     "Faites bouillonner ketchup, Worcestershire et eau dans une petite casserole, à feu moyen, 2 à 3 min, jusqu'à perdre le goût de ketchup cru.",
+     "Hors du feu, fouettez le beurre froid dedans : elle doit napper le dos d'une cuillère. Gardez au chaud.",
+     "## L'omelette et le montage · 3 min par assiette",
+     "Battez 3 œufs avec 1 c. à s. de lait et une pincée de sel, puis passez-les au tamis pour une surface lisse, sans traînées de blanc.",
+     "Moulez la moitié du riz dans un bol, retournez-le sur l'assiette chaude et tassez-le en ovale. Idem pour la seconde assiette.",
+     "Chauffez une poêle antiadhésive de 20 cm à feu moyen avec 10 g de beurre : il doit mousser sans brunir. Versez les œufs d'un coup.",
+     "Remuez 10 s à la spatule en petits cercles, puis laissez prendre 20 à 30 s : le dessus doit rester brillant et à peine liquide.",
+     "Faites glisser l'omelette sur le riz, dessus brillant vers le haut, et rentrez les bords dessous. Nappez de sauce, parsemez de persil. Recommencez pour la seconde assiette.",
+     "> Version tanpopo : arrêtez plus tôt, roulez l'omelette crémeuse en boudin, posez-la sur le riz et fendez-la sur la longueur : elle s'ouvre toute seule."
+    ],
+    "points": [
+     {
+      "t": "Un peu moins d'eau",
+      "txt": "Le poulet et l'oignon rendent du liquide. Aux graduations : trait 2, puis retirez deux cuillères à soupe."
+     },
+     {
+      "t": "Pas de départ différé",
+      "txt": "Le minuteur du Panda Mini est fait pour du riz nature, pas pour de la volaille crue."
+     },
+     {
+      "t": "Riz de la veille",
+      "txt": "Il marche aussi : sautez-le à la poêle avec le poulet, l'oignon et le concentré."
+     },
+     {
+      "t": "Rincer la cuve tout de suite",
+      "txt": "Un fond tomaté séché s'accroche ; un trempage à l'eau tiède suffit, sans éponge abrasive."
+     }
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/oyakodon": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Oyakodon",
+    "categorie": "Japonais",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 15,
+    "total": 50,
+    "appareils": [
+     "Cuiseur à riz",
+     "Plaques"
+    ],
+    "resume": "Poulet et œuf mijotés au dashi, sur un bol de riz.",
+    "ingredients": [
+     {
+      "q": 300,
+      "u": "g",
+      "n": "cuisse de poulet désossée",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "oignon",
+      "e": "GF"
+     },
+     {
+      "q": 4,
+      "u": "",
+      "n": "œufs",
+      "e": "LEC"
+     },
+     {
+      "q": 150,
+      "u": "g",
+      "n": "riz japonais (1 dose)",
+      "e": "PLA"
+     },
+     {
+      "q": 150,
+      "u": "ml",
+      "n": "eau",
+      "e": "NON"
+     },
+     {
+      "q": 1,
+      "u": "c. à c.",
+      "n": "dashi en poudre",
+      "e": "PLA"
+     },
+     {
+      "q": 3,
+      "u": "c. à s.",
+      "n": "sauce soja",
+      "e": "PLA"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "mirin",
+      "e": "PLA"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "sucre",
+      "e": "PLA"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "oignons nouveaux",
+      "e": "GF"
+     }
+    ],
+    "etapes": [
+     "Rincez le riz trois ou quatre fois à l'eau froide, égouttez-le 10 min, puis lancez le Panda Mini en programme riz blanc (45 à 50 min). Si le riz doit servir le lendemain, mettez-en le double.",
+     "15 min avant la fin du riz : émincez l'oignon en fines lamelles et coupez le poulet en morceaux de 2 cm.",
+     "Dans une petite poêle ou une sauteuse de 20 cm, mélangez 150 ml d'eau, le dashi, la sauce soja, le mirin et le sucre. Portez à frémissement.",
+     "Ajoutez l'oignon et le poulet, couvrez et laissez mijoter 8 min à feu moyen, en retournant le poulet à mi-cuisson.",
+     "Battez les œufs à la fourchette, juste pour mêler blancs et jaunes (des traînées doivent rester).",
+     "Versez les deux tiers des œufs en filet sur le poulet, couvrez 1 min à feu moyen. Versez le reste, couvrez 30 s et coupez le feu : l'œuf doit rester baveux.",
+     "Répartissez le riz dans deux bols, faites glisser la moitié de la préparation sur chacun avec un peu de jus, et parsemez d'oignons nouveaux ciselés.",
+     "> Le geste : les œufs en deux fois donnent un mélange d'œuf pris et d'œuf crémeux. Avec 4 œufs pour 2, faites-le en une seule poêlée et partagez."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/pain-airfryer": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "num": "07",
+    "nom": "Pain aux noix à l'air-fryer",
+    "sousTitre": "Farine T45 · levure sèche · moins de 3 h",
+    "categorie": "Boulangerie",
+    "source": "carnet",
+    "portions": 1,
+    "unite": "pain",
+    "actif": 25,
+    "total": 170,
+    "niveau": "Facile",
+    "appareils": [
+     "Cook Expert",
+     "Air-fryer"
+    ],
+    "resume": "La version express, moins de 3 h.",
+    "intro": "Le Cook Expert, équipé du pétrin, pétrit la pâte avec les noix puis la garde au chaud pendant qu'elle pousse. Le Cosori TurboBlaze torréfie les noix, assure la seconde pousse et cuit le pain dans son panier de 6 L.",
+    "blocs": [
+     {
+      "t": "Les limites",
+      "txt": "Le panier de 6 L accueille une boule d'environ 17 cm, soit 450 g de farine. 100 farine T45 : 60 eau : 2 sel : 1,8 levure sèche : 27 noix."
+     }
+    ],
+    "retro": [
+     {
+      "h": "T−2 h 50",
+      "txt": "Noix torréfiées, eau et levure tiédies au Cook Expert."
+     },
+     {
+      "h": "T−2 h 42",
+      "txt": "Pétrissage PÉTRIN XL, puis noix 1 min."
+     },
+     {
+      "h": "T−2 h 32",
+      "txt": "Pointage dans le bol, 40 min à 35 °C."
+     },
+     {
+      "h": "T−1 h 52",
+      "txt": "Façonnage en boule."
+     },
+     {
+      "h": "T−1 h 45",
+      "txt": "Apprêt dans le panier, mode Proof 30 °C, 35 min."
+     },
+     {
+      "h": "T−1 h 10",
+      "txt": "Cuisson Bake 160 °C : 25 min, retourner, 10 à 13 min."
+     },
+     {
+      "h": "T−32 min",
+      "txt": "Refroidissement 30 min sur grille."
+     }
+    ],
+    "ingredients": [
+     {
+      "q": 120,
+      "u": "g",
+      "n": "cerneaux de noix",
+      "e": "LEC",
+      "g": "Les noix"
+     },
+     {
+      "q": 270,
+      "u": "g",
+      "n": "eau du robinet",
+      "e": "NON",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 8,
+      "u": "g",
+      "n": "levure de boulanger sèche (≈ 1 sachet et demi)",
+      "e": "PLA",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 7,
+      "u": "g",
+      "n": "sucre (facultatif)",
+      "e": "PLA",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 450,
+      "u": "g",
+      "n": "farine T45",
+      "e": "LEC",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 9,
+      "u": "g",
+      "n": "sel fin",
+      "e": "PLA",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 20,
+      "u": "g",
+      "n": "huile d'olive (facultatif)",
+      "e": "PLA",
+      "g": "La pâte au Cook Expert"
+     }
+    ],
+    "etapes": [
+     "## Les noix · 5 min, en premier",
+     "Goûtez une noix : une noix rance rend tout le pain amer.",
+     "Étalez les cerneaux dans le panier, mode Air Fry 4 à 5 min à 160 °C en secouant à mi-parcours. Surveillez la fin.",
+     "Laissez-les refroidir sur une assiette, puis cassez-les entre vos doigts en morceaux d'un quart de cerneau.",
+     "## La pâte au Cook Expert · 1 h, 10 min actives",
+     "Retirez la lame universelle et insérez le pétrin. Versez l'eau, la levure et le sucre, lancez EXPERT · 2 min 30 · vitesse 3 · 37 °C, puis 5 min de repos couvercle fermé : une fine mousse apparaît (rien après 10 min : levure périmée).",
+     "Ajoutez la farine, le sel et l'huile. Lancez PÉTRIN XL jusqu'au bout.",
+     "Contrôlez : pâte souple, élastique, qui se détache des parois et forme une membrane fine. Elle colle : 1 c. à s. de farine et 30 s de programme. Trop ferme : 1 c. à s. d'eau, idem.",
+     "Ajoutez les noix froides, relancez PÉTRIN XL et arrêtez au bout d'1 min environ, dès qu'elles sont réparties.",
+     "Pointage dans le bol : couvercle et bouchon en place, EXPERT · 40 min · vitesse 0 · 35 °C. La pâte doit avoir doublé, sinon 10 min de plus.",
+     "## Façonnage, apprêt et cuisson · 1 h 50, 10 min actives",
+     "Retournez le bol sur le plan à peine fariné et décollez la pâte du pétrin avec une corne humide.",
+     "Boulez : bords rabattus vers le centre, pâte retournée, tournée sous les paumes pour tendre la surface. Enfoncez les noix qui dépassent. Aplatissez à environ 16 cm sur 6 cm de haut.",
+     "Posez la boule sur un disque de papier cuisson de 19 cm dans le panier, huilez le dessus au pinceau, mode Proof 30 °C, 35 min.",
+     "Grigne en croix d'1 cm sans sortir le pain, puis mode Bake 160 °C, 25 min.",
+     "Retournez le pain aux pinces, retirez le papier, poursuivez 10 à 13 min à 160 °C.",
+     "Cuit quand le dessous sonne creux, ou à 94–96 °C à cœur. Au moins 30 min sur grille avant de trancher.",
+     "> Le dessus fonce trop vite : baissez à 150 °C et ajoutez 5 min à la seconde phase ; la prochaine fois, aplatissez davantage."
+    ],
+    "points": [
+     {
+      "t": "Hauteur sous la résistance",
+      "txt": "Gardez au moins 3 cm entre le haut de la boule levée et la résistance."
+     },
+     {
+      "t": "Une fournée à la fois",
+      "txt": "Deux pains dépassent ce que le bol de 3,5 L accepte (« SURCHARGE MOTEUR ») : décalez la seconde de 1 h 15."
+     },
+     {
+      "t": "Pas d'eau en plus",
+      "txt": "Au-delà de 60 à 62 %, la boule de T45 s'étale au lieu de monter."
+     }
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/pain-noix": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "num": "04",
+    "nom": "Pain aux noix en cocotte",
+    "sousTitre": "Froment · seigle · noix torréfiées",
+    "categorie": "Boulangerie",
+    "source": "carnet",
+    "portions": 1,
+    "unite": "pain",
+    "actif": 35,
+    "total": 300,
+    "niveau": "Moyen",
+    "appareils": [
+     "Four"
+    ],
+    "resume": "Bâtard froment-seigle cuit à l'étouffée en cocotte.",
+    "intro": "Un bâtard de campagne à la mie légèrement grise, avec un peu de seigle pour le goût et beaucoup de noix. Trois gestes : torréfier les noix, les ajouter tard, cuire à l'étouffée en cocotte.",
+    "blocs": [
+     {
+      "t": "Pourcentages du boulanger",
+      "txt": "100 farine (dont 22 % seigle) : 70 eau : 2 sel : 33 noix. Pour changer la taille du pain, partez d'un autre poids de farine et gardez les proportions."
+     }
+    ],
+    "retro": [
+     {
+      "h": "T−5 h",
+      "txt": "Torréfaction des noix et autolyse (30 min)."
+     },
+     {
+      "h": "T−4 h 30",
+      "txt": "Pétrissage, puis noix refroidies."
+     },
+     {
+      "h": "T−4 h 10",
+      "txt": "Pointage 1 h 30 à 2 h, rabats à 30 et 60 min."
+     },
+     {
+      "h": "T−2 h 40",
+      "txt": "Façonnage en bâtard, apprêt 1 h."
+     },
+     {
+      "h": "T−2 h 25",
+      "txt": "Four et cocotte à 250 °C, 45 min minimum."
+     },
+     {
+      "h": "T−1 h 40",
+      "txt": "Cuisson 45 min, puis 1 h sur grille."
+     }
+    ],
+    "ingredients": [
+     {
+      "q": 150,
+      "u": "g",
+      "n": "cerneaux de noix",
+      "e": "LEC",
+      "g": "Les noix"
+     },
+     {
+      "q": 350,
+      "u": "g",
+      "n": "farine de blé T65",
+      "e": "LEC",
+      "g": "La pâte"
+     },
+     {
+      "q": 100,
+      "u": "g",
+      "n": "farine de seigle T130 (ou T85)",
+      "e": "LEC",
+      "g": "La pâte"
+     },
+     {
+      "q": 300,
+      "u": "g",
+      "n": "eau tiède (≈ 25 °C)",
+      "e": "NON",
+      "g": "La pâte"
+     },
+     {
+      "q": 6,
+      "u": "g",
+      "n": "levure boulangère fraîche (ou 2 g de sèche)",
+      "e": "LEC",
+      "g": "La pâte"
+     },
+     {
+      "q": 9,
+      "u": "g",
+      "n": "sel fin",
+      "e": "PLA",
+      "g": "La pâte"
+     },
+     {
+      "q": 15,
+      "u": "g",
+      "n": "eau pour délayer la levure",
+      "e": "NON",
+      "g": "La pâte"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "miel (facultatif)",
+      "e": "PLA",
+      "g": "La pâte"
+     }
+    ],
+    "etapes": [
+     "## Les noix · 10 min, en premier",
+     "Étalez les cerneaux sur une plaque et enfournez 8 à 10 min à 170 °C, jusqu'à ce qu'ils sentent bon et que la peau fonce. Surveillez la fin.",
+     "Laissez tiédir, frottez-les dans un torchon pour faire tomber une partie des peaux, puis concassez au couteau en morceaux d'un quart de cerneau.",
+     "> Mie violette : les tanins de la peau teintent la mie autour des morceaux. Ni défaut, ni noix rances.",
+     "## La pâte · 2 h 30, 15 min actives",
+     "Autolyse : mélangez les deux farines et les 300 g d'eau jusqu'à ne plus voir de farine sèche. Couvrez, 30 min de repos.",
+     "Délayez la levure dans les 15 g d'eau (et le miel), versez sur la pâte, ajoutez le sel. Pincez et repliez jusqu'à absorption.",
+     "Pétrissez 8 à 10 min à la main, ou 6 min au Cook Expert avec le pétrin. La pâte reste un peu collante à cause du seigle : ne rajoutez pas de farine.",
+     "Aplatissez la pâte, répartissez les noix froides, roulez-la et pétrissez encore 1 à 2 min, juste pour les répartir.",
+     "Pointage en saladier huilé et couvert. À 30 puis 60 min, faites un rabat sur les quatre côtés. Elle doit prendre environ 1,5 fois son volume.",
+     "> Version nuit au frigo : après le façonnage, 10 à 14 h au réfrigérateur bien couvert, et enfournez directement froid.",
+     "## Façonnage et cuisson · 1 h 45, 10 min actives",
+     "Aplatissez la pâte en rectangle, rabattez le tiers du haut, puis celui du bas, et roulez en serrant pour un bâtard tendu. Pincez la soudure.",
+     "Posez-le soudure vers le haut dans un banneton (ou un saladier tapissé d'un torchon) fariné. Couvrez, 1 h de levée : une empreinte de doigt remonte lentement.",
+     "Pendant ce temps, cocotte fermée dans le four Smeg préchauffé à 250 °C, au moins 45 min.",
+     "Retournez le pain sur un papier cuisson, faites une grigne franche sur la longueur (lame à 30°, 1 cm) et déposez-le avec le papier dans la cocotte brûlante.",
+     "20 min couvert à 250 °C, puis sans couvercle à 230 °C pendant 20 à 25 min. Le dessous doit sonner creux.",
+     "Refroidissement au moins 1 h sur grille avant de trancher."
+    ],
+    "points": [
+     {
+      "t": "Les noix, toujours à la fin",
+      "txt": "Au début, elles déchirent le gluten et libèrent leur huile. Elles doivent aussi être froides."
+     },
+     {
+      "t": "Goûter une noix avant",
+      "txt": "Une noix rance rend tout le pain amer. Gardez les cerneaux au congélateur."
+     },
+     {
+      "t": "Le volume plutôt que la montre",
+      "txt": "Les durées valent pour 22–24 °C ; plus frais, le pointage peut prendre 3 h."
+     }
+    ],
+    "variantes": [
+     {
+      "t": "Fruits secs",
+      "txt": "Remplacez 50 g de noix par des raisins secs ou des figues séchées en dés. Se garde 3 à 4 jours dans un torchon, se congèle en tranches."
+     }
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/pizza-00": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "num": "05",
+    "nom": "Pâte à pizza 00 au Pummarola",
+    "sousTitre": "Farina tipo 00 Daudette · 62 % d'eau · 7 h sans frigo",
+    "categorie": "Pizza",
+    "source": "carnet",
+    "portions": 4,
+    "unite": "pizzas",
+    "actif": 45,
+    "total": 450,
+    "niveau": "Moyen",
+    "appareils": [
+     "Cook Expert",
+     "Pummarola"
+    ],
+    "resume": "Pâte du jour, sans frigo. Pétrissage 11 h 30, boulage 13 h 30, cuisson 19 h.",
+    "intro": "La pâte de la maison : pétrie au Cook Expert à 11 h 30, boulée à 13 h 30, cuite à 19 h dans le four à pizza. Un quart de cuillère de levure sèche et sept heures à température ambiante suffisent pour une bordure gonflée et une mie souple.",
+    "blocs": [
+     {
+      "t": "La farine",
+      "txt": "La « 00 » de Grand Frais est une T45 renforcée en gluten, de force moyenne (9,2 g de protéines) : faite pour une pousse de quelques heures, pas pour une longue maturation au froid."
+     },
+     {
+      "t": "Pourcentages du boulanger",
+      "txt": "100 farine : 62 eau : 2,7 sel : 0,14 levure sèche. Pâtons de 220 g pour des pizzas de 26 à 28 cm (la pierre fait 31 cm)."
+     }
+    ],
+    "retro": [
+     {
+      "h": "11 h 30",
+      "txt": "Pétrissage au Cook Expert, 15 min de repos compris. Pâte en boîte vers 12 h."
+     },
+     {
+      "h": "12 h 45",
+      "txt": "Une série de rabats."
+     },
+     {
+      "h": "13 h 30",
+      "txt": "Boulage en 4 pâtons de 220 g, boîte fermée."
+     },
+     {
+      "h": "18 h 00",
+      "txt": "Mozzarella à égoutter 1 h, tomate à préparer."
+     },
+     {
+      "h": "18 h 30",
+      "txt": "Préchauffage du Pummarola au maximum, 30 min."
+     },
+     {
+      "h": "19 h 00",
+      "txt": "Façonnage, garniture, cuisson : une pizza toutes les 6 à 8 min."
+     }
+    ],
+    "ingredients": [
+     {
+      "q": 550,
+      "u": "g",
+      "n": "farina tipo 00 Daudette",
+      "e": "GF",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 340,
+      "u": "g",
+      "n": "eau à température ambiante (≈ 20 °C)",
+      "e": "NON",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 15,
+      "u": "g",
+      "n": "sel fin",
+      "e": "PLA",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 0.75,
+      "u": "g",
+      "n": "levure de boulanger sèche (¼ c. à c. rase) ou 2,25 g de fraîche",
+      "e": "PLA",
+      "g": "La pâte au Cook Expert"
+     },
+     {
+      "q": 280,
+      "u": "g",
+      "n": "tomates pelées",
+      "e": "LEC",
+      "g": "Cuisson au Pummarola"
+     },
+     {
+      "q": 300,
+      "u": "g",
+      "n": "mozzarella",
+      "e": "LEC",
+      "g": "Cuisson au Pummarola"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "bouquet de basilic",
+      "e": "GF",
+      "g": "Cuisson au Pummarola"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "huile d'olive",
+      "e": "PLA",
+      "g": "Cuisson au Pummarola"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "semoule fine de blé dur (pour la pelle)",
+      "e": "PLA",
+      "g": "Cuisson au Pummarola"
+     }
+    ],
+    "etapes": [
+     "## La pâte au Cook Expert · 11 h 30, ≈ 25 min",
+     "Retirez la lame universelle et insérez le pétrin. Versez l'eau dans le bol, saupoudrez la levure et mélangez à la cuillère. Laissez 5 min.",
+     "Ajoutez la farine, lancez PÉTRIN XL et arrêtez-le au bout d'1 min, dès qu'il ne reste plus de farine sèche. Couvercle fermé, repos 15 min.",
+     "Ajoutez le sel et relancez PÉTRIN XL jusqu'au bout. La pâte doit être lisse, se détacher des parois et former une membrane fine quand on l'étire. Sinon, relancez 1 min ; si elle colle franchement, 1 c. à s. de farine.",
+     "Décollez la pâte avec une corne humide, formez une boule grossière et déposez-la dans une boîte légèrement huilée, couverte. Il est environ 12 h.",
+     "> Peser la levure : 0,75 g, c'est ¼ de cuillère à café rase arasée au couteau. Bombée, elle en contient presque le double et les pâtons seraient trop mûrs à 19 h.",
+     "> PÉTRIN XL masqué ? Cochez-le dans Réglages › Accessoires. Pas d'entrée Accessoires : installez la mise à jour « Smart programme » depuis magimix.fr.",
+     "## Pointage, boulage et apprêt · 12 h → 19 h",
+     "Vers 12 h 45, une série de rabats : saisissez un bord, étirez-le vers le haut et rabattez-le au centre, quatre fois en tournant.",
+     "13 h 30, boulage : divisez en pâtons de 220 g. Rabattez les bords vers le centre, retournez et roulez sous la paume, sur un plan non fariné, jusqu'à une boule bien tendue.",
+     "En boîte légèrement huilée, soudure dessous, fermée hermétiquement (à l'air, une croûte se forme et la pâte se déchire à l'étalage).",
+     "Apprêt jusqu'à 19 h, loin du radiateur. Prêts quand ils ont presque doublé et qu'une empreinte revient lentement.",
+     "> Régler la levure : cuisine à 18 °C ou moins, 1 g ; à 23 °C ou plus, 0,5 g.",
+     "## Cuisson au Pummarola · 18 h 30 préchauffage, 3–4 min par pizza",
+     "18 h : égouttez la mozzarella en morceaux 1 h sur papier absorbant ; écrasez les tomates à la main avec une pincée de sel.",
+     "18 h 30 : préchauffez au maximum, couvercle fermé, 25 à 30 min, au-delà du simple voyant : c'est la pierre qui doit être chaude à cœur.",
+     "Farinez légèrement le plan et un pâton. Du bout des doigts, appuyez du centre vers l'extérieur en gardant une bordure de 1,5 cm, puis étirez sur le dos des poings jusqu'à 26–28 cm. Pas de rouleau.",
+     "Sur la pelle semoulée, garnissez légèrement : 3 c. à s. de tomate, la mozzarella espacée. Secouez la pelle : la pizza doit glisser.",
+     "Soulevez le couvercle, glissez la pizza d'un coup sec au centre de la pierre, refermez aussitôt.",
+     "Après 1 min 30 à 2 min, faites-la pivoter d'un demi-tour. Elle est prête vers 3 à 4 min : bordure gonflée et tachetée, dessous doré.",
+     "Basilic, filet d'huile crue. Laissez le four remonter 3 à 5 min couvercle fermé avant la suivante.",
+     "> Dessus brûlé, dessous pâle : allongez le préchauffage de 10 min et attendez plus entre deux pizzas. Dessous noir : baissez d'un cran juste après avoir enfourné."
+    ],
+    "points": [
+     {
+      "t": "Regarder la pâte, pas l'horloge",
+      "txt": "Pâtons déjà doublés vers 17 h : boîte au frais, ressortie 45 min avant. Encore serrés à 18 h 30 : décalez la cuisson de 30 min."
+     },
+     {
+      "t": "62 %, pas plus de 64 %",
+      "txt": "Plus d'eau, et cette farine colle au façonnage et se déchire sur la pelle."
+     },
+     {
+      "t": "Ni sucre ni miel",
+      "txt": "À la chaleur du Pummarola, ils noircissent la bordure avant que la pâte soit cuite."
+     },
+     {
+      "t": "Petit diamètre",
+      "txt": "Une pizza qui touche le bord de la pierre cuit mal et colle."
+     }
+    ],
+    "variantes": [
+     {
+      "t": "Express 3 h (décidée l'après-midi)",
+      "txt": "Mêmes étapes avec 2,75 g de levure sèche (1 c. à c. rase) et de l'eau à 30 °C. 16 h 20 pétrissage (repos 10 min), 16 h 45 pointage dans un coin à 24–26 °C (four éteint lumière allumée, ou cuve du Cook Expert à 30 °C max), 17 h 05 rabats, 17 h 30 boulage, 19 h préchauffage, 19 h 30 cuisson."
+     }
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/pizzas-margherita-montagnarde": {
+   "t": "2026-11-18T06:39:38.771326Z",
+   "d": {
+    "actif": 45,
+    "appareils": [
+     "Cook Expert",
+     "Pummarola",
+     "Plaques"
+    ],
+    "categorie": "Pizza",
+    "etapes": [
+     "## La pâte · 11 h 30 → 19 h, détails dans la fiche 05",
+     "11 h 30 : dans le bol du Cook Expert équipé du pétrin, versez l'eau, saupoudrez la levure, mélangez et laissez 5 min. Ajoutez la farine, PÉTRIN XL 1 min, puis 15 min de repos couvercle fermé.",
+     "Ajoutez le sel et relancez PÉTRIN XL jusqu'au bout : la pâte doit être lisse et se détacher des parois. Mettez-la en boule dans une boîte huilée, couverte.",
+     "Vers 12 h 45 : une série de rabats (bord étiré vers le haut, rabattu au centre, quatre fois en tournant la boîte).",
+     "13 h 30 : divisez en 2 pâtons de 220 g, boulez-les bien serrés, soudure dessous, et laissez-les en boîte fermée à température ambiante jusqu'au soir.",
+     "> Demi-dose de levure : 0,4 g, c'est ⅛ de cuillère à café rase. Plus de levure et la pâte est trop mûre à 19 h.",
+     "## Les garnitures · 20 min, vers 18 h 15",
+     "Pelez la pomme de terre, coupez-la en rondelles de 3 mm et cuisez-les 8 min dans l'eau bouillante salée : elles doivent être tendres sans se défaire. Égouttez-les sur un torchon.",
+     "Pendant ce temps, faites revenir les lardons et l'oignon émincé finement 6 à 8 min à la poêle à feu moyen, sans matière grasse, jusqu'à ce que l'oignon soit fondant et doré. Égouttez sur papier absorbant.",
+     "Coupez la mozzarella en petits dés et laissez-la égoutter sur du papier absorbant. Écrasez les tomates à la main avec une pincée de sel et 1 c. à c. d'huile d'olive. Coupez les tranches de raclette en deux.",
+     "## Cuisson au Pummarola · 18 h 50 préchauffage",
+     "18 h 50 : préchauffez le Pummarola au maximum, couvercle fermé, 25 à 30 min. Étalez un pâton du bout des doigts en gardant une bordure de 1,5 cm, puis sur le dos des poings jusqu'à 26–28 cm, et posez-le sur la pelle semoulée.",
+     "Margherita : 3 c. à s. de tomate étalée en spirale, la mozzarella, un filet d'huile. Montagnarde : la crème en couche fine, les rondelles de pomme de terre, les lardons-oignons, puis la raclette. Garniture légère, sinon le centre reste mou.",
+     "Glissez la pizza d'un coup sec au centre de la pierre et refermez. Faites un demi-tour à 1 min 30–2 min ; elle est prête en 3 à 4 min, quand la bordure est gonflée et tachetée de noir et le fromage bouillonne. Basilic sur la margherita à la sortie.",
+     "Laissez le four remonter en température 3 à 5 min couvercle fermé avant la seconde pizza."
+    ],
+    "ingredients": [
+     {
+      "e": "GF",
+      "g": "La pâte",
+      "n": "farina tipo 00",
+      "q": 275,
+      "u": "g"
+     },
+     {
+      "e": "NON",
+      "g": "La pâte",
+      "n": "eau à température ambiante",
+      "q": 170,
+      "u": "g"
+     },
+     {
+      "e": "PLA",
+      "g": "La pâte",
+      "n": "sel fin",
+      "q": 8,
+      "u": "g"
+     },
+     {
+      "e": "PLA",
+      "g": "La pâte",
+      "n": "levure de boulanger sèche (⅛ c. à c. rase)",
+      "q": 0.4,
+      "u": "g"
+     },
+     {
+      "e": "LEC",
+      "g": "Les garnitures",
+      "n": "tomates pelées",
+      "q": 70,
+      "u": "g"
+     },
+     {
+      "e": "LEC",
+      "g": "Les garnitures",
+      "n": "mozzarella (à cuire)",
+      "q": 125,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "g": "Les garnitures",
+      "n": "feuilles de basilic (facultatif)",
+      "q": 4,
+      "u": ""
+     },
+     {
+      "e": "PLA",
+      "g": "Les garnitures",
+      "n": "huile d'olive",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "GF",
+      "g": "Les garnitures",
+      "n": "pomme de terre moyenne à chair ferme (150 g)",
+      "q": 1,
+      "u": ""
+     },
+     {
+      "e": "LEC",
+      "g": "Les garnitures",
+      "n": "lardons fumés",
+      "q": 80,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "g": "Les garnitures",
+      "n": "oignon",
+      "q": 0.5,
+      "u": ""
+     },
+     {
+      "e": "LEC",
+      "g": "Les garnitures",
+      "n": "crème fraîche épaisse",
+      "q": 3,
+      "u": "c. à s."
+     },
+     {
+      "e": "LEC",
+      "g": "Les garnitures",
+      "n": "fromage à raclette en tranches",
+      "q": 100,
+      "u": "g"
+     },
+     {
+      "e": "PLA",
+      "g": "Cuisson au Pummarola",
+      "n": "semoule fine (pour la pelle)",
+      "q": 1,
+      "u": "c. à s."
+     }
+    ],
+    "lien": "",
+    "nom": "Pizzas margherita et montagnarde",
+    "portions": 2,
+    "resume": "Pâte maison farine 00 du jour même ; une margherita, une montagnarde crème, pommes de terre, lardons, raclette.",
+    "source": "rapide",
+    "total": 450,
+    "unite": "pizzas"
+   }
+  },
+  "recettes/pizzas-reine-chorizo": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Pizzas reine et chorizo-poivrons",
+    "categorie": "Pizza",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "pizzas",
+    "actif": 45,
+    "total": 450,
+    "appareils": [
+     "Cook Expert",
+     "Pummarola"
+    ],
+    "resume": "Toujours sur pâte maison farine 00, préparée le jour même.",
+    "retro": [
+     {
+      "h": "11 h 30",
+      "txt": "Pétrissage."
+     },
+     {
+      "h": "13 h 30",
+      "txt": "Boulage en 2 pâtons."
+     },
+     {
+      "h": "18 h 00",
+      "txt": "Garnitures et mozzarella à égoutter."
+     },
+     {
+      "h": "18 h 50",
+      "txt": "Préchauffage du Pummarola."
+     },
+     {
+      "h": "19 h 15",
+      "txt": "Cuisson, une pizza toutes les 6 à 8 min."
+     }
+    ],
+    "ingredients": [
+     {
+      "q": 275,
+      "u": "g",
+      "n": "farina tipo 00 Daudette",
+      "e": "GF",
+      "g": "La pâte"
+     },
+     {
+      "q": 170,
+      "u": "g",
+      "n": "eau à température ambiante",
+      "e": "NON",
+      "g": "La pâte"
+     },
+     {
+      "q": 8,
+      "u": "g",
+      "n": "sel fin",
+      "e": "PLA",
+      "g": "La pâte"
+     },
+     {
+      "q": 0.4,
+      "u": "g",
+      "n": "levure de boulanger sèche (⅛ c. à c. rase)",
+      "e": "PLA",
+      "g": "La pâte"
+     },
+     {
+      "q": 140,
+      "u": "g",
+      "n": "tomates pelées",
+      "e": "LEC",
+      "g": "Les garnitures"
+     },
+     {
+      "q": 150,
+      "u": "g",
+      "n": "mozzarella",
+      "e": "LEC",
+      "g": "Les garnitures"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "tranches de jambon blanc",
+      "e": "LEC",
+      "g": "Les garnitures"
+     },
+     {
+      "q": 100,
+      "u": "g",
+      "n": "champignons de Paris",
+      "e": "GF",
+      "g": "Les garnitures"
+     },
+     {
+      "q": 50,
+      "u": "g",
+      "n": "chorizo doux",
+      "e": "LEC",
+      "g": "Les garnitures"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "poivron",
+      "e": "GF",
+      "g": "Les garnitures"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "huile d'olive",
+      "e": "PLA",
+      "g": "Les garnitures"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "semoule fine (pour la pelle)",
+      "e": "PLA",
+      "g": "Cuisson au Pummarola"
+     }
+    ],
+    "etapes": [
+     "## La pâte · 11 h 30 → 19 h, détails dans la fiche 05",
+     "11 h 30 : pétrin dans le bol du Cook Expert. Versez l'eau, saupoudrez la levure, mélangez, 5 min de repos. Ajoutez la farine, PÉTRIN XL 1 min, puis 15 min de repos couvercle fermé.",
+     "Ajoutez le sel, relancez PÉTRIN XL jusqu'au bout : pâte lisse, qui se détache des parois. Boule dans une boîte huilée, couverte.",
+     "Vers 12 h 45 : une série de rabats (bord étiré vers le haut, rabattu au centre, quatre fois en tournant).",
+     "13 h 30 : divisez en 2 pâtons de 220 g, boulez-les bien serrés, soudure dessous, en boîte fermée à température ambiante jusqu'au soir.",
+     "> Demi-dose de levure : 0,4 g, c'est ⅛ de cuillère à café rase. Trop de levure et la pâte est trop mûre à 19 h.",
+     "## Les garnitures · 15 min, vers 18 h",
+     "Coupez la mozzarella en petits morceaux et laissez-la égoutter sur du papier absorbant jusqu'à la cuisson.",
+     "Écrasez les tomates à la main avec une pincée de sel et 1 c. à c. d'huile d'olive.",
+     "Émincez finement les champignons. Coupez le poivron en fines lanières et faites-les revenir 5 min à la poêle avec un filet d'huile, pour qu'ils cuisent sur la pizza. Tranchez le chorizo finement et coupez le jambon en morceaux.",
+     "## Cuisson au Pummarola · 18 h 50 préchauffage",
+     "18 h 50 : préchauffez au maximum, couvercle fermé, 25 à 30 min.",
+     "Étalez un pâton du bout des doigts en gardant une bordure de 1,5 cm, puis sur le dos des poings jusqu'à 26–28 cm. Posez-le sur la pelle semoulée.",
+     "Reine : 3 c. à s. de tomate, la moitié de la mozzarella, le jambon et les champignons. Chorizo-poivrons : tomate, mozzarella, poivron, chorizo. Garniture légère.",
+     "Glissez la pizza d'un coup sec au centre de la pierre, refermez. Demi-tour à 1 min 30–2 min, prête vers 3 à 4 min.",
+     "Laissez le four remonter 3 à 5 min couvercle fermé avant la seconde pizza."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/poulet-grenaille": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Hauts de cuisse et grenaille à l'air-fryer",
+    "categorie": "Classique",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 5,
+    "total": 30,
+    "appareils": [
+     "Air-fryer"
+    ],
+    "resume": "Tout dans le panier, haricots verts à la poêle.",
+    "ingredients": [
+     {
+      "q": 4,
+      "u": "",
+      "n": "hauts de cuisse de poulet",
+      "e": "GF"
+     },
+     {
+      "q": 700,
+      "u": "g",
+      "n": "pommes de terre grenaille",
+      "e": "GF"
+     },
+     {
+      "q": 440,
+      "u": "g",
+      "n": "haricots verts extra-fins (conserve)",
+      "e": "LEC"
+     },
+     {
+      "q": 10,
+      "u": "g",
+      "n": "beurre",
+      "e": "LEC"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "huile d'olive",
+      "e": "PLA"
+     },
+     {
+      "q": 1,
+      "u": "c. à c.",
+      "n": "paprika",
+      "e": "PLA"
+     }
+    ],
+    "etapes": [
+     "Lavez la grenaille et coupez-la en deux. Mélangez-la dans un saladier avec l'huile, ½ c. à c. de sel et la moitié du paprika.",
+     "Épongez les hauts de cuisse, frottez-les avec le reste du paprika, du sel et du poivre.",
+     "Étalez la grenaille au fond du panier de l'air-fryer, posez les cuisses dessus, peau vers le haut : leur jus parfume les pommes de terre.",
+     "Air Fry 200 °C, 25 min. À 15 min, sortez le panier et secouez la grenaille sous les cuisses.",
+     "Vérifiez la cuisson : le jus du poulet doit être clair quand on pique près de l'os (ou 75 °C à cœur). Sinon, 5 min de plus.",
+     "Pendant les 5 dernières minutes, égouttez les haricots et réchauffez-les à la poêle avec le beurre, sel et poivre.",
+     "> Restes : si vous gardez 1 ou 2 cuisses pour un autre repas, effilochez-les tièdes et mettez-les au frigo dans une boîte fermée."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/poulet-roti": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Poulet rôti, grenaille",
+    "categorie": "Classique",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 10,
+    "total": 80,
+    "appareils": [
+     "Four",
+     "Air-fryer"
+    ],
+    "resume": "Poulet Label Rouge au four, grenaille à l'air-fryer ; le reste sert au riz cantonais.",
+    "ingredients": [
+     {
+      "q": 1,
+      "u": "",
+      "n": "poulet Label Rouge (1,25 kg)",
+      "e": "LEC"
+     },
+     {
+      "q": 600,
+      "u": "g",
+      "n": "pommes de terre grenaille",
+      "e": "GF"
+     },
+     {
+      "q": 4,
+      "u": "",
+      "n": "gousses d'ail",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "botte de thym",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "huile d'olive",
+      "e": "PLA"
+     },
+     {
+      "q": 15,
+      "u": "g",
+      "n": "beurre",
+      "e": "LEC"
+     }
+    ],
+    "etapes": [
+     "Sortez le poulet du réfrigérateur 30 min avant. Préchauffez le four Smeg à 200 °C chaleur tournante.",
+     "Glissez 2 gousses d'ail écrasées et quelques branches de thym dans la cavité. Frottez la peau avec le beurre mou, salez et poivrez généreusement.",
+     "Posez le poulet sur le côté (une cuisse vers le haut) dans un plat avec un fond d'eau de 5 mm. Enfournez 20 min.",
+     "Tournez-le sur l'autre cuisse, arrosez avec le jus, 20 min. Puis sur le dos, arrosez, 25 à 30 min.",
+     "35 min avant la fin : lavez la grenaille, coupez-la en deux, mélangez-la avec l'huile, les 2 autres gousses d'ail en chemise, du thym et du sel. Air Fry 200 °C, 25 min, en secouant à mi-cuisson.",
+     "Le poulet est cuit quand le jus qui coule de la cuisse piquée est clair (ou 75 °C au plus épais de la cuisse). Laissez-le reposer 10 min sous une feuille d'aluminium avant de découper.",
+     "Déglacez le plat avec 3 c. à s. d'eau en grattant les sucs : c'est le jus.",
+     "Gardez environ 200 g de chair (un blanc ou une cuisse), effilochée, au frigo dans une boîte fermée pour le riz cantonais du soir."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/quesadillas": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Quesadillas bœuf, poivron, cheddar",
+    "categorie": "Tex-mex",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 20,
+    "total": 20,
+    "appareils": [
+     "Plaques"
+    ],
+    "resume": "Farce poêlée, tortillas dorées 2 min par face, salade verte.",
+    "ingredients": [
+     {
+      "q": 300,
+      "u": "g",
+      "n": "bœuf haché (surgelé)",
+      "e": "PIC"
+     },
+     {
+      "q": 6,
+      "u": "",
+      "n": "tortillas de blé",
+      "e": "LEC"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "poivron",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "oignon rouge",
+      "e": "GF"
+     },
+     {
+      "q": 120,
+      "u": "g",
+      "n": "cheddar râpé",
+      "e": "LEC"
+     },
+     {
+      "q": 1,
+      "u": "c. à c.",
+      "n": "épices tex-mex",
+      "e": "PLA"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "salade verte",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "huile neutre",
+      "e": "PLA"
+     }
+    ],
+    "etapes": [
+     "La veille au soir : sortez le bœuf haché du congélateur et mettez-le à décongeler au réfrigérateur.",
+     "Émincez l'oignon rouge et coupez le poivron en petits dés. Lavez et essorez la salade.",
+     "Dans une grande poêle, faites chauffer l'huile à feu vif. Ajoutez oignon et poivron, 4 min en remuant.",
+     "Ajoutez le bœuf, émiettez-le à la spatule et faites-le dorer 5 min. Ajoutez les épices, salez, poivrez, 1 min encore. Versez la farce dans un bol et essuyez la poêle.",
+     "Sur la moitié de chaque tortilla : un peu de cheddar, la farce, encore du cheddar (il colle les deux faces). Repliez en demi-lune.",
+     "Faites dorer les quesadillas à sec dans la poêle à feu moyen, 2 à 3 à la fois, 2 min par face en appuyant à la spatule, jusqu'à ce que le fromage ait fondu.",
+     "Coupez chaque demi-lune en deux et servez avec la salade.",
+     "> Soirée jeux : c'est le dîner déplaçable, moins de 20 min au total."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/ramen": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "num": "01",
+    "nom": "Shoyu ramen",
+    "sousTitre": "醤油ラーメン · style Tokyo",
+    "categorie": "Japonais",
+    "source": "carnet",
+    "portions": 4,
+    "unite": "bols",
+    "actif": 45,
+    "total": 210,
+    "niveau": "Moyen",
+    "appareils": [
+     "Four",
+     "Plaques"
+    ],
+    "resume": "Bouillon, tare et huile montés séparément dans le bol. Se prépare sur deux jours.",
+    "intro": "La vraie structure d'un ramen — bouillon, tare et huile aromatique montés séparément dans le bol — sans les douze heures de mijotage. Le porc cuit dans sa marinade soja, et ce liquide devient à la fois le tare et la marinade des œufs.",
+    "blocs": [
+     {
+      "t": "Le bouillon",
+      "txt": "Clair (chintan), presque neutre. Il porte le corps, pas le sel."
+     },
+     {
+      "t": "Le tare",
+      "txt": "La base salée concentrée, ici à la sauce soja : c'est elle qui donne son nom au ramen."
+     },
+     {
+      "t": "L'huile",
+      "txt": "La couche grasse en surface, qui porte le parfum et garde le bol brûlant. Le sel n'est jamais dans la marmite : il arrive dans le bol."
+     }
+    ],
+    "retro": [
+     {
+      "h": "J−1 soir",
+      "txt": "Chashu au four doux, 2 h, puis refroidissement complet au frigo (chaud, il s'effiloche au tranchage)."
+     },
+     {
+      "h": "J−1 soir",
+      "txt": "Réduction du tare et œufs mis à mariner dans le liquide de cuisson du porc."
+     },
+     {
+      "h": "J −3 h",
+      "txt": "Bouillon : blanchir les os, puis 2 h de frémissement."
+     },
+     {
+      "h": "J −20 min",
+      "txt": "Huile aromatique, tranchage du chashu, garnitures, bols au chaud."
+     },
+     {
+      "h": "J −3 min",
+      "txt": "Nouilles et montage : tout doit être prêt et à portée de main."
+     }
+    ],
+    "ingredients": [
+     {
+      "q": 600,
+      "u": "g",
+      "n": "poitrine de porc sans os, roulée et ficelée serré (ou échine)",
+      "e": "GF",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 200,
+      "u": "ml",
+      "n": "sauce soja japonaise (Kikkoman, pas de soja chinois)",
+      "e": "PLA",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 100,
+      "u": "ml",
+      "n": "mirin",
+      "e": "PLA",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 100,
+      "u": "ml",
+      "n": "saké de cuisine",
+      "e": "PLA",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "sucre",
+      "e": "PLA",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 4,
+      "u": "",
+      "n": "gousses d'ail écrasées",
+      "e": "GF",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 5,
+      "u": "cm",
+      "n": "gingembre frais en tranches",
+      "e": "GF",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 3,
+      "u": "",
+      "n": "oignons nouveaux (le vert suffit)",
+      "e": "GF",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 4,
+      "u": "",
+      "n": "œufs bien frais, à température ambiante",
+      "e": "LEC",
+      "g": "Chashu & tare"
+     },
+     {
+      "q": 1000,
+      "u": "g",
+      "n": "carcasses, cous et ailes de poulet",
+      "e": "GF",
+      "g": "Le bouillon"
+     },
+     {
+      "q": 2.5,
+      "u": "L",
+      "n": "eau froide",
+      "e": "NON",
+      "g": "Le bouillon"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "oignon coupé en deux",
+      "e": "GF",
+      "g": "Le bouillon"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "vert de poireau",
+      "e": "GF",
+      "g": "Le bouillon"
+     },
+     {
+      "q": 3,
+      "u": "cm",
+      "n": "gingembre frais",
+      "e": "GF",
+      "g": "Le bouillon"
+     },
+     {
+      "q": 10,
+      "u": "cm",
+      "n": "kombu",
+      "e": "PLA",
+      "g": "Le bouillon"
+     },
+     {
+      "q": 15,
+      "u": "g",
+      "n": "katsuobushi (copeaux de bonite séchée)",
+      "e": "PLA",
+      "g": "Le bouillon"
+     },
+     {
+      "q": 100,
+      "u": "ml",
+      "n": "huile neutre (ou 100 g de gras de porc)",
+      "e": "PLA",
+      "g": "L'huile aromatique"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "oignons nouveaux émincés",
+      "e": "GF",
+      "g": "L'huile aromatique"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "gousses d'ail écrasées",
+      "e": "GF",
+      "g": "L'huile aromatique"
+     },
+     {
+      "q": 520,
+      "u": "g",
+      "n": "nouilles à ramen fraîches (130 g par bol)",
+      "e": "GF",
+      "g": "Le montage"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "feuilles de nori",
+      "e": "LEC",
+      "g": "Le montage"
+     },
+     {
+      "q": 80,
+      "u": "g",
+      "n": "menma (pousses de bambou), facultatif",
+      "e": "LEC",
+      "g": "Le montage"
+     }
+    ],
+    "etapes": [
+     "## Chashu & tare · 2 h, la veille",
+     "Colorez le rouleau de porc sur toutes ses faces dans une cocotte, à feu vif, sans matière grasse.",
+     "Ajoutez soja, mirin, saké, sucre, ail, gingembre et oignons nouveaux, puis complétez d'eau à mi-hauteur du rouleau. Couvrez et laissez frémir 1 h 30 à 2 h (ou four Smeg à 150 °C), en retournant à mi-cuisson.",
+     "Sortez le porc, filmez-le serré et mettez-le au frigo jusqu'à complet refroidissement avant de le trancher finement.",
+     "Filtrez le liquide de cuisson. Prélevez-en un tiers dans un petit récipient : c'est la marinade des œufs.",
+     "Cuisez les œufs 6 min 30 à l'eau frémissante, plongez-les aussitôt dans l'eau glacée, écalez-les et laissez-les mariner 4 h minimum (une nuit, c'est mieux).",
+     "Faites réduire le reste du liquide à feu vif jusqu'à une consistance sirupeuse, franchement trop salée pour être bue : c'est le tare. Comptez 2 à 3 c. à s. par bol.",
+     "> Pourquoi ça marche : en tirant le tare du jus de cuisson du chashu, on récupère le collagène et le parfum du porc. C'est la version maison du procédé, et la plus rapide.",
+     "## Le bouillon · 2 h, presque passif",
+     "Blanchissez les os 5 min à l'eau bouillante. Jetez l'eau, rincez les os et la casserole : c'est ce geste qui donne un bouillon clair.",
+     "Remettez les os dans 2,5 L d'eau froide avec le kombu, l'oignon, le poireau et le gingembre. Montez doucement et retirez le kombu juste avant l'ébullition : au-delà, il devient amer et visqueux.",
+     "Laissez frémir 2 h à tout petits bouillons, en écumant les 20 premières minutes. Ne faites jamais bouillir fort : l'émulsion trouble le bouillon.",
+     "Hors du feu, jetez le katsuobushi dans la marmite, laissez infuser 5 min sans remuer, puis filtrez au chinois fin.",
+     "> L'équilibre japonais : un fond de volaille marié à un dashi. Cette double base, animale et marine, distingue un ramen d'un bouillon de poule au soja.",
+     "## L'huile aromatique · 10 min, jour J",
+     "Faites chauffer l'huile (ou fondre le gras) à feu très doux avec l'ail et les oignons nouveaux.",
+     "Laissez confire 10 min, jusqu'à ce que les aromates dorent à peine. S'ils brunissent, l'huile devient amère : recommencez.",
+     "Filtrez. Comptez 1 c. à s. par bol. Elle se garde une semaine au frigo.",
+     "## Le montage · 3 min, tout doit être prêt",
+     "Ébouillantez les bols et laissez-les remplis d'eau chaude jusqu'à la dernière seconde. Passez 2 à 3 tranches de chashu par bol 30 s sous le gril.",
+     "Dans chaque bol vidé : 2 à 3 c. à s. de tare, 1 c. à s. d'huile, puis 400 ml de bouillon brûlant. Mélangez et goûtez maintenant : c'est ici qu'on ajuste, pas dans la marmite.",
+     "Cuisez les nouilles 1 min 30 dans une grande quantité d'eau à gros bouillons, non salée. Égouttez-les énergiquement.",
+     "Plongez les nouilles, remontez-les à la baguette pour les plier en surface, puis disposez chashu, demi-œuf mariné (jaune vers le haut), menma, oignon nouveau ciselé et demi-feuille de nori contre le bord."
+    ],
+    "points": [
+     {
+      "t": "Jamais à gros bouillons",
+      "txt": "Un frémissement paresseux pendant 2 h donne un bouillon clair ; dix minutes d'ébullition franche le rendent trouble et gras, et c'est irréversible."
+     },
+     {
+      "t": "Goûter dans le bol",
+      "txt": "Les sauces soja varient du simple au double en salinité : goûtez le mélange tare + bouillon avant les nouilles, c'est le seul moment où l'on peut corriger."
+     }
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/risotto-champignons": {
+   "t": "2026-11-18T06:39:38.788765Z",
+   "d": {
+    "actif": 15,
+    "appareils": [
+     "Cook Expert",
+     "Plaques"
+    ],
+    "categorie": "Italien",
+    "etapes": [
+     "Délayez le cube de bouillon dans les 600 ml d'eau tiède. Épluchez et ciselez l'échalote.",
+     "Bol du Cook Expert avec le couteau ou le batteur selon votre habitude (le batteur abîme moins le grain) : mettez l'échalote, 15 g de beurre et l'huile, mode EXPERT 120 °C, vitesse 1, 3 min, couvercle avec le bouchon retiré : l'échalote doit devenir translucide.",
+     "Ajoutez le riz et relancez EXPERT 120 °C, vitesse 1, 2 min pour le nacrer : les grains deviennent brillants et un peu translucides sur les bords.",
+     "Versez tout le bouillon, puis programme MIJOTEUR (ou EXPERT 100 °C, vitesse 1) 18 min. Pas besoin de remuer.",
+     "Pendant ce temps, essuyez les champignons au papier humide et coupez-les en lamelles de 5 mm. Faites-les sauter dans une grande poêle à feu vif avec 10 g de beurre, sans les remuer les 2 premières minutes, puis 5 à 6 min en tout : ils doivent avoir rendu leur eau et être bien dorés. Ajoutez l'ail haché la dernière minute, salez, poivrez.",
+     "À la fin du programme, goûtez un grain : il doit être tendre avec un tout petit cœur ferme et baigner dans une sauce coulante. S'il reste du croquant, 2 à 3 min de plus à 100 °C.",
+     "Ajoutez le reste du beurre (15 g) froid en dés et le parmesan, puis vitesse 1 sans chauffe, 30 s. Laissez reposer 2 min couvercle fermé : c'est la mantecatura, elle rend le risotto crémeux.",
+     "Incorporez les deux tiers des champignons, servez en assiettes creuses, le reste des champignons et le persil ciselé par-dessus.",
+     "> Le risotto se mange tout de suite : il doit s'étaler un peu dans l'assiette. Il épaissit en attendant."
+    ],
+    "ingredients": [
+     {
+      "e": "LEC",
+      "g": "Le risotto",
+      "n": "riz arborio ou carnaroli",
+      "q": 180,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "g": "Le risotto",
+      "n": "échalote",
+      "q": 1,
+      "u": ""
+     },
+     {
+      "e": "LEC",
+      "g": "Le risotto",
+      "n": "beurre",
+      "q": 30,
+      "u": "g"
+     },
+     {
+      "e": "PLA",
+      "g": "Le risotto",
+      "n": "huile d'olive",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "g": "Le risotto",
+      "n": "cube de bouillon de volaille",
+      "q": 1,
+      "u": ""
+     },
+     {
+      "e": "NON",
+      "g": "Le risotto",
+      "n": "eau tiède du robinet",
+      "q": 600,
+      "u": "ml"
+     },
+     {
+      "e": "LEC",
+      "g": "Le risotto",
+      "n": "parmesan râpé",
+      "q": 50,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "g": "Les champignons",
+      "n": "champignons de Paris",
+      "q": 250,
+      "u": "g"
+     },
+     {
+      "e": "LEC",
+      "g": "Les champignons",
+      "n": "beurre",
+      "q": 10,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "g": "Les champignons",
+      "n": "gousse d'ail",
+      "q": 1,
+      "u": ""
+     },
+     {
+      "e": "GF",
+      "g": "Les champignons",
+      "n": "brins de persil plat (facultatif)",
+      "q": 4,
+      "u": ""
+     }
+    ],
+    "lien": "",
+    "nom": "Risotto aux champignons et parmesan",
+    "portions": 2,
+    "resume": "Risotto crémeux au Cook Expert, champignons dorés à la poêle à part.",
+    "source": "rapide",
+    "total": 40,
+    "unite": "portions"
+   }
+  },
+  "recettes/riz-cantonais": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Riz cantonais au reste de poulet",
+    "categorie": "Asiatique",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 15,
+    "total": 15,
+    "appareils": [
+     "Plaques"
+    ],
+    "resume": "Riz de la veille sauté à feu vif.",
+    "ingredients": [
+     {
+      "q": 400,
+      "u": "g",
+      "n": "riz cuit de la veille",
+      "e": "RES"
+     },
+     {
+      "q": 200,
+      "u": "g",
+      "n": "reste de poulet rôti",
+      "e": "RES"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "œufs",
+      "e": "LEC"
+     },
+     {
+      "q": 100,
+      "u": "g",
+      "n": "petits pois surgelés",
+      "e": "PIC"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "tranches de jambon blanc",
+      "e": "LEC"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "oignons nouveaux",
+      "e": "GF"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "sauce soja",
+      "e": "PLA"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "huile neutre",
+      "e": "PLA"
+     }
+    ],
+    "etapes": [
+     "Sortez le riz du frigo et égrenez-le avec les doigts. Coupez le jambon en dés, effilochez le poulet, ciselez les oignons nouveaux en séparant le blanc et le vert.",
+     "Battez les œufs avec une pincée de sel. Dans une grande poêle huilée (ou un wok) à feu moyen, faites une omelette fine, 1 min. Roulez-la, détaillez-la en lanières et réservez.",
+     "Montez le feu au maximum avec 1 c. à s. d'huile. Faites sauter le blanc des oignons nouveaux 30 s.",
+     "Ajoutez le riz, étalez-le et laissez-le saisir 1 min sans toucher, puis faites-le sauter 3 min.",
+     "Ajoutez les petits pois (encore surgelés), le jambon et le poulet. Faites sauter 3 min, jusqu'à ce que tout soit bien chaud.",
+     "Versez la sauce soja sur le bord de la poêle (elle caramélise un peu), mélangez, ajoutez l'omelette et le vert des oignons. Goûtez et servez.",
+     "> Riz froid obligatoire : un riz chaud colle et fait de la bouillie. Celui de la veille est sec et se détache."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/saucisses-puree": {
+   "t": "2026-11-18T06:39:38.798594Z",
+   "d": {
+    "actif": 20,
+    "appareils": [
+     "Cook Expert",
+     "Plaques"
+    ],
+    "categorie": "Classique",
+    "etapes": [
+     "18 h 45 : versez les 500 ml d'eau froide dans le bol du Cook Expert. Épluchez les pommes de terre, coupez-les en cubes de 3 cm, rincez-les et mettez-les dans le panier vapeur. Programme VAPEUR, 30 min.",
+     "Piquez chaque saucisse 3 ou 4 fois à la fourchette. Dans une poêle avec 1 c. à c. d'huile, mettez-les à feu moyen-doux, couvercle entrouvert.",
+     "Faites-les cuire 20 à 25 min en les retournant toutes les 5 min : elles doivent être bien dorées sur toutes les faces et ferme sous le doigt (70 °C à cœur). À feu trop vif, la peau éclate et l'intérieur reste rose.",
+     "10 min avant la fin : faites chauffer les petits pois-carottes égouttés dans une petite casserole avec une noisette de beurre, à feu doux.",
+     "Faites tiédir le lait 1 min dans une casserole (ou au micro-ondes) sans le faire bouillir.",
+     "Quand la pointe d'un couteau traverse un cube de pomme de terre sans résistance, videz l'eau du bol et remettez les pommes de terre dans une casserole chaude. Écrasez-les au presse-purée ou à la fourchette, pas au couteau du robot : la purée deviendrait collante.",
+     "Ajoutez le beurre en dés, mélangez à la spatule, puis le lait chaud petit à petit jusqu'à une purée souple. Salez, une pincée de muscade.",
+     "Servez les saucisses avec la purée et les petits pois-carottes, le jus de la poêle versé sur la purée."
+    ],
+    "ingredients": [
+     {
+      "e": "GF",
+      "n": "pommes de terre à purée (bintje ou agata)",
+      "q": 700,
+      "u": "g"
+     },
+     {
+      "e": "NON",
+      "n": "eau froide (pour la vapeur)",
+      "q": 500,
+      "u": "ml"
+     },
+     {
+      "e": "LEC",
+      "n": "lait entier",
+      "q": 150,
+      "u": "ml"
+     },
+     {
+      "e": "LEC",
+      "n": "beurre",
+      "q": 40,
+      "u": "g"
+     },
+     {
+      "e": "PLA",
+      "n": "muscade",
+      "q": 1,
+      "u": "pincée"
+     },
+     {
+      "e": "LEC",
+      "n": "saucisses de Toulouse (environ 400 g)",
+      "q": 4,
+      "u": ""
+     },
+     {
+      "e": "PLA",
+      "n": "huile neutre",
+      "q": 1,
+      "u": "c. à c."
+     },
+     {
+      "e": "LEC",
+      "n": "petits pois-carottes (conserve, poids égoutté 265 g)",
+      "q": 400,
+      "u": "g"
+     }
+    ],
+    "lien": "",
+    "nom": "Saucisses de Toulouse, purée maison",
+    "portions": 2,
+    "resume": "Pommes de terre à la vapeur du Cook Expert écrasées à la main, saucisses poêlées doucement, petits pois-carottes.",
+    "source": "rapide",
+    "total": 45,
+    "unite": "portions"
+   }
+  },
+  "recettes/saumon-teriyaki": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Saumon teriyaki, riz, brocolis",
+    "categorie": "Japonais",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 15,
+    "total": 50,
+    "appareils": [
+     "Air-fryer",
+     "Cuiseur à riz"
+    ],
+    "resume": "Riz au cuiseur, saumon laqué à l'air-fryer.",
+    "ingredients": [
+     {
+      "q": 2,
+      "u": "",
+      "n": "pavés de saumon",
+      "e": "GF"
+     },
+     {
+      "q": 150,
+      "u": "g",
+      "n": "riz japonais (1 dose)",
+      "e": "PLA"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "brocoli",
+      "e": "GF"
+     },
+     {
+      "q": 3,
+      "u": "c. à s.",
+      "n": "sauce soja",
+      "e": "PLA"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "mirin",
+      "e": "PLA"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "sucre",
+      "e": "PLA"
+     },
+     {
+      "q": 2,
+      "u": "cm",
+      "n": "gingembre frais",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "graines de sésame",
+      "e": "PLA"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "huile neutre",
+      "e": "PLA"
+     }
+    ],
+    "etapes": [
+     "Rincez le riz trois ou quatre fois à l'eau froide, égouttez-le et lancez le Panda Mini en programme riz blanc (45 à 50 min).",
+     "Préparez la sauce : dans une petite casserole, soja, mirin, sucre et gingembre râpé. Faites réduire 2 à 3 min à feu moyen, jusqu'à ce qu'elle nappe la cuillère. Gardez-en la moitié pour le service.",
+     "Détaillez le brocoli en petits bouquets, mélangez-les avec l'huile et une pincée de sel.",
+     "20 min avant le riz : posez le saumon, peau dessous, sur un papier cuisson dans le panier de l'air-fryer, badigeonnez-le de sauce.",
+     "Air Fry 190 °C, 10 min. À 5 min, badigeonnez à nouveau et ajoutez les brocolis autour.",
+     "Le saumon est cuit quand il se détache en lamelles mais reste nacré au centre. Les brocolis doivent être tendres et un peu grillés aux pointes.",
+     "Servez le saumon sur le riz, nappé du reste de sauce, avec les brocolis et le sésame."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/tagliatelles-forestieres": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Tagliatelles forestières",
+    "categorie": "Italien",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 20,
+    "total": 25,
+    "appareils": [
+     "Plaques"
+    ],
+    "resume": "Champignons, lardons, crème et parmesan.",
+    "ingredients": [
+     {
+      "q": 250,
+      "u": "g",
+      "n": "tagliatelles",
+      "e": "LEC"
+     },
+     {
+      "q": 300,
+      "u": "g",
+      "n": "champignons de Paris",
+      "e": "GF"
+     },
+     {
+      "q": 150,
+      "u": "g",
+      "n": "lardons fumés",
+      "e": "LEC"
+     },
+     {
+      "q": 20,
+      "u": "cl",
+      "n": "crème fraîche épaisse",
+      "e": "LEC"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "échalote",
+      "e": "GF"
+     },
+     {
+      "q": 30,
+      "u": "g",
+      "n": "parmesan",
+      "e": "LEC"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "bouquet de persil plat",
+      "e": "GF"
+     }
+    ],
+    "etapes": [
+     "Mettez 2,5 L d'eau à bouillir. Pendant ce temps, nettoyez les champignons à l'essuie-tout (pas sous l'eau, ils se gorgent) et émincez-les ; ciselez l'échalote et le persil.",
+     "Dans une grande poêle à feu moyen, faites dorer les lardons à sec 5 min. Retirez-les en gardant le gras.",
+     "Montez le feu, ajoutez les champignons en une seule couche et laissez-les dorer 6 à 8 min sans trop remuer : ils rendent leur eau puis colorent. Ajoutez l'échalote 2 min avant la fin.",
+     "Salez l'eau et lancez les tagliatelles pour le temps du paquet.",
+     "Remettez les lardons dans la poêle, ajoutez la crème et 2 c. à s. d'eau de cuisson, poivrez et laissez réduire 3 min à feu doux.",
+     "Égouttez les pâtes en gardant une louche d'eau. Versez-les dans la sauce avec la moitié du parmesan et mélangez 1 min ; détendez avec un peu d'eau de cuisson si besoin.",
+     "Servez avec le reste du parmesan et le persil.",
+     "> Les champignons ne dorent pas s'ils sont entassés : avec une petite poêle, faites-les en deux fois."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/udon": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "num": "02",
+    "nom": "Udon cacahuète–érable",
+    "sousTitre": "Sauce émulsionnée à l'eau de cuisson",
+    "categorie": "Japonais",
+    "source": "carnet",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 15,
+    "total": 15,
+    "niveau": "Facile",
+    "appareils": [
+     "Plaques"
+    ],
+    "resume": "Sauce émulsionnée à l'eau de cuisson, prête en 15 min.",
+    "intro": "Beurre de cacahuète, soja, sirop d'érable : le sucre n'est pas là pour sucrer, il arrondit le sel du soja et l'amertume de la cacahuète, comme le mirin dans une sauce japonaise.",
+    "blocs": [
+     {
+      "t": "Le ratio à retenir",
+      "txt": "3 beurre de cacahuète : 2 sauce soja : 1 sirop d'érable + 1 vinaigre de riz. Ail, gingembre, piment et citron vert ajustent le caractère ; l'eau de cuisson s'ajoute jusqu'à la bonne consistance."
+     }
+    ],
+    "ingredients": [
+     {
+      "q": 3,
+      "u": "c. à s.",
+      "n": "beurre de cacahuète 100 % cacahuète, non sucré",
+      "e": "LEC",
+      "g": "La sauce"
+     },
+     {
+      "q": 2,
+      "u": "c. à s.",
+      "n": "sauce soja",
+      "e": "PLA",
+      "g": "La sauce"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "sirop d'érable",
+      "e": "PLA",
+      "g": "La sauce"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "vinaigre de riz",
+      "e": "PLA",
+      "g": "La sauce"
+     },
+     {
+      "q": 1,
+      "u": "c. à c.",
+      "n": "huile de sésame grillé",
+      "e": "PLA",
+      "g": "La sauce"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "gousse d'ail",
+      "e": "GF",
+      "g": "La sauce"
+     },
+     {
+      "q": 2,
+      "u": "cm",
+      "n": "gingembre frais",
+      "e": "GF",
+      "g": "La sauce"
+     },
+     {
+      "q": 1,
+      "u": "c. à c.",
+      "n": "huile pimentée (ou ½ c. à c. de flocons de piment)",
+      "e": "PLA",
+      "g": "La sauce"
+     },
+     {
+      "q": 0.5,
+      "u": "",
+      "n": "citron vert (le jus)",
+      "e": "GF",
+      "g": "La sauce"
+     },
+     {
+      "q": 400,
+      "u": "g",
+      "n": "nouilles udon fraîches ou précuites",
+      "e": "GF",
+      "g": "Les nouilles"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "oignons nouveaux émincés en biseau",
+      "e": "GF",
+      "g": "Les nouilles"
+     },
+     {
+      "q": 30,
+      "u": "g",
+      "n": "cacahuètes grillées concassées",
+      "e": "LEC",
+      "g": "Les nouilles"
+     },
+     {
+      "q": 1,
+      "u": "c. à s.",
+      "n": "graines de sésame",
+      "e": "PLA",
+      "g": "Les nouilles"
+     }
+    ],
+    "etapes": [
+     "## La sauce · 5 min, avant de cuire",
+     "Mettez une grande casserole d'eau à bouillir (sans sel).",
+     "Râpez l'ail et le gingembre à la microplane, directement dans un grand saladier, assez grand pour y mélanger les nouilles ensuite.",
+     "Ajoutez tout le reste des ingrédients de la sauce et fouettez. Elle se resserre et graine d'abord : c'est normal, le beurre de cacahuète absorbe les liquides avant de se détendre.",
+     "Goûtez : à ce stade elle doit être trop salée et trop acide. Les nouilles vont tout arrondir.",
+     "> Le piège : pas de beurre de cacahuète sucré type américain. Avec le sirop d'érable, le plat deviendrait un dessert.",
+     "## Les nouilles · 4 min, tout va vite",
+     "Cuisez les udon 2 min dans l'eau bouillante en les séparant à la baguette (précuites : suivez le paquet, elles doivent rester fermes et élastiques).",
+     "Prélevez une louche d'eau de cuisson, puis égouttez sans rincer.",
+     "Détendez la sauce avec 4 c. à s. d'eau de cuisson en fouettant : elle doit passer de pâteuse à nappante, comme une crème liquide épaisse.",
+     "Versez les nouilles brûlantes dans le saladier et mélangez longuement, hors du feu. Ajoutez de l'eau de cuisson cuillère par cuillère tant que ça colle : la sauce doit enrober sans faire de flaque.",
+     "Servez aussitôt avec les oignons nouveaux, puis les cacahuètes et le sésame au dernier moment, sinon ils ramollissent.",
+     "> Pourquoi hors du feu : dans une poêle chaude, le beurre de cacahuète accroche et le sirop caramélise. La seule chaleur des nouilles donne une sauce lisse."
+    ],
+    "variantes": [
+     {
+      "t": "En vrai repas",
+      "txt": "Émincé de poulet ou tofu ferme doré à côté, ou un œuf mollet ; des légumes croquants (chou, carotte râpée, concombre) équilibrent le gras."
+     },
+     {
+      "t": "En salade froide",
+      "txt": "Rincez les nouilles à l'eau glacée, doublez le citron vert et allongez la sauce d'une cuillère d'eau froide. Se garde deux jours au frigo."
+     },
+     {
+      "t": "Sans sirop d'érable",
+      "txt": "1 c. à c. de miel ou de sucre roux fait le même travail, sans la note fumée."
+     }
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/veloute-croques": {
+   "t": "2026-11-11T10:46:00Z",
+   "d": {
+    "nom": "Velouté de potimarron, croques au comté",
+    "categorie": "Classique",
+    "source": "rapide",
+    "portions": 2,
+    "unite": "portions",
+    "actif": 15,
+    "total": 40,
+    "appareils": [
+     "Cook Expert",
+     "Air-fryer"
+    ],
+    "resume": "Velouté au Cook Expert, croques à l'air-fryer pendant la cuisson.",
+    "ingredients": [
+     {
+      "q": 1,
+      "u": "",
+      "n": "potimarron (≈ 1 kg)",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "oignon",
+      "e": "GF"
+     },
+     {
+      "q": 1,
+      "u": "",
+      "n": "cube de bouillon de volaille",
+      "e": "PLA"
+     },
+     {
+      "q": 500,
+      "u": "ml",
+      "n": "eau",
+      "e": "NON"
+     },
+     {
+      "q": 10,
+      "u": "cl",
+      "n": "crème liquide",
+      "e": "LEC"
+     },
+     {
+      "q": 4,
+      "u": "",
+      "n": "tranches de pain de mie",
+      "e": "LEC"
+     },
+     {
+      "q": 2,
+      "u": "",
+      "n": "tranches de jambon blanc",
+      "e": "LEC"
+     },
+     {
+      "q": 80,
+      "u": "g",
+      "n": "comté",
+      "e": "LEC"
+     },
+     {
+      "q": 15,
+      "u": "g",
+      "n": "beurre",
+      "e": "LEC"
+     }
+    ],
+    "etapes": [
+     "Lavez le potimarron (pas besoin de l'éplucher), coupez-le en deux, retirez les graines à la cuillère et détaillez-le en cubes de 3 cm. Coupez l'oignon en quatre.",
+     "Lame universelle dans le bol du Cook Expert : potimarron, oignon, cube de bouillon émietté et 500 ml d'eau (sous le repère max liquide). Lancez le programme Soupe veloutée (≈ 30 min).",
+     "Pendant ce temps, râpez le comté. Beurrez légèrement les tranches de pain de mie sur une face.",
+     "Montez les croques face beurrée à l'extérieur : pain, comté, jambon, comté, pain.",
+     "10 min avant la fin du velouté : croques dans le panier de l'air-fryer, Air Fry 180 °C, 8 min, en les retournant à 5 min.",
+     "À la fin du programme, ajoutez la crème, mixez 30 s à vitesse 12 (bouchon en place), goûtez et rectifiez sel et poivre.",
+     "Servez le velouté bien chaud avec les croques coupés en triangles.",
+     "> Trop épais : un peu d'eau chaude et 10 s de mixage. Le reste se garde 3 jours au frigo."
+    ],
+    "lien": ""
+   }
+  },
+  "recettes/yakisoba-poulet": {
+   "t": "2026-11-18T06:39:38.807864Z",
+   "d": {
+    "actif": 20,
+    "appareils": [
+     "Plaques"
+    ],
+    "categorie": "Asiatique",
+    "etapes": [
+     "Mettez 2 L d'eau à bouillir pour les nouilles. Mélangez dans un bol Worcestershire, ketchup, soja et sucre : c'est la sauce.",
+     "Émincez le chou en lanières de 1 cm, la carotte en fins bâtonnets (ou à la râpe gros trous) et l'oignon en lamelles. Coupez les aiguillettes en morceaux de 2 cm, salez légèrement.",
+     "Plongez les nouilles dans l'eau bouillante et cuisez-les 1 min de moins que le temps du paquet. Égouttez, rincez rapidement à l'eau froide et mélangez-les avec 1 c. à c. d'huile pour qu'elles ne collent pas.",
+     "Pendant la cuisson des nouilles, chauffez 1 c. à s. d'huile dans une grande poêle ou un wok à feu vif. Faites sauter le poulet 4 à 5 min : il doit être blanc à cœur et doré sur les bords. Réservez-le dans une assiette.",
+     "Dans la même poêle, avec le reste d'huile, faites sauter oignon et carotte 2 min, puis le chou 3 min à feu vif en remuant : il doit être tombé mais encore un peu croquant.",
+     "Ajoutez les nouilles et le poulet, versez la sauce et mélangez à deux spatules ou à la pince pendant 2 min, jusqu'à ce que les nouilles soient brunes, brillantes et un peu grillées par endroits.",
+     "Servez aussitôt, parsemé de sésame."
+    ],
+    "ingredients": [
+     {
+      "e": "LEC",
+      "n": "nouilles aux œufs sèches (type nouilles chinoises)",
+      "q": 200,
+      "u": "g"
+     },
+     {
+      "e": "LEC",
+      "n": "aiguillettes de poulet Label Rouge",
+      "q": 250,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "n": "chou pointu ou chou blanc",
+      "q": 200,
+      "u": "g"
+     },
+     {
+      "e": "GF",
+      "n": "carotte",
+      "q": 1,
+      "u": ""
+     },
+     {
+      "e": "GF",
+      "n": "oignon",
+      "q": 0.5,
+      "u": ""
+     },
+     {
+      "e": "PLA",
+      "n": "sauce Worcestershire",
+      "q": 2,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "n": "ketchup",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "n": "sauce soja",
+      "q": 1,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "n": "sucre",
+      "q": 1,
+      "u": "c. à c."
+     },
+     {
+      "e": "PLA",
+      "n": "huile neutre",
+      "q": 2,
+      "u": "c. à s."
+     },
+     {
+      "e": "PLA",
+      "n": "graines de sésame",
+      "q": 1,
+      "u": "c. à s."
+     }
+    ],
+    "lien": "",
+    "nom": "Yakisoba au poulet",
+    "portions": 2,
+    "resume": "Nouilles sautées au poulet, chou et carotte, sauce yakisoba maison.",
+    "source": "rapide",
+    "total": 20,
+    "unite": "portions"
+   }
+  },
+  "semaines/2026-10-23": {
+   "t": "2026-10-28T14:09:47.085131Z",
+   "d": {
+    "debut": "2026-10-23",
+    "repas": {
+     "2026-10-29_midi": {
+      "note": "",
+      "p": 2,
+      "r": "carbonara"
+     },
+     "2026-10-29_soir": {
+      "note": "Garder 1 à 2 cuisses pour vendredi midi",
+      "p": 2,
+      "r": "poulet-grenaille"
+     }
+    }
+   }
+  },
+  "semaines/2026-10-30": {
+   "t": "2026-10-28T14:09:47.09465Z",
+   "d": {
+    "debut": "2026-10-30",
+    "repas": {
+     "2026-10-30_midi": {
+      "note": "Avec le poulet restant de jeudi, effiloché et poêlé 2 min",
+      "p": 2,
+      "r": "udon"
+     }
+    }
+   }
+  },
+  "semaines/2026-11-06": {
+   "t": "2026-10-28T14:09:47.104413Z",
+   "d": {
+    "debut": "2026-11-06",
+    "repas": {
+     "2026-11-06_soir": {
+      "lancer": "18:40",
+      "note": "Poisson au plus frais",
+      "p": 2,
+      "r": "saumon-teriyaki"
+     },
+     "2026-11-07_midi": {
+      "note": "Riz cuit en double pour dimanche soir",
+      "p": 2,
+      "r": "oyakodon"
+     },
+     "2026-11-07_soir": {
+      "lancer": "18:50",
+      "note": "Pétrissage 11 h 30, boulage 13 h 30",
+      "p": 2,
+      "r": "pizzas-reine-chorizo"
+     },
+     "2026-11-08_midi": {
+      "note": "",
+      "p": 2,
+      "r": "poulet-roti"
+     },
+     "2026-11-08_soir": {
+      "lancer": "19:05",
+      "note": "Riz de samedi midi",
+      "p": 2,
+      "r": "riz-cantonais"
+     },
+     "2026-11-09_soir": {
+      "lancer": "19:05",
+      "note": "En début de semaine, pour les champignons",
+      "p": 2,
+      "r": "tagliatelles-forestieres"
+     },
+     "2026-11-10_soir": {
+      "lancer": "18:45",
+      "note": "",
+      "p": 2,
+      "r": "veloute-croques"
+     },
+     "2026-11-11_midi": {
+      "note": "11 novembre, férié. Cabillaud sorti la veille au soir",
+      "p": 2,
+      "r": "fish-chips"
+     },
+     "2026-11-11_soir": {
+      "lancer": "19:15",
+      "note": "",
+      "p": 2,
+      "r": "udon"
+     },
+     "2026-11-12_soir": {
+      "lancer": "19:05",
+      "note": "Bœuf sorti la veille au soir",
+      "p": 2,
+      "r": "quesadillas"
+     }
+    }
+   }
+  },
+  "semaines/2026-11-20": {
+   "t": "2026-11-18T06:39:38.824955Z",
+   "d": {
+    "debut": "2026-11-20",
+    "repas": {
+     "2026-11-20_soir": {
+      "lancer": "19:10",
+      "note": "Dîner simple après le transfert. Moins de 20 min : déplaçable un soir de soirée jeux",
+      "p": 2,
+      "r": "galettes-completes"
+     },
+     "2026-11-21_midi": {
+      "note": "Riz au cuiseur à lancer vers 11 h 45, en même temps que la pâte à pizza",
+      "p": 2,
+      "r": "omuraisu"
+     },
+     "2026-11-21_soir": {
+      "lancer": "18:50",
+      "note": "Pétrissage 11 h 30, boulage 13 h 30, garnitures vers 18 h 15",
+      "p": 2,
+      "r": "pizzas-margherita-montagnarde"
+     },
+     "2026-11-22_midi": {
+      "note": "",
+      "p": 2,
+      "r": "poulet-grenaille"
+     },
+     "2026-11-22_soir": {
+      "lancer": "18:40",
+      "note": "",
+      "p": 2,
+      "r": "curry-japonais"
+     },
+     "2026-11-23_soir": {
+      "lancer": "18:50",
+      "note": "En début de semaine, pour les champignons",
+      "p": 2,
+      "r": "risotto-champignons"
+     },
+     "2026-11-24_soir": {
+      "lancer": "19:10",
+      "note": "15 min : déplaçable un soir de soirée jeux",
+      "p": 2,
+      "r": "carbonara"
+     },
+     "2026-11-25_midi": {
+      "note": "Vérifier la date des aiguillettes de poulet",
+      "p": 2,
+      "r": "yakisoba-poulet"
+     },
+     "2026-11-25_soir": {
+      "lancer": "18:45",
+      "note": "",
+      "p": 2,
+      "r": "saucisses-puree"
+     },
+     "2026-11-26_soir": {
+      "lancer": "18:40",
+      "note": "Gyozas cuits directement surgelés",
+      "p": 2,
+      "r": "gyozas-riz"
+     }
+    }
+   }
+  }
+ }
+}

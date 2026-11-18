@@ -3,1024 +3,1016 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pâte à pizza</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&display=swap">
+<title>Cuisine</title>
+<link rel="stylesheet" href="commun/theme.css">
+<script src="commun/natif.js"></script>
 <style>
-/* Layout : réglages à gauche (collants sur grand écran), pesée + planning à droite ; une colonne sur téléphone */
-:root{
-  --bg:#F4F6F1; --surface:#FFFFFF; --fg:#18211B; --muted:#5D695F; --line:#D9DFD6;
-  --accent:#2C6A44; --accent-soft:#E2EEE5; --crust:#A85A1C; --crust-soft:#F6E9DC;
-  --warn:#8A5A00; --warn-soft:#FBF1D9;
-  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --body:"Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --r:10px;
-  --sat:var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
-  --sab:var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
-  --sal:var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
-  --sar:var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#111612; --surface:#192019; --fg:#E6ECE4; --muted:#9AA79C; --line:#2C362E;
-    --accent:#7CC495; --accent-soft:#1F3326; --crust:#E39A5C; --crust-soft:#36261A;
-    --warn:#E8C26A; --warn-soft:#2F2714; color-scheme:dark;
-  }
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent}
-.wrap{max-width:1080px;margin:0 auto;
-  padding-top:calc(16px + var(--sat));padding-bottom:calc(40px + var(--sab));
-  padding-left:max(16px, var(--sal));padding-right:max(16px, var(--sar))}
-header{display:flex;flex-direction:column;gap:4px;margin-bottom:18px}
-.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
-h2{font-family:var(--display);font-weight:700;font-size:20px;margin:0;text-wrap:balance}
-.layout{display:grid;gap:20px;grid-template-columns:1fr}
-@media (min-width:860px){
-  .layout{grid-template-columns:minmax(300px,380px) 1fr;align-items:start}
-  .controls{position:sticky;top:calc(16px + var(--sat))}
-}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:18px;min-width:0}
-.field{display:flex;flex-direction:column;gap:8px}
-.field-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-label.lbl,.lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--muted)}
-.val{font-family:var(--display);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums}
-.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.seg input{position:absolute;opacity:0;pointer-events:none}
-.seg label{padding:10px 6px;text-align:center;cursor:pointer;font-weight:500;font-size:14px;border-left:1px solid var(--line);line-height:1.2;display:flex;align-items:center;justify-content:center}
-.seg label:first-of-type{border-left:none}
-.seg input:checked + label{background:var(--accent);color:var(--surface);font-weight:600}
-.seg input:focus-visible + label{outline:2px solid var(--accent);outline-offset:-3px}
-.seg input:disabled + label{opacity:.4;cursor:not-allowed}
-select,input[type=time],input[type=date]{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;min-height:42px}
-select:disabled{opacity:.5}
-select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-input[type=range]{width:100%;accent-color:var(--accent);margin:0}
-.scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg)}
-.stepper button{font:inherit;font-size:18px;width:44px;height:44px;border:0;background:transparent;color:var(--fg);cursor:pointer;flex:none}
-.stepper button:active{background:var(--accent-soft)}
-.stepper output{flex:1;text-align:center;font-family:var(--display);font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
-.hint{font-size:12.5px;color:var(--muted);margin:0}
-.hint b{color:var(--fg)}
+/* Page Cuisine : semaine, recettes, courses, repères. Le système commun est dans commun/theme.css. */
+.bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row > .field{flex:1;min-width:0;width:auto}
+.banner{margin:4px 0 12px;padding:12px 14px;border-radius:12px;background:var(--safran-doux);border:1px solid color-mix(in srgb,var(--safran) 40%,transparent);font-size:15px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.banner .grow{flex:1;min-width:180px}
+.alert{display:inline-block;font-size:13px;font-weight:600;color:var(--tomate);background:var(--tomate-doux);border-radius:6px;padding:2px 8px;margin-top:6px}
+.empty{margin-top:20px;padding:20px;border:1.5px dashed var(--trait);border-radius:var(--r-carte);color:var(--encre-2);font-size:15.5px;background:var(--surface)}
+.confirm{margin-top:12px;padding:12px 14px;border:1px solid var(--tomate);background:var(--tomate-doux);border-radius:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:15px}
+.foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.foot .grow{flex:1}
+a.link{color:var(--basilic);font-weight:600}
+.eyebrow{display:block;font-size:14px;font-weight:600;color:var(--encre-3)}
 
-.results{display:flex;flex-direction:column;gap:20px;min-width:0}
-.weigh{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.weigh-head{padding:16px 18px 12px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
-.weigh-head .sum{font-size:13px;color:var(--muted)}
-.weigh-head .sum b{color:var(--fg);font-weight:600}
-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-td,th{padding:11px 18px;text-align:left;border-bottom:1px solid var(--line)}
-th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;padding-block:8px}
-td.g{text-align:right;font-family:var(--display);font-weight:700;font-size:22px;white-space:nowrap}
-th.r,td.pct{text-align:right}
-td.pct{color:var(--muted);font-size:13px;width:70px}
-td.name small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35}
-tr.yeast td{background:var(--crust-soft)}
-tr.yeast td.g{color:var(--crust)}
-tr.total td{border-bottom:none;font-weight:600}
-tr.total td.g{font-size:18px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;border-top:1px solid var(--line)}
-.chip{display:inline-flex;gap:6px;align-items:baseline;padding:6px 10px;border-radius:999px;background:var(--accent-soft);font-size:13px}
-.chip b{font-weight:600}
-.chip.warm{background:var(--crust-soft)}
-.dilute{margin:0 18px 16px;padding:12px 14px;border-radius:8px;border:1px dashed var(--crust);font-size:13.5px;line-height:1.45}
-.dilute b{color:var(--crust)}
+/* ---------- semaine ---------- */
+.ce-soir{margin:4px 0 22px}
+.plaque .note{margin-top:8px;font-size:15px;opacity:.88}
+.plaque .alert{background:rgba(255,255,255,.18);color:var(--plaque-encre)}
+.wk-nav{display:flex;align-items:center;gap:10px}
+.btn.icon svg,.cu-pied .btn svg{width:26px;height:26px;stroke-width:2.2}
+.wk-title{flex:1;min-width:0}
+.wk-title h2{font-family:var(--titre);font-weight:720;font-size:22px;line-height:1.15;letter-spacing:-.01em;margin:2px 0 0;text-wrap:balance}
+.garde{display:inline-block;font-size:13.5px;font-weight:600;color:var(--encre-3)}
+.garde.avec{color:var(--safran)}
+.wk-sum{margin:6px 0 0;font-size:14.5px;color:var(--encre-2)}
+.jours{margin-top:14px;background:var(--surface);border:1px solid var(--trait);border-radius:var(--r-carte);overflow:hidden}
+.jour{display:grid;grid-template-columns:62px 1fr;border-top:1px solid var(--trait-doux)}
+.jour:first-child{border-top:0}
+.jour-date{padding:14px 0 10px 14px;display:flex;flex-direction:column;line-height:1}
+.jour-date .js{font-size:14px;font-weight:600;color:var(--encre-3)}
+.jour-date .jn{font-family:var(--titre);font-weight:760;font-size:30px;letter-spacing:-.02em;margin-top:4px;font-variant-numeric:tabular-nums}
+.jour.today{background:var(--safran-doux);box-shadow:inset 4px 0 0 var(--safran-vif)}
+.jour.today .jn{color:var(--safran)}
+.jour.past .jour-repas,.jour.past .jour-date{opacity:.55}
+.jour-repas{padding:8px 10px 8px 4px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.jour-tag{font-size:13px;font-weight:600;color:var(--safran);padding:6px 8px 0}
+.meal{display:block;width:100%;text-align:left;border:0;background:transparent;border-radius:10px;padding:8px 8px;min-width:0;min-height:48px}
+.meal:active{background:var(--surface-2)}
+.meal .mom{font-size:13.5px;font-weight:600;color:var(--encre-3)}
+.meal .nm{display:block;font-weight:700;font-size:17px;line-height:1.3;margin-top:1px}
+.meal .mt{display:block;font-size:14px;color:var(--encre-2);margin-top:2px}
+.meal .nt{display:block;font-size:14px;color:var(--encre-3);margin-top:2px}
+.meal.todo{border:1.5px dashed var(--trait);margin:4px 0}
+.meal.todo .nm{font-weight:600;color:var(--encre-3)}
+.meal.mini{min-height:40px;padding:6px 8px;color:var(--encre-3);font-size:14.5px;font-weight:600}
+.lancer{color:var(--safran);font-weight:700}
+.wk-actions{margin-top:22px;display:flex;flex-direction:column;gap:12px}
 
-.alerts{display:flex;flex-direction:column;gap:8px}
-.alert{background:var(--warn-soft);color:var(--fg);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:10px 12px;font-size:13.5px}
-.alert b{color:var(--warn)}
+/* ---------- courses ---------- */
+.period{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin:2px -16px 0;padding-inline:16px;scrollbar-width:none}
+.cs-sum{margin-top:12px;font-size:15px;color:var(--encre-2)}
+.store{margin-top:18px;background:var(--surface);border:1px solid var(--trait);border-radius:var(--r-carte);overflow:hidden}
+.store-h{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.store-h h3{font-family:var(--titre);font-weight:720;font-size:21px;letter-spacing:-.01em;margin:0}
+.store-h .cnt{margin-left:auto;font-size:14px;font-weight:600;color:var(--encre-3);font-variant-numeric:tabular-nums}
+.store-h .sw{width:12px;height:12px;border-radius:50%;flex:none}
+.store-note{padding:0 16px 10px;font-size:14px;color:var(--encre-2);border-bottom:1px solid var(--trait-doux)}
+.sub-h{padding:12px 16px 4px;font-size:14px;font-weight:700;color:var(--encre-2)}
+.it{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--trait-doux);cursor:pointer;min-height:56px}
+.it:last-child{border-bottom:0}
+.it input[type=checkbox],.prod input[type=checkbox]{width:26px;height:26px;margin:0;accent-color:var(--basilic);cursor:pointer}
+.it .tx,.prod .tx{min-width:0}
+.it .tx b{display:block;font-weight:600;font-size:16.5px;line-height:1.3}
+.it .tx small,.prod .tx small{display:block;font-size:13px;color:var(--encre-3);line-height:1.35;margin-top:1px}
+.it .q{font-variant-numeric:tabular-nums;font-size:15px;font-weight:700;color:var(--basilic);text-align:right;white-space:nowrap}
+.it.done .tx b,.prod.done .tx b{text-decoration:line-through;color:var(--encre-3)}
+.it.done .q{color:var(--encre-3)}
+.prod{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--trait-doux)}
+.prod .tx b{display:block;font-weight:600;font-size:15.5px;line-height:1.3}
+.prod.off .tx b{color:var(--encre-3);font-weight:400}
+.qty{display:flex;align-items:center;gap:2px}
+.qty button{width:38px;height:38px;border:1px solid var(--trait);background:var(--surface-2);border-radius:10px;font-size:18px;line-height:1}
+.qty span{min-width:28px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+details.more summary{padding:12px 16px;cursor:pointer;font-size:15px;color:var(--basilic);font-weight:700;list-style:none;border-bottom:1px solid var(--trait-doux)}
+details.more summary::-webkit-details-marker{display:none}
+.total{display:flex;justify-content:space-between;padding:12px 16px;font-size:15px;background:var(--surface-2);font-variant-numeric:tabular-nums}
+.add{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+.add .field{flex:1 1 180px;width:auto}
+.add select.field{flex:0 0 auto;width:auto}
 
-/* rappels */
-.remind{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:12px}
-.remind.on{border-color:var(--accent);background:var(--accent-soft)}
-.remind-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.remind-state{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--muted)}
-.remind.on .remind-state{color:var(--accent)}
-.remind-txt{font-size:14px;margin:0}
-.remind-txt b{font-weight:600}
-.remind-msg{font-size:13.5px;margin:0;padding:8px 10px;border-radius:8px;background:var(--warn-soft);border-left:3px solid var(--warn)}
-.btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn{font:inherit;font-weight:600;font-size:15px;padding:11px 16px;min-height:44px;border-radius:8px;border:0;background:var(--accent);color:var(--surface);cursor:pointer}
-.btn:active{filter:brightness(1.1)}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-.btn.link{background:transparent;color:var(--accent);padding-inline:4px}
+/* ---------- recettes ---------- */
+.filters{display:flex;gap:6px;overflow-x:auto;margin:12px -16px 0;padding:0 16px 2px;scrollbar-width:none}
+.rlist{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+@media (min-width:600px){.rlist{grid-template-columns:1fr 1fr}}
+.rcard{display:flex;flex-direction:column;gap:3px;text-align:left;width:100%;background:var(--surface);border:1px solid var(--trait);border-radius:var(--r-carte);padding:14px 16px;min-width:0}
+.rcard:active{background:var(--surface-2)}
+.rcard .nm{font-family:var(--titre);font-weight:700;font-size:21px;line-height:1.12;letter-spacing:-.01em}
+.rcard .mt{font-size:14px;color:var(--encre-2)}
+.src{font-size:13.5px;font-weight:600;color:var(--encre-3)}
 
-fieldset{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:18px}
-fieldset:disabled{opacity:.55}
-.locked{font-size:13px;margin:0;padding:8px 10px;border-radius:8px;background:var(--accent-soft)}
+/* ---------- feuille ---------- */
+.scrim{position:fixed;inset:0;background:var(--voile);z-index:20}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:21;background:var(--fond);border-radius:22px 22px 0 0;max-height:90vh;overflow-y:auto;box-shadow:var(--ombre);overscroll-behavior:contain;
+  padding:8px max(18px,var(--sar)) calc(24px + var(--sab)) max(18px,var(--sal))}
+@media (min-width:720px){.sheet{left:50%;right:auto;width:660px;transform:translateX(-50%);bottom:auto;top:5vh;border-radius:20px;max-height:88vh}}
+.grip{width:44px;height:5px;border-radius:3px;background:var(--trait);margin:4px auto 12px}
+.sheet h2{font-family:var(--titre);font-weight:760;font-size:30px;line-height:1.05;letter-spacing:-.02em;margin:4px 0 0;text-wrap:balance}
+.sheet .sec{margin-top:18px}
+.sheet .sec > h3{font-family:var(--titre);font-size:19px;font-weight:700;color:var(--encre);margin:0 0 10px}
+.pick{display:flex;flex-direction:column;gap:2px;max-height:300px;overflow-y:auto;border:1px solid var(--trait);border-radius:12px;padding:6px;background:var(--surface)}
+.pick button{text-align:left;border:1px solid transparent;background:transparent;border-radius:10px;padding:9px 10px;font-weight:600}
+.pick button[aria-pressed="true"]{background:var(--basilic-doux);border-color:var(--basilic)}
+.pick button small{display:block;color:var(--encre-3);font-size:13px;font-weight:400}
+.ings{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--trait);border-radius:12px}
+.ings li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;padding:9px 14px;border-bottom:1px solid var(--trait-doux);font-size:15.5px}
+.ings li:last-child{border-bottom:0}
+.ings .q{color:var(--basilic);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ens{font-size:12px;font-weight:700;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.ens.GF{background:var(--gf-doux);color:var(--gf)} .ens.LEC{background:var(--lec-doux);color:var(--lec)}
+.ens.PIC{background:var(--pic-doux);color:var(--pic)} .ens.PLA{background:var(--pla-doux);color:var(--pla)} .ens.RES{background:var(--surface-2);color:var(--encre-3)}
+.steps{margin:0;padding-left:24px}
+.steps li{margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:15px;color:var(--encre-2)}
+.meta b{font-weight:700;color:var(--encre)}
+.stepper{display:inline-flex;align-items:center;gap:6px}
+.stepper button{width:44px;height:44px;border:1px solid var(--trait);background:var(--surface);border-radius:12px;font-size:20px}
+.stepper span{min-width:100px;text-align:center;font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.cta .btn{flex:1 1 auto}
 
-/* suivi */
-.run{position:fixed;inset:0;z-index:10;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch}
-.run-in{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px;
-  padding-top:calc(12px + var(--sat));padding-bottom:calc(28px + var(--sab));
-  padding-left:max(16px, var(--sal));padding-right:max(16px, var(--sar))}
-.run-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.run-clock{font-family:var(--display);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;color:var(--muted)}
-.run-bar{display:flex;gap:4px}
-.run-bar span{flex:1;height:5px;border-radius:3px;background:var(--line)}
-.run-bar span.done{background:var(--accent)}
-.run-bar span.cur{background:var(--crust)}
-.run-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;display:flex;flex-direction:column;gap:14px}
-.run-card.active{border-color:var(--crust)}
-.run-kind{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--muted)}
-.run-card.active .run-kind{color:var(--crust)}
-.run-title{font-family:var(--display);font-weight:800;font-size:clamp(26px,7vw,34px);line-height:1.1;margin:0}
-.run-when{margin:0;color:var(--muted);font-size:14px}
-.big{font-family:var(--display);font-weight:800;font-size:clamp(40px,13vw,64px);line-height:1;font-variant-numeric:tabular-nums;color:var(--accent)}
-.checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.checklist label{display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:15.5px;line-height:1.45}
-.checklist input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--accent)}
-.checklist input:checked + span{color:var(--muted);text-decoration:line-through}
-.bakebox{margin-top:10px;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:8px;background:var(--crust-soft)}
-.bakebox .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.bakebox .big{color:var(--crust)}
-/* gros boutons pour les doigts pleins de pâte */
-.run .btn{min-height:64px;font-size:18px;border-radius:12px;padding:14px 20px}
-.run .run-top .btn{min-height:52px;font-size:16px}
-.run-foot{position:sticky;bottom:0;margin:0 -18px -20px;padding:14px 18px calc(14px + var(--sab));background:var(--surface);border-top:1px solid var(--line);border-radius:0 0 var(--r) var(--r);display:flex;gap:14px}
-.run-foot .btn.ghost{flex:0 0 auto;min-width:88px}
-.checklist label{min-height:60px}
-.checklist input{width:28px;height:28px}
-.btn.wide{flex:1}
-.btn.warm{background:var(--crust)}
-.run-next{font-size:14px;color:var(--muted);margin:0}
+/* ---------- fiche détaillée ---------- */
+.sub{font-size:16px;color:var(--encre-2);margin-top:4px}
+.num{color:var(--basilic)}
+.intro{margin:14px 0 0;font-size:16px;color:var(--encre-2);max-width:62ch}
+.blocs{display:grid;grid-template-columns:1fr;gap:8px}
+@media (min-width:560px){.blocs{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}}
+.bloc{background:var(--surface);border:1px solid var(--trait);border-radius:12px;padding:11px 13px;font-size:14.5px;color:var(--encre-2)}
+.bloc b{display:block;font-family:var(--titre);font-weight:700;font-size:17px;color:var(--encre);margin-bottom:2px}
+.retro{list-style:none;margin:0;padding:0;border-left:2px solid var(--trait);margin-left:6px}
+.retro li{position:relative;padding:0 0 12px 18px;font-size:15px}
+.retro li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--fond);border:2px solid var(--basilic)}
+.retro b{font-weight:700;color:var(--basilic);margin-right:8px;font-variant-numeric:tabular-nums}
+.etape{margin-top:22px;padding-top:16px;border-top:1px solid var(--trait)}
+.etape h3{font-family:var(--titre);font-weight:720;font-size:22px;line-height:1.15;margin:0;color:var(--encre)}
+.etape .dur{display:block;font-size:14px;font-weight:600;color:var(--safran);margin:3px 0 12px}
+.etape .ings{margin-bottom:12px}
+.steps.big li{margin-bottom:12px;line-height:1.55;padding-left:4px;font-size:16px}
+.steps.big li::marker{font-family:var(--titre);font-weight:700;color:var(--basilic)}
+.tip{margin:4px 0 14px;padding:10px 14px;border-left:4px solid var(--safran-vif);background:var(--safran-doux);border-radius:0 12px 12px 0;font-size:15px}
+.pts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.pts li{background:var(--surface);border:1px solid var(--trait);border-radius:12px;padding:10px 13px;font-size:15px;color:var(--encre-2)}
+.pts li b{color:var(--encre)}
+.prog{display:inline-flex;align-items:center;gap:8px;margin:6px 0 2px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--tomate);color:var(--tomate);background:var(--tomate-doux);font-size:14.5px;font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums}
+.prog svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
 
-.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px}
-.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.timeline li{display:grid;grid-template-columns:76px 18px 1fr;gap:10px;align-items:start;position:relative;padding-bottom:14px}
-.timeline li:last-child{padding-bottom:0}
-.t{font-family:var(--display);font-weight:700;font-size:19px;font-variant-numeric:tabular-nums;text-align:right;line-height:1.2}
-.t small{display:block;font-family:var(--body);font-weight:500;font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);background:var(--surface);margin-top:6px;justify-self:center;position:relative;z-index:1}
-.timeline li:not(:last-child)::after{content:"";position:absolute;left:calc(76px + 10px + 8px);top:18px;bottom:-4px;width:2px;background:var(--line)}
-.timeline li.is-bake .dot{background:var(--crust);border-color:var(--crust)}
-.timeline li.wait .dot{border-style:dashed}
-.timeline li.past{opacity:.5}
-.step-title{font-weight:600;line-height:1.3}
-.step-desc{font-size:13.5px;color:var(--muted);margin-top:2px}
-.dur{font-size:12px;color:var(--accent);font-weight:600;margin-top:2px}
+/* ---------- mode cuisine : une étape à la fois, en grand ---------- */
+.cuisiner{position:fixed;inset:0;z-index:25;background:var(--fond);display:flex;flex-direction:column}
+.cu-tete{display:flex;align-items:center;gap:10px;padding:calc(10px + var(--sat)) max(16px,var(--sar)) 10px max(16px,var(--sal))}
+.cu-tete .nom{flex:1;min-width:0;font-weight:700;font-size:15px;color:var(--encre-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cu-barre{display:flex;gap:3px;padding:0 max(16px,var(--sar)) 0 max(16px,var(--sal))}
+.cu-barre span{flex:1;height:5px;border-radius:3px;background:var(--trait)}
+.cu-barre span.fait{background:var(--basilic)}
+.cu-barre span.ici{background:var(--safran-vif)}
+.cu-corps{flex:1;overflow-y:auto;padding:20px max(20px,var(--sar)) 24px max(20px,var(--sal));max-width:720px;width:100%;margin:0 auto}
+.cu-section{font-size:15px;font-weight:700;color:var(--safran)}
+.cu-num{font-family:var(--titre);font-weight:780;font-size:48px;line-height:1;color:var(--basilic);margin-top:8px;font-variant-numeric:tabular-nums}
+.cu-num small{font-size:20px;color:var(--encre-3);font-weight:600}
+.cu-texte{font-size:23px;line-height:1.45;margin:12px 0 16px;text-wrap:pretty}
+.cu-pied{display:flex;gap:12px;padding:12px max(16px,var(--sar)) calc(14px + var(--sab)) max(16px,var(--sal));border-top:1px solid var(--trait);background:var(--surface)}
+.cu-pied .btn{min-height:68px;font-size:19px;border-radius:16px}
+.cu-pied .btn.ghost{flex:0 0 96px}
+.cu-pied .btn.primary{flex:1}
+.cu-ings{margin-top:6px}
+.cu-ings summary{cursor:pointer;font-weight:700;color:var(--basilic);padding:8px 0;list-style:none}
+.cu-ings summary::-webkit-details-marker{display:none}
 
-.bake{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px}
-.bake-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
-.bake-head .sum{font-size:13px;color:var(--muted)}
-.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-@media (max-width:560px){.tiles{grid-template-columns:1fr}}
-.tile{background:var(--bg);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
-.tile.hot{background:var(--crust-soft)}
-.tile .k{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.tile .v{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.15;font-variant-numeric:tabular-nums}
-.tile.hot .v{color:var(--crust)}
-.tile .s{font-size:13px;color:var(--muted)}
-.bake-notes{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;max-width:65ch}
-.method{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px}
-.method ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;max-width:65ch}
-.method li::marker{font-family:var(--display);font-weight:700;color:var(--accent)}
-.foot{font-size:12.5px;color:var(--muted);max-width:70ch}
-@media (max-width:420px){
-  td,th{padding-left:12px;padding-right:12px}
-  td.g{font-size:19px}
-  .timeline li{grid-template-columns:62px 16px 1fr}
-  .timeline li:not(:last-child)::after{left:calc(62px + 10px + 7px)}
-}
+/* ---------- repères ---------- */
+.rp{margin-top:24px}
+.rp:first-child{margin-top:8px}
+.rp-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rp-h h2{font-family:var(--titre);font-weight:720;font-size:23px;letter-spacing:-.01em;margin:0;flex:1}
+.card{background:var(--surface);border:1px solid var(--trait);border-radius:var(--r-carte)}
+.rules{list-style:none;margin:0;padding:0}
+.rules li{padding:11px 16px;border-bottom:1px solid var(--trait-doux);font-size:15.5px}
+.rules li:last-child{border-bottom:0}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl th{font-size:13.5px;font-weight:600;color:var(--encre-3);text-align:left;padding:10px 14px;border-bottom:1px solid var(--trait)}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--trait-doux);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.equip{display:grid;grid-template-columns:1fr;gap:8px}
+@media (min-width:560px){.equip{grid-template-columns:1fr 1fr}}
+.eq{display:block;text-align:left;width:100%;background:var(--surface);border:1px solid var(--trait);border-radius:12px;padding:12px 14px;min-width:0}
+.eq .nm{display:block;font-weight:700;font-size:16px}
+.eq .mt{display:block;font-size:14px;color:var(--encre-2)}
+.eq .mq{display:block;font-size:13px;color:var(--tomate);margin-top:2px}
+.todo-l{list-style:none;margin:0;padding:0}
+.todo-l label{display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:start;padding:11px 16px;border-bottom:1px solid var(--trait-doux);cursor:pointer;font-size:15.5px}
+.todo-l li:last-child label{border-bottom:0}
+.todo-l input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--basilic)}
+.todo-l .done span{text-decoration:line-through;color:var(--encre-3)}
+.sync-l{font-size:14px;color:var(--encre-3)}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <span class="eyebrow">Cuisine d'Antoine</span>
-    <h1>Pâte à pizza</h1>
-  </header>
+<header class="entete"><div class="entete-in">
+  <h1 id="viewTitle">Semaine</h1>
+  <a class="outil" href="#reperes" id="lienReperes"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.1"/></svg>Repères</a>
+</div></header>
 
-  <div class="layout">
-    <form class="panel controls" id="f" autocomplete="off" onsubmit="return false">
-      <p class="locked" id="locked" hidden>Pâte en cours : annule-la pour changer les réglages.</p>
-      <fieldset id="ctl">
-      <div class="field">
-        <span class="lbl">Type de pizza</span>
-        <div class="seg" role="radiogroup" aria-label="Type de pizza">
-          <input type="radio" name="type" id="t-napo" value="napo" checked><label for="t-napo">Napolitaine</label>
-          <input type="radio" name="type" id="t-rom" value="rom"><label for="t-rom">Romaine fine</label>
-          <input type="radio" name="type" id="t-teg" value="teg"><label for="t-teg">Teglia</label>
-        </div>
-      </div>
+<div class="page">
+  <div class="banner" id="banner" hidden></div>
 
-      <div class="field">
-        <span class="lbl">Four</span>
-        <div class="seg" role="radiogroup" aria-label="Four">
-          <input type="radio" name="oven" id="o-pumm" value="pumm" checked><label for="o-pumm">Pummarola</label>
-          <input type="radio" name="oven" id="o-four" value="four"><label for="o-four">Four traditionnel</label>
-        </div>
-        <p class="hint" id="ovenHint" hidden>La teglia cuit en plaque : four traditionnel uniquement.</p>
-      </div>
+  <main>
+    <section id="v-semaine" aria-labelledby="viewTitle"></section>
 
-      <div class="row2" id="fourOpts" hidden>
-        <div class="field">
-          <label class="lbl" for="support">Support</label>
-          <select id="support">
-            <option value="pierre">Pierre ou acier</option>
-            <option value="plaque">Plaque du four</option>
-          </select>
-        </div>
-        <div class="field">
-          <label class="lbl" for="tmax">Température max</label>
-          <select id="tmax">
-            <option value="250">250 °C</option>
-            <option value="275">275 °C</option>
-            <option value="300">300 °C</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="field">
-        <span class="lbl">Pétrissage</span>
-        <div class="seg" role="radiogroup" aria-label="Pétrissage">
-          <input type="radio" name="knead" id="k-hand" value="hand" checked><label for="k-hand">À la main</label>
-          <input type="radio" name="knead" id="k-ce" value="ce"><label for="k-ce">Cook Expert</label>
-        </div>
-        <p class="hint" id="kneadHint" hidden>Le robot chauffe la pâte en la pétrissant : l'eau conseillée est donc plus froide qu'à la main.</p>
-      </div>
-
-      <div class="field">
-        <label class="lbl" for="flour">Farine</label>
-        <select id="flour">
-          <option value="00">Farine 00 (Grand Frais)</option>
-          <option value="caputo">Caputo Pizzeria (00)</option>
-          <option value="t45">T45</option>
-          <option value="t55">T55</option>
+    <section id="v-courses" hidden>
+      <div id="cs-top"></div>
+      <div id="cs-list"></div>
+      <form class="add" id="addForm" autocomplete="off">
+        <input class="field" id="addName" placeholder="Ajouter un article (ex. papier cuisson)" aria-label="Article à ajouter">
+        <select class="field" id="addEns" aria-label="Enseigne">
+          <option value="GF">Grand Frais</option><option value="LEC" selected>Drive Leclerc</option>
+          <option value="PIC">Picard</option><option value="PLA">Placard</option>
         </select>
-        <p class="hint" id="flourHint" hidden>Caputo Pizzeria : force W 260–270, 12,5 % de protéines. Faite pour les pousses longues, de 8 à 24 h. Elle boit bien l'eau : verse-la en plusieurs fois.</p>
-      </div>
-
-      <div class="field">
-        <span class="lbl">Levure</span>
-        <div class="seg" role="radiogroup" aria-label="Levure">
-          <input type="radio" name="yeast" id="y-fresh" value="fresh" checked><label for="y-fresh">Fraîche</label>
-          <input type="radio" name="yeast" id="y-inst" value="inst"><label for="y-inst">Sèche instantanée</label>
-          <input type="radio" name="yeast" id="y-act" value="act"><label for="y-act">Sèche active</label>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="field-head"><label class="lbl" for="temp">Température de la pièce</label><span class="val" id="tempV"></span></div>
-        <input type="range" id="temp" min="16" max="30" step="1" value="20">
-        <div class="scale"><span>16 °C</span><span>23 °C</span><span>30 °C</span></div>
-      </div>
-
-      <div class="field">
-        <div class="field-head"><label class="lbl" for="hours">Temps disponible</label><span class="val" id="hoursV"></span></div>
-        <input type="range" id="hours" min="1" max="24" step="0.5" value="7.5">
-        <div class="scale"><span>1 h</span><span>12 h</span><span>24 h</span></div>
-        <p class="hint">Du début du pétrissage jusqu'à l'enfournement, tout à température ambiante.</p>
-      </div>
-
-      <div class="row2">
-        <div class="field">
-          <span class="lbl" id="countL">Pizzas</span>
-          <div class="stepper" aria-labelledby="countL">
-            <button type="button" data-step="count" data-d="-1" aria-label="Une de moins">−</button>
-            <output id="countV"></output>
-            <button type="button" data-step="count" data-d="1" aria-label="Une de plus">+</button>
-          </div>
-        </div>
-        <div class="field">
-          <span class="lbl" id="ballL">Pâton</span>
-          <div class="stepper" aria-labelledby="ballL">
-            <button type="button" data-step="ball" data-d="-1" aria-label="Pâton plus léger">−</button>
-            <output id="ballV"></output>
-            <button type="button" data-step="ball" data-d="1" aria-label="Pâton plus lourd">+</button>
-          </div>
-        </div>
-      </div>
-      <p class="hint" id="ballHint"></p>
-
-      <div class="field">
-        <span class="lbl">Quand ?</span>
-        <div class="seg" role="radiogroup" aria-label="Quand">
-          <input type="radio" name="mode" id="m-now" value="now"><label for="m-now">Démarrer maintenant</label>
-          <input type="radio" name="mode" id="m-plan" value="plan" checked><label for="m-plan">Planifier</label>
-        </div>
-      </div>
-      <div class="row2" id="planOpts">
-        <div class="field">
-          <label class="lbl" for="bakeDate">Jour</label>
-          <input type="date" id="bakeDate">
-        </div>
-        <div class="field">
-          <label class="lbl" for="bake">Enfournement</label>
-          <input type="time" id="bake" value="19:00" step="300">
-        </div>
-      </div>
-      <p class="hint" id="nowHint" hidden></p>
-      </fieldset>
-    </form>
-
-    <div class="results">
-      <section class="remind" id="remind" aria-live="polite">
-        <div class="remind-top">
-          <span class="remind-state" id="remindState">Rappels</span>
-        </div>
-        <p class="remind-txt" id="remindTxt"></p>
-        <p class="remind-msg" id="remindMsg" hidden></p>
-        <div class="btns">
-          <button type="button" class="btn warm" id="runOpen" hidden>Ouvrir le suivi</button>
-          <button type="button" class="btn" id="remindGo">Programmer les rappels</button>
-          <button type="button" class="btn ghost" id="remindOff" hidden>Annuler la pâte</button>
-          <button type="button" class="btn link" id="exactBtn" hidden>Autoriser les alarmes à l'heure pile</button>
-        </div>
-      </section>
-
-      <section class="weigh" aria-labelledby="wh">
-        <div class="weigh-head">
-          <h2 id="wh">La pesée</h2>
-          <span class="sum" id="sum"></span>
-        </div>
-        <table>
-          <thead><tr><th>Ingrédient</th><th class="r">Poids</th><th class="r">% farine</th></tr></thead>
-          <tbody id="tbody"></tbody>
-        </table>
-        <div class="dilute" id="dilute" hidden></div>
-        <div class="chips" id="chips"></div>
-      </section>
-
-      <div class="alerts" id="alerts"></div>
-
-      <section class="plan" aria-labelledby="ph">
-        <h2 id="ph">Planning</h2>
-        <ol class="timeline" id="timeline"></ol>
-      </section>
-
-      <section class="bake" aria-labelledby="bkh">
-        <div class="bake-head">
-          <h2 id="bkh">Cuisson</h2>
-          <span class="sum" id="bakeSum"></span>
-        </div>
-        <div class="tiles" id="tiles"></div>
-        <ul class="bake-notes" id="bakeNotes"></ul>
-      </section>
-
-      <section class="method" aria-labelledby="mh">
-        <h2 id="mh">Méthode</h2>
-        <ol id="method"></ol>
-      </section>
-
-      <p class="foot">Les doses de levure suivent un modèle de fermentation (durée × température) calé sur les tables usuelles de pizzaïolo. Ta farine, ta levure et ta pièce peuvent décaler le résultat : fie-toi d'abord à l'aspect de la pâte (volume qui a environ doublé en fin de pointage, pâtons souples et gonflés à l'enfournement).</p>
-    </div>
-  </div>
-</div>
-
-<div class="run" id="run" hidden>
-  <div class="run-in">
-    <div class="run-top">
-      <button type="button" class="btn ghost" id="runClose">← Réglages</button>
-      <span class="run-clock" id="runClock"></span>
-    </div>
-    <div class="run-bar" id="runBar" aria-hidden="true"></div>
-    <section class="run-card" id="runCard">
-      <span class="run-kind" id="runKind"></span>
-      <h2 class="run-title" id="runTitle"></h2>
-      <p class="run-when" id="runWhen"></p>
-      <div id="runBody"></div>
-      <div class="run-foot">
-        <button type="button" class="btn ghost" id="runPrev" aria-label="Étape précédente">←</button>
-        <button type="button" class="btn wide" id="runNext">Terminé</button>
-      </div>
+        <button class="btn" type="submit">Ajouter</button>
+      </form>
+      <div id="cs-foot"></div>
     </section>
-    <p class="run-next" id="runAfter"></p>
-  </div>
+
+    <section id="v-recettes" hidden>
+      <div class="bar" style="margin-top:4px">
+        <input class="field" id="rq" type="search" placeholder="Recette ou ingrédient" aria-label="Chercher une recette" style="flex:1;width:auto;min-width:0">
+        <button class="btn primary" data-act="newRecipe">Nouvelle</button>
+      </div>
+      <div class="filters" id="rfilters"></div>
+      <div id="rlist"></div>
+    </section>
+
+    <section id="v-reperes" hidden></section>
+  </main>
 </div>
 
-<script src="notifs.js"></script>
+<nav class="barre-bas" aria-label="Sections"><div class="barre-bas-in">
+<a href="index.html#semaine" data-view="semaine" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><span>Semaine</span></a>
+<a href="index.html#recettes" data-view="recettes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h10.5A3.5 3.5 0 0 1 19 8v12H8.5A3.5 3.5 0 0 1 5 16.5z"/><path d="M5 16.5A3.5 3.5 0 0 1 8.5 13H19"/></svg><span>Recettes</span></a>
+<a href="index.html#courses" data-view="courses"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8h15l-1.4 11.2a1.5 1.5 0 0 1-1.5 1.3H7.4a1.5 1.5 0 0 1-1.5-1.3z"/><path d="M8.5 8a3.5 3.5 0 0 1 7 0"/></svg><span>Courses</span></a>
+<a href="pizza.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8 7.2c5.3-3 11.1-3 16.4 0L12 21.2z"/><path d="M5.6 10.3c4.2-2 8.6-2 12.8 0"/><circle cx="10.4" cy="13.4" r="1"/><circle cx="13.9" cy="16.2" r="1"/></svg><span>Pizza</span></a>
+<a href="robot.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10.5h14v4.5a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5z"/><path d="M3.5 10.5h17M9 7.5c0-1.5 1-1.5 1-3M14 7.5c0-1.5 1-1.5 1-3"/></svg><span>Robot</span></a>
+</div></nav>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" hidden></div>
+<div class="cuisiner" id="cuisiner" role="dialog" aria-modal="true" aria-label="Mode cuisine" hidden></div>
+<div class="toast" id="toast" role="status" hidden></div>
 <script>
-(function(){
-  const TYPES = {
-    napo:{label:"Napolitaine", hyd:62, salt:2.8, oil:0, ball:250, min:180, max:320, stepG:10, knead:20,
-          unit:["pizza","pizzas"], ballHint:"250 g ≈ pizza de 30–33 cm.", oven:"Pummarola", preheat:20},
-    rom:{label:"Romaine fine", hyd:58, salt:2.5, oil:4, ball:180, min:140, max:260, stepG:10, knead:15,
-          unit:["pizza","pizzas"], ballHint:"180 g ≈ pizza fine de 30 cm, étalée au rouleau.", oven:"four", preheat:45},
-    teg:{label:"Teglia", hyd:78, salt:2.5, oil:2.5, ball:700, min:400, max:1200, stepG:50, knead:25,
-          unit:["plaque","plaques"], ballHint:"700 g ≈ plaque de 30 × 40 cm.", oven:"four", preheat:45}
+(() => {
+/* ================= constantes ================= */
+const ENS = {
+  GF: {nom: "Grand Frais", note: "Fruits, légumes, viande et poisson frais."},
+  LEC: {nom: "Drive Leclerc", note: "Épicerie, crèmerie, charcuterie emballée. Bio si +30 % max, sinon marques nationales."},
+  PIC: {nom: "Picard", note: "Tous les surgelés, une semaine sur deux."},
+  PLA: {nom: "Placard", note: "Coche ce que tu as déjà ; le reste passe sur le drive."},
+  RES: {nom: "Restes"},
+  NON: {nom: ""}
+};
+const ORDRE = ["GF", "LEC", "PIC", "PLA"];
+const JOURS = ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."];
+const MOIS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+const MOM = {midi: "Midi", soir: "Dîner"};
+const APPAREILS = ["Air-fryer", "Cook Expert", "Pummarola", "Cuiseur à riz", "Four", "Plaques"];
+const FROMAGES_NON = ["pecorino", "chèvre", "chevre", "brebis", "roquefort", "gorgonzola", "bleu d'", "camembert", "brie", "feta", "féta", "ricotta", "mascarpone", "boursin", "fromage frais", "reblochon", "munster", "burrata"];
+const FILS_NON = ["chou de bruxelles", "choux de bruxelles", "cœur de palmier", "cœurs de palmier", "coeur de palmier", "coeurs de palmier"];
+
+/* ================= état ================= */
+const st = {db: null, dbTried: false, canWrite: true, recettes: {}, semaines: {}, drive: null,
+  reglages: {gardeRef: "2026-11-06", periodeJours: 14}, courses: null, reperes: null, equipement: {}, loaded: {r: false, s: false, c: false, d: false}};
+const ui = {view: "semaine", week: null, periode: "7", hideDone: false, rq: "", rCourt: false, rApp: null, rSrc: false};
+try { const s = JSON.parse(localStorage.getItem("cuisine-ui") || "{}"); if (s.periode) ui.periode = s.periode; if (s.hideDone) ui.hideDone = true; } catch (e) {}
+const saveUi = () => { try { localStorage.setItem("cuisine-ui", JSON.stringify({periode: ui.periode, hideDone: ui.hideDone})); } catch (e) {} };
+
+/* ================= utilitaires ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const pad = n => String(n).padStart(2, "0");
+const iso = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+const parse = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const today = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+const weekStartOf = d => addDays(d, -((d.getDay() + 2) % 7)); // semaine du vendredi au jeudi
+const fmtDay = d => JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()];
+const daysBetween = (a, b) => Math.round((b - a) / 864e5);
+const avecFils = ws => { const n = daysBetween(parse(st.reglages.gardeRef || "2026-11-06"), parse(ws)); const p = st.reglages.periodeJours || 14; return ((n % p) + p) % p === 0; };
+const couvert = (i, mom) => (i === 0 && mom === "soir") || i === 1 || i === 2 || (i >= 3 && mom === "soir") || (i === 5 && mom === "midi");
+const fmtMin = m => { if (!m && m !== 0) return ""; if (m < 60) return m + " min"; const h = Math.floor(m / 60), r = m % 60; return h + " h" + (r ? " " + pad(r) : ""); };
+const fmtHeure = t => t ? t.replace(":", " h ") : "";
+const num = x => { const r = Math.round(x * 10) / 10; return String(Number.isInteger(r) ? r : r.toFixed(1)).replace(".", ","); };
+function fmtQ(q, u) {
+  if (q == null || q === "") return u || "";
+  if (u === "g" && q >= 1000) return num(q / 1000) + " kg";
+  if (u === "ml" && q >= 1000) return num(q / 1000) + " L";
+  return num(q) + (u ? " " + u : "");
+}
+const norm = s => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+function alertes(r) {
+  const out = [], txt = (r.ingredients || []).map(i => i.n.toLowerCase()).join(" | ") + " " + (r.nom || "").toLowerCase();
+  const f = FROMAGES_NON.filter(w => txt.includes(w)); if (f.length) out.push("Fromage à éviter : " + f[0]);
+  const g = FILS_NON.filter(w => txt.includes(w)); if (g.length) out.push("Ton fils n'en mange pas : " + g[0]);
+  return out;
+}
+let toastT;
+function toast(m) { const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 2600); }
+
+/* ================= écriture ================= */
+const queues = {};
+function write(path, data) {
+  if (!st.db) { toast("Enregistrement impossible : données indisponibles dans cette vue."); return Promise.resolve(); }
+  if (!st.canWrite) { toast("Cette page est en lecture seule pour toi."); return Promise.resolve(); }
+  const run = () => st.db.doc(path).set(data).catch(e => {
+    if (e && e.code === "invalid_argument") { st.canWrite = false; toast("Enregistrement refusé : page en lecture seule."); }
+    else if (e && e.code === "unavailable") return new Promise(r => setTimeout(r, 600 + Math.random() * 600)).then(() => st.db.doc(path).set(data));
+    else toast("Enregistrement impossible, réessaie dans un instant.");
+  });
+  queues[path] = (queues[path] || Promise.resolve()).then(run, run);
+  return queues[path];
+}
+function del(path) { if (!st.db || !st.canWrite) return; st.db.doc(path).delete().catch(() => toast("Suppression impossible.")); }
+const saveWeek = ws => write("semaines/" + ws, st.semaines[ws]);
+let csTimer = null;
+function saveCourses(now) { clearTimeout(csTimer); const go = () => write("courses/actuel", st.courses); if (now) go(); else csTimer = setTimeout(go, 500); }
+function coursesDoc() { if (!st.courses) st.courses = {coches: {}, ajouts: [], driveQte: {}, picard: true}; st.courses.coches ||= {}; st.courses.ajouts ||= []; st.courses.driveQte ||= {}; if (st.courses.picard == null) st.courses.picard = true; return st.courses; }
+
+/* ================= données dérivées ================= */
+function repasEntre(d0, d1) {
+  const out = [];
+  for (const [ws, w] of Object.entries(st.semaines)) for (const [k, m] of Object.entries(w.repas || {})) {
+    const [ds, mom] = k.split("_"); const d = parse(ds);
+    if (d >= d0 && d <= d1) out.push({ws, k, d, mom, m});
+  }
+  return out.sort((a, b) => a.d - b.d || (a.mom === "midi" ? -1 : 1));
+}
+function periodeRange() {
+  const t = today();
+  if (ui.periode === "3") return [t, addDays(t, 2)];
+  if (ui.periode === "14") return [t, addDays(t, 13)];
+  if (ui.periode.startsWith("w:")) { const s = parse(ui.periode.slice(2)); return [s, addDays(s, 6)]; }
+  return [t, addDays(t, 6)];
+}
+function listeCourses() {
+  const [d0, d1] = periodeRange(), meals = repasEntre(d0, d1), c = coursesDoc();
+  const agg = {};
+  for (const x of meals) {
+    const r = st.recettes[x.m.r]; if (!r) continue;
+    const f = (x.m.p || r.portions) / (r.portions || 1);
+    for (const ing of r.ingredients || []) {
+      if (ing.e === "RES" || ing.e === "NON") continue;
+      let e = ing.e; const surg = e === "PIC"; if (surg && !c.picard) e = "LEC";
+      const key = norm(ing.n) + "|" + (ing.u || "") + "|" + e;
+      const a = agg[key] || (agg[key] = {key: "i:" + key, n: ing.n, u: ing.u, e, q: 0, hasQ: false, pour: [], surg});
+      if (typeof ing.q === "number") { a.q += ing.q * f; a.hasQ = true; }
+      if (!a.pour.includes(r.nom)) a.pour.push(r.nom);
+    }
+  }
+  const items = Object.values(agg);
+  for (const a of c.ajouts) items.push({key: "a:" + a.id, n: a.n, e: a.e, q: null, pour: ["Ajout"], ajout: a.id});
+  return {meals, items};
+}
+function produitsQte(p) { const c = coursesDoc(); const v = c.driveQte[p.id]; return v == null ? (p.statut === "Base" ? p.qte : 0) : v; }
+
+/* ================= rendu : semaine ================= */
+function prochainRepas() {
+  // Le prochain repas planifié à partir de maintenant : « Ce soir », « Demain midi »…
+  const now = new Date(), t = today();
+  const liste = repasEntre(t, addDays(t, 7));
+  for (const x of liste) {
+    const fin = new Date(x.d); fin.setHours(x.mom === "midi" ? 14 : 21, 30, 0, 0);
+    if (fin > now) return x;
+  }
+  return null;
+}
+function quandRepas(x) {
+  const n = daysBetween(today(), x.d);
+  const mom = x.mom === "midi" ? "midi" : "soir";
+  if (n === 0) return x.mom === "midi" ? "Ce midi" : "Ce soir";
+  if (n === 1) return "Demain " + mom;
+  return JOURS[x.d.getDay()].replace(".", "") + " " + x.d.getDate() + ", " + (x.mom === "midi" ? "midi" : "dîner");
+}
+function lienPizza(x, r) {
+  const q = new URLSearchParams({n: String(x.m.p || r.portions || 2), plat: r.nom});
+  if (x.m.lancer) { const [h, mi] = x.m.lancer.split(":").map(Number); const c = new Date(2000, 0, 1, h, mi + 25); q.set("cuisson", pad(c.getHours()) + ":" + pad(c.getMinutes())); }
+  return "pizza.html?" + q.toString();
+}
+function plaqueHtml() {
+  const x = prochainRepas(); if (!x) return "";
+  const r = x.m.r ? st.recettes[x.m.r] : null;
+  const nom = r ? r.nom : (x.m.libre || "Repas");
+  const infos = r ? [fmtMin(r.actif) + " actives", r.appareils?.length ? r.appareils.join(", ") : ""].filter(Boolean).join(", ") : "";
+  const quand = quandRepas(x) + (x.m.lancer ? ", lancer à " + fmtHeure(x.m.lancer) : "");
+  const al = r ? alertes(r).map(a => `<span class="alert">${esc(a)}</span>`).join(" ") : "";
+  let act = "";
+  if (r) {
+    act += `<button class="btn" data-act="cuisiner" data-id="${esc(x.m.r)}" data-p="${x.m.p || r.portions}">Cuisiner pas à pas</button>`;
+    act += `<button class="btn ghost" data-act="openRecipe" data-id="${esc(x.m.r)}">Recette</button>`;
+    if (r.categorie === "Pizza") act += `<a class="btn ghost" href="${esc(lienPizza(x, r))}">Planifier la pâte</a>`;
+  }
+  return `<section class="ce-soir plaque" aria-label="Prochain repas"><div class="quand">${esc(quand)}</div>
+    <div class="plat">${esc(nom)}</div>${infos ? `<div class="infos">${esc(infos)}</div>` : ""}
+    ${x.m.note ? `<div class="note">${esc(x.m.note)}</div>` : ""}${al}
+    ${act ? `<div class="actions">${act}</div>` : ""}</section>`;
+}
+function renderSemaine() {
+  const el = $("#v-semaine");
+  if (!ui.week) ui.week = iso(weekStartOf(today()));
+  const ws = ui.week, s = parse(ws), avec = avecFils(ws), w = st.semaines[ws] || {debut: ws, repas: {}};
+  const t = today(), repas = w.repas || {};
+  let nbCouv = 0, nbPlan = 0;
+  let html = (rappels.etat === "a-demander" ? `<div class="banner"><span class="grow">Reçois une notification à l'heure de lancer chaque dîner, avec ce qu'il faut sortir du congélateur.</span><button class="btn primary" data-act="rappelsOn">Activer les rappels</button></div>` : "")
+    + plaqueHtml();
+  html += `<div class="wk-nav">
+    <button class="btn icon" data-act="weekPrev" aria-label="Semaine précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
+    <div class="wk-title"><span class="garde ${avec ? "avec" : ""}">${avec ? "Semaine avec ton fils" : "Semaine seul"}</span>
+      <h2>Du ${fmtDay(s)} au ${fmtDay(addDays(s, 6))}</h2></div>
+    <button class="btn icon" data-act="weekNext" aria-label="Semaine suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></button></div>`;
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    const d = addDays(s, i), ds = iso(d); let slots = "";
+    for (const mom of ["midi", "soir"]) {
+      const key = ds + "_" + mom, m = repas[key], cv = avec && couvert(i, mom);
+      if (cv) nbCouv++;
+      if (m) { nbPlan++; slots += mealCard(key, mom, m); }
+      else if (cv) slots += `<button class="meal todo" data-act="editMeal" data-k="${key}"><span class="mom">${MOM[mom]}</span><span class="nm">À planifier</span></button>`;
+      else slots += `<button class="meal mini" data-act="editMeal" data-k="${key}">+ ${MOM[mom]}</button>`;
+    }
+    const isT = +d === +t, past = d < t;
+    let tag = isT ? "Aujourd'hui" : "";
+    if (avec && i === 0) tag = tag ? tag + ", arrivée de ton fils" : "Arrivée de ton fils, 17 h–18 h 30";
+    days.push(`<div class="jour ${isT ? "today" : ""} ${past ? "past" : ""}"><div class="jour-date"><span class="js">${JOURS[d.getDay()]}</span><span class="jn">${d.getDate()}</span></div>
+      <div class="jour-repas">${tag ? `<span class="jour-tag">${tag}</span>` : ""}${slots}</div></div>`);
+  }
+  const sum = avec ? `${Math.min(nbPlan, 99)} repas planifiés sur ${nbCouv} à couvrir` : (nbPlan ? `${nbPlan} repas planifiés` : "Aucun repas planifié pour l'instant.");
+  html += `<p class="wk-sum">${sum}</p><div class="jours">${days.join("")}</div>`;
+  const cibles = [];
+  for (let k = 1; k <= 8; k++) { const c = iso(addDays(s, 7 * k)); cibles.push(`<option value="${c}">${fmtDay(parse(c))}${avecFils(c) ? ", avec ton fils" : ""}</option>`); }
+  html += `<div class="wk-actions">
+    <div class="row"><button class="btn" data-act="goCourses">Courses de cette semaine</button>${iso(weekStartOf(t)) !== ws ? `<button class="btn ghost" data-act="toToday">Revenir à cette semaine</button>` : ""}</div>
+    <div><label class="lab" for="copyTo">Recopier cette semaine vers</label>
+    <div class="row"><select class="field" id="copyTo">${cibles.join("")}</select><button class="btn" data-act="copyWeek"${nbPlan ? "" : " disabled"}>Recopier</button></div></div>
+    ${nbPlan ? `<div><button class="btn danger" data-act="askClear">Vider la semaine</button></div>` : ""}
+    <div id="clearZone"></div></div>`;
+  el.innerHTML = html;
+}
+function mealCard(key, mom, m) {
+  const r = m.r ? st.recettes[m.r] : null;
+  const nom = r ? r.nom : (m.libre || "Recette introuvable");
+  const bits = [];
+  if (r) { bits.push(fmtMin(r.actif) + " actives"); if (r.appareils?.length) bits.push(r.appareils.join(", ")); }
+  if (m.p && r && m.p !== 2) bits.push(m.p + " " + (r.unite || "portions"));
+  const al = r ? alertes(r).map(a => `<span class="alert">${esc(a)}</span>`).join(" ") : "";
+  return `<button class="meal" data-act="editMeal" data-k="${key}"><span class="mom">${MOM[mom]}${m.lancer ? `, <span class="lancer">lancer à ${fmtHeure(m.lancer)}</span>` : ""}</span>
+    <span class="nm">${esc(nom)}</span>${bits.length ? `<span class="mt">${esc(bits.join(", "))}</span>` : ""}${m.note ? `<span class="nt">${esc(m.note)}</span>` : ""}${al}</button>`;
+}
+
+/* ================= rendu : courses ================= */
+function renderCourses() {
+  const c = coursesDoc();
+  // périodes
+  const t = today(), ws0 = weekStartOf(t);
+  const weeks = Object.keys(st.semaines).filter(w => parse(w) >= ws0 && Object.keys(st.semaines[w].repas || {}).length).sort();
+  const opts = [["3", "3 prochains jours"], ["7", "7 prochains jours"], ["14", "14 prochains jours"]]
+    .concat(weeks.map(w => ["w:" + w, "Semaine du " + fmtDay(parse(w))]));
+  if (!opts.some(o => o[0] === ui.periode)) ui.periode = "7";
+  const {meals, items} = listeCourses();
+  const [d0, d1] = periodeRange();
+  $("#cs-top").innerHTML = `<div class="period" role="group" aria-label="Période">${opts.map(o => `<button class="chip" data-act="periode" data-v="${o[0]}" aria-pressed="${ui.periode === o[0]}">${esc(o[1])}</button>`).join("")}</div>
+    <p class="cs-sum">${meals.length ? `${meals.length} repas du ${fmtDay(d0)} au ${fmtDay(d1)} : ${esc(meals.map(m => (st.recettes[m.m.r]?.nom || m.m.libre || "?")).filter((v, i, a) => a.indexOf(v) === i).join(", "))}.` : "Aucun repas planifié sur cette période. Les produits habituels du drive restent listés."}</p>
+    <div class="bar"><button class="chip" data-act="picard" aria-pressed="${c.picard}">Passage Picard cette fois</button>
+    <button class="chip" data-act="hideDone" aria-pressed="${ui.hideDone}">Masquer ce qui est coché</button></div>`;
+  let html = "";
+  for (const e of ORDRE) {
+    if (e === "PIC" && !c.picard) continue;
+    const its = items.filter(x => x.e === e).sort((a, b) => a.n.localeCompare(b.n, "fr"));
+    const prods = e === "LEC" ? (st.drive?.produits || []) : [];
+    if (!its.length && !prods.length) continue;
+    const done = its.filter(x => c.coches[x.key]).length + prods.filter(p => produitsQte(p) > 0 && c.coches["p:" + p.id]).length;
+    const total = its.length + prods.filter(p => produitsQte(p) > 0).length;
+    html += `<section class="store"><div class="store-h"><span class="sw" style="background:var(--${e.toLowerCase()})"></span><h3>${ENS[e].nom}</h3><span class="cnt">${done} / ${total}</span></div>`;
+    let note = ENS[e].note;
+    if (e === "LEC" && !c.picard) note += " Semaine sans Picard : les surgelés sont ici.";
+    html += `<div class="store-note">${esc(note)}</div>`;
+    if (e === "LEC" && its.length) html += `<div class="sub-h">Pour les repas</div>`;
+    for (const x of its) {
+      const dn = !!c.coches[x.key]; if (dn && ui.hideDone) continue;
+      const q = x.hasQ ? fmtQ(x.q, x.u) : "";
+      html += `<label class="it ${dn ? "done" : ""}"><input type="checkbox" data-act="check" data-key="${esc(x.key)}" ${dn ? "checked" : ""}>
+        <span class="tx"><b>${esc(x.n)}${x.surg && e === "LEC" ? " (surgelé)" : ""}</b><small>${esc(x.pour.join(" · "))}</small></span><span class="q">${esc(q)}</span></label>`;
+    }
+    if (e === "LEC" && prods.length) html += renderProduits(prods);
+    html += `</section>`;
+  }
+  if (!html) html = `<div class="empty">Rien à acheter pour l'instant. Planifie des repas dans l'onglet Semaine, ou ajoute un article ci-dessous.</div>`;
+  $("#cs-list").innerHTML = html;
+  $("#cs-foot").innerHTML = `<div class="bar" style="margin-top:20px"><button class="btn primary" data-act="copyClaude">Copier pour Claude</button>
+    <button class="btn" data-act="copyGF">Copier la liste Grand Frais</button><button class="btn ghost danger" data-act="askReset">Nouvelle liste</button></div>
+    <p class="muted" style="font-size:13.5px;margin-top:8px">« Copier pour Claude » prépare un message à coller dans la conversation : je remplis alors ton panier Leclerc Drive.</p><div id="resetZone"></div>`;
+}
+function renderProduits(prods) {
+  const c = coursesDoc();
+  const row = p => {
+    const q = produitsQte(p), dn = q > 0 && !!c.coches["p:" + p.id];
+    if (dn && ui.hideDone) return "";
+    return `<div class="prod ${q ? "" : "off"} ${dn ? "done" : ""}">
+      <input type="checkbox" data-act="check" data-key="p:${p.id}" ${dn ? "checked" : ""} ${q ? "" : "disabled"} aria-label="${esc(p.nom)} pris">
+      <span class="tx"><b>${esc(p.nom)}</b><small>${esc(p.format)} · ${num(p.prix)} €${p.note ? " · " + esc(p.note) : ""}</small></span>
+      <span class="qty"><button data-act="pq" data-id="${p.id}" data-d="-1" aria-label="Moins">−</button><span>${q}</span><button data-act="pq" data-id="${p.id}" data-d="1" aria-label="Plus">+</button></span></div>`;
   };
-  const FLOURS = {
-    "00":{label:"Farine 00", dh:{napo:0,rom:0,teg:0}, maxH:24},
-    "caputo":{label:"Caputo Pizzeria", dh:{napo:0,rom:1,teg:-3}, maxH:36},
-    "t45":{label:"T45", dh:{napo:-2,rom:-2,teg:-4}, maxH:18},
-    "t55":{label:"T55", dh:{napo:-3,rom:-3,teg:-7}, maxH:12}
-  };
-  const YEASTS = {
-    fresh:{label:"Levure fraîche", f:1, note:"émiettée"},
-    inst:{label:"Levure sèche instantanée", f:1/3, note:"directement dans la farine"},
-    act:{label:"Levure sèche active", f:0.4, note:"réhydratée 15 min dans 30 g d'eau (moitié froide, moitié chaude du robinet)"}
-  };
-  const KEY = "pate-pizza-v1", SKEY = "pate-pizza-session";
-  const $ = id => document.getElementById(id);
-  const pad = n => String(n).padStart(2,"0");
-  const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-  const state = {type:"napo", flour:"00", yeast:"fresh", temp:20, hours:7.5, count:4, knead:"hand", oven:"pumm", support:"pierre", tmax:275, ball:{napo:250,rom:180,teg:700}, bake:"19:00", mode:"plan"};
-  let bakeDate = ymd(new Date());
+  const base = prods.filter(p => p.statut === "Base"), autres = prods.filter(p => p.statut !== "Base");
+  const tot = prods.reduce((s, p) => s + produitsQte(p) * p.prix, 0);
+  const nAutres = autres.filter(p => produitsQte(p) > 0).length;
+  return `<div class="sub-h">Drive de base</div>${base.map(row).join("")}
+    <details class="more" ${nAutres ? "open" : ""}><summary>Autres produits habituels (${autres.length})${nAutres ? " · " + nAutres + " choisis" : ""}</summary>${autres.map(row).join("")}</details>
+    <div class="total"><span>Produits habituels estimés</span><b>${num(tot)} €</b></div>`;
+}
 
-  try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); if(s) Object.assign(state, s, {ball:Object.assign(state.ball, s.ball||{})}); }catch(e){}
-  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+/* ================= rendu : recettes ================= */
+function renderRecettes() {
+  const all = Object.entries(st.recettes);
+  const apps = APPAREILS.filter(a => all.some(([, r]) => (r.appareils || []).includes(a)));
+  $("#rfilters").innerHTML = `<button class="chip" data-act="rCourt" aria-pressed="${ui.rCourt}">20 min actives max</button>
+    <button class="chip" data-act="rSrc" aria-pressed="${ui.rSrc}">Fiches du carnet</button>
+    ${apps.map(a => `<button class="chip" data-act="rApp" data-v="${esc(a)}" aria-pressed="${ui.rApp === a}">${esc(a)}</button>`).join("")}`;
+  const q = norm(ui.rq);
+  const list = all.filter(([, r]) => (!ui.rCourt || r.actif <= 20) && (!ui.rApp || (r.appareils || []).includes(ui.rApp)) && (!ui.rSrc || r.source === "carnet")
+    && (!q || norm(r.nom + " " + r.categorie + " " + (r.ingredients || []).map(i => i.n).join(" ")).includes(q)))
+    .sort((a, b) => a[1].nom.localeCompare(b[1].nom, "fr"));
+  if (!all.length) { $("#rlist").innerHTML = `<div class="empty">${st.loaded.r ? "Aucune recette encore. Ajoute la première avec « Nouvelle recette »." : "Chargement des recettes…"}</div>`; return; }
+  if (!list.length) { $("#rlist").innerHTML = `<div class="empty">Aucune recette ne correspond à ces filtres.</div>`; return; }
+  $("#rlist").innerHTML = `<div class="rlist">${list.map(([id, r]) => {
+    const al = alertes(r).map(a => `<span class="alert">${esc(a)}</span>`).join(" ");
+    return `<button class="rcard" data-act="openRecipe" data-id="${esc(id)}"><span class="src">${r.num ? "Fiche " + esc(r.num) + " · " : ""}${esc(r.categorie || "")}</span>
+      <span class="nm">${esc(r.nom)}</span><span class="mt">${fmtMin(r.actif)} actives · ${fmtMin(r.total)} en tout · ${r.portions} ${esc(r.unite || "portions")}</span>
+      ${r.appareils?.length ? `<span class="mt muted">${esc(r.appareils.join(", "))}</span>` : ""}${al}</button>`;
+  }).join("")}</div>`;
+}
 
-  // session de rappels en cours : {mode, bakeAt (ms), count}
-  let session = null;
-  try{ session = JSON.parse(localStorage.getItem(SKEY)||"null"); }catch(e){}
-  function setSession(s){ session = s; try{ s ? localStorage.setItem(SKEY, JSON.stringify(s)) : localStorage.removeItem(SKEY); }catch(e){} }
+/* ================= rendu : repères ================= */
+const lignesToText = l => (l || []).map(x => x.t ? x.t + " : " + x.txt : x.txt).join("\n");
+const textToLignes = t => t.split("\n").map(x => x.trim()).filter(Boolean).map(x => { const k = x.indexOf(" : "); return k > 0 && k < 50 ? {t: x.slice(0, k).trim(), txt: x.slice(k + 3).trim()} : {t: "", txt: x}; });
+const rulesHtml = l => `<ul class="rules card">${(l || []).map(x => `<li>${x.t ? `<b>${esc(x.t)}</b> : ` : ""}${esc(x.txt)}</li>`).join("")}</ul>`;
+function renderReperes() {
+  const el = $("#v-reperes"), rp = st.reperes || {};
+  if (!st.reperes) { el.innerHTML = `<div class="empty">Chargement…</div>`; return; }
+  // prochaines semaines avec ton fils
+  const t = today(), ws0 = weekStartOf(t), gardes = [];
+  for (let k = 0; k < 12 && gardes.length < 4; k++) { const ws = iso(addDays(ws0, 7 * k)); if (avecFils(ws) && addDays(parse(ws), 7) >= t) gardes.push(ws); }
+  const gRows = gardes.map(ws => { const d = parse(ws); return `<tr><td>Du ${fmtDay(d)} au ${fmtDay(addDays(d, 7))}</td><td>${fmtDay(addDays(d, -2))}</td></tr>`; }).join("");
+  const eq = Object.entries(st.equipement).sort((a, b) => (a[1].ordre || 99) - (b[1].ordre || 99));
+  const todo = rp.aCompleter || [];
+  el.innerHTML = `
+    <section class="rp"><div class="rp-h"><h2>Semaines avec ton fils</h2></div>
+      <div class="card"><table class="tbl"><thead><tr><th>Semaine</th><th>Menus prêts le</th></tr></thead><tbody>${gRows}</tbody></table></div>
+      <p class="muted" style="font-size:14px;margin:8px 0 0">Calculé depuis la garde du ${fmtDay(parse(st.reglages.gardeRef))}, une semaine sur deux. Les menus arrivent ici le mercredi d'avant, avec les rappels de lancement.</p></section>
+    <section class="rp"><div class="rp-h"><h2>Règles des menus</h2><button class="btn ghost" data-act="rpEdit" data-k="regles">Modifier</button></div>${rulesHtml(rp.regles)}</section>
+    <section class="rp"><div class="rp-h"><h2>Courses</h2><button class="btn ghost" data-act="rpEdit" data-k="courses">Modifier</button></div>
+      <div class="card" style="margin-bottom:10px"><table class="tbl"><thead><tr><th>Enseigne</th><th>Ce que j'y achète</th><th>Rythme</th></tr></thead><tbody>${(rp.enseignes || []).map(e => `<tr><td><b>${esc(e.nom)}</b></td><td>${esc(e.quoi)}</td><td>${esc(e.rythme)}</td></tr>`).join("")}</tbody></table></div>
+      ${rulesHtml(rp.courses)}</section>
+    <section class="rp"><div class="rp-h"><h2>Équipement</h2><button class="btn ghost" data-act="eqNew">Ajouter</button></div>
+      <div class="equip">${eq.map(([id, e]) => `<button class="eq" data-act="eqOpen" data-id="${esc(id)}"><span class="nm">${esc(e.nom)}</span><span class="mt">${esc(e.modele || "Modèle à identifier")}${e.emplacement ? " · " + esc(e.emplacement) : ""}</span>${e.usages ? `<span class="mt muted">${esc(e.usages)}</span>` : ""}${e.ref || e.achat ? `<span class="mt muted">${esc([e.ref && "Réf. " + e.ref, e.achat].filter(Boolean).join(" · "))}</span>` : `<span class="mq">Réf. et garantie à compléter</span>`}</button>`).join("")}</div>
+      <div class="card" style="margin-top:10px"><table class="tbl"><thead><tr><th>Envie</th><th>Appareil à privilégier</th></tr></thead><tbody>${(rp.usages || []).map(u => `<tr><td>${esc(u.envie)}</td><td>${esc(u.appareil)}</td></tr>`).join("")}</tbody></table></div></section>
+    ${todo.length ? `<section class="rp"><div class="rp-h"><h2>À compléter</h2></div><ul class="todo-l card">${todo.map((x, i) => `<li><label class="${x.fait ? "done" : ""}"><input type="checkbox" data-act="todo" data-i="${i}" ${x.fait ? "checked" : ""}><span>${esc(x.txt)}</span></label></li>`).join("")}</ul></section>` : ""}
+    <section class="rp"><div class="rp-h"><h2>Données</h2></div>
+      <div class="card" style="padding:14px 16px"><p class="sync-l" style="margin:0 0 10px">${esc(texteSync())}</p>
+      <div class="row"><button class="btn" data-act="actualiser">Actualiser</button><button class="btn" data-act="copyModifs">Copier mes modifications pour Claude</button></div>
+      <p class="muted" style="font-size:14px;margin:10px 0 0">Claude prépare les menus et les recettes, l'appli les récupère à l'ouverture. Ce que tu modifies ici reste sur le téléphone : copie-le dans la conversation pour que Claude en tienne compte.</p></div></section>`;
+}
+function openRpEdit(k) {
+  const rp = st.reperes || {}, lab = k === "regles" ? "Règles des menus" : "Règles de courses";
+  openSheet(`<span class="eyebrow">Modifier</span><h2>${lab}</h2>
+    <div class="sec"><label class="lab" for="rp-txt">Une règle par ligne, « Titre : texte »</label><textarea class="field" id="rp-txt" style="min-height:320px;font-size:15px">${esc(lignesToText(rp[k]))}</textarea>
+    <p class="muted" style="font-size:13px;margin:6px 0 0">La préparation automatique des menus du mercredi lit ces règles : c'est cette version qui fait foi.</p></div>
+    <div class="foot"><button class="btn primary" data-act="rpSave">Enregistrer</button><span class="grow"></span><button class="btn ghost" data-act="close">Annuler</button></div>`, {kind: "rp", k});
+}
+const EQF = [["nom", "Appareil"], ["modele", "Marque / modèle"], ["emplacement", "Emplacement"], ["usages", "Usages"], ["ref", "Référence exacte"], ["achat", "Achat · garantie"]];
+function openEq(id) {
+  const e = id ? st.equipement[id] : {};
+  openSheet(`<span class="eyebrow">${id ? "Équipement" : "Nouvel appareil"}</span><h2>${esc(e.nom || "Nouvel appareil")}</h2>
+    <form id="eqform" autocomplete="off">${EQF.map(([k, l]) => `<div class="sec"><label class="lab" for="eq-${k}">${l}</label><input class="field" id="eq-${k}" value="${esc(e[k] || "")}"${k === "nom" ? " required" : ""}></div>`).join("")}
+    <div class="foot"><button class="btn primary" type="submit">Enregistrer</button>${id ? `<button class="btn danger" type="button" data-act="eqDel">Retirer</button>` : ""}<span class="grow"></span><button class="btn ghost" type="button" data-act="close">Annuler</button></div></form>`, {kind: "eq", id});
+}
+function saveEq() {
+  const s = sheet, d = {}; for (const [k] of EQF) d[k] = $("#eq-" + k).value.trim();
+  if (!d.nom) { toast("Donne un nom à l'appareil."); return; }
+  let id = s.id; if (!id) { const base = norm(d.nom).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "appareil"; id = base; let k = 2; while (st.equipement[id]) id = base + "-" + k++; d.ordre = Object.keys(st.equipement).length + 1; }
+  else d.ordre = st.equipement[id].ordre;
+  st.equipement[id] = d; write("equipement/" + id, d); closeSheet(); render(); toast("Enregistré");
+}
 
-  const fr = new Intl.NumberFormat("fr-FR",{maximumFractionDigits:2});
-  function g(x){
-    if(x>=10) return Math.round(x).toLocaleString("fr-FR")+" g";
-    if(x>=1) return (Math.round(x*10)/10).toLocaleString("fr-FR")+" g";
-    return (Math.round(x*100)/100).toLocaleString("fr-FR")+" g";
+/* ================= feuilles ================= */
+let sheet = null;
+function openSheet(html, data) { sheet = data; const s = $("#sheet"); s.innerHTML = `<div class="grip"></div>` + html; s.hidden = false; $("#scrim").hidden = false; s.scrollTop = 0; document.body.style.overflow = "hidden"; const f = s.querySelector("[autofocus]"); if (f) f.focus(); }
+function closeSheet() { sheet = null; $("#sheet").hidden = true; $("#scrim").hidden = true; document.body.style.overflow = ""; }
+
+// --- repas ---
+function openMeal(key) {
+  const [ds, mom] = key.split("_"), d = parse(ds), ws = iso(weekStartOf(d));
+  const m = (st.semaines[ws]?.repas || {})[key] || null;
+  const data = {kind: "meal", key, ws, mom, r: m?.r || null, libre: m?.libre || "", p: m?.p || 2, lancer: m?.lancer || "", note: m?.note || "", existe: !!m, q: ""};
+  openSheet("", data); renderMealSheet();
+}
+function renderMealSheet() {
+  const s = sheet, d = parse(s.key.split("_")[0]);
+  const q = norm(s.q);
+  const rs = Object.entries(st.recettes).filter(([, r]) => !q || norm(r.nom + " " + r.categorie).includes(q)).sort((a, b) => a[1].nom.localeCompare(b[1].nom, "fr"));
+  const r = s.r ? st.recettes[s.r] : null;
+  $("#sheet").innerHTML = `<div class="grip"></div><span class="eyebrow">${fmtDay(d)} · ${MOM[s.mom]}</span><h2>${esc(r ? r.nom : (s.libre || "Choisir un plat"))}</h2>
+    <div class="sec"><h3>Recette</h3><input class="field" id="ms-q" type="search" placeholder="Filtrer les recettes" value="${esc(s.q)}" aria-label="Filtrer les recettes">
+      <div class="pick" style="margin-top:8px">${rs.map(([id, x]) => `<button data-act="mPick" data-id="${esc(id)}" aria-pressed="${s.r === id}">${esc(x.nom)}<small>${fmtMin(x.actif)} actives · ${esc((x.appareils || []).join(", "))}${alertes(x).length ? " · ⚠ " + esc(alertes(x)[0]) : ""}</small></button>`).join("") || `<span class="muted" style="padding:8px">Aucune recette</span>`}</div></div>
+    <div class="sec"><label class="lab" for="ms-libre">Ou un repas sans recette</label><input class="field" id="ms-libre" placeholder="Soirée jeux, restes, restaurant…" value="${esc(s.libre)}"></div>
+    <div class="sec grid2"><div><label class="lab">Pour</label><span class="stepper"><button data-act="mP" data-d="-1" aria-label="Moins">−</button><span>${s.p} ${esc(r?.unite === "pizzas" ? "pizzas" : "pers.")}</span><button data-act="mP" data-d="1" aria-label="Plus">+</button></span></div>
+      ${s.mom === "soir" ? `<div><label class="lab" for="ms-lancer">Lancer à</label><input class="field" id="ms-lancer" type="time" value="${esc(s.lancer)}"></div>` : "<div></div>"}</div>
+    <div class="sec"><label class="lab" for="ms-note">Note</label><input class="field" id="ms-note" placeholder="Ex. sortir le bœuf du congélateur la veille" value="${esc(s.note)}"></div>
+    ${r ? `<p style="margin-top:12px"><a class="link" href="#" data-act="openRecipe" data-id="${esc(s.r)}">Voir la recette</a></p>` : ""}
+    <div class="foot"><button class="btn primary" data-act="mSave">Enregistrer</button>${s.existe ? `<button class="btn danger" data-act="mDel">Retirer</button>` : ""}<span class="grow"></span><button class="btn ghost" data-act="close">Annuler</button></div>`;
+}
+function readMealInputs() { const s = sheet; if (!s || s.kind !== "meal") return; const g = id => $("#" + id); if (g("ms-libre")) s.libre = g("ms-libre").value.trim(); if (g("ms-note")) s.note = g("ms-note").value.trim(); if (g("ms-lancer")) s.lancer = g("ms-lancer").value; }
+function saveMeal() {
+  readMealInputs(); const s = sheet;
+  if (!s.r && !s.libre) { toast("Choisis une recette ou écris un repas."); return; }
+  const w = st.semaines[s.ws] || (st.semaines[s.ws] = {debut: s.ws, repas: {}});
+  w.repas ||= {};
+  const m = {p: s.p}; if (s.r) m.r = s.r; else m.libre = s.libre;
+  if (s.lancer) m.lancer = s.lancer; if (s.note) m.note = s.note;
+  w.repas[s.key] = m; saveWeek(s.ws); closeSheet(); render(); toast("Repas enregistré");
+}
+
+// --- recette ---
+function openRecipe(id, p) {
+  const r = st.recettes[id]; if (!r) return;
+  const data = {kind: "recipe", id, p: p || r.portions, confirm: false};
+  openSheet("", data); renderRecipeSheet();
+}
+function ingList(list, f) {
+  return `<ul class="ings">${list.map(i => `<li><span class="q">${esc(typeof i.q === "number" ? fmtQ(i.q * f, i.u) : (i.u || ""))}</span><span>${esc(i.n)}</span>${i.e && i.e !== "NON" ? `<span class="ens ${i.e}">${esc(ENS[i.e]?.nom || i.e)}</span>` : "<span></span>"}</li>`).join("")}</ul>`;
+}
+function tipHtml(line) {
+  const t = line.replace(/^>\s*/, ""), k = t.indexOf(" : ");
+  return `<div class="tip">${k > 0 && k < 60 ? `<b>${esc(t.slice(0, k))}</b> : ${esc(t.slice(k + 3))}` : esc(t)}</div>`;
+}
+// découpe les étapes en sections : "## Titre · durée" ouvre une section, "> …" est un encadré
+function sectionsOf(r) {
+  const out = []; let cur = null;
+  for (const l of r.etapes || []) {
+    if (l.startsWith("## ")) { const [t, ...d] = l.slice(3).split(" · "); cur = {titre: t.trim(), duree: d.join(" · "), items: []}; out.push(cur); }
+    else { if (!cur) { cur = {titre: "", duree: "", items: []}; out.push(cur); } cur.items.push(l); }
   }
-  function pct(x){ return (x<1? fr.format(Math.round(x*100)/100) : fr.format(Math.round(x*10)/10)) + " %"; }
-  function hLabel(h){ const hh=Math.floor(h), m=Math.round((h-hh)*60); return m? `${hh} h ${pad(m)}` : `${hh} h`; }
-  function durLabel(mins){ const tot=Math.round(mins/5)*5; const hh=Math.floor(tot/60), m=tot%60; if(!hh) return `${m} min`; return m? `${hh} h ${pad(m)}` : `${hh} h`; }
-  function clamp(x,a,b){ return Math.min(b,Math.max(a,x)); }
-  const hm = d => `${pad(d.getHours())}:${pad(d.getMinutes())}`;
-  function dayTag(d){
-    const a = new Date(d.getFullYear(), d.getMonth(), d.getDate()), n = new Date(), t = new Date(n.getFullYear(), n.getMonth(), n.getDate());
-    const diff = Math.round((a - t)/864e5);
-    if(diff===0) return "";
-    if(diff===1) return "demain";
-    if(diff===-1) return "hier";
-    return d.toLocaleDateString("fr-FR",{weekday:"short", day:"numeric"});
+  return out;
+}
+function stepsHtml(items) {
+  let html = "", buf = [], n = 0;
+  const flush = () => { if (buf.length) { html += `<ol class="steps big" start="${n - buf.length + 1}">${buf.map(x => `<li>${esc(x)}${progHtml(x)}</li>`).join("")}</ol>`; buf = []; } };
+  for (const l of items) { if (l.startsWith(">")) { flush(); html += tipHtml(l); } else { n++; buf.push(l); } }
+  flush(); return html;
+}
+function renderRecipeSheet() {
+  const s = sheet, r = st.recettes[s.id]; if (!r) { closeSheet(); return; }
+  const f = s.p / (r.portions || 1), al = alertes(r);
+  const t = today(), slots = [];
+  for (let i = 0; i < 14; i++) for (const mom of ["midi", "soir"]) { const d = addDays(t, i); slots.push(`<option value="${iso(d)}_${mom}">${fmtDay(d)} · ${MOM[mom]}</option>`); }
+  const ings = r.ingredients || [], secs = sectionsOf(r);
+  const titres = secs.map(x => x.titre);
+  const libres = ings.filter(i => !i.g || !titres.some(tt => tt === i.g));
+  const grouped = {}; ings.filter(i => i.g).forEach(i => (grouped[i.g] ||= []).push(i));
+  // groupes d'ingrédients sans section du même nom : affichés en tête sous leur titre
+  const orphelins = Object.keys(grouped).filter(g => !titres.includes(g));
+  const stepper = `<div style="margin-bottom:8px"><span class="stepper"><button data-act="rP" data-d="-1" aria-label="Moins">−</button><span>${s.p} ${esc(r.unite || "portions")}</span><button data-act="rP" data-d="1" aria-label="Plus">+</button></span></div>`;
+  let html = `<div class="grip"></div><span class="eyebrow">${r.num ? `<span class="num">Fiche ${esc(r.num)}</span>` : ""}${esc(r.categorie || "Recette")}</span><h2>${esc(r.nom)}</h2>
+    ${r.sousTitre ? `<div class="sub">${esc(r.sousTitre)}</div>` : ""}
+    <div class="meta"><span>Actif <b>${fmtMin(r.actif)}</b></span><span>Total <b>${fmtMin(r.total)}</b></span>${r.niveau ? `<span>Niveau <b>${esc(r.niveau)}</b></span>` : ""}${r.appareils?.length ? `<span>${esc(r.appareils.join(", "))}</span>` : ""}</div>
+    ${al.map(a => `<span class="alert">${esc(a)}</span>`).join(" ")}
+    <div class="cta"><button class="btn primary" data-act="cuisiner" data-id="${esc(s.id)}" data-p="${s.p}">Cuisiner pas à pas</button>${r.categorie === "Pizza" ? `<a class="btn" href="pizza.html?${new URLSearchParams({n: String(s.p), plat: r.nom})}">Planifier la pâte</a>` : ""}</div>
+    ${r.intro ? `<p class="intro">${esc(r.intro)}</p>` : (r.resume ? `<p class="intro">${esc(r.resume)}</p>` : "")}
+    ${r.blocs?.length ? `<div class="sec blocs">${r.blocs.map(b => `<div class="bloc"><b>${esc(b.t)}</b>${esc(b.txt)}</div>`).join("")}</div>` : ""}
+    ${r.retro?.length ? `<div class="sec"><h3>Rétroplanning</h3><ul class="retro">${r.retro.map(x => `<li><b>${esc(x.h)}</b>${esc(x.txt)}</li>`).join("")}</ul></div>` : ""}
+    <div class="sec"><h3>Ingrédients</h3>${stepper}
+      ${libres.length ? ingList(libres, f) : ""}
+      ${orphelins.map(g => `<p class="lab" style="margin:10px 0 4px">${esc(g)}</p>${ingList(grouped[g], f)}`).join("")}
+      ${secs.some(x => grouped[x.titre]) ? `<p class="muted" style="font-size:13.5px;margin:6px 0 0">Les autres ingrédients sont donnés étape par étape, ci-dessous.</p>` : ""}</div>`;
+  for (const x of secs) {
+    if (x.titre) html += `<div class="etape"><h3>${esc(x.titre)}</h3>${x.duree ? `<span class="dur">${esc(x.duree)}</span>` : ""}${grouped[x.titre] ? ingList(grouped[x.titre], f) : ""}${stepsHtml(x.items)}</div>`;
+    else html += `<div class="sec"><h3>Étapes</h3>${stepsHtml(x.items)}</div>`;
   }
-  const when = d => { const t = dayTag(d); return t ? `${t} à ${hm(d)}` : `à ${hm(d)}`; };
+  if (r.points?.length) html += `<div class="sec etape"><h3>Les points qui font la différence</h3><ul class="pts" style="margin-top:10px">${r.points.map(p => `<li><b>${esc(p.t)}.</b> ${esc(p.txt)}</li>`).join("")}</ul></div>`;
+  if (r.variantes?.length) html += `<div class="sec etape"><h3>Variantes</h3><ul class="pts" style="margin-top:10px">${r.variantes.map(p => `<li><b>${esc(p.t)}.</b> ${esc(p.txt)}</li>`).join("")}</ul></div>`;
+  if (r.lien) html += `<p style="margin-top:8px"><a class="link" href="${esc(r.lien)}" target="_blank" rel="noopener">Lien externe</a></p>`;
+  html += `<div class="sec etape"><label class="lab" for="rs-slot">Ajouter au planning</label><div class="row"><select class="field" id="rs-slot">${slots.join("")}</select><button class="btn" data-act="rPlan">Planifier</button></div></div>
+    <div class="foot"><button class="btn" data-act="rEdit">Modifier</button><button class="btn danger" data-act="rAskDel">Supprimer</button><span class="grow"></span><button class="btn ghost" data-act="close">Fermer</button></div>
+    ${s.confirm ? `<div class="confirm">Supprimer « ${esc(r.nom)} » ? Les repas qui l'utilisent l'afficheront comme introuvable.<button class="btn danger" data-act="rDel">Supprimer</button><button class="btn ghost" data-act="rNoDel">Garder</button></div>` : ""}`;
+  const sc = $("#sheet").scrollTop; $("#sheet").innerHTML = html; $("#sheet").scrollTop = sc;
+}
 
-  function freshPct(h,t,type){
-    let p = 0.22 * Math.pow(8/h, 1.15) * Math.pow(2, (22-t)/9);
-    if(type==="teg") p *= 0.9;
-    return clamp(p, 0.03, 3.5);
+// --- formulaire recette ---
+const ingsToText = list => { let g = null; const out = []; for (const i of list) { if ((i.g || null) !== g) { g = i.g || null; if (g) out.push("## " + g); } out.push(ingToLine(i)); } return out.join("\n"); };
+const textToIngs = txt => { let g = null; const out = []; for (const l of txt.split("\n")) { const t = l.trim(); if (!t) continue; if (t.startsWith("## ")) { g = t.slice(3).trim() || null; continue; } const i = lineToIng(t); if (i) { if (g) i.g = g; out.push(i); } } return out; };
+const ingToLine = i => [typeof i.q === "number" ? String(i.q).replace(".", ",") : "", i.u || "", i.n].filter(Boolean).join(" ") + " @" + (i.e || "LEC");
+const UNITS = ["g", "kg", "ml", "cl", "L", "l", "cm", "c. à s.", "c. à c.", "pincée", "tranches"];
+function lineToIng(line) {
+  let s = line.trim(); if (!s) return null;
+  let e = "LEC"; const m = s.match(/@\s*(GF|LEC|PIC|PLA|RES|NON)\s*$/i); if (m) { e = m[1].toUpperCase(); s = s.slice(0, m.index).trim(); }
+  let q = null, u = "";
+  const qm = s.match(/^(\d+(?:[.,]\d+)?)\s*/); if (qm) { q = parseFloat(qm[1].replace(",", ".")); s = s.slice(qm[0].length); }
+  for (const un of UNITS) { if (s.toLowerCase().startsWith(un.toLowerCase() + " ")) { u = un; s = s.slice(un.length).trim(); break; } }
+  s = s.replace(/^(de |d')/i, "");
+  return {q, u, n: s, e};
+}
+function openRecipeForm(id) {
+  const r = id ? st.recettes[id] : {nom: "", categorie: "", portions: 2, unite: "portions", actif: 15, total: 20, appareils: [], ingredients: [], etapes: [], resume: "", lien: ""};
+  openSheet(`<span class="eyebrow">${id ? "Modifier" : "Nouvelle recette"}</span><h2>${esc(id ? r.nom : "Nouvelle recette")}</h2>
+    <form id="rform" autocomplete="off">
+      <div class="sec"><label class="lab" for="rf-nom">Nom</label><input class="field" id="rf-nom" required value="${esc(r.nom)}"></div>
+      <div class="sec grid2"><div><label class="lab" for="rf-cat">Catégorie</label><input class="field" id="rf-cat" value="${esc(r.categorie)}" placeholder="Japonais, classique…"></div>
+        <div><label class="lab" for="rf-por">Pour combien</label><div class="row"><input class="field" id="rf-por" type="number" min="1" value="${r.portions}" style="max-width:80px"><input class="field" id="rf-uni" value="${esc(r.unite)}"></div></div></div>
+      <div class="sec grid2"><div><label class="lab" for="rf-act">Minutes actives</label><input class="field" id="rf-act" type="number" min="0" value="${r.actif}"></div>
+        <div><label class="lab" for="rf-tot">Minutes au total</label><input class="field" id="rf-tot" type="number" min="0" value="${r.total}"></div></div>
+      <div class="sec"><span class="lab">Appareils</span><div class="filters" style="margin-top:0">${APPAREILS.map(a => `<button type="button" class="chip" data-act="rfApp" data-v="${esc(a)}" aria-pressed="${(r.appareils || []).includes(a)}">${esc(a)}</button>`).join("")}</div></div>
+      <div class="sec"><label class="lab" for="rf-ing">Ingrédients, un par ligne</label><textarea class="field" id="rf-ing" placeholder="200 g cuisse de poulet @GF&#10;3 œufs @LEC&#10;2 c. à s. sauce soja @PLA">${esc(ingsToText(r.ingredients || []))}</textarea>
+        <p class="muted" style="font-size:13px;margin:6px 0 0">Termine chaque ligne par l'enseigne : @GF Grand Frais, @LEC drive, @PIC Picard, @PLA placard, @RES restes, @NON hors courses (eau). Sans mention : drive. Une ligne « ## Titre » regroupe les ingrédients sous l'étape du même titre.</p></div>
+      <div class="sec"><label class="lab" for="rf-eta">Étapes, une par ligne</label><p class="muted" style="font-size:13px;margin:0 0 6px">« ## Titre · durée » ouvre une étape, « > Titre : texte » ajoute un encadré.</p><textarea class="field" id="rf-eta" style="min-height:240px">${esc((r.etapes || []).join("\n"))}</textarea></div>
+      <div class="sec"><label class="lab" for="rf-res">Résumé</label><input class="field" id="rf-res" value="${esc(r.resume)}"></div>
+      <div class="sec"><label class="lab" for="rf-lien">Lien externe (facultatif)</label><input class="field" id="rf-lien" value="${esc(r.lien || "")}" placeholder="https://…"></div>
+      <div class="foot"><button class="btn primary" type="submit">Enregistrer</button><span class="grow"></span><button class="btn ghost" type="button" data-act="close">Annuler</button></div>
+    </form>`, {kind: "rform", id, apps: [...(r.appareils || [])], source: r.source || "rapide"});
+}
+function submitRecipeForm() {
+  const s = sheet, g = id => $("#" + id).value.trim();
+  const nom = g("rf-nom"); if (!nom) { toast("Donne un nom à la recette."); return; }
+  const doc = {nom, categorie: g("rf-cat"), portions: Math.max(1, parseInt(g("rf-por")) || 2), unite: g("rf-uni") || "portions",
+    actif: parseInt(g("rf-act")) || 0, total: parseInt(g("rf-tot")) || 0, appareils: s.apps,
+    ingredients: textToIngs($("#rf-ing").value), etapes: $("#rf-eta").value.split("\n").map(x => x.trim()).filter(Boolean),
+    resume: g("rf-res"), lien: g("rf-lien"), source: s.source || "rapide"};
+  let id = s.id;
+  if (id && st.recettes[id]) { const old = st.recettes[id]; for (const k of ["num", "sousTitre", "niveau", "intro", "blocs", "retro", "points", "variantes"]) if (old[k] != null) doc[k] = old[k]; }
+  if (!id) { const base = norm(nom).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "recette"; id = base; let k = 2; while (st.recettes[id]) id = base + "-" + k++; }
+  st.recettes[id] = doc; write("recettes/" + id, doc); closeSheet(); render(); toast("Recette enregistrée"); openRecipe(id);
+}
+
+/* ================= Cook Expert : réglages repérés dans les étapes ================= */
+// « EXPERT 120 °C, vitesse 1, 3 min » ou « EXPERT · 2 min 30 · vitesse 3 · 37 °C » → {tempsS, temperature, vitesse}
+const SANS_CHAUFFE = 29;
+function programmeDe(txt) {
+  const k = txt.search(/EXPERT/); if (k < 0) return null;
+  const z = txt.slice(k, k + 70);
+  const v = z.match(/vitesse\s*(\d{1,2})/i); if (!v) return null;
+  const tc = z.match(/(\d{2,3})\s*°C/);
+  const sans = /sans chauffe/i.test(z);
+  const d = z.match(/(\d+)\s*min(?:\s*(\d{1,2})(?!\s*°))?/) || null, sec = z.match(/(\d+)\s*s\b/);
+  const tempsS = d ? Number(d[1]) * 60 + (d[2] ? Number(d[2]) : 0) : sec ? Number(sec[1]) : 0;
+  if (!tempsS) return null;
+  return {tempsS, temperature: tc ? Number(tc[1]) : (sans ? SANS_CHAUFFE : SANS_CHAUFFE), vitesse: Number(v[1])};
+}
+function progHtml(txt) {
+  const p = programmeDe(txt); if (!p) return "";
+  const t = p.tempsS >= 60 ? Math.floor(p.tempsS / 60) + " min" + (p.tempsS % 60 ? " " + pad(p.tempsS % 60) : "") : p.tempsS + " s";
+  const temp = p.temperature === SANS_CHAUFFE ? "sans chauffe" : p.temperature + " °C";
+  return `<br><a class="prog" href="robot.html#programme=${p.tempsS},${p.temperature},${p.vitesse}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10.5h14v4.5a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5z"/><path d="M3.5 10.5h17"/></svg>Robot : ${t}, ${temp}, vitesse ${p.vitesse === 1 || p.vitesse === 2 ? p.vitesse + "A" : p.vitesse}</a>`;
+}
+
+/* ================= mode cuisine ================= */
+let cu = null;
+function etapesCuisine(r) {
+  // une carte par étape ; les encadrés « > » suivent l'étape qu'ils complètent
+  const out = []; let sec = "";
+  for (const l of r.etapes || []) {
+    if (l.startsWith("## ")) { sec = l.slice(3).split(" · ")[0].trim(); continue; }
+    if (l.startsWith(">")) { if (out.length) out[out.length - 1].tips.push(l); else out.push({sec, txt: "", tips: [l]}); continue; }
+    out.push({sec, txt: l, tips: []});
   }
+  return out;
+}
+function ouvrirCuisine(id, p) {
+  const r = st.recettes[id]; if (!r) return;
+  const etapes = etapesCuisine(r); if (!etapes.length) { toast("Cette recette n'a pas d'étape."); return; }
+  let i = 0;
+  try { const g = JSON.parse(localStorage.getItem("cuisine/en-cours") || "null"); if (g && g.id === id && g.i < etapes.length) i = g.i; } catch (e) {}
+  cu = {id, p: p || r.portions, i, etapes};
+  if (sheet) closeSheet();
+  $("#cuisiner").hidden = false; document.body.style.overflow = "hidden";
+  window.Natif?.garderAllume(true);
+  renderCuisine();
+}
+function fermerCuisine() {
+  if (!cu) return;
+  $("#cuisiner").hidden = true; document.body.style.overflow = ""; cu = null;
+  window.Natif?.garderAllume(false);
+}
+function renderCuisine() {
+  const r = st.recettes[cu.id], e = cu.etapes[cu.i], n = cu.etapes.length, f = cu.p / (r.portions || 1);
+  try { localStorage.setItem("cuisine/en-cours", JSON.stringify({id: cu.id, i: cu.i})); } catch (er) {}
+  const ings = (r.ingredients || []).filter(x => !e.sec || !x.g || x.g === e.sec);
+  $("#cuisiner").innerHTML = `<div class="cu-tete"><span class="nom">${esc(r.nom)}</span><button class="btn icon ghost" data-act="cuFermer" aria-label="Fermer le mode cuisine">✕</button></div>
+    <div class="cu-barre" aria-hidden="true">${cu.etapes.map((_, k) => `<span class="${k < cu.i ? "fait" : k === cu.i ? "ici" : ""}"></span>`).join("")}</div>
+    <div class="cu-corps">${e.sec ? `<div class="cu-section">${esc(e.sec)}</div>` : ""}
+      <div class="cu-num">${cu.i + 1}<small> sur ${n}</small></div>
+      ${e.txt ? `<p class="cu-texte">${esc(e.txt)}</p>${progHtml(e.txt).replace("<br>", "")}` : ""}
+      ${e.tips.map(tipHtml).join("")}
+      ${ings.length ? `<details class="cu-ings"><summary>Ingrédients${e.sec ? " de cette partie" : ""}</summary>${ingList(ings, f)}</details>` : ""}
+    </div>
+    <div class="cu-pied"><button class="btn ghost" data-act="cuPrec" ${cu.i ? "" : "disabled"} aria-label="Étape précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
+      <button class="btn primary" data-act="${cu.i < n - 1 ? "cuSuiv" : "cuFin"}">${cu.i < n - 1 ? "Étape suivante" : "C'est prêt"}</button></div>`;
+  $("#cuisiner .cu-corps").scrollTop = 0;
+}
 
-  function bakeModel(type, ovenSel, support, tmax){
-    const oven = type==="teg" ? "four" : ovenSel;
-    if(oven==="pumm"){
-      return {oven, preV:"Max", preS:"thermostat au maximum (≈ 400 °C) · 15 à 20 min", pre:20,
-        cook: type==="napo" ? [3,4] : [2,3], cookS:"par pizza, thermostat max", between:3, where:"au Pummarola, thermostat max",
-        notes:[
-          "Préchauffe couvercle fermé, pierre vide.",
-          "Enfourne avec une pelle bien farinée (ou à la semoule) pour que la pizza glisse d'un coup.",
-          type==="napo" ? "Si un côté colore plus vite, tourne la pizza d'un demi-tour à mi-cuisson." : "Pâte fine : surveille dès 2 min, le dessous cuit très vite.",
-          "Entre deux pizzas, laisse la pierre reprendre sa chaleur environ 3 min, couvercle fermé.",
-          "Garnis léger et égoutte bien la mozzarella : la cuisson est trop courte pour évaporer l'excès d'eau."
-        ]};
+/* ================= rappels de lancement ================= */
+const rappels = {etat: "inconnu"};
+function evenementsRappels() {
+  const now = new Date(), t = today(), ev = [];
+  const liste = repasEntre(t, addDays(t, 14));
+  const parJour = {}; for (const x of liste) (parJour[iso(x.d)] ||= []).push(x);
+  const aSortir = (d) => (parJour[iso(addDays(d, 1))] || []).map(x => {
+    const r = st.recettes[x.m.r]; const veille = (x.m.note || "").match(/[^.]*veille au soir[^.]*/i) || ((r?.etapes || [])[0] || "").match(/^La veille au soir : (.*)/i);
+    return veille ? (x.mom === "midi" ? "demain midi" : "demain soir") + " : " + (veille[1] || veille[0]).trim() : null;
+  }).filter(Boolean);
+  let id = 0;
+  for (const x of liste) {
+    const r = st.recettes[x.m.r], nom = r ? r.nom : (x.m.libre || "le repas");
+    if (x.m.lancer) {
+      const [h, mi] = x.m.lancer.split(":").map(Number); const at = new Date(x.d); at.setHours(h, mi, 0, 0);
+      const sortir = aSortir(x.d);
+      ev.push({id: id++, at, title: "Lancer : " + nom, body: [x.m.note, sortir.length ? "À sortir du congélateur, " + sortir.join(" ; ") : ""].filter(Boolean).join(". ") || "C'est l'heure de lancer le dîner.", page: "index.html#semaine"});
     }
-    const k = {250:0, 275:1, 300:2}[tmax] ?? 1;
-    if(type==="teg"){
-      const base = [[11,13],[10,12],[9,11]][k], top = [[6,8],[5,7],[5,6]][k];
-      return {oven, preV:tmax+" °C", preS:"sole + voûte · 30 min", pre:30,
-        cook:[base[0]+top[0], base[1]+top[1]], cookS:`par plaque à ${tmax} °C`, between:2, base, top,
-        notes:[
-          `Mode sole + voûte (sans ventilation), ${tmax} °C. La plaque garnie de pâte entre dans le four déjà chaud.`,
-          `Plaque au niveau le plus bas : la base avec un peu de sauce tomate cuit ${base[0]} à ${base[1]} min.`,
-          `Garnis, puis remonte la plaque au milieu pour ${top[0]} à ${top[1]} min.`,
-          "Soulève un coin avec une spatule : le dessous doit être doré et croustillant."
-        ]};
-    }
-    const stone = support==="pierre";
-    const cook = stone ? (type==="napo" ? [[8,10],[7,8],[5,6]][k] : [[8,10],[7,9],[6,7]][k])
-                       : (type==="napo" ? [[10,12],[9,11],[7,9]][k] : [[10,12],[9,11],[8,9]][k]);
-    const between = stone ? 5 : 3, sup = stone ? "la pierre" : "la plaque";
-    const notes = [
-      stone ? "Pierre (ou acier) au 2e niveau en partant du bas, mise dans le four froid." : "Plaque retournée au 2e niveau en partant du bas, chauffée avec le four.",
-      `Mode sole + voûte, ${tmax} °C. Essaie la chaleur tournante si ton four colore mieux ainsi.`,
-      `Fais glisser la pizza sur ${sup} brûlante avec une pelle ou sur une feuille de papier cuisson.`,
-      "Si le dessus est encore pâle en fin de cuisson, passe 1 à 2 min sous le gril.",
-      `Entre deux pizzas, laisse ${sup} reprendre sa chaleur environ ${between} min.`
-    ];
-    if(type==="napo") notes.push("Un four domestique ne chauffe pas assez pour une vraie napolitaine : le bord sera moins gonflé et moins tacheté qu'au Pummarola.");
-    return {oven, preV:tmax+" °C", preS: stone ? "sole + voûte · 45 min à 1 h, pierre dedans" : "sole + voûte · 20 à 25 min, plaque dedans",
-      pre: stone ? 50 : 25, cook, cookS:`par pizza à ${tmax} °C`, between, where:`sur ${sup} à ${tmax} °C`, notes};
-  }
-
-  // Heure d'enfournement réelle : en mode « maintenant », début = maintenant (ou celui de la session lancée)
-  function bakeAt(){
-    if(state.mode==="now"){
-      if(session && session.mode==="now") return new Date(session.bakeAt);
-      const n = new Date(); n.setSeconds(0,0);
-      return new Date(n.getTime() + state.hours*36e5);
-    }
-    const [y,mo,d] = bakeDate.split("-").map(Number);
-    const [bh,bm] = (state.bake||"19:00").split(":").map(Number);
-    return new Date(y, mo-1, d, bh, bm);
-  }
-
-  let EVENTS = [], FIRST = null, PHASES = [], BAKE = null, END = null;
-
-  function render(){
-    const T = TYPES[state.type], F = FLOURS[state.flour], Y = YEASTS[state.yeast];
-    const h = state.hours, t = state.temp, n = state.count, ball = state.ball[state.type];
-
-    $("tempV").textContent = t+" °C";
-    $("hoursV").textContent = hLabel(h);
-    $("countV").textContent = n+" "+(n>1?T.unit[1]:T.unit[0]);
-    $("ballV").textContent = ball+" g";
-    $("ballHint").textContent = T.ballHint;
-    $("countL").textContent = state.type==="teg" ? "Plaques" : "Pizzas";
-    $("ballL").textContent = state.type==="teg" ? "Pâte par plaque" : "Pâton";
-
-    const hyd = T.hyd + F.dh[state.type];
-    const fp = freshPct(h,t,state.type);
-    const yp = fp * Y.f;
-    const total = n*ball;
-    const flour = total / (1 + (hyd + T.salt + T.oil + yp)/100);
-    const water = flour*hyd/100, salt = flour*T.salt/100, oil = flour*T.oil/100, yeast = flour*yp/100;
-
-    const target = h<4 ? 26 : h<10 ? 24 : 22;
-    const ce = state.knead==="ce";
-    $("kneadHint").hidden = !ce;
-    const wT = Math.round(clamp(3*target - 2*t - (ce ? 9 : 3), 4, 35));
-    const COLD = [8,8,10,12,15,18,20,20,18,15,12,9][new Date().getMonth()], HOT = 50;
-    const W = (()=>{
-      if(wT <= COLD + 1) return {txt:"toute l'eau froide du robinet", short:"froide du robinet", cool: wT < COLD - 2};
-      if(wT >= HOT - 1) return {txt:"toute l'eau chaude du robinet", short:"chaude du robinet"};
-      const gb = Math.round(water*(wT-COLD)/(HOT-COLD)/5)*5, ga = Math.round(water)-gb;
-      if(gb < 10) return {txt:"toute l'eau froide du robinet", short:"froide du robinet"};
-      if(ga < 10) return {txt:"toute l'eau chaude du robinet", short:"chaude du robinet"};
-      return {txt:`<b>${ga} g</b> d'eau froide + <b>${gb} g</b> d'eau chaude du robinet`, short:"mélangée (froide + chaude du robinet, comme dans la pesée)"};
-    })();
-
-    const rows = [
-      ["Farine", state.flour==="00"?"Farine 00 (Grand Frais)":F.label, flour, 100],
-      ["Eau", W.txt, water, hyd],
-      ["Sel", "fin", salt, T.salt]
-    ];
-    if(T.oil) rows.push(["Huile d'olive", state.type==="teg"?"plus un filet pour la plaque":"ajoutée en fin de pétrissage", oil, T.oil]);
-    let html = rows.map(r=>`<tr><td class="name">${r[0]}<small>${r[1]}</small></td><td class="g">${g(r[2])}</td><td class="pct">${pct(r[3])}</td></tr>`).join("");
-    html += `<tr class="yeast"><td class="name">${Y.label}<small>${Y.note}</small></td><td class="g">${g(yeast)}</td><td class="pct">${pct(yp)}</td></tr>`;
-    html += `<tr class="total"><td class="name">Pâte totale</td><td class="g">${g(total)}</td><td class="pct"></td></tr>`;
-    $("tbody").innerHTML = html;
-    $("sum").innerHTML = `<b>${n} × ${ball} g</b> · ${T.label} · hydratation ${hyd} %`;
-
-    const dil = $("dilute");
-    if(yeast < 0.5){
-      const take = Math.round(yeast*100);
-      dil.hidden = false;
-      dil.innerHTML = `<b>Dose trop petite pour une balance de cuisine.</b> Dilue 1 g de ${Y.label.toLowerCase()} dans 99 g d'eau, mélange bien, puis prélève <b>${take} g</b> de ce mélange. Retire ces ${take} g de l'eau de la recette (il reste ${g(Math.max(0,water-take))} d'eau à verser).`;
-    } else dil.hidden = true;
-
-    $("chips").innerHTML =
-      `<span class="chip">Robinet froid ce mois-ci ≈ ${COLD} °C · chaud au max ≈ ${HOT} °C · mélange visé <b>${wT} °C</b></span>`+
-      `<span class="chip warm">Équivalence levure fraîche <b>${g(flour*fp/100)}</b></span>`+
-      (ce ? `<span class="chip">Cook Expert : bol métal, pétrin, <b>sans chauffe</b></span>` : "");
-
-    const BK = bakeModel(state.type, state.oven, state.support, state.tmax);
-    const isTeg = state.type==="teg";
-    $("o-pumm").disabled = isTeg;
-    $("o-four").checked = BK.oven==="four"; $("o-pumm").checked = BK.oven==="pumm";
-    $("ovenHint").hidden = !isTeg;
-    $("fourOpts").hidden = BK.oven!=="four";
-    $("support").disabled = isTeg;
-
-    // repère temporel : minutes relatives au minuit du jour d'enfournement
-    const BA = bakeAt();
-    const day0 = new Date(BA.getFullYear(), BA.getMonth(), BA.getDate());
-    const B = BA.getHours()*60 + BA.getMinutes();
-    const at = mins => new Date(day0.getFullYear(), day0.getMonth(), day0.getDate(), 0, Math.round(mins));
-
-    const avg = (BK.cook[0]+BK.cook[1])/2;
-    const service = n*avg + (n-1)*BK.between;
-    const unitW = n>1 ? T.unit[1] : T.unit[0];
-    $("tiles").innerHTML =
-      `<div class="tile"><span class="k">Préchauffage</span><span class="v">${BK.preV}</span><span class="s">${BK.preS}</span></div>`+
-      `<div class="tile hot"><span class="k">Cuisson</span><span class="v">${BK.cook[0]} à ${BK.cook[1]} min</span><span class="s">${BK.cookS}</span></div>`+
-      `<div class="tile"><span class="k">Service</span><span class="v">${durLabel(service)}</span><span class="s">${n} ${unitW} l'une après l'autre · dernière sortie vers ${hm(at(B+service))}</span></div>`;
-    $("bakeSum").textContent = BK.oven==="pumm" ? "Pummarola" : `Four traditionnel · ${isTeg ? "plaque" : (state.support==="pierre" ? "pierre ou acier" : "plaque")}`;
-    $("bakeNotes").innerHTML = BK.notes.map(x=>`<li>${x}</li>`).join("");
-
-    const al = [];
-    al.push(`<b>Eau :</b> laisse couler le robinet froid quelques secondes pour qu'il soit bien froid, et le chaud jusqu'à ce qu'il soit au plus chaud. Pèse les deux directement dans le saladier posé sur la balance.`);
-    if(W.cool) al.push(`<b>Eau du robinet trop tiède ce mois-ci :</b> l'idéal serait une eau plus fraîche. La pâte sortira un peu plus chaude et lèvera plus vite : vérifie son volume en avance.`);
-    if(BK.oven==="pumm" && ((state.type==="napo" && ball>240) || (state.type==="rom" && ball>200))) al.push(`<b>Pâton de ${ball} g au Pummarola.</b> La pierre fait environ 30 cm : garde la pizza sous 29 cm, quitte à laisser un bord plus épais, ou réduis le pâton.`);
-    if(h > F.maxH) al.push(`<b>${F.label} un peu faible pour ${hLabel(h)}.</b> Elle tient mal au-delà de ~${F.maxH} h à température ambiante : la pâte risque de se relâcher. Réduis la durée ou prends la farine 00.`);
-    if(h < 3) al.push(`<b>Pâte express.</b> Beaucoup de levure pour un temps court : goût de levure plus marqué et pâte moins digeste. Dès que possible, vise 6 h ou plus.`);
-    if(t >= 26 && h >= 12) al.push(`<b>Pièce chaude et pousse longue.</b> La dose est minuscule et la marge d'erreur faible : surveille la pâte, et si elle a doublé bien avant l'heure, passe les pâtons au frais.`);
-    const cap = state.flour==="caputo";
-    $("flourHint").hidden = !cap;
-    if(cap && h < 6) al.push(`<b>Caputo Pizzeria en pousse courte.</b> Cette farine est faite pour les pousses de 8 à 24 h. En moins de 6 h, la pâte reste élastique et se rétracte à l'étalage : laisse-la se détendre 10 min si elle résiste.`);
-    if(cap && state.type==="teg") al.push(`<b>Teglia à la Caputo Pizzeria :</b> hydratation ramenée à ${hyd} %, car elle supporte mal les très hautes hydratations. Pour une teglia très alvéolée, Caputo propose plutôt sa farine Nuvola.`);
-    if(state.flour==="t45") al.push(`<b>T45 :</b> les calculs supposent une T45 standard. Si c'est une farine de gruau (plus riche en protéines), tu peux remonter l'hydratation de 2 points.`);
-    if(state.type==="teg" && state.flour==="t55") al.push(`<b>Teglia en T55 :</b> l'hydratation est réduite à ${hyd} % pour que la pâte reste travaillable. Elle sera moins alvéolée qu'avec la 00.`);
-    if(ce && total>1200) al.push(`<b>${g(total)} de pâte au Cook Expert.</b> C'est beaucoup pour un seul pétrissage : fais-le en deux fois, et vérifie la quantité maximale de pâte indiquée dans ton mode d'emploi.`);
-    $("alerts").innerHTML = al.map(a=>`<div class="alert">${a}</div>`).join("");
-
-    // planning
-    const H = h*60, K = ce ? (state.type==="teg" ? 20 : 10) : T.knead;
-    const S = B - H;
-    let steps = [];
-    if(state.type==="teg"){
-      const proof = Math.min(clamp(H*0.3, 30, 180), H-K-15);
-      const bulk = H - K - proof;
-      const folds = bulk >= 90 ? "3 séries de rabats à 30 min d'intervalle au début, puis repos couvert." : "1 série de rabats à mi-parcours.";
-      steps = [
-        {at:S, title:"Pétrissage", desc:"Farine, levure et 70 % de l'eau, puis sel, reste de l'eau petit à petit, puis huile.", dur:K},
-        {at:S+K, title:"Pointage en masse", desc:"Dans un bac huilé, couvert. "+folds, dur:bulk, wait:true},
-        {at:B-proof, title:"Mise en plaque", desc:"Verse la pâte sur la plaque huilée et étire-la du bout des doigts, sans dégazer. Laisse lever couvert.", dur:proof, wait:true},
-        {at:B-BK.pre, title:"Préchauffage du four", desc:`${BK.preV}, sole + voûte.`, dur:BK.pre}
-      ];
-    } else {
-      const work = H - K;
-      let bulk, proof;
-      if(H <= 8*60){ bulk = Math.max(20, work*0.27); proof = work - bulk; }
-      else { proof = 6*60; bulk = work - proof; }
-      steps = [
-        {at:S, title:"Pétrissage", desc: state.type==="napo" ? "Sel dissous dans l'eau, un peu de farine, la levure, puis le reste de la farine. Pâte lisse et souple." : "Farine et levure, puis l'eau, le sel, et l'huile en fin de pétrissage.", dur:K},
-        {at:S+K, title:"Pointage en masse", desc:"Boule couverte dans un saladier, à température ambiante.", dur:bulk, wait:true},
-        {at:S+K+bulk, title:"Boulage", desc:`${n} pâton${n>1?"s":""} de ${ball} g bien serrés, dans une boîte légèrement farinée, couverte.`, dur:proof, wait:true},
-        {at:B-BK.pre, title: BK.oven==="pumm" ? "Allumer le Pummarola" : "Préchauffage du four", desc: BK.oven==="pumm" ? "Thermostat au maximum, couvercle fermé. Prépare les garnitures pendant ce temps." : `${BK.preV}, ${state.support==="pierre" ? "pierre ou acier" : "plaque"} à l'intérieur dès l'allumage.`, dur:BK.pre}
-      ];
-    }
-    if(ce) steps[0].desc = state.type==="teg"
-      ? "Cook Expert : 1 min pour mélanger, 15 min de repos, puis programme Pain/Brioche en versant le reste de l'eau et l'huile par la cheminée."
-      : "Cook Expert : programme Pain/Brioche au pétrin, sans chauffe, puis 5 min de repos et boule lissée à la main.";
-    steps.push({at:B, title:"Enfournement", desc: isTeg ? `Base tomate ${BK.base[0]}–${BK.base[1]} min en bas, puis garniture et ${BK.top[0]}–${BK.top[1]} min au milieu, à ${state.tmax} °C.` : `Pâton étalé ${state.type==="napo"?"à la main, sans rouleau, en poussant l'air vers le bord":"très fin au rouleau"}, garni juste avant d'enfourner. ${BK.cook[0]} à ${BK.cook[1]} min ${BK.where}.`, bake:true});
-    if(n>1) steps.push({at:B+service, title:"Dernière sortie", desc:`${n} ${unitW} cuites l'une après l'autre, avec ${BK.between} min de reprise de chaleur entre chaque.`, last:true});
-    steps.sort((a,b)=>a.at-b.at);
-
-    const now = Date.now();
-    $("timeline").innerHTML = steps.map(s=>{
-      const d = at(s.at), tag = dayTag(d);
-      const past = d.getTime() < now - 60000;
-      return `<li class="${s.bake?"is-bake":""} ${s.wait?"wait":""} ${past?"past":""}">
-        <div class="t">${hm(d)}${tag?`<small>${tag}</small>`:""}</div>
-        <span class="dot" aria-hidden="true"></span>
-        <div><div class="step-title">${s.title}</div><div class="step-desc">${s.desc}</div>${s.dur && !s.bake?`<div class="dur">${durLabel(s.dur)}</div>`:""}</div>
-      </li>`;
-    }).join("");
-
-    FIRST = at(steps[0].at);
-
-    // méthode
-    const yeastStep = state.yeast==="act" ? `Réhydrate la levure (${g(yeast)}) 15 min dans 30 g d'eau (15 g froide + 15 g chaude du robinet), à retirer de l'eau de la recette.` :
-                     state.yeast==="inst" ? `Mélange la levure (${g(yeast)}) à la farine.` :
-                     `Émiette la levure (${g(yeast)}) dans un peu de l'eau.`;
-    const M = {
-      napo:[
-        `Verse l'eau ${W.short} dans le saladier et fais-y dissoudre le sel.`,
-        `${yeastStep} Ajoute-la avec environ 10 % de la farine et mélange.`,
-        `Incorpore le reste de la farine en plusieurs fois, puis pétris ${T.knead} min jusqu'à une pâte lisse qui ne colle plus.`,
-        `Pointage en masse, couvert. Puis boule ${n} pâton${n>1?"s":""} de ${ball} g en les serrant bien.`,
-        `Apprêt en boîte couverte jusqu'à l'enfournement. Les pâtons doivent être souples et avoir pris du volume.`,
-        `Étale à la main sur un plan fariné, en gardant le bord épais. Garnis vite et cuis ${BK.cook[0]} à ${BK.cook[1]} min ${BK.where}.`
-      ],
-      rom:[
-        `${yeastStep} Verse l'eau ${W.short} sur la farine et mélange.`,
-        `Ajoute le sel, pétris 10 min, puis incorpore l'huile petit à petit jusqu'à absorption.`,
-        `Pointage en masse couvert, puis boulage en ${n} pâton${n>1?"s":""} de ${ball} g.`,
-        `Au moment de cuire, étale très finement au rouleau (2–3 mm) sur un plan fariné.`,
-        `Cuis ${BK.cook[0]} à ${BK.cook[1]} min ${BK.where}, jusqu'à ce que le dessous soit croustillant.`
-      ],
-      teg:[
-        `${yeastStep} Mélange la farine avec 70 % de l'eau ${W.short} et la levure. Laisse reposer 15 min.`,
-        `Ajoute le sel, puis le reste de l'eau en filet en pétrissant (bassinage). Termine par l'huile.`,
-        `Pointage en bac huilé avec rabats : étire un bord de la pâte et replie-le sur elle-même, sur les quatre côtés.`,
-        `Verse sur la plaque bien huilée, étire du bout des doigts sans écraser les bulles, laisse lever.`,
-        isTeg ? `Cuis la base avec un peu de sauce tomate ${BK.base[0]} à ${BK.base[1]} min en bas du four à ${state.tmax} °C, puis garnis et termine ${BK.top[0]} à ${BK.top[1]} min au milieu.` : ""
-      ]
-    };
-    const inst = state.yeast==="inst";
-    const MCE = {
-      napo:[
-        yeastStep,
-        `Monte le pétrin dans le bol métal. Verse l'eau ${W.short} avec le sel${inst?"":" et la levure"}, puis toute la farine${inst?" mélangée à la levure":""}.`,
-        `Lance le programme Pain/Brioche, sans chauffe.`,
-        `Laisse reposer 5 min dans le bol. Si la pâte n'est pas lisse, relance 1 min. Sors-la et forme une boule avec 2 ou 3 rabats à la main.`,
-        ...M.napo.slice(3)
-      ],
-      rom:[
-        yeastStep,
-        `Monte le pétrin dans le bol métal. Verse l'eau ${W.short} avec le sel${inst?"":" et la levure"}, puis toute la farine${inst?" mélangée à la levure":""}.`,
-        `Lance le programme Pain/Brioche, sans chauffe. Pendant la dernière minute, verse l'huile en filet par la cheminée.`,
-        `Laisse reposer 5 min, puis sors la pâte et forme une boule avec 2 ou 3 rabats à la main.`,
-        ...M.rom.slice(2)
-      ],
-      teg:[
-        yeastStep,
-        `Monte le pétrin dans le bol métal. Verse 70 % de l'eau (${g(water*0.7)}) ${W.short}${inst?"":" avec la levure"}, puis la farine${inst?" mélangée à la levure":""}. Mélange 1 min, sans chauffe, puis laisse reposer 15 min.`,
-        `Ajoute le sel et lance le programme Pain/Brioche. Pendant qu'il tourne, verse le reste de l'eau en filet par la cheminée, puis l'huile.`,
-        `La pâte reste collante, c'est normal. Fais-la glisser dans un bac huilé avec une maryse.`,
-        ...M.teg.slice(2)
-      ]
-    };
-    $("method").innerHTML = (ce ? MCE : M)[state.type].filter(Boolean).map(x=>`<li>${x}</li>`).join("");
-
-    // ---- étapes du suivi : actives (écran allumé, notification) et attentes entre elles ----
-    const st = k => steps.find(s=>s.title===k);
-    const meth = (ce ? MCE : M)[state.type];
-    const nk = ce ? 4 : (state.type==="napo" ? 3 : 2);
-    const weigh = [
-      `Pèse <b>${g(flour)}</b> de farine.`,
-      `Pèse <b>${g(water)}</b> d'eau : ${W.txt}.`,
-      `Pèse <b>${g(salt)}</b> de sel.`,
-      ...(T.oil ? [`Pèse <b>${g(oil)}</b> d'huile d'olive.`] : []),
-      yeast < 0.5 ? `Levure : dilue 1 g dans 99 g d'eau et prélèves-en <b>${Math.round(yeast*100)} g</b> (à retirer de l'eau).` : `Pèse <b>${g(yeast)}</b> de ${Y.label.toLowerCase()}.`
-    ];
-    const preS = steps.find(s=>/Préchauffage|Pummarola/.test(s.title));
-    const shapeS = st(isTeg ? "Mise en plaque" : "Boulage");
-    const bulkS = st("Pointage en masse");
-    const A = [];
-    A.push({title:"Pesée et pétrissage", at:S, notify:"C'est l'heure de lancer la pâte.", sub:[...weigh, ...meth.slice(0,nk)],
-      then:{title:"Pointage en masse", hint:"La pâte lève, couverte, à température ambiante."}});
-    if(isTeg){
-      const ats = bulkS.dur >= 90 ? [30,60,90] : [Math.round(bulkS.dur/2)];
-      ats.forEach((m,i)=>A.push({title: ats.length>1 ? `Rabats ${i+1}/${ats.length}` : "Rabats", at:bulkS.at+m,
-        notify:"Une série de rabats sur les quatre côtés.",
-        sub:["Mouille-toi les mains.","Attrape un bord de la pâte, étire-le vers le haut et replie-le sur la pâte.","Tourne le bac d'un quart de tour et recommence sur les quatre côtés.","Recouvre le bac."],
-        then:{title:"Pointage en masse", hint:"La pâte continue de lever dans le bac couvert."}}));
-      A.push({title:"Mise en plaque", at:shapeS.at, notify:"Verse la pâte sur la plaque huilée.",
-        sub:["Huile bien la plaque (2 cuillères à soupe).","Fais glisser la pâte sur la plaque sans la déchirer.","Étire-la du bout des doigts vers les coins, sans écraser les bulles. Si elle se rétracte, attends 10 min et recommence.","Couvre la plaque."],
-        then:{title:"Apprêt", hint:"La pâte lève sur la plaque, couverte."}});
-    } else {
-      A.push({title:"Boulage", at:shapeS.at, notify:`Façonne les ${n} pâton${n>1?"s":""}.`,
-        sub:["Renverse la pâte sur le plan de travail légèrement fariné.",`Divise-la en <b>${n} pâton${n>1?"s":""} de ${ball} g</b> (pèse-les).`,"Boule chaque pâton en le serrant : rabats les bords dessous pour tendre la surface.","Range-les espacés dans une boîte légèrement farinée et couvre."],
-        then:{title:"Apprêt", hint:"Les pâtons lèvent dans la boîte couverte."}});
-    }
-    A.push({title: preS.title, at:preS.at, notify: BK.oven==="pumm" ? "Allume le Pummarola, thermostat au max." : `Allume le four à ${BK.preV}.`,
-      sub:[preS.desc, "Prépare les garnitures : sauce, mozzarella égouttée et coupée, le reste à portée de main.", "Farine la pelle et le plan de travail."],
-      then:{title: BK.oven==="pumm" ? "Le Pummarola chauffe" : "Le four chauffe", hint:"Garnitures prêtes ? Il n'y a plus qu'à attendre."}});
-    A.push({title:"Enfournement", at:B, bake:true, notify: isTeg ? "C'est l'heure d'enfourner." : "C'est l'heure d'étaler et d'enfourner.",
-      sub: isTeg ? [] : [meth[meth.length-1]]});
-    A.sort((a,b)=>a.at-b.at);
-    PHASES = [];
-    A.forEach((a,i)=>{
-      PHASES.push(Object.assign({active:true}, a, {at:at(a.at)}));
-      if(i < A.length-1) PHASES.push({active:false, title:a.then.title, hint:a.then.hint, at:at(a.at)});
-    });
-    PHASES.forEach((p,i)=>p.idx=i);
-    BAKE = {count:n, unit:T.unit, timers: isTeg
-      ? [{label:"Base tomate, en bas", min:BK.base[0], max:BK.base[1]},{label:"Garnie, au milieu", min:BK.top[0], max:BK.top[1]}]
-      : [{label:"Cuisson", min:BK.cook[0], max:BK.cook[1], sec: BK.oven==="pumm"}], between:BK.between, notes:BK.notes};
-    EVENTS = PHASES.filter(p=>p.active).map(p=>({id:p.idx, at:p.at, title:"🍕 "+p.title, body:p.notify}));
-    END = at(B+service+120);
-
-    // mode
-    const isNow = state.mode==="now";
-    $("planOpts").hidden = isNow;
-    $("nowHint").hidden = !isNow;
-    if(isNow) $("nowHint").innerHTML = session && session.mode==="now"
-      ? `Pâte lancée ${when(FIRST)} · enfournement <b>${when(BA)}</b>.`
-      : `Si tu démarres maintenant, enfournement <b>${when(BA)}</b>.`;
-    renderRemind();
-  }
-
-  // ---- rappels et suivi ----
-  const N = () => window.PizzaNotifs;
-  let pendingList = [], msg = "", exactMissing = false, runOpen = false;
-
-  async function refreshPending(){
-    if(!N() || !N().native){ pendingList = []; renderRemind(); return; }
-    try{ pendingList = await N().pending(); }catch(e){ pendingList = []; }
-    renderRemind();
-  }
-
-  function sessionLive(){
-    if(!session) return false;
-    if(session.endAt && Date.now() > session.endAt){ setSession(null); return false; }
-    return true;
-  }
-
-  function renderRemind(){
-    const box = $("remind"), go = $("remindGo"), off = $("remindOff");
-    const isNow = state.mode==="now";
-    const native = !!(N() && N().native);
-    const live = sessionLive();
-    box.classList.toggle("on", live);
-    off.hidden = !live;
-    $("runOpen").hidden = !live;
-    go.hidden = live;
-    $("ctl").disabled = live;
-    $("locked").hidden = !live;
-    $("exactBtn").hidden = !exactMissing;
-    if(live){
-      const cur = PHASES[curPhase()];
-      $("remindState").textContent = "Pâte en cours";
-      const next = pendingList.map(p=>({at:new Date(p.schedule && p.schedule.at), title:p.title})).sort((a,b)=>a.at-b.at)[0];
-      $("remindTxt").innerHTML = `Étape : <b>${cur ? cur.title : "—"}</b>.` +
-        (next ? ` Prochain rappel : <b>${next.title.replace("🍕 ","")}</b> ${when(next.at)}.` : "");
-    } else if(!native){
-      $("remindState").textContent = "Rappels";
-      $("remindTxt").textContent = "Les rappels et le suivi ne fonctionnent que dans l'appli Android.";
-      go.disabled = true; go.textContent = isNow ? "Démarrer maintenant" : "Planifier";
-    } else {
-      $("remindState").textContent = isNow ? "Démarrer" : "Planifier";
-      const late = !isNow && FIRST && FIRST.getTime() < Date.now() - 60000;
-      $("remindTxt").innerHTML = isNow
-        ? `Tu lances la pâte maintenant : suivi pas à pas et une notification à chaque grande étape, même appli fermée.`
-        : late
-          ? `<b>Le pétrissage aurait dû commencer ${when(FIRST)}.</b> Change le jour, l'heure d'enfournement ou le temps disponible.`
-          : `Pétrissage ${when(FIRST)}. Une notification à chaque grande étape, même appli fermée.`;
-      go.disabled = false; go.textContent = isNow ? "Démarrer maintenant" : "Planifier";
-    }
-    const m = $("remindMsg"); m.hidden = !msg; m.innerHTML = msg;
-  }
-
-  // étape courante : une attente se termine toute seule à l'heure de l'étape suivante ;
-  // une étape active reste affichée jusqu'à « Terminé ».
-  function curPhase(){
-    if(!session) return 0;
-    let i = Math.min(session.phase||0, PHASES.length-1);
-    const now = Date.now();
-    while(i < PHASES.length-1 && !PHASES[i].active && now >= PHASES[i+1].at.getTime()) i++;
-    if(i !== session.phase){ session.phase = i; setSession(session); }
-    return i;
-  }
-
-  function goPhase(i){
-    session.phase = Math.max(0, Math.min(i, PHASES.length-1));
-    setSession(session);
-    const p = PHASES[session.phase];
-    // étape active commencée en avance : sa notification devient inutile
-    if(p.active && N() && N().native) N().cancelIds([p.idx]).then(refreshPending);
-    renderRun(); renderRemind();
-  }
-
-  async function finish(){
-    if(N() && N().native){ await N().cancel(); N().keepAwake(false); }
-    setSession(null); closeRun(); msg = "Bon appétit !"; render(); refreshPending();
-  }
-
-  const mmss = s => { s = Math.max(0, Math.round(s)); return `${Math.floor(s/60)}:${pad(s%60)}`; };
-  function untilLabel(ms){ const m = Math.max(0, Math.round(ms/60000)); return m < 1 ? "maintenant" : `dans ${durLabel(m) || m+" min"}`; }
-
-  let lastBody = null;
-  function renderRun(){
-    if(!runOpen || !session) return;
-    const i = curPhase(), p = PHASES[i], next = PHASES[i+1];
-    const now = Date.now();
-    $("runClock").textContent = hm(new Date());
-    $("runBar").innerHTML = PHASES.map((q,k)=>`<span class="${k<i?"done":k===i?"cur":""}"></span>`).join("");
-    $("runCard").classList.toggle("active", p.active);
-    $("runTitle").textContent = p.title;
-    $("runPrev").disabled = i===0;
-    // le corps n'est reconstruit que s'il change, pour ne pas perdre un appui ; le compte à rebours est mis à jour à part
-    const setBody = (html, cd) => { if(html !== lastBody){ $("runBody").innerHTML = html; lastBody = html; } const c = $("cd"); if(c) c.textContent = cd; };
-    if(p.active){
-      $("runKind").textContent = "Étape active · écran allumé";
-      const late = p.at.getTime() - now;
-      $("runWhen").textContent = late > 60000 ? `Prévue ${when(p.at)} · tu es en avance` : `Prévue ${when(p.at)}`;
-      const checks = (session.checks && session.checks[i]) || [];
-      let html = p.sub.length ? `<ul class="checklist">${p.sub.map((s,k)=>`<li><label><input type="checkbox" data-ck="${k}" ${checks[k]?"checked":""}><span>${s}</span></label></li>`).join("")}</ul>` : "";
-      let cd = "";
-      if(p.bake){ const bb = bakeBox(); html += bb.html; cd = bb.cd; }
-      setBody(html, cd);
-      $("runNext").textContent = p.bake ? "Tout est cuit" : "Terminé";
-      $("runNext").className = "btn wide";
-      $("runAfter").textContent = next ? `Ensuite : ${next.title.toLowerCase()}.` : "";
-      N() && N().keepAwake(true);
-    } else {
-      $("runKind").textContent = "Attente · écran libre";
-      const nx = PHASES[i+1];
-      $("runWhen").textContent = p.hint;
-      setBody(nx ? `<p class="run-when">Prochaine étape : <b>${nx.title}</b> ${when(nx.at)}</p><div class="big" id="cd"></div><p class="run-when">Tu recevras une notification. Tu peux fermer l'appli.</p>` : "",
-        nx ? untilLabel(nx.at - now).replace("dans ","") : "");
-      $("runNext").textContent = nx ? `Passer à « ${nx.title} »` : "Terminé";
-      $("runNext").className = "btn wide ghost";
-      $("runAfter").textContent = "";
-      N() && N().keepAwake(false);
+    if (r?.categorie === "Pizza") {
+      for (const [h, mi, t1, b1] of [[11, 30, "Pâte à pizza : pétrissage", "Pétrissage au Cook Expert pour les pizzas du soir."], [13, 30, "Pâte à pizza : boulage", "Divise et boule les pâtons, boîte fermée jusqu'au soir."]]) {
+        const at = new Date(x.d); at.setHours(h, mi, 0, 0);
+        ev.push({id: id++, at, title: t1, body: b1, page: "pizza.html"});
+      }
     }
   }
+  return ev.filter(e => e.at > now);
+}
+let rappelsT = null;
+function majRappels(demander = false) {
+  clearTimeout(rappelsT);
+  rappelsT = setTimeout(async () => {
+    if (!window.Natif?.natif) { rappels.etat = "web"; return; }
+    const avant = rappels.etat;
+    const r = await window.Natif.planifier("repas", evenementsRappels(), {demander});
+    rappels.etat = r.ok ? "actifs" : (r.reason === "prompt" ? "a-demander" : "refuses");
+    if (demander && r.ok) toast(r.count ? `Rappels programmés : ${r.count}` : "Rappels activés");
+    if (avant !== rappels.etat && ui.view === "semaine" && !sheet) renderSemaine();
+  }, demander ? 0 : 800);
+}
 
-  // minuteur de cuisson : une pizza (ou plaque) à la fois
-  function bakeBox(){
-    const b = BAKE, k = session.pizza||0, tIdx = session.tIdx||0;
-    if(k >= b.count) return {html:`<div class="bakebox"><b>Toutes les ${b.unit[1]} sont cuites.</b></div>`, cd:""};
-    const t = b.timers[tIdx];
-    const label = `${b.unit[0][0].toUpperCase()+b.unit[0].slice(1)} ${k+1}/${b.count}`;
-    let inner, cd = "";
-    if(session.tEnd){
-      const left = (session.tEnd - Date.now())/1000;
-      inner = left > 0
-        ? `<div class="row"><b>${label}</b><span>${t.label} · vérifie à ${t.min} min, max ${t.max} min</span></div><div class="big" id="cd"></div><button type="button" class="btn ghost" data-bake="stop">Arrêter le minuteur</button>`
-        : `<div class="big">C'est cuit ?</div><span>Regarde la pizza : ${t.max - t.min ? `encore jusqu'à ${t.max - t.min} min si besoin.` : "sors-la."}</span>
-           <button type="button" class="btn warm" data-bake="done">${tIdx < b.timers.length-1 ? "Étape suivante de cuisson" : (k+1 < b.count ? `Sortie ! ${b.unit[0]} suivante` : "Sortie, c'était la dernière")}</button>`;
-    } else {
-      inner = `<div class="row"><b>${label}</b><span>${t.label} · ${t.min} à ${t.max} min</span></div>
-        <button type="button" class="btn warm" data-bake="go">${tIdx ? "Lancer : "+t.label.toLowerCase() : "Enfournée ! Lancer le minuteur"}</button>`;
-    }
-    if(session.tEnd && session.tEnd > Date.now()) cd = mmss((session.tEnd - Date.now())/1000);
-    return {html:`<div class="bakebox">${inner}</div>`, cd};
+/* ================= synchronisation ================= */
+function texteSync() {
+  const i = st.db?.infos?.(); if (!i) return "";
+  const quand = i.maj ? new Date(i.maj).toLocaleString("fr-FR", {day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"}) : "";
+  if (i.source === "distant") return "Menus et recettes à jour" + (quand ? " (fichier du " + quand + ")." : ".");
+  return (i.erreur ? "Pas de connexion : " : "") + "données enregistrées sur le téléphone" + (quand ? ", dernière mise à jour le " + quand : "") + ".";
+}
+
+/* ================= copier ================= */
+async function copyText(txt, label) {
+  try { await navigator.clipboard.writeText(txt); toast(label + " copiée"); }
+  catch (e) {
+    openSheet(`<span class="eyebrow">À copier</span><h2>${esc(label)}</h2><p class="muted">La copie automatique n'est pas disponible ici : sélectionne le texte puis copie-le.</p>
+      <textarea class="field" id="copyArea" style="min-height:260px">${esc(txt)}</textarea><div class="foot"><span class="grow"></span><button class="btn ghost" data-act="close">Fermer</button></div>`, {kind: "copy"});
+    const a = $("#copyArea"); a.focus(); a.select();
   }
+}
+function texteClaude() {
+  const c = coursesDoc(), {items} = listeCourses(), [d0, d1] = periodeRange();
+  const lec = items.filter(x => x.e === "LEC" && !c.coches[x.key]);
+  const prods = (st.drive?.produits || []).filter(p => produitsQte(p) > 0 && !c.coches["p:" + p.id]);
+  let t = `Remplis mon panier Leclerc Drive (Blois) pour les repas du ${fmtDay(d0)} au ${fmtDay(d1)}.\n\nProduits habituels (id drive) :\n`;
+  t += prods.map(p => `- ${produitsQte(p)} × ${p.nom}, ${p.format} (id ${p.id})${p.note ? " — " + p.note : ""}`).join("\n") || "- aucun";
+  t += `\n\nÀ trouver pour les recettes (règle bio ≤ +30 %, sinon marques nationales) :\n` + (lec.map(x => `- ${x.n}${x.surg ? " (surgelé)" : ""}${x.hasQ ? " : " + fmtQ(x.q, x.u) : ""}`).join("\n") || "- rien");
+  const pla = items.filter(x => x.e === "PLA" && !c.coches[x.key]);
+  if (pla.length) t += `\n\nPlacard non coché, à vérifier ou à ajouter :\n` + pla.map(x => `- ${x.n}`).join("\n");
+  return t;
+}
+function texteGF() {
+  const c = coursesDoc(), {items} = listeCourses();
+  return "Grand Frais\n" + items.filter(x => x.e === "GF" && !c.coches[x.key]).sort((a, b) => a.n.localeCompare(b.n, "fr")).map(x => `- ${x.n}${x.hasQ ? " : " + fmtQ(x.q, x.u) : ""}`).join("\n");
+}
 
-  let buzzed = false;
-  function tick(){
-    if(!runOpen) return;
-    if(session && session.tEnd && Date.now() >= session.tEnd && !buzzed){
-      buzzed = true;
-      try{ navigator.vibrate && navigator.vibrate([400,200,400,200,400]); }catch(e){}
-    }
-    renderRun();
+/* ================= rendu global ================= */
+const TITRES = {semaine: "Semaine", courses: "Courses", recettes: "Recettes", reperes: "Repères"};
+function render() {
+  $("#viewTitle").textContent = TITRES[ui.view];
+  for (const v of Object.keys(TITRES)) $("#v-" + v).hidden = ui.view !== v;
+  document.querySelectorAll(".barre-bas a[data-view]").forEach(a => { if (a.dataset.view === ui.view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  $("#lienReperes").hidden = ui.view === "reperes";
+  if (ui.view === "semaine") renderSemaine(); else if (ui.view === "courses") renderCourses(); else if (ui.view === "reperes") renderReperes(); else renderRecettes();
+  if (sheet?.kind === "recipe") renderRecipeSheet();
+}
+function route() { const h = location.hash.replace("#", ""); ui.view = TITRES[h] ? h : "semaine"; if (cu) fermerCuisine(); render(); window.scrollTo(0, 0); }
+window.addEventListener("hashchange", route);
+
+/* ================= événements ================= */
+document.addEventListener("click", ev => {
+  const b = ev.target.closest("[data-act]"); if (!b) return;
+  const a = b.dataset.act;
+  if (b.tagName === "A" && a !== "close") ev.preventDefault();
+  const c = coursesDoc();
+  switch (a) {
+    case "weekPrev": ui.week = iso(addDays(parse(ui.week), -7)); render(); break;
+    case "weekNext": ui.week = iso(addDays(parse(ui.week), 7)); render(); break;
+    case "toToday": ui.week = iso(weekStartOf(today())); render(); break;
+    case "goCourses": ui.periode = "w:" + ui.week; saveUi(); location.hash = "courses"; break;
+    case "editMeal": openMeal(b.dataset.k); break;
+    case "copyWeek": {
+      const to = $("#copyTo").value, from = ui.week, off = daysBetween(parse(from), parse(to)), src = st.semaines[from]?.repas || {};
+      const w = st.semaines[to] || (st.semaines[to] = {debut: to, repas: {}}); w.repas ||= {};
+      for (const [k, m] of Object.entries(src)) { const [ds, mom] = k.split("_"); w.repas[iso(addDays(parse(ds), off)) + "_" + mom] = {...m}; }
+      saveWeek(to); ui.week = to; render(); toast("Semaine recopiée"); break; }
+    case "askClear": $("#clearZone").innerHTML = `<div class="confirm">Retirer tous les repas de cette semaine ?<button class="btn danger" data-act="clearWeek">Vider</button><button class="btn ghost" data-act="noClear">Garder</button></div>`; break;
+    case "noClear": $("#clearZone").innerHTML = ""; break;
+    case "clearWeek": st.semaines[ui.week] = {debut: ui.week, repas: {}}; saveWeek(ui.week); render(); toast("Semaine vidée"); break;
+    // repas
+    case "mPick": readMealInputs(); sheet.r = sheet.r === b.dataset.id ? null : b.dataset.id; if (sheet.r) { const r = st.recettes[sheet.r]; if (r?.unite === "pizzas") sheet.p = r.portions; } renderMealSheet(); break;
+    case "mP": readMealInputs(); sheet.p = Math.max(1, Math.min(12, sheet.p + Number(b.dataset.d))); renderMealSheet(); break;
+    case "mSave": saveMeal(); break;
+    case "mDel": { const w = st.semaines[sheet.ws]; if (w?.repas) delete w.repas[sheet.key]; saveWeek(sheet.ws); closeSheet(); render(); toast("Repas retiré"); break; }
+    case "close": ev.preventDefault(); closeSheet(); break;
+    // recettes
+    case "openRecipe": if (sheet?.kind === "meal") closeSheet(); openRecipe(b.dataset.id); break;
+    case "cuisiner": ouvrirCuisine(b.dataset.id, Number(b.dataset.p) || null); break;
+    case "cuFermer": fermerCuisine(); break;
+    case "cuPrec": if (cu.i > 0) { cu.i--; renderCuisine(); } break;
+    case "cuSuiv": if (cu.i < cu.etapes.length - 1) { cu.i++; renderCuisine(); } break;
+    case "cuFin": try { localStorage.removeItem("cuisine/en-cours"); } catch (e) {} fermerCuisine(); toast("Bon appétit"); break;
+    case "rappelsOn": majRappels(true); break;
+    case "actualiser": location.reload(); break;
+    case "copyModifs": { const m = st.db?.modifications?.() || {}; const n = Object.keys(m).length;
+      if (!n) { toast("Aucune modification faite sur le téléphone."); break; }
+      copyText("Modifications faites dans l'appli Cuisine (à reporter dans data/cuisine.json) :\n" + JSON.stringify(m, null, 1), "Liste des modifications"); break; }
+    case "rP": sheet.p = Math.max(1, Math.min(24, sheet.p + Number(b.dataset.d))); renderRecipeSheet(); break;
+    case "rPlan": {
+      const key = $("#rs-slot").value, ws = iso(weekStartOf(parse(key.split("_")[0]))), r = st.recettes[sheet.id];
+      const w = st.semaines[ws] || (st.semaines[ws] = {debut: ws, repas: {}}); w.repas ||= {};
+      w.repas[key] = {r: sheet.id, p: r?.unite === "pizzas" ? r.portions : 2}; saveWeek(ws); toast("Ajouté au planning : " + $("#rs-slot").selectedOptions[0].textContent); break; }
+    case "rEdit": openRecipeForm(sheet.id); break;
+    case "rAskDel": sheet.confirm = true; renderRecipeSheet(); break;
+    case "rNoDel": sheet.confirm = false; renderRecipeSheet(); break;
+    case "rDel": { const id = sheet.id; delete st.recettes[id]; del("recettes/" + id); closeSheet(); render(); toast("Recette supprimée"); break; }
+    case "newRecipe": openRecipeForm(null); break;
+    case "rfApp": { const v = b.dataset.v, i = sheet.apps.indexOf(v); if (i >= 0) sheet.apps.splice(i, 1); else sheet.apps.push(v); b.setAttribute("aria-pressed", i < 0); break; }
+    case "rCourt": ui.rCourt = !ui.rCourt; renderRecettes(); break;
+    case "rSrc": ui.rSrc = !ui.rSrc; renderRecettes(); break;
+    case "rApp": ui.rApp = ui.rApp === b.dataset.v ? null : b.dataset.v; renderRecettes(); break;
+    // courses
+    case "periode": ui.periode = b.dataset.v; saveUi(); renderCourses(); break;
+    case "picard": c.picard = !c.picard; saveCourses(true); renderCourses(); break;
+    case "hideDone": ui.hideDone = !ui.hideDone; saveUi(); renderCourses(); break;
+    case "pq": { const p = (st.drive?.produits || []).find(x => x.id === b.dataset.id); if (!p) break; c.driveQte[p.id] = Math.max(0, Math.min(20, produitsQte(p) + Number(b.dataset.d))); saveCourses(); renderCourses(); break; }
+    case "copyClaude": copyText(texteClaude(), "Liste pour Claude"); break;
+    case "copyGF": copyText(texteGF(), "Liste Grand Frais"); break;
+    case "askReset": $("#resetZone").innerHTML = `<div class="confirm">Tout décocher, retirer les ajouts et revenir aux quantités habituelles ?<button class="btn danger" data-act="reset">Nouvelle liste</button><button class="btn ghost" data-act="noReset">Annuler</button></div>`; break;
+    case "noReset": $("#resetZone").innerHTML = ""; break;
+    // repères
+    case "rpEdit": openRpEdit(b.dataset.k); break;
+    case "rpSave": { const rp = st.reperes || {}; rp[sheet.k] = textToLignes($("#rp-txt").value); st.reperes = rp; write("config/reperes", rp); closeSheet(); render(); toast("Règles enregistrées"); break; }
+    case "eqOpen": openEq(b.dataset.id); break;
+    case "eqNew": openEq(null); break;
+    case "eqDel": { const id = sheet.id; delete st.equipement[id]; del("equipement/" + id); closeSheet(); render(); toast("Appareil retiré"); break; }
+    case "reset": st.courses = {coches: {}, ajouts: [], driveQte: {}, picard: c.picard}; saveCourses(true); renderCourses(); toast("Nouvelle liste prête"); break;
   }
-
-  function openRun(){ if(!session) return; runOpen = true; $("run").hidden = false; document.body.style.overflow = "hidden"; renderRun(); }
-  function closeRun(){ runOpen = false; $("run").hidden = true; document.body.style.overflow = ""; N() && N().keepAwake(false); }
-
-  $("runClose").addEventListener("click", closeRun);
-  $("runOpen").addEventListener("click", openRun);
-  $("runPrev").addEventListener("click", ()=>{ let i = curPhase()-1; goPhase(i); });
-  $("runNext").addEventListener("click", ()=>{
-    const i = curPhase();
-    if(i >= PHASES.length-1) return finish();
-    goPhase(i+1);
-  });
-  $("runBody").addEventListener("change", e=>{
-    const k = e.target.dataset.ck; if(k===undefined) return;
-    const i = curPhase(); session.checks = session.checks || {};
-    const c = session.checks[i] = session.checks[i] || [];
-    c[+k] = e.target.checked; setSession(session);
-  });
-  $("runBody").addEventListener("click", e=>{
-    const a = e.target.closest("[data-bake]"); if(!a) return;
-    const b = BAKE, t = b.timers[session.tIdx||0];
-    if(a.dataset.bake==="go"){ session.tEnd = Date.now() + t.min*60000; buzzed = false; }
-    else if(a.dataset.bake==="stop"){ session.tEnd = null; }
-    else if(a.dataset.bake==="done"){
-      session.tEnd = null;
-      if((session.tIdx||0) < b.timers.length-1) session.tIdx = (session.tIdx||0)+1;
-      else { session.tIdx = 0; session.pizza = (session.pizza||0)+1; }
-    }
-    setSession(session); renderRun();
-  });
-
-  $("remindGo").addEventListener("click", async ()=>{
-    if(!N()) return;
-    const isNow = state.mode==="now";
-    render();
-    const res = await N().schedule(EVENTS);
-    msg = ""; exactMissing = false;
-    if(!res.ok){
-      msg = res.reason==="denied" ? "Notifications refusées : autorise-les dans les réglages Android de l'appli, puis réessaie." : "Impossible de programmer les rappels ici.";
-      render(); return;
-    }
-    if(res.count===0 && !isNow){ msg = "Toutes les étapes sont déjà passées : change le jour ou l'heure d'enfournement."; render(); return; }
-    setSession({mode: state.mode, bakeAt: bakeAt().getTime(), endAt: END.getTime(), phase:0, checks:{}, pizza:0, tIdx:0, tEnd:null});
-    if(res.skipped && !isNow) msg = `${res.skipped} étape${res.skipped>1?"s":""} déjà passée${res.skipped>1?"s":""}, sans rappel.`;
-    if(!res.exact){ exactMissing = true; msg = (msg?msg+" ":"") + "Android peut décaler les rappels de quelques minutes : autorise les alarmes à l'heure pile."; }
-    render(); await refreshPending();
-    if(isNow) openRun();
-  });
-  $("remindOff").addEventListener("click", async ()=>{
-    if(!confirmOff()) return;
-    if(N() && N().native) await N().cancel();
-    setSession(null); closeRun(); msg = ""; exactMissing = false; render(); refreshPending();
-  });
-  // double appui pour annuler (pas de boîte de dialogue)
-  let offArmed = 0;
-  function confirmOff(){
-    if(Date.now() - offArmed < 4000) return true;
-    offArmed = Date.now(); $("remindOff").textContent = "Appuie encore pour annuler";
-    setTimeout(()=>{ $("remindOff").textContent = "Annuler la pâte"; }, 4000);
-    return false;
+});
+document.addEventListener("change", ev => {
+  const t = ev.target;
+  if (t.dataset.act === "todo" && st.reperes) {
+    const x = st.reperes.aCompleter[Number(t.dataset.i)]; if (x) { x.fait = t.checked; write("config/reperes", st.reperes); renderReperes(); }
   }
-  $("exactBtn").addEventListener("click", ()=>{ N().openExactSettings(); exactMissing = false; msg = ""; renderRemind(); });
-  if(N()) N().onTap(()=>{ if(sessionLive()) openRun(); });
+  if (t.dataset.act === "check") {
+    const c = coursesDoc(), k = t.dataset.key;
+    if (t.checked) c.coches[k] = true; else delete c.coches[k];
+    saveCourses(); renderCourses();
+  }
+});
+document.addEventListener("input", ev => {
+  if (ev.target.id === "ms-q") { readMealInputs(); sheet.q = ev.target.value; const pos = ev.target.selectionStart; renderMealSheet(); const n = $("#ms-q"); n.focus(); try { n.setSelectionRange(pos, pos); } catch (e) {} }
+  if (ev.target.id === "rq") { ui.rq = ev.target.value; renderRecettes(); }
+});
+document.addEventListener("submit", ev => {
+  ev.preventDefault();
+  if (ev.target.id === "rform") submitRecipeForm();
+  if (ev.target.id === "eqform") saveEq();
+  if (ev.target.id === "addForm") {
+    const n = $("#addName").value.trim(); if (!n) return;
+    const c = coursesDoc(); c.ajouts.push({id: Date.now().toString(36), n, e: $("#addEns").value});
+    $("#addName").value = ""; saveCourses(true); renderCourses(); toast("Ajouté");
+  }
+});
+$("#scrim").addEventListener("click", closeSheet);
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") { if (cu) fermerCuisine(); else if (sheet) closeSheet(); } });
+document.addEventListener("visibilitychange", () => { if (!document.hidden && cu) window.Natif?.garderAllume(true); if (!document.hidden && ui.view === "semaine" && !sheet) renderSemaine(); });
 
-  // ---- liaisons ----
-  document.querySelectorAll('input[name=type]').forEach(el=>el.addEventListener("change",()=>{state.type=el.value;save();render();}));
-  document.querySelectorAll('input[name=yeast]').forEach(el=>el.addEventListener("change",()=>{state.yeast=el.value;save();render();}));
-  document.querySelectorAll('input[name=knead]').forEach(el=>el.addEventListener("change",()=>{state.knead=el.value;save();render();}));
-  document.querySelectorAll('input[name=oven]').forEach(el=>el.addEventListener("change",()=>{state.oven=el.value;save();render();}));
-  document.querySelectorAll('input[name=mode]').forEach(el=>el.addEventListener("change",()=>{state.mode=el.value;msg="";save();render();}));
-  $("support").addEventListener("change",e=>{state.support=e.target.value;save();render();});
-  $("tmax").addEventListener("change",e=>{state.tmax=+e.target.value;save();render();});
-  $("flour").addEventListener("change",e=>{state.flour=e.target.value;save();render();});
-  $("temp").addEventListener("input",e=>{state.temp=+e.target.value;save();render();});
-  $("hours").addEventListener("input",e=>{state.hours=+e.target.value;save();render();});
-  $("bake").addEventListener("change",e=>{state.bake=e.target.value||"19:00";save();render();});
-  $("bakeDate").addEventListener("change",e=>{bakeDate=e.target.value||ymd(new Date());render();});
-  document.querySelectorAll("[data-step]").forEach(b=>b.addEventListener("click",()=>{
-    const d = +b.dataset.d, T = TYPES[state.type];
-    if(b.dataset.step==="count") state.count = clamp(state.count+d,1,12);
-    else state.ball[state.type] = clamp(state.ball[state.type]+d*T.stepG, T.min, T.max);
-    save(); render();
-  }));
+/* ================= connexion aux données ================= */
+// window.claude.use("db") est fourni par commun/natif.js : base sur le téléphone, complétée à l'ouverture
+// par data/cuisine.json du dépôt GitHub (menus et recettes préparés par Claude).
+function setSync() {}
+const rerender = () => render();
+async function connect() {
+  const db = await window.claude.use("db");
+  st.db = db;
+  const err = () => {};
+  db.collection("recettes").onSnapshot(s => { const o = {}; s.docs.forEach(d => o[d.id] = d.data()); st.recettes = o; st.loaded.r = true; if (!sheet) rerender(); }, err);
+  db.collection("semaines").onSnapshot(s => { const o = {}; s.docs.forEach(d => o[d.id] = d.data()); st.semaines = o; st.loaded.s = true; if (!sheet) render(); majRappels(); }, err);
+  db.doc("config/drive").onSnapshot(d => { st.drive = d.exists ? d.data() : null; st.loaded.d = true; if (ui.view === "courses" && !sheet) renderCourses(); }, err);
+  db.doc("config/reglages").onSnapshot(d => { if (d.exists) st.reglages = {...st.reglages, ...d.data()}; st.loaded.g = true; if (ui.view === "semaine" && !sheet) renderSemaine(); }, err);
+  db.doc("config/reperes").onSnapshot(d => { st.reperes = d.exists ? d.data() : {}; if (ui.view === "reperes" && !sheet) renderReperes(); }, err);
+  db.collection("equipement").onSnapshot(s => { const o = {}; s.docs.forEach(d => o[d.id] = d.data()); st.equipement = o; if (ui.view === "reperes" && !sheet) renderReperes(); }, err);
+  db.doc("courses/actuel").onSnapshot(d => { st.courses = d.exists ? d.data() : null; st.loaded.c = true; if (ui.view === "courses" && !sheet) renderCourses(); }, err);
+}
 
-  // restaurer
-  if(session && session.mode==="plan"){ const s = new Date(session.bakeAt); bakeDate = ymd(s); state.bake = hm(s); }
-  document.getElementById("t-"+state.type).checked = true;
-  document.getElementById({fresh:"y-fresh",inst:"y-inst",act:"y-act"}[state.yeast]).checked = true;
-  document.getElementById(state.knead==="ce" ? "k-ce" : "k-hand").checked = true;
-  document.getElementById(state.mode==="now" ? "m-now" : "m-plan").checked = true;
-  $("support").value = state.support; $("tmax").value = String(state.tmax);
-  $("flour").value = state.flour; $("temp").value = state.temp; $("hours").value = state.hours;
-  $("bake").value = state.bake; $("bakeDate").value = bakeDate;
-  render();
-  refreshPending();
-  // reprise : si une pâte est en cours et que sa première étape approche, rouvrir le suivi
-  if(sessionLive() && Date.now() >= PHASES[0].at.getTime() - 15*60000) openRun();
-  // l'heure avance : rafraîchir régulièrement et au retour dans l'appli
-  setInterval(()=>{ if(!runOpen) render(); }, 30000);
-  setInterval(tick, 1000);
-  document.addEventListener("visibilitychange", ()=>{ if(!document.hidden){ render(); refreshPending(); renderRun(); } else if(N()) N().keepAwake(false); });
+route();
+connect();
 })();
 </script>
-</body>
-</html>
+
+</body></html>

@@ -1,0 +1,113 @@
+/* Cuisine d'Antoine : système visuel (une seule famille, Bricolage Grotesque : lourde et serrée pour les titres,
+   souple en texte grâce à son axe de taille optique) commun aux pages Semaine/Recettes/Courses, Pizza et Robot.
+   Faïence de cuisine claire, basilic pour agir, tomate pour ce qui chauffe ou tourne, safran pour « ce soir ».
+   Une seule pièce forte : la plaque émaillée (fond plein, filet intérieur) pour ce qui se passe maintenant. */
+
+@font-face{font-family:"Bricolage";font-style:normal;font-display:swap;font-weight:200 800;
+  src:url(fonts/bricolage-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Bricolage";font-style:normal;font-display:swap;font-weight:200 800;
+  src:url(fonts/bricolage-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{
+  --fond:#EEF1EC; --surface:#FFFFFF; --surface-2:#F5F7F3;
+  --encre:#1C2820; --encre-2:#4C5A50; --encre-3:#768379;
+  --trait:#D3DBD2; --trait-doux:#E3E9E1;
+  --basilic:#2C6A44; --basilic-fonce:#1F5133; --basilic-doux:#DFECE2;
+  --tomate:#B83A27; --tomate-doux:#F7E1DB;
+  --safran:#9C6B00; --safran-vif:#E9AE2C; --safran-doux:#FBEFD2;
+  --plaque:#2C6A44; --plaque-chaude:#B83A27; --plaque-encre:#FFFFFF; --plaque-filet:rgba(255,255,255,.42);
+  --gf:#4F7A27; --gf-doux:#E6EFD9; --lec:#2D5C9A; --lec-doux:#E1E9F5; --pic:#24788A; --pic-doux:#DDEFF2; --pla:#86684A; --pla-doux:#F1EAE1;
+  --voile:rgba(16,26,20,.45);
+  --ombre:0 1px 2px rgba(20,40,28,.07),0 18px 40px -18px rgba(20,40,28,.35);
+  --titre:"Bricolage","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --texte:"Bricolage","Segoe UI",system-ui,-apple-system,sans-serif;
+  --r-plaque:20px; --r-carte:14px; --r-btn:12px;
+  --nav-h:64px;
+  --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+  --sal:env(safe-area-inset-left,0px); --sar:env(safe-area-inset-right,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --fond:#0F1511; --surface:#17201A; --surface-2:#1D2820;
+  --encre:#E4EBE5; --encre-2:#A9B6AC; --encre-3:#7E8C82;
+  --trait:#2B372F; --trait-doux:#223027;
+  --basilic:#7CC495; --basilic-fonce:#A3DAB5; --basilic-doux:#1D3325;
+  --tomate:#F08B72; --tomate-doux:#3A2019;
+  --safran:#F0C25E; --safran-vif:#F0C25E; --safran-doux:#33290F;
+  --plaque:#235A38; --plaque-chaude:#9E3A27; --plaque-encre:#F1F7F2; --plaque-filet:rgba(241,247,242,.32);
+  --gf:#9CC872; --gf-doux:#22301A; --lec:#8FB1E6; --lec-doux:#1B2638; --pic:#7FC9D8; --pic-doux:#14292E; --pla:#CDB496; --pla-doux:#2B241B;
+  --voile:rgba(0,0,0,.6);
+  --ombre:0 1px 2px rgba(0,0,0,.4),0 18px 40px -18px rgba(0,0,0,.8);
+  color-scheme:dark}}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;background:var(--fond)}
+body{margin:0;background:var(--fond);color:var(--encre);font-family:var(--texte);font-size:16px;line-height:1.5;font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;
+  padding-bottom:calc(var(--nav-h) + 28px + var(--sab))}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--basilic);outline-offset:2px}
+.chiffres{font-variant-numeric:tabular-nums}
+
+/* En-tête de page : le nom de la page, grand, et une action à droite */
+.entete{position:sticky;top:0;z-index:6;background:var(--fond);
+  padding:calc(12px + var(--sat)) max(16px,var(--sar)) 10px max(16px,var(--sal))}
+.entete-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:10px;min-height:44px}
+.entete h1{font-family:var(--titre);font-weight:750;font-size:30px;line-height:1.05;letter-spacing:-.015em;margin:0;flex:1;min-width:0;text-wrap:balance}
+.entete .outil{flex:none;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--trait);background:var(--surface);border-radius:999px;min-height:40px;padding:0 14px;font-size:14px;font-weight:600;color:var(--encre)}
+.entete .outil svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.page{max-width:720px;margin:0 auto;padding:0 max(16px,var(--sar)) 0 max(16px,var(--sal))}
+
+/* Barre du bas, partagée par toutes les pages */
+.barre-bas{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--surface);border-top:1px solid var(--trait);
+  padding:0 var(--sar) var(--sab) var(--sal)}
+.barre-bas-in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:var(--nav-h)}
+.barre-bas a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--encre-3);font-size:12px;font-weight:600;position:relative}
+.barre-bas a svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.barre-bas a[aria-current="page"]{color:var(--basilic)}
+.barre-bas a[aria-current="page"]::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--basilic)}
+.barre-bas .vivant{position:absolute;top:10px;left:calc(50% + 8px);width:9px;height:9px;border-radius:50%;background:var(--tomate);box-shadow:0 0 0 2px var(--surface)}
+
+/* Plaque émaillée : ce qui se passe maintenant */
+.plaque{position:relative;background:var(--plaque);color:var(--plaque-encre);border-radius:var(--r-plaque);padding:20px 20px 18px;isolation:isolate}
+.plaque::before{content:"";position:absolute;inset:6px;border:1.5px solid var(--plaque-filet);border-radius:calc(var(--r-plaque) - 6px);pointer-events:none;z-index:-1}
+.plaque.chaude{background:var(--plaque-chaude)}
+.plaque .quand{font-weight:600;font-size:15px;opacity:.92}
+.plaque .plat{font-family:var(--titre);font-weight:780;font-size:34px;line-height:1.02;letter-spacing:-.02em;margin:6px 0 8px;text-wrap:balance}
+.plaque .infos{font-size:15px;opacity:.9}
+.plaque .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.plaque .btn{background:var(--plaque-encre);color:var(--plaque);border-color:transparent}
+.plaque.chaude .btn{color:var(--plaque-chaude)}
+.plaque .btn.ghost{background:transparent;color:var(--plaque-encre);border-color:var(--plaque-filet)}
+
+/* Boutons, puces, champs */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--trait);background:var(--surface);color:var(--encre);
+  border-radius:var(--r-btn);padding:10px 16px;min-height:48px;font-size:15.5px;font-weight:600;text-decoration:none;line-height:1.2}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.primary,.btn.principal{background:var(--basilic);border-color:var(--basilic);color:var(--surface)}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--tomate);border-color:color-mix(in srgb,var(--tomate) 45%,transparent);background:transparent}
+.btn.icon{width:48px;padding:0;font-size:22px}
+.btn.plein{width:100%}
+.btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--trait);background:var(--surface);border-radius:999px;padding:6px 14px;min-height:38px;font-size:14px;font-weight:600;color:var(--encre-2);white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--basilic-doux);border-color:var(--basilic);color:var(--basilic-fonce)}
+.field{border:1px solid var(--trait);background:var(--surface);border-radius:10px;padding:10px 12px;min-height:48px;width:100%}
+textarea.field{min-height:120px;resize:vertical;font-size:15px;line-height:1.55}
+.lab{display:block;font-size:14px;font-weight:600;color:var(--encre-2);margin-bottom:6px}
+.muted{color:var(--encre-3)}
+
+/* Feuille montante */
+.voile{position:fixed;inset:0;background:var(--voile);z-index:20}
+.feuille{position:fixed;left:0;right:0;bottom:0;z-index:21;background:var(--fond);border-radius:22px 22px 0 0;max-height:90vh;overflow-y:auto;box-shadow:var(--ombre);
+  padding:8px max(18px,var(--sar)) calc(24px + var(--sab)) max(18px,var(--sal));overscroll-behavior:contain}
+@media (min-width:720px){.feuille{left:50%;right:auto;width:660px;transform:translateX(-50%);bottom:auto;top:5vh;border-radius:20px;max-height:88vh}}
+.poignee{width:44px;height:5px;border-radius:3px;background:var(--trait);margin:4px auto 12px}
+
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 16px + var(--sab));z-index:30;background:var(--encre);color:var(--fond);
+  padding:11px 16px;border-radius:12px;font-size:15px;font-weight:600;max-width:calc(100% - 32px);box-shadow:var(--ombre)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
