@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Pâte à pizza</string>
+    <string name="title_activity_main">Pâte à pizza</string>
+    <string name="package_name">fr.triangledeau.patepizza</string>
+    <string name="custom_url_scheme">fr.triangledeau.patepizza</string>
+</resources>

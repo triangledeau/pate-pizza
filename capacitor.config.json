@@ -1,0 +1,11 @@
+{
+  "appId": "fr.triangledeau.patepizza",
+  "appName": "Pâte à pizza",
+  "webDir": "www",
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_pizza",
+      "iconColor": "#2C6A44"
+    }
+  }
+}

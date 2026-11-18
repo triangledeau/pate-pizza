@@ -1,0 +1,52 @@
+name: APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: gradle
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Page web
+        run: |
+          npm ci
+          npm run build
+          npx cap sync android
+
+      - name: Compilation de l'APK
+        working-directory: android
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon --stacktrace
+          cp app/build/outputs/apk/release/app-release.apk ../pate-pizza.apk
+
+      - name: Publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v1.${{ github.run_number }}" pate-pizza.apk \
+            --title "Pâte à pizza 1.${{ github.run_number }}" \
+            --notes "Ouvre ce lien sur ton téléphone et installe pate-pizza.apk." \
+            --latest
