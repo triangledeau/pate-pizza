@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -41,6 +42,13 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- Cook Expert (série classique) et balance (BLE) : les permissions Bluetooth viennent du plugin bluetooth-le -->
+    <!-- Cook Expert (série classique) et balance (BLE). Le plugin bluetooth-le déclare les autres permissions ;
+         sans « neverForLocation », Android 12+ ne renvoie aucun appareil BLE à une appli sans localisation
+         (BleClient.initialize({ androidNeverForLocation: true }) dans natif.js) : la liste de la balance restait vide. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" />
     <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
 </manifest>

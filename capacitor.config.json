@@ -6,6 +6,14 @@
     "LocalNotifications": {
       "smallIcon": "ic_stat_pizza",
       "iconColor": "#2C6A44"
+    },
+    "BluetoothLe": {
+      "displayStrings": {
+        "scanning": "Recherche de la balance…",
+        "cancel": "Annuler",
+        "availableDevices": "Balances trouvées",
+        "noDeviceFound": "Aucune balance trouvée"
+      }
     }
   }
 }

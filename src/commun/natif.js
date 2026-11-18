@@ -236,7 +236,14 @@ const bluetoothNatif = {
   async requestDevice({ filters }) {
     await initBle();
     const services = (filters || []).flatMap((f) => f.services || []).map(uuid);
-    const d = await BleClient.requestDevice({ services });
+    let d;
+    try { d = await BleClient.requestDevice({ services }); }
+    catch (e) {
+      if (/cancel/i.test(e?.message || "")) {
+        throw new Error("Balance non choisie. Si la liste restait vide : allume la balance et ferme l'appli Magimix (elle la garde occupée).");
+      }
+      throw e;
+    }
     return new AppareilBle(d);
   },
 };
