@@ -131,12 +131,6 @@ input[type='range'] { width: 100%; accent-color: var(--tomate); height: 32px; }
 .pastilles { display: flex; gap: 6px; }
 .pastille { min-height: 40px; font-weight: 600; }
 
-/* Sections de la page (Piloter, Recettes, Balance, Plus) : segments sous l'en-tête */
-.onglets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; margin: 2px 0 14px;
-  background: var(--surface-2); border: 1px solid var(--trait); border-radius: 14px; }
-.onglets button { border: 0; background: none; min-height: 44px; border-radius: 10px; font-size: 14.5px; font-weight: 600; color: var(--encre-2); }
-.onglets button.actif { background: var(--surface); color: var(--encre); box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 0 0 1px var(--trait); }
-
 h2 { font-family: var(--titre); font-weight: 700; font-size: 21px; letter-spacing: -.01em; margin-bottom: 12px; }
 .carte { border-radius: var(--r-carte); padding: 16px; }
 .btn.petit { min-height: 38px; padding: 6px 12px; font-size: 14px; }
@@ -180,12 +174,6 @@ input[type='range'] { accent-color: var(--basilic); }
 .vue > :nth-child(3){animation:monte .34s var(--sortie) both .06s}
 .vue > :nth-child(4){animation:monte .34s var(--sortie) both .09s}
 .ecran{animation:feuille-monte .3s var(--sortie)}
-/* onglets : un curseur qui glisse sous l'onglet actif */
-.onglets{position:relative;isolation:isolate}
-.onglets::before{content:"";position:absolute;z-index:-1;top:4px;bottom:4px;left:4px;width:calc((100% - 20px) / 4);border-radius:10px;background:var(--surface);
-  box-shadow:0 1px 2px rgba(0,0,0,.08),0 0 0 1px var(--trait);transform:translateX(calc(var(--i,0) * (100% + 4px)));transition:transform .3s var(--ressort)}
-.onglets button{transition:color .2s}
-.onglets button.actif{background:none;box-shadow:none}
 /* état : le robot dessiné dans la plaque */
 #carte-etat{min-height:150px;overflow:hidden}
 .etat-ill{position:absolute;right:-6px;bottom:-10px;width:120px;height:120px;opacity:.95;pointer-events:none;transition:transform .4s var(--ressort)}
@@ -200,3 +188,101 @@ input[type='range'] { accent-color: var(--basilic); }
 .liste > li{transition:background-color .15s}
 .jauge > div,.progression > div{transition:width .35s var(--sortie)}
 .poids-grand{transition:color .2s}
+
+/* ---------- sections du robot : barre flottante au-dessus de la barre du bas (atteignable au pouce) ---------- */
+body { padding-bottom: calc(var(--nav-h) + var(--sab) + 92px); }
+.onglets { position: fixed; z-index: 13; left: 50%; transform: translateX(-50%); bottom: calc(var(--nav-h) + var(--sab) + 10px);
+  width: min(520px, calc(100% - 24px)); display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px;
+  background: color-mix(in srgb, var(--surface-2) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: 1px solid var(--trait); border-radius: 16px; box-shadow: var(--ombre-haute); isolation: isolate; animation: monte .3s var(--sortie); }
+.onglets button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 0; background: none;
+  min-height: 52px; border-radius: 12px; font-size: 13px; font-weight: 650; color: var(--encre-3); transition: color .2s; }
+.onglets button svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s var(--ressort); }
+.onglets button:active svg { transform: scale(.86); }
+.onglets button.actif { color: var(--basilic-fonce); }
+.onglets::before { content: ""; position: absolute; z-index: -1; top: 4px; bottom: 4px; left: 4px; width: calc((100% - 20px) / 4); border-radius: 12px;
+  background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 0 0 1px var(--trait-doux);
+  transform: translateX(calc(var(--i, 0) * (100% + 4px))); transition: transform .3s var(--ressort); }
+#toast { bottom: calc(var(--nav-h) + var(--sab) + 86px); }
+.stop-flottant { position: fixed; z-index: 13; left: 50%; transform: translateX(-50%); bottom: calc(var(--nav-h) + var(--sab) + 80px);
+  width: min(520px, calc(100% - 24px)); animation: monte .25s var(--sortie); }
+.stop-flottant:active { transform: translateX(-50%) scale(.98); }
+
+/* ---------- Piloter ---------- */
+.carte-tete { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.carte-tete h2 { margin: 0; }
+
+/* plaque d'état */
+#carte-etat { padding-bottom: 16px; }
+#carte-etat.eteinte { min-height: 0; }
+#carte-etat.eteinte .etat-grand, #carte-etat.eteinte .etat-details { display: none; }
+#carte-etat.eteinte .etat-ill { width: 96px; height: 96px; bottom: -8px; }
+#carte-etat .etat-grand { font-size: 56px; }
+#btn-connecter-robot { position: relative; margin-top: 12px; background: var(--basilic); color: var(--surface); border-color: var(--basilic); }
+.etat-auto { position: relative; display: inline-block; margin-top: 10px; padding: 6px 12px; border-radius: 999px; font-weight: 600; font-size: 14.5px;
+  background: var(--plaque-encre); color: var(--plaque); animation: pop .3s var(--ressort); }
+#carte-etat.pret { animation: pop .4s var(--ressort); }
+
+/* favoris : une rangée de tuiles qui défile au doigt */
+.carte-favoris { padding-bottom: 12px; }
+.favoris { list-style: none; margin: 0 -16px; padding: 2px 16px 4px; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: 16px;
+  scrollbar-width: none; overscroll-behavior-x: contain; }
+.favoris::-webkit-scrollbar { display: none; }
+.favoris > li { position: relative; flex: none; scroll-snap-align: start; }
+.favoris .tuile { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 132px; max-width: 200px; min-height: 64px;
+  padding: 10px 14px; border-radius: 14px; border: 1px solid var(--trait-doux); background: var(--surface-2); text-align: left;
+  transition: transform .12s var(--sortie), border-color .2s; }
+.favoris .tuile.chaud { background: var(--tomate-doux); }
+.favoris .tuile:active { transform: scale(.96); }
+.favoris .nom { font-weight: 700; font-size: 15px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.favoris .resume { font-size: 12.5px; color: var(--encre-2); white-space: nowrap; }
+.favoris .suppr { display: none; position: absolute; top: -6px; right: -6px; width: 28px; height: 28px; border-radius: 50%; border: 0;
+  background: var(--tomate); color: #fff; font-size: 13px; font-weight: 700; box-shadow: var(--ombre-carte); animation: pop .22s var(--ressort); }
+.favoris.gestion .suppr { display: grid; place-items: center; }
+.favoris.gestion .tuile { animation: tremble .5s ease-in-out infinite alternate; }
+.favoris .vide { flex: 1; padding: 6px 0 4px; text-align: left; font-size: 14px; }
+@keyframes tremble { from { transform: rotate(-.8deg); } to { transform: rotate(.8deg); } }
+
+/* programme : trois molettes */
+.btn-etoile { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--trait); background: var(--surface); display: grid; place-items: center;
+  transition: transform .12s var(--sortie); }
+.btn-etoile svg { width: 22px; height: 22px; stroke: var(--safran); fill: var(--safran-doux); stroke-width: 1.7; stroke-linejoin: round; }
+.btn-etoile:active { transform: scale(.88); }
+#carte-programme.charge .molette-valeur { animation: pop .35s var(--ressort); }
+.reglage { display: flex; flex-direction: column; gap: 6px; }
+.molette { padding: 8px 0 10px; border-top: 1px solid var(--trait-doux); }
+.molette:first-child { border-top: 0; padding-top: 0; }
+.molette-tete { display: flex; align-items: center; margin-bottom: 4px; }
+.molette-nom { display: inline-flex; align-items: center; font-size: 14px; font-weight: 650; color: var(--encre-2); }
+.molette-corps { display: grid; grid-template-columns: 56px 1fr 56px; align-items: center; gap: 8px; }
+.pas { height: 52px; border-radius: 16px; border: 1px solid var(--trait); background: var(--surface-2); font-size: 26px; font-weight: 500; line-height: 1;
+  touch-action: manipulation; user-select: none; -webkit-user-select: none; transition: transform .1s var(--sortie), background-color .15s; }
+.pas:active { transform: scale(.9); background: var(--basilic-doux); }
+.molette-valeur { display: flex; align-items: baseline; justify-content: center; gap: 4px; min-width: 0;
+  font-family: var(--titre); font-weight: 760; font-size: 40px; line-height: 1.1; letter-spacing: -.02em; color: var(--encre); }
+.molette-valeur output { transition: color .2s; }
+.molette-valeur .unite { font-size: 18px; font-weight: 650; color: var(--encre-3); letter-spacing: 0; }
+.molette.chaud .molette-valeur { color: var(--tomate); }
+.saisie-duree { width: 100%; max-width: 200px; text-align: center; border: 0 !important; background: none !important; padding: 0 !important;
+  font: inherit; color: inherit; letter-spacing: inherit; border-radius: 10px; }
+.saisie-duree:focus { outline: none; box-shadow: inset 0 -3px 0 var(--basilic); border-radius: 0; }
+.molette .puces { flex-wrap: nowrap; overflow-x: auto; margin: 8px -16px 0; padding: 0 16px; scrollbar-width: none; }
+.molette .puces::-webkit-scrollbar { display: none; }
+.molette .puce { flex: none; min-height: 36px; padding: 6px 13px; font-size: 14px; font-weight: 600; color: var(--encre-2); background: var(--surface);
+  transition: background-color .15s, color .15s, border-color .15s, transform .12s var(--sortie); }
+.molette .puce:active { transform: scale(.94); }
+.molette .puce.choisie { background: var(--basilic-doux); border-color: var(--basilic); color: var(--basilic-fonce); }
+.molette.chaud .puce.choisie { background: var(--tomate-doux); border-color: var(--tomate); color: var(--tomate); }
+.reglage.invalide + .erreur { animation: pop .25s var(--ressort); }
+.erreur { padding: 8px 12px; border-radius: 10px; background: var(--tomate-doux); font-size: 14px; }
+.envoyer { min-height: 60px; font-size: 17px; margin-top: 6px; }
+
+/* touches : repliées, Stop toujours sous la main quand le robot tourne (bouton flottant) */
+.touches summary { list-style: none; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+.touches summary::-webkit-details-marker { display: none; }
+.touches summary h2 { margin: 0; font-size: 17px; }
+.touches summary::after { content: ""; width: 9px; height: 9px; margin-right: 4px; border: solid var(--encre-3); border-width: 0 2px 2px 0;
+  transform: rotate(45deg); transition: transform .2s var(--sortie); }
+.touches[open] summary::after { transform: rotate(-135deg); }
+.touches[open] summary { margin-bottom: 12px; }
+.btn-stop { letter-spacing: .01em; }

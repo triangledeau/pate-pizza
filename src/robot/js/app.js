@@ -70,51 +70,102 @@ function verifier(p) {
 }
 
 // ---------- Composant de réglage (durée, température, vitesse) ----------
+// Trois molettes : valeur en grand, − et + (appui long = défilement), raccourcis en dessous.
+// La durée se tape aussi directement (« 5 », « 1:30 »).
+
+const TEMPERATURES = [SANS_CHAUFFE, ...Array.from({ length: 23 }, (_, k) => 30 + k * 5)]; // sans, 30 à 140 °C
+const VITESSES = Array.from({ length: 19 }, (_, k) => k);
+const pasTemps = (s, sens) => (sens > 0 ? (s < 60 ? 10 : s < 300 ? 30 : s < 1800 ? 60 : 300) : s <= 60 ? 10 : s <= 300 ? 30 : s <= 1800 ? 60 : 300);
+const texteTemp = (t) => (t === SANS_CHAUFFE ? 'sans' : `${t}`);
+
+function lireDuree(texte) {
+  const t = String(texte).trim();
+  if (!/^\d{1,3}([:h.,]\d{1,2}){0,2}$/.test(t)) return null;
+  const n = t.split(/[:h.,]/).map(Number);
+  const s = n.length === 3 ? n[0] * 3600 + n[1] * 60 + n[2] : n.length === 2 ? n[0] * 60 + n[1] : n[0] * 60;
+  return Math.min(14400, s);
+}
 
 function rendreReglage(conteneur, p) {
-  conteneur.innerHTML = `
-    <div class="champ">
-      <div class="etiquette">Durée</div>
-      <div class="duree">
-        <input type="number" inputmode="numeric" name="min" min="0" max="240" value="${Math.floor(p.tempsS / 60)}" aria-label="minutes"> min
-        <input type="number" inputmode="numeric" name="s" min="0" max="59" value="${p.tempsS % 60}" aria-label="secondes"> s
+  const v = { tempsS: p.tempsS, temperature: p.temperature, vitesse: p.vitesse };
+  conteneur._reglage = v;
+  const ligne = (cle, nom, unite, puces, extra = '') => `
+    <div class="molette" data-cle="${cle}">
+      <div class="molette-tete"><span class="molette-nom">${nom}${extra}</span></div>
+      <div class="molette-corps">
+        <button type="button" class="pas" data-sens="-1" aria-label="${nom} : moins">−</button>
+        <div class="molette-valeur chiffres">${
+          cle === 'tempsS'
+            ? `<input class="saisie-duree" inputmode="decimal" aria-label="Durée (minutes ou min:s)" enterkeyhint="done">`
+            : `<output></output>`
+        }<span class="unite">${unite}</span></div>
+        <button type="button" class="pas" data-sens="1" aria-label="${nom} : plus">+</button>
       </div>
-      <div class="puces">${[[10, '10 s'], [30, '30 s'], [60, '1 min'], [300, '5 min'], [600, '10 min'], [1200, '20 min']]
-        .map(([s, t]) => `<button type="button" class="puce" data-temps="${s}">${t}</button>`).join('')}</div>
-    </div>
-    <div class="champ">
-      <div class="etiquette">Température <output name="temp-aff"></output></div>
-      <input type="range" name="temp" min="${SANS_CHAUFFE}" max="140" step="1" value="${p.temperature}">
-      <div class="puces">${[[SANS_CHAUFFE, 'sans'], [50, '50'], [80, '80'], [95, '95'], [100, '100'], [120, '120'], [130, '130']]
-        .map(([v, t]) => `<button type="button" class="puce" data-temp="${v}">${t}${v === SANS_CHAUFFE ? '' : ' °C'}</button>`).join('')}</div>
-    </div>
-    <div class="champ">
-      <div class="etiquette">Vitesse <output name="vit-aff"></output></div>
-      <input type="range" name="vit" min="0" max="18" step="1" value="${p.vitesse}">
-      <div class="discret">1A et 2A : brassage intermittent · 3 à 5 : mélanger · 12 à 18 : hacher, mixer</div>
+      <div class="puces">${puces.map(([val, t]) => `<button type="button" class="puce" data-val="${val}">${t}</button>`).join('')}</div>
     </div>`;
+  conteneur.innerHTML =
+    ligne('tempsS', 'Durée', '', [[30, '30 s'], [60, '1 min'], [120, '2 min'], [300, '5 min'], [600, '10 min'], [1200, '20 min']]) +
+    ligne('temperature', 'Température', '°C', [[SANS_CHAUFFE, 'sans'], [50, '50'], [80, '80'], [95, '95'], [100, '100'], [120, '120'], [130, '130']]) +
+    ligne('vitesse', 'Vitesse', '', [[1, '1A'], [2, '2A'], [3, '3'], [5, '5'], [8, '8'], [12, '12'], [18, '18']],
+      window.info?.('<p><b>1A et 2A</b> : brassage intermittent.</p><p><b>3 à 5</b> : mélanger.</p><p><b>12 à 18</b> : hacher, mixer.</p><p>Au-dessus de 60 °C, vitesse 15 au plus.</p>', 'Repères de vitesse') ?? '');
+
+  const saisie = $('.saisie-duree', conteneur);
   const maj = () => {
-    const t = Number($('[name=temp]', conteneur).value);
-    $('[name=temp-aff]', conteneur).textContent = t === SANS_CHAUFFE ? 'sans chauffe' : `${t} °C`;
-    $('[name=vit-aff]', conteneur).textContent = formaterVitesse(Number($('[name=vit]', conteneur).value));
+    if (document.activeElement !== saisie) saisie.value = formaterTemps(v.tempsS);
+    const t = $('[data-cle=temperature] output', conteneur);
+    t.textContent = texteTemp(v.temperature);
+    t.nextElementSibling.hidden = v.temperature === SANS_CHAUFFE;
+    $('[data-cle=temperature]', conteneur).classList.toggle('chaud', v.temperature !== SANS_CHAUFFE);
+    $('[data-cle=vitesse] output', conteneur).textContent = formaterVitesse(v.vitesse);
+    for (const b of $$('.puce', conteneur)) {
+      const cle = b.closest('.molette').dataset.cle;
+      b.classList.toggle('choisie', Number(b.dataset.val) === v[cle]);
+    }
+    const erreur = verifier(v);
+    conteneur.classList.toggle('invalide', !!erreur);
+    conteneur.dispatchEvent(new CustomEvent('reglage', { detail: erreur }));
   };
-  conteneur.oninput = maj;
+  const changer = (cle, sens) => {
+    if (cle === 'tempsS') v.tempsS = Math.max(0, Math.min(14400, v.tempsS + sens * pasTemps(v.tempsS, sens)));
+    else {
+      // valeur suivante de la liste (une température hors liste, venue d'un favori, reste atteignable)
+      const liste = cle === 'temperature' ? TEMPERATURES : VITESSES;
+      const suivante = sens > 0 ? liste.find((x) => x > v[cle]) : liste.findLast((x) => x < v[cle]);
+      if (suivante !== undefined) v[cle] = suivante;
+    }
+    maj();
+  };
+  // Appui long sur − ou + : la valeur défile
+  let repete = null;
+  const stopper = () => { clearTimeout(repete); clearInterval(repete); repete = null; };
+  conteneur.onpointerdown = (e) => {
+    const b = e.target.closest('.pas');
+    if (!b) return;
+    const cle = b.closest('.molette').dataset.cle, sens = Number(b.dataset.sens);
+    changer(cle, sens);
+    vibrer(8);
+    repete = setTimeout(() => (repete = setInterval(() => changer(cle, sens), 90)), 420);
+  };
+  conteneur.onpointerup = conteneur.onpointerleave = conteneur.onpointercancel = stopper;
   conteneur.onclick = (e) => {
     const b = e.target.closest('.puce');
     if (!b) return;
-    if (b.dataset.temps) {
-      $('[name=min]', conteneur).value = Math.floor(b.dataset.temps / 60);
-      $('[name=s]', conteneur).value = b.dataset.temps % 60;
-    }
-    if (b.dataset.temp) $('[name=temp]', conteneur).value = b.dataset.temp;
+    v[b.closest('.molette').dataset.cle] = Number(b.dataset.val);
     maj();
   };
+  saisie.onfocus = () => saisie.select();
+  saisie.onchange = saisie.onblur = () => {
+    const s = lireDuree(saisie.value);
+    if (s !== null) v.tempsS = s;
+    saisie.value = formaterTemps(v.tempsS);
+    maj();
+  };
+  saisie.onkeydown = (e) => e.key === 'Enter' && saisie.blur();
   maj();
 }
 
 function lireReglage(conteneur) {
-  const n = (nom) => Math.round(Number($(`[name=${nom}]`, conteneur).value) || 0);
-  return { tempsS: n('min') * 60 + n('s'), temperature: n('temp'), vitesse: n('vit') };
+  return { ...conteneur._reglage };
 }
 
 // ---------- Onglets ----------
@@ -129,7 +180,7 @@ function afficherVue(nom) {
 }
 // Chaque onglet a son adresse (robot.html#balance…) : le retour arrière revient à l'onglet précédent
 // et le raccourci « Balance » de l'icône ouvre directement le bon onglet.
-const VUES = ['piloter', 'recettes', 'balance', 'plus'];
+const VUES = ['recettes', 'piloter', 'balance', 'plus'];
 for (const b of $$('.onglets button')) b.addEventListener('click', () => {
   if (location.hash !== `#${b.dataset.vue}`) location.hash = b.dataset.vue;
   else afficherVue(b.dataset.vue);
@@ -202,7 +253,15 @@ balance.addEventListener('journal', (e) => journal(e.detail));
 // ---------- Piloter ----------
 
 const conteneurReglage = $('#reglage-piloter');
+// Le réglage est vérifié à chaque changement : l'erreur s'affiche et l'envoi est bloqué tant qu'elle reste.
+conteneurReglage.addEventListener('reglage', (e) => {
+  $('#erreur-piloter').hidden = !e.detail;
+  $('#erreur-piloter').textContent = e.detail ?? '';
+  $('#btn-envoyer').disabled = !!e.detail;
+  $('#bandeau-auto').hidden = true;
+});
 rendreReglage(conteneurReglage, { tempsS: 300, temperature: 100, vitesse: 3 });
+$('#btn-connecter-robot').addEventListener('click', () => $('#pastille-robot').click());
 
 let etatPrecedent = null;
 function majEtat(etat) {
@@ -213,11 +272,15 @@ function majEtat(etat) {
     $('#etat-vit').textContent = '';
     $('#etat-defauts').textContent = '';
     $('#bandeau-auto').hidden = true;
+    $('#btn-connecter-robot').hidden = false;
+    $('#stop-flottant').hidden = true;
     $('#carte-etat').classList.remove('chaude', 'eteinte');
     $('#carte-etat').classList.add('eteinte');
     return;
   }
+  $('#btn-connecter-robot').hidden = true;
   if (!etat) return;
+  $('#stop-flottant').hidden = !EN_COURS.has(etat.etat);
   $('#carte-etat').classList.remove('eteinte');
   $('#carte-etat').classList.toggle('chaude', EN_COURS.has(etat.etat));
   const mode = NOMS_MODES[etat.mode];
@@ -249,15 +312,14 @@ function finProgramme() {
 $('#btn-envoyer').addEventListener('click', () =>
   tenter(async () => {
     const p = lireReglage(conteneurReglage);
-    const erreur = verifier(p);
-    $('#erreur-piloter').hidden = !erreur;
-    $('#erreur-piloter').textContent = erreur ?? '';
-    if (erreur) return;
+    if (verifier(p)) return;
     if (!robot.connecte) await robot.connecter();
     const code = await robot.envoyerProgramme(p);
     if (code === 0) {
       $('#bandeau-auto').hidden = false;
+      animerUneFois?.($('#carte-etat'), 'pret', 700);
       vibrer(200);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else toast(`Programme refusé par le robot (code ${code})`);
   }),
 );
@@ -270,24 +332,34 @@ $('#btn-favori').addEventListener('click', () => {
   if (!nom) return;
   stock.enregistrerFavori({ nom: nom.trim(), ...p });
   rendreFavoris();
+  $('#liste-favoris').scrollTo({ left: 1e5, behavior: 'smooth' });
   toast('Favori enregistré');
 });
 
 function rendreFavoris() {
   const f = stock.favoris();
+  $('#btn-gerer').hidden = !f.length;
+  if (!f.length) $('#liste-favoris').classList.remove('gestion');
   $('#liste-favoris').innerHTML = f.length
     ? f
         .map(
           (x) => `<li data-id="${esc(x.id)}">
-        <div class="infos"><div class="nom">${esc(x.nom)}</div><div class="discret">${esc(resume(x))}</div></div>
-        <button class="btn-icone" data-action="suppr" type="button" aria-label="Supprimer">✕</button>
-        <button class="btn petit" data-action="charger" type="button">Charger</button>
-        <button class="btn petit principal" data-action="envoyer" type="button">Envoyer</button>
+        <button class="tuile${x.temperature !== SANS_CHAUFFE ? ' chaud' : ''}" data-action="charger" type="button">
+          <span class="nom">${esc(x.nom)}</span>
+          <span class="resume chiffres">${esc(formaterTemps(x.tempsS))} · ${x.temperature === SANS_CHAUFFE ? 'sans chauffe' : `${x.temperature} °C`} · v${esc(formaterVitesse(x.vitesse))}</span>
+        </button>
+        <button class="suppr" data-action="suppr" type="button" aria-label="Supprimer ${esc(x.nom)}">✕</button>
       </li>`,
         )
         .join('')
-    : '<li class="vide">Aucun favori</li>';
+    : '<li class="vide">Règle un programme puis touche ☆ pour le garder ici.</li>';
 }
+
+$('#btn-gerer').addEventListener('click', () => {
+  const l = $('#liste-favoris');
+  l.classList.toggle('gestion');
+  $('#btn-gerer').textContent = l.classList.contains('gestion') ? 'Terminé' : 'Gérer';
+});
 
 $('#liste-favoris').addEventListener('click', (e) => {
   const b = e.target.closest('button[data-action]');
@@ -301,9 +373,11 @@ $('#liste-favoris').addEventListener('click', (e) => {
     }
     return;
   }
+  // Un favori se charge dans le réglage ; « Envoyer au robot » reste un geste séparé.
   rendreReglage(conteneurReglage, f);
-  if (b.dataset.action === 'envoyer') $('#btn-envoyer').click();
-  else toast(`« ${f.nom} » chargé`);
+  animerUneFois?.($('#carte-programme'), 'charge', 500);
+  vibrer(15);
+  toast(`« ${f.nom} » chargé`);
 });
 
 for (const b of $$('[data-touche]')) {
@@ -615,7 +689,7 @@ function ouvrirGuide(recette) {
       return `${msg ? `<div class="${msg[0]}">${msg[1]}</div>` : ''}${defauts}
         <div class="rangee">
           <button class="btn" data-action="envoyer" type="button">${suivi ? 'Renvoyer' : 'Envoyer au robot'}</button>
-          <button class="btn-stop" data-action="stop" type="button">STOP</button>
+          <button class="btn-stop" data-action="stop" type="button">Stop</button>
         </div>`;
     }
     return '';

@@ -532,7 +532,7 @@ function plaqueHtml() {
   if (r) {
     act += `<button class="btn" data-act="cuisiner" data-id="${esc(x.m.r)}" data-p="${x.m.p || r.portions}">Cuisiner pas à pas</button>`;
     act += `<button class="btn ghost" data-act="openRecipe" data-id="${esc(x.m.r)}">Recette</button>`;
-    if (r.categorie === "Pizza") act += `<a class="btn ghost" href="${esc(lienPizza(x, r))}">Planifier la pâte</a>`;
+    if (r.categorie === "Pizza") act += `<a class="btn ghost" href="${esc(lienPizza(x, r))}">Préparer la pâte</a>`;
   }
   const assiette = window.Illus ? `<span class="assiette">${Illus.plat(Illus.famille(r || x.m))}</span>` : "";
   return `<section class="ce-soir plaque${assiette ? " avec-assiette" : ""}" aria-label="Prochain repas">${assiette}<div class="quand">${esc(quand)}</div>
@@ -822,7 +822,7 @@ function renderRecipeSheet() {
     ${r.sousTitre ? `<div class="sub">${esc(r.sousTitre)}</div>` : ""}
     <div class="meta"><span>Actif <b>${fmtMin(r.actif)}</b></span><span>Total <b>${fmtMin(r.total)}</b></span>${r.niveau ? `<span>Niveau <b>${esc(r.niveau)}</b></span>` : ""}${r.appareils?.length ? `<span>${esc(r.appareils.join(", "))}</span>` : ""}</div>
     ${al.map(a => `<span class="alert">${esc(a)}</span>`).join(" ")}
-    <div class="cta"><button class="btn primary" data-act="cuisiner" data-id="${esc(s.id)}" data-p="${s.p}">Cuisiner pas à pas</button>${r.categorie === "Pizza" ? `<a class="btn" href="pizza.html?${new URLSearchParams({n: String(s.p), plat: r.nom})}">Planifier la pâte</a>` : ""}</div>
+    <div class="cta"><button class="btn primary" data-act="cuisiner" data-id="${esc(s.id)}" data-p="${s.p}">Cuisiner pas à pas</button>${r.categorie === "Pizza" ? `<a class="btn" href="pizza.html?${new URLSearchParams({n: String(s.p), plat: r.nom})}">Préparer la pâte</a>` : ""}</div>
     ${r.intro ? `<p class="intro">${esc(r.intro)}</p>` : (r.resume ? `<p class="intro">${esc(r.resume)}</p>` : "")}
     ${r.blocs?.length ? `<div class="sec blocs">${r.blocs.map(b => `<div class="bloc"><b>${esc(b.t)}</b>${esc(b.txt)}</div>`).join("")}</div>` : ""}
     ${r.retro?.length ? `<div class="sec"><h3>Rétroplanning</h3><ul class="retro">${r.retro.map(x => `<li><b>${esc(x.h)}</b>${esc(x.txt)}</li>`).join("")}</ul></div>` : ""}

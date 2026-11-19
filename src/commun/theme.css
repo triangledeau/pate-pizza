@@ -183,6 +183,23 @@ input[type=checkbox]:disabled{opacity:.4;cursor:not-allowed}
 .sort.voile,.sort.scrim{animation:disparait .18s ease-in both}
 .sort.feuille,.sort.sheet{animation:feuille-descend .2s var(--entree) both}
 
+/* ---------- bulle d'info (bouton « i ») ---------- */
+.info{flex:none;display:inline-grid;place-items:center;width:22px;height:22px;padding:0;margin:0 0 0 6px;border-radius:50%;vertical-align:-4px;
+  border:1.5px solid color-mix(in srgb,var(--encre-3) 70%,transparent);background:transparent;color:var(--encre-3);
+  font:italic 700 13px/1 Georgia,"Times New Roman",serif;position:relative;transition:background-color .15s,color .15s,border-color .15s,transform .12s var(--sortie)}
+.info::after{content:"";position:absolute;inset:-11px}
+.info:active{transform:scale(.88)}
+.info[aria-expanded="true"]{background:var(--basilic);border-color:var(--basilic);color:var(--surface)}
+.bulle{position:absolute;z-index:40;width:min(320px,calc(100vw - 24px));padding:12px 14px;border-radius:14px;background:var(--encre);color:var(--fond);
+  font-size:14px;line-height:1.45;font-weight:450;box-shadow:var(--ombre);animation:bulle .16s var(--sortie)}
+.bulle b,.bulle strong{color:inherit;font-weight:700}
+.bulle p{margin:0}.bulle p + p{margin-top:6px}
+.bulle ul{margin:0;padding-left:18px}.bulle li + li{margin-top:4px}
+.bulle::before{content:"";position:absolute;left:calc(var(--fleche,50%) - 7px);width:14px;height:14px;background:inherit;transform:rotate(45deg);border-radius:2px}
+.bulle.dessous::before{top:-5px}.bulle.dessus::before{bottom:-5px}
+.bulle.dessus{transform-origin:bottom}
+@keyframes bulle{from{opacity:0;transform:translateY(-4px) scale(.97)}}
+
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 16px + var(--sab));z-index:30;background:var(--encre);color:var(--fond);
   padding:11px 18px;border-radius:999px;font-size:15px;font-weight:600;max-width:calc(100% - 32px);box-shadow:var(--ombre);animation:toast .32s var(--ressort)}
 

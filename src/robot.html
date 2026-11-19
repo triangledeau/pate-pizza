@@ -21,21 +21,7 @@
 </div></header>
 
 <main class="page">
-<nav class="onglets" aria-label="Sections du robot">
-      <button data-vue="piloter" class="actif" type="button">
-        Piloter
-      </button>
-      <button data-vue="recettes" type="button">
-        Recettes
-      </button>
-      <button data-vue="balance" type="button">
-        Balance
-      </button>
-      <button data-vue="plus" type="button">
-        Plus
-      </button>
-    </nav>
-      <div id="alerte-navigateur" class="bandeau" hidden></div>
+<div id="alerte-navigateur" class="bandeau" hidden></div>
 
       <!-- Piloter -->
       <section id="vue-piloter" class="vue">
@@ -45,35 +31,34 @@
           <div class="etat-grand chiffres" id="etat-temps">—</div>
           <div class="etat-details chiffres"><span id="etat-temp"></span><span id="etat-vit"></span></div>
           <div class="defauts" id="etat-defauts"></div>
+          <div id="bandeau-auto" class="etat-auto" hidden>Programme prêt : appuie sur <strong>AUTO</strong> sur le robot</div>
+          <button class="btn" id="btn-connecter-robot" type="button">Connecter le robot</button>
         </div>
 
-        <div id="bandeau-auto" class="bandeau ok" hidden>Programme prêt : appuie sur <strong>AUTO</strong> sur le robot.</div>
+        <div class="carte carte-favoris">
+          <div class="carte-tete"><h2>Favoris</h2><button class="btn petit ghost" id="btn-gerer" type="button" hidden>Gérer</button></div>
+          <ul class="favoris" id="liste-favoris"></ul>
+        </div>
 
-        <div class="carte">
-          <h2>Programme Expert</h2>
-          <div id="reglage-piloter"></div>
-          <div class="erreur" id="erreur-piloter" hidden></div>
-          <div class="rangee">
-            <button class="btn" id="btn-favori" type="button">Garder en favori</button>
-            <button class="btn principal" id="btn-envoyer" type="button">Envoyer au robot</button>
+        <div class="carte" id="carte-programme">
+          <div class="carte-tete"><h2>Programme Expert</h2>
+            <button class="btn-etoile" id="btn-favori" type="button" aria-label="Garder en favori"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg></button>
           </div>
+          <div id="reglage-piloter" class="reglage"></div>
+          <div class="erreur" id="erreur-piloter" hidden></div>
+          <button class="btn principal plein envoyer" id="btn-envoyer" type="button">Envoyer au robot</button>
         </div>
 
-        <div class="carte">
-          <h2>Favoris</h2>
-          <ul class="liste" id="liste-favoris"></ul>
-        </div>
-
-        <div class="carte">
-          <h2>Touches du robot</h2>
+        <details class="carte touches">
+          <summary><h2>Touches du robot</h2></summary>
           <div class="grille-touches">
             <button class="btn" data-touche="gauche" type="button" aria-label="Gauche">◀</button>
             <button class="btn" data-touche="ok" type="button">OK</button>
             <button class="btn" data-touche="droite" type="button" aria-label="Droite">▶</button>
             <button class="btn" data-touche="retour" type="button" aria-label="Retour">↩</button>
           </div>
-          <button class="btn-stop" data-touche="stop" type="button">STOP</button>
-        </div>
+          <button class="btn-stop" data-touche="stop" type="button">Stop</button>
+        </details>
       </section>
 
       <!-- Recettes -->
@@ -115,7 +100,7 @@
         </div>
         <div class="carte">
           <h2>Sécurité</h2>
-          <p class="discret">L'appli règle les programmes mais ne démarre jamais le moteur ni la chauffe : c'est toi qui appuies sur AUTO devant le robot. STOP reste disponible ici. Ferme l'appli Magimix avant de te connecter : le robot n'accepte qu'une connexion à la fois.</p>
+          <p class="discret">L'appli règle les programmes mais ne démarre jamais le moteur ni la chauffe : c'est toi qui appuies sur AUTO devant le robot. Le bouton Stop reste disponible ici. Ferme l'appli Magimix avant de te connecter : le robot n'accepte qu'une connexion à la fois.</p>
         </div>
         <div class="carte">
           <div class="rangee" style="align-items:center;margin-bottom:8px">
@@ -129,6 +114,14 @@
         </p>
       </section>
     </main>
+
+<nav class="onglets" aria-label="Sections du robot">
+  <button data-vue="recettes" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h9.5A2.5 2.5 0 0 1 18 7v12.5H8.5A2.5 2.5 0 0 1 6 17z"/><path d="M9.5 9h5M9.5 12.5h5"/></svg>Recettes</button>
+  <button data-vue="piloter" class="actif" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 12l3.5-3.5M12 4.5V6"/></svg>Piloter</button>
+  <button data-vue="balance" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 9h15l-1.5 9.5h-12z"/><path d="M9 13.5h6"/></svg>Balance</button>
+  <button data-vue="plus" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="17.5" cy="12" r="1.2"/></svg>Plus</button>
+</nav>
+<button class="btn-stop stop-flottant" id="stop-flottant" data-touche="stop" type="button" hidden>Stop</button>
 
 <nav class="barre-bas" aria-label="Sections"><div class="barre-bas-in">
 <a href="index.html#semaine"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><span>Semaine</span></a>

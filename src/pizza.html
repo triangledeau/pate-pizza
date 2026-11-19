@@ -170,9 +170,21 @@ fieldset:disabled{opacity:.55}
 .method{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px}
 .method ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;max-width:65ch}
 .method li::marker{font-family:var(--display);font-weight:700;color:var(--accent)}
-.foot{font-size:12.5px;color:var(--muted);max-width:70ch}
+.lbl{display:inline-flex;align-items:center;min-height:24px}
+/* .field du thème commun est un champ de saisie : ici ce n'est qu'un groupe */
+.panel .field{border:0;background:none;padding:0;min-height:0;border-radius:0}
+.remind .remind-top:has(#remindState:empty){display:none}
+h2 .info{margin-left:2px}
+.alert{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.method summary{list-style:none;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.method summary::-webkit-details-marker{display:none}
+.method summary::after{content:"";width:9px;height:9px;margin-right:4px;border:solid var(--muted);border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .2s var(--sortie)}
+.method[open] summary::after{transform:rotate(-135deg)}
+.method:not([open]){gap:0}
+.remind-txt .info{vertical-align:-5px}
+.step-title{display:flex;align-items:center}
 /* ---------- habillage ---------- */
-.pz-hero{position:relative;overflow:hidden;display:flex;align-items:center;min-height:112px;margin:0 0 18px;padding:18px 128px 18px 20px;border-radius:var(--r-plaque);
+.pz-hero{position:relative;overflow:hidden;display:flex;align-items:center;min-height:84px;margin:0 0 16px;padding:14px 128px 14px 20px;border-radius:var(--r-plaque);
   background:radial-gradient(120% 140% at 100% 50%,color-mix(in srgb,var(--il-croute) 30%,transparent),transparent 60%),var(--tomate-doux);box-shadow:var(--ombre-carte);animation:monte .35s var(--sortie) both}
 .pz-titre{margin:0;font-family:var(--display);font-weight:760;font-size:22px;line-height:1.1;letter-spacing:-.015em;color:var(--tomate)}
 .pz-acc{margin:6px 0 0;font-size:14px;line-height:1.4;color:var(--encre-2);max-width:34ch}
@@ -214,7 +226,7 @@ td.g{transition:color .2s}
 <header class="entete"><div class="entete-in"><a class="marque" href="index.html#semaine" aria-label="Semaine" data-embleme></a><div class="titres"><span class="appli">Cuisine</span><h1>Pâte à pizza</h1></div></div></header>
 <div class="wrap">
   <section class="pz-hero">
-    <div class="pz-txt"><p class="pz-titre">Une pâte de pizzaïolo</p><p class="pz-acc">Pesée au gramme, pousse calée sur ta pièce, rappels jusqu'à l'enfournement.</p></div>
+    <div class="pz-txt"><p class="pz-titre">Une pâte de pizzaïolo</p></div>
     <span class="pz-ill" data-illus="pizza"></span>
   </section>
 
@@ -232,12 +244,11 @@ td.g{transition:color .2s}
       </div>
 
       <div class="field">
-        <span class="lbl">Four</span>
+        <span class="lbl">Four<span id="ovenInfo"></span></span>
         <div class="seg" role="radiogroup" aria-label="Four">
           <input type="radio" name="oven" id="o-pumm" value="pumm" checked><label for="o-pumm">Pummarola</label>
           <input type="radio" name="oven" id="o-four" value="four"><label for="o-four">Four traditionnel</label>
         </div>
-        <p class="hint" id="ovenHint" hidden>La teglia cuit en plaque : four traditionnel uniquement.</p>
       </div>
 
       <div class="row2" id="fourOpts" hidden>
@@ -259,23 +270,21 @@ td.g{transition:color .2s}
       </div>
 
       <div class="field">
-        <span class="lbl">Pétrissage</span>
+        <span class="lbl">Pétrissage<span id="kneadInfo"></span></span>
         <div class="seg" role="radiogroup" aria-label="Pétrissage">
           <input type="radio" name="knead" id="k-hand" value="hand" checked><label for="k-hand">À la main</label>
           <input type="radio" name="knead" id="k-ce" value="ce"><label for="k-ce">Cook Expert</label>
         </div>
-        <p class="hint" id="kneadHint" hidden>Le robot chauffe la pâte en la pétrissant : l'eau conseillée est donc plus froide qu'à la main.</p>
       </div>
 
       <div class="field">
-        <label class="lbl" for="flour">Farine</label>
+        <span class="lbl"><label for="flour">Farine</label><span id="flourInfo"></span></span>
         <select id="flour">
           <option value="00">Farine 00 (Grand Frais)</option>
           <option value="caputo">Caputo Pizzeria (00)</option>
           <option value="t45">T45</option>
           <option value="t55">T55</option>
         </select>
-        <p class="hint" id="flourHint" hidden>Caputo Pizzeria : force W 260–270, 12,5 % de protéines. Faite pour les pousses longues, de 8 à 24 h. Elle boit bien l'eau : verse-la en plusieurs fois.</p>
       </div>
 
       <div class="field">
@@ -294,10 +303,9 @@ td.g{transition:color .2s}
       </div>
 
       <div class="field">
-        <div class="field-head"><label class="lbl" for="hours">Temps disponible</label><span class="val" id="hoursV"></span></div>
+        <div class="field-head"><span class="lbl"><label for="hours">Temps disponible</label><span data-i="Du début du pétrissage jusqu'à l'enfournement, tout à température ambiante."></span></span><span class="val" id="hoursV"></span></div>
         <input type="range" id="hours" min="1" max="24" step="0.5" value="7.5">
         <div class="scale"><span>1 h</span><span>12 h</span><span>24 h</span></div>
-        <p class="hint">Du début du pétrissage jusqu'à l'enfournement, tout à température ambiante.</p>
       </div>
 
       <div class="row2">
@@ -310,7 +318,7 @@ td.g{transition:color .2s}
           </div>
         </div>
         <div class="field">
-          <span class="lbl" id="ballL">Pâton</span>
+          <span class="lbl"><span id="ballL">Pâton</span><span id="ballInfo"></span></span>
           <div class="stepper" aria-labelledby="ballL">
             <button type="button" data-step="ball" data-d="-1" aria-label="Pâton plus léger">−</button>
             <output id="ballV"></output>
@@ -318,26 +326,7 @@ td.g{transition:color .2s}
           </div>
         </div>
       </div>
-      <p class="hint" id="ballHint"></p>
 
-      <div class="field">
-        <span class="lbl">Quand ?</span>
-        <div class="seg" role="radiogroup" aria-label="Quand">
-          <input type="radio" name="mode" id="m-now" value="now"><label for="m-now">Démarrer maintenant</label>
-          <input type="radio" name="mode" id="m-plan" value="plan" checked><label for="m-plan">Planifier</label>
-        </div>
-      </div>
-      <div class="row2" id="planOpts">
-        <div class="field">
-          <label class="lbl" for="bakeDate">Jour</label>
-          <input type="date" id="bakeDate">
-        </div>
-        <div class="field">
-          <label class="lbl" for="bake">Enfournement</label>
-          <input type="time" id="bake" value="19:00" step="300">
-        </div>
-      </div>
-      <p class="hint" id="nowHint" hidden></p>
       </fieldset>
     </form>
 
@@ -350,7 +339,7 @@ td.g{transition:color .2s}
         <p class="remind-msg" id="remindMsg" hidden></p>
         <div class="btns">
           <button type="button" class="btn warm" id="runOpen" hidden>Ouvrir le suivi</button>
-          <button type="button" class="btn" id="remindGo">Programmer les rappels</button>
+          <button type="button" class="btn wide" id="remindGo">Démarrer maintenant</button>
           <button type="button" class="btn ghost" id="remindOff" hidden>Annuler la pâte</button>
           <button type="button" class="btn link" id="exactBtn" hidden>Autoriser les alarmes à l'heure pile</button>
         </div>
@@ -358,7 +347,7 @@ td.g{transition:color .2s}
 
       <section class="weigh" aria-labelledby="wh">
         <div class="weigh-head">
-          <h2 id="wh">La pesée</h2>
+          <h2 id="wh">La pesée<span data-i="Les doses de levure suivent un modèle de fermentation (durée × température) calé sur les tables usuelles de pizzaïolo. Ta farine, ta levure et ta pièce peuvent décaler le résultat : fie-toi d'abord à l'aspect de la pâte (volume qui a environ doublé en fin de pointage, pâtons souples et gonflés à l'enfournement)."></span></h2>
           <span class="sum" id="sum"></span>
         </div>
         <table>
@@ -378,19 +367,16 @@ td.g{transition:color .2s}
 
       <section class="bake" aria-labelledby="bkh">
         <div class="bake-head">
-          <h2 id="bkh">Cuisson</h2>
+          <h2 id="bkh">Cuisson<span id="bakeInfo"></span></h2>
           <span class="sum" id="bakeSum"></span>
         </div>
         <div class="tiles" id="tiles"></div>
-        <ul class="bake-notes" id="bakeNotes"></ul>
       </section>
 
-      <section class="method" aria-labelledby="mh">
-        <h2 id="mh">Méthode</h2>
+      <details class="method">
+        <summary><h2 id="mh">Méthode détaillée</h2></summary>
         <ol id="method"></ol>
-      </section>
-
-      <p class="foot">Les doses de levure suivent un modèle de fermentation (durée × température) calé sur les tables usuelles de pizzaïolo. Ta farine, ta levure et ta pièce peuvent décaler le résultat : fie-toi d'abord à l'aspect de la pâte (volume qui a environ doublé en fin de pointage, pâtons souples et gonflés à l'enfournement).</p>
+      </details>
     </div>
   </div>
 </div>
@@ -441,10 +427,11 @@ td.g{transition:color .2s}
   const $ = id => document.getElementById(id);
   const pad = n => String(n).padStart(2,"0");
   const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-  const state = {type:"napo", flour:"00", yeast:"fresh", temp:20, hours:7.5, count:4, knead:"hand", oven:"pumm", support:"pierre", tmax:275, ball:{napo:250,rom:180,teg:700}, bake:"19:00", mode:"plan"};
-  let bakeDate = ymd(new Date());
+  const state = {type:"napo", flour:"00", yeast:"fresh", temp:20, hours:7.5, count:4, knead:"hand", oven:"pumm", support:"pierre", tmax:275, ball:{napo:250,rom:180,teg:700}};
+  const I = (html, nom) => window.info ? info(html, nom) : "";
+  document.querySelectorAll("[data-i]").forEach(el => { el.outerHTML = I(el.dataset.i); });
 
-  try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); if(s) Object.assign(state, s, {ball:Object.assign(state.ball, s.ball||{})}); }catch(e){}
+  try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); if(s){ delete s.mode; delete s.bake; Object.assign(state, s, {ball:Object.assign(state.ball, s.ball||{})}); } }catch(e){}
   function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
   let depuisMenu = null;
   try{
@@ -529,16 +516,11 @@ td.g{transition:color .2s}
       pre: stone ? 50 : 25, cook, cookS:`par pizza à ${tmax} °C`, between, where:`sur ${sup} à ${tmax} °C`, notes};
   }
 
-  // Heure d'enfournement réelle : en mode « maintenant », début = maintenant (ou celui de la session lancée)
+  // Heure d'enfournement : celle de la pâte en cours, sinon maintenant + temps disponible
   function bakeAt(){
-    if(state.mode==="now"){
-      if(session && session.mode==="now") return new Date(session.bakeAt);
-      const n = new Date(); n.setSeconds(0,0);
-      return new Date(n.getTime() + state.hours*36e5);
-    }
-    const [y,mo,d] = bakeDate.split("-").map(Number);
-    const [bh,bm] = (state.bake||"19:00").split(":").map(Number);
-    return new Date(y, mo-1, d, bh, bm);
+    if(session) return new Date(session.bakeAt);
+    const n = new Date(); n.setSeconds(0,0);
+    return new Date(n.getTime() + state.hours*36e5);
   }
 
   let EVENTS = [], FIRST = null, PHASES = [], BAKE = null, END = null;
@@ -549,9 +531,9 @@ td.g{transition:color .2s}
 
     $("tempV").textContent = t+" °C";
     $("hoursV").textContent = hLabel(h);
-    $("countV").textContent = n+" "+(n>1?T.unit[1]:T.unit[0]);
+    $("countV").textContent = n;
     $("ballV").textContent = ball+" g";
-    $("ballHint").textContent = T.ballHint;
+    $("ballInfo").innerHTML = I(T.ballHint, "Taille du pâton");
     $("countL").textContent = state.type==="teg" ? "Plaques" : "Pizzas";
     $("ballL").textContent = state.type==="teg" ? "Pâte par plaque" : "Pâton";
 
@@ -564,7 +546,7 @@ td.g{transition:color .2s}
 
     const target = h<4 ? 26 : h<10 ? 24 : 22;
     const ce = state.knead==="ce";
-    $("kneadHint").hidden = !ce;
+    $("kneadInfo").innerHTML = ce ? I("Le robot chauffe la pâte en la pétrissant : l'eau conseillée est donc plus froide qu'à la main.") : "";
     const wT = Math.round(clamp(3*target - 2*t - (ce ? 9 : 3), 4, 35));
     const COLD = [8,8,10,12,15,18,20,20,18,15,12,9][new Date().getMonth()], HOT = 50;
     const W = (()=>{
@@ -578,7 +560,7 @@ td.g{transition:color .2s}
 
     const rows = [
       ["Farine", state.flour==="00"?"Farine 00 (Grand Frais)":F.label, flour, 100],
-      ["Eau", W.txt, water, hyd],
+      ["Eau"+I(`<p>Robinet froid ce mois-ci ≈ ${COLD} °C, chaud au max ≈ ${HOT} °C : mélange visé <b>${wT} °C</b>.</p><p>Laisse couler le froid quelques secondes pour qu'il soit bien froid, et le chaud jusqu'à ce qu'il soit au plus chaud. Pèse les deux directement dans le saladier posé sur la balance.</p>`+(W.cool?`<p><b>Eau du robinet trop tiède ce mois-ci :</b> la pâte sortira un peu plus chaude et lèvera plus vite. Vérifie son volume en avance.</p>`:""), "Température de l'eau"), W.txt, water, hyd],
       ["Sel", "fin", salt, T.salt]
     ];
     if(T.oil) rows.push(["Huile d'olive", state.type==="teg"?"plus un filet pour la plaque":"ajoutée en fin de pétrissage", oil, T.oil]);
@@ -592,11 +574,10 @@ td.g{transition:color .2s}
     if(yeast < 0.5){
       const take = Math.round(yeast*100);
       dil.hidden = false;
-      dil.innerHTML = `<b>Dose trop petite pour une balance de cuisine.</b> Dilue 1 g de ${Y.label.toLowerCase()} dans 99 g d'eau, mélange bien, puis prélève <b>${take} g</b> de ce mélange. Retire ces ${take} g de l'eau de la recette (il reste ${g(Math.max(0,water-take))} d'eau à verser).`;
+      dil.innerHTML = `<b>Levure : dilue 1 g dans 99 g d'eau, prélèves-en ${take} g.</b>`+I(`La dose est trop petite pour une balance de cuisine. Mélange bien avant de prélever, puis retire ces ${take} g de l'eau de la recette : il reste ${g(Math.max(0,water-take))} d'eau à verser.`, "Dilution de la levure");
     } else dil.hidden = true;
 
     $("chips").innerHTML =
-      `<span class="chip">Robinet froid ce mois-ci ≈ ${COLD} °C · chaud au max ≈ ${HOT} °C · mélange visé <b>${wT} °C</b></span>`+
       `<span class="chip warm">Équivalence levure fraîche <b>${g(flour*fp/100)}</b></span>`+
       (ce ? `<span class="chip">Cook Expert : bol métal, pétrin, <b>sans chauffe</b></span>` : "");
 
@@ -604,7 +585,7 @@ td.g{transition:color .2s}
     const isTeg = state.type==="teg";
     $("o-pumm").disabled = isTeg;
     $("o-four").checked = BK.oven==="four"; $("o-pumm").checked = BK.oven==="pumm";
-    $("ovenHint").hidden = !isTeg;
+    $("ovenInfo").innerHTML = isTeg ? I("La teglia cuit en plaque : four traditionnel uniquement.") : "";
     $("fourOpts").hidden = BK.oven!=="four";
     $("support").disabled = isTeg;
 
@@ -622,23 +603,22 @@ td.g{transition:color .2s}
       `<div class="tile hot"><span class="k">Cuisson</span><span class="v">${BK.cook[0]} à ${BK.cook[1]} min</span><span class="s">${BK.cookS}</span></div>`+
       `<div class="tile"><span class="k">Service</span><span class="v">${durLabel(service)}</span><span class="s">${n} ${unitW} l'une après l'autre · dernière sortie vers ${hm(at(B+service))}</span></div>`;
     $("bakeSum").textContent = BK.oven==="pumm" ? "Pummarola" : `Four traditionnel · ${isTeg ? "plaque" : (state.support==="pierre" ? "pierre ou acier" : "plaque")}`;
-    $("bakeNotes").innerHTML = BK.notes.map(x=>`<li>${x}</li>`).join("");
+    $("bakeInfo").innerHTML = I(`<ul>${BK.notes.map(x=>`<li>${x}</li>`).join("")}</ul>`, "Conseils de cuisson");
 
     const al = [];
-    al.push(`<b>Eau :</b> laisse couler le robinet froid quelques secondes pour qu'il soit bien froid, et le chaud jusqu'à ce qu'il soit au plus chaud. Pèse les deux directement dans le saladier posé sur la balance.`);
-    if(W.cool) al.push(`<b>Eau du robinet trop tiède ce mois-ci :</b> l'idéal serait une eau plus fraîche. La pâte sortira un peu plus chaude et lèvera plus vite : vérifie son volume en avance.`);
     if(BK.oven==="pumm" && ((state.type==="napo" && ball>240) || (state.type==="rom" && ball>200))) al.push(`<b>Pâton de ${ball} g au Pummarola.</b> La pierre fait environ 30 cm : garde la pizza sous 29 cm, quitte à laisser un bord plus épais, ou réduis le pâton.`);
     if(h > F.maxH) al.push(`<b>${F.label} un peu faible pour ${hLabel(h)}.</b> Elle tient mal au-delà de ~${F.maxH} h à température ambiante : la pâte risque de se relâcher. Réduis la durée ou prends la farine 00.`);
     if(h < 3) al.push(`<b>Pâte express.</b> Beaucoup de levure pour un temps court : goût de levure plus marqué et pâte moins digeste. Dès que possible, vise 6 h ou plus.`);
     if(t >= 26 && h >= 12) al.push(`<b>Pièce chaude et pousse longue.</b> La dose est minuscule et la marge d'erreur faible : surveille la pâte, et si elle a doublé bien avant l'heure, passe les pâtons au frais.`);
     const cap = state.flour==="caputo";
-    $("flourHint").hidden = !cap;
+    $("flourInfo").innerHTML = cap ? I("Caputo Pizzeria : force W 260–270, 12,5 % de protéines. Faite pour les pousses longues, de 8 à 24 h. Elle boit bien l'eau : verse-la en plusieurs fois.") : "";
     if(cap && h < 6) al.push(`<b>Caputo Pizzeria en pousse courte.</b> Cette farine est faite pour les pousses de 8 à 24 h. En moins de 6 h, la pâte reste élastique et se rétracte à l'étalage : laisse-la se détendre 10 min si elle résiste.`);
     if(cap && state.type==="teg") al.push(`<b>Teglia à la Caputo Pizzeria :</b> hydratation ramenée à ${hyd} %, car elle supporte mal les très hautes hydratations. Pour une teglia très alvéolée, Caputo propose plutôt sa farine Nuvola.`);
     if(state.flour==="t45") al.push(`<b>T45 :</b> les calculs supposent une T45 standard. Si c'est une farine de gruau (plus riche en protéines), tu peux remonter l'hydratation de 2 points.`);
     if(state.type==="teg" && state.flour==="t55") al.push(`<b>Teglia en T55 :</b> l'hydratation est réduite à ${hyd} % pour que la pâte reste travaillable. Elle sera moins alvéolée qu'avec la 00.`);
     if(ce && total>1200) al.push(`<b>${g(total)} de pâte au Cook Expert.</b> C'est beaucoup pour un seul pétrissage : fais-le en deux fois, et vérifie la quantité maximale de pâte indiquée dans ton mode d'emploi.`);
-    $("alerts").innerHTML = al.map(a=>`<div class="alert">${a}</div>`).join("");
+    // titre en gras visible, explication dans la bulle
+    $("alerts").innerHTML = al.map(a=>{ const m = a.match(/^<b>(.*?)<\/b>\s*(.*)$/s); return m ? `<div class="alert"><b>${m[1].replace(/\s*:$/,"")}</b>${I(m[2])}</div>` : `<div class="alert">${a}</div>`; }).join("");
 
     // planning
     const H = h*60, K = ce ? (state.type==="teg" ? 20 : 10) : T.knead;
@@ -680,7 +660,7 @@ td.g{transition:color .2s}
       return `<li class="${s.bake?"is-bake":""} ${s.wait?"wait":""} ${past?"past":""}">
         <div class="t">${hm(d)}${tag?`<small>${tag}</small>`:""}</div>
         <span class="dot" aria-hidden="true"></span>
-        <div><div class="step-title">${s.title}</div><div class="step-desc">${s.desc}</div>${s.dur && !s.bake?`<div class="dur">${durLabel(s.dur)}</div>`:""}</div>
+        <div><div class="step-title">${s.title}${I(s.desc, "Détail de l'étape")}</div>${s.dur && !s.bake?`<div class="dur">${durLabel(s.dur)}</div>`:""}</div>
       </li>`;
     }).join("");
 
@@ -789,13 +769,6 @@ td.g{transition:color .2s}
     EVENTS = PHASES.filter(p=>p.active).map(p=>({id:p.idx, at:p.at, title:"🍕 "+p.title, body:p.notify}));
     END = at(B+service+120);
 
-    // mode
-    const isNow = state.mode==="now";
-    $("planOpts").hidden = isNow;
-    $("nowHint").hidden = !isNow;
-    if(isNow) $("nowHint").innerHTML = session && session.mode==="now"
-      ? `Pâte lancée ${when(FIRST)} · enfournement <b>${when(BA)}</b>.`
-      : `Si tu démarres maintenant, enfournement <b>${when(BA)}</b>.`;
     renderRemind();
   }
 
@@ -817,7 +790,6 @@ td.g{transition:color .2s}
 
   function renderRemind(){
     const box = $("remind"), go = $("remindGo"), off = $("remindOff");
-    const isNow = state.mode==="now";
     const native = !!(N() && N().native);
     const live = sessionLive();
     box.classList.toggle("on", live);
@@ -833,19 +805,12 @@ td.g{transition:color .2s}
       const next = pendingList.map(p=>({at:new Date(p.schedule && p.schedule.at), title:p.title})).sort((a,b)=>a.at-b.at)[0];
       $("remindTxt").innerHTML = `Étape : <b>${cur ? cur.title : "—"}</b>.` +
         (next ? ` Prochain rappel : <b>${next.title.replace("🍕 ","")}</b> ${when(next.at)}.` : "");
-    } else if(!native){
-      $("remindState").textContent = "Rappels";
-      $("remindTxt").textContent = "Les rappels et le suivi ne fonctionnent que dans l'appli Android.";
-      go.disabled = true; go.textContent = isNow ? "Démarrer maintenant" : "Planifier";
     } else {
-      $("remindState").textContent = isNow ? "Démarrer" : "Planifier";
-      const late = !isNow && FIRST && FIRST.getTime() < Date.now() - 60000;
-      $("remindTxt").innerHTML = isNow
-        ? `Tu lances la pâte maintenant : suivi pas à pas et une notification à chaque grande étape, même appli fermée.`
-        : late
-          ? `<b>Le pétrissage aurait dû commencer ${when(FIRST)}.</b> Change le jour, l'heure d'enfournement ou le temps disponible.`
-          : `Pétrissage ${when(FIRST)}. Une notification à chaque grande étape, même appli fermée.`;
-      go.disabled = false; go.textContent = isNow ? "Démarrer maintenant" : "Planifier";
+      $("remindState").textContent = "";
+      $("remindTxt").innerHTML = `Enfournement <b>${when(bakeAt())}</b>` + I(native
+        ? "Suivi pas à pas et une notification à chaque grande étape, même appli fermée."
+        : "Les rappels et le suivi ne fonctionnent que dans l'appli Android.", "Ce que fait Démarrer");
+      go.disabled = !native;
     }
     const m = $("remindMsg"); m.hidden = !msg; m.innerHTML = msg;
   }
@@ -982,7 +947,6 @@ td.g{transition:color .2s}
 
   $("remindGo").addEventListener("click", async ()=>{
     if(!N()) return;
-    const isNow = state.mode==="now";
     render();
     const res = await N().schedule(EVENTS);
     msg = ""; exactMissing = false;
@@ -990,12 +954,10 @@ td.g{transition:color .2s}
       msg = res.reason==="denied" ? "Notifications refusées : autorise-les dans les réglages Android de l'appli, puis réessaie." : "Impossible de programmer les rappels ici.";
       render(); return;
     }
-    if(res.count===0 && !isNow){ msg = "Toutes les étapes sont déjà passées : change le jour ou l'heure d'enfournement."; render(); return; }
-    setSession({mode: state.mode, bakeAt: bakeAt().getTime(), endAt: END.getTime(), phase:0, checks:{}, pizza:0, tIdx:0, tEnd:null});
-    if(res.skipped && !isNow) msg = `${res.skipped} étape${res.skipped>1?"s":""} déjà passée${res.skipped>1?"s":""}, sans rappel.`;
+    setSession({mode:"now", bakeAt: bakeAt().getTime(), endAt: END.getTime(), phase:0, checks:{}, pizza:0, tIdx:0, tEnd:null});
     if(!res.exact){ exactMissing = true; msg = (msg?msg+" ":"") + "Android peut décaler les rappels de quelques minutes : autorise les alarmes à l'heure pile."; }
     render(); await refreshPending();
-    if(isNow) openRun();
+    openRun();
   });
   $("remindOff").addEventListener("click", async ()=>{
     if(!confirmOff()) return;
@@ -1018,14 +980,11 @@ td.g{transition:color .2s}
   document.querySelectorAll('input[name=yeast]').forEach(el=>el.addEventListener("change",()=>{state.yeast=el.value;save();render();}));
   document.querySelectorAll('input[name=knead]').forEach(el=>el.addEventListener("change",()=>{state.knead=el.value;save();render();}));
   document.querySelectorAll('input[name=oven]').forEach(el=>el.addEventListener("change",()=>{state.oven=el.value;save();render();}));
-  document.querySelectorAll('input[name=mode]').forEach(el=>el.addEventListener("change",()=>{state.mode=el.value;msg="";save();render();}));
   $("support").addEventListener("change",e=>{state.support=e.target.value;save();render();});
   $("tmax").addEventListener("change",e=>{state.tmax=+e.target.value;save();render();});
   $("flour").addEventListener("change",e=>{state.flour=e.target.value;save();render();});
   $("temp").addEventListener("input",e=>{state.temp=+e.target.value;save();render();});
   $("hours").addEventListener("input",e=>{state.hours=+e.target.value;save();render();});
-  $("bake").addEventListener("change",e=>{state.bake=e.target.value||"19:00";save();render();});
-  $("bakeDate").addEventListener("change",e=>{bakeDate=e.target.value||ymd(new Date());render();});
   document.querySelectorAll("[data-step]").forEach(b=>b.addEventListener("click",()=>{
     const d = +b.dataset.d, T = TYPES[state.type];
     if(b.dataset.step==="count") state.count = clamp(state.count+d,1,12);
@@ -1036,21 +995,25 @@ td.g{transition:color .2s}
   // restaurer
   if(depuisMenu && !sessionLive()){
     if(depuisMenu.n) state.count = depuisMenu.n;
-    if(depuisMenu.c){ state.bake = depuisMenu.c; state.mode = "plan"; bakeDate = ymd(new Date()); }
+    // heure de cuisson du menu : le temps disponible est calé dessus (entre 1 h et 24 h)
+    let cuisson = "";
+    if(depuisMenu.c){
+      const [ch,cm] = depuisMenu.c.split(":").map(Number), c = new Date(); c.setHours(ch,cm,0,0);
+      if(c < Date.now()) c.setDate(c.getDate()+1);
+      const hrs = Math.floor((c - Date.now())/18e5)/2;
+      if(hrs >= 1){ state.hours = Math.min(24, hrs); cuisson = `, cuisson vers ${depuisMenu.c.replace(":"," h ")}`; }
+    }
     save();
     const m = document.createElement("p");
     m.className = "locked";
-    m.textContent = `Réglé pour ${depuisMenu.plat || "le dîner"} : ${state.count} ${state.count>1?"pâtons":"pâton"}, cuisson à ${state.bake.replace(":"," h ")}.`;
+    m.textContent = `Réglé pour ${depuisMenu.plat || "le dîner"} : ${state.count} ${state.count>1?"pâtons":"pâton"}${cuisson}.`;
     document.querySelector(".layout").before(m);
   }
-  if(session && session.mode==="plan"){ const s = new Date(session.bakeAt); bakeDate = ymd(s); state.bake = hm(s); }
   document.getElementById("t-"+state.type).checked = true;
   document.getElementById({fresh:"y-fresh",inst:"y-inst",act:"y-act"}[state.yeast]).checked = true;
   document.getElementById(state.knead==="ce" ? "k-ce" : "k-hand").checked = true;
-  document.getElementById(state.mode==="now" ? "m-now" : "m-plan").checked = true;
   $("support").value = state.support; $("tmax").value = String(state.tmax);
   $("flour").value = state.flour; $("temp").value = state.temp; $("hours").value = state.hours;
-  $("bake").value = state.bake; $("bakeDate").value = bakeDate;
   render();
   refreshPending();
   // reprise : si une pâte est en cours et que sa première étape approche, rouvrir le suivi
