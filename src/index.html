@@ -1076,6 +1076,8 @@ document.addEventListener("submit", ev => {
 $("#scrim").addEventListener("click", closeSheet);
 document.querySelector(".barre-bas").addEventListener("click", () => { if (cu) fermerCuisine(); if (sheet) closeSheet(); });
 document.addEventListener("keydown", ev => { if (ev.key === "Escape") { if (cu) fermerCuisine(); else if (sheet) closeSheet(); } });
+// Retour arrière Android (MainActivity) : ferme d'abord le mode cuisine ou la feuille ouverte
+window.surRetour = () => { if (cu) { fermerCuisine(); return true; } if (sheet) { closeSheet(); return true; } return false; };
 document.addEventListener("visibilitychange", () => { if (!document.hidden && cu) window.Natif?.garderAllume(true); if (!document.hidden && ui.view === "semaine" && !sheet) renderSemaine(); });
 
 /* ================= connexion aux données ================= */

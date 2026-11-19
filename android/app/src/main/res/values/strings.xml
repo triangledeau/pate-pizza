@@ -4,4 +4,8 @@
     <string name="title_activity_main">Cuisine</string>
     <string name="package_name">fr.triangledeau.patepizza</string>
     <string name="custom_url_scheme">fr.triangledeau.patepizza</string>
+    <string name="raccourci_courses">Courses</string>
+    <string name="raccourci_courses_long">Liste de courses</string>
+    <string name="raccourci_balance">Balance</string>
+    <string name="raccourci_balance_long">Peser avec la balance</string>
 </resources>

@@ -127,7 +127,19 @@ function afficherVue(nom) {
   if (nom === 'plus') rendreJournal();
   window.scrollTo(0, 0);
 }
-for (const b of $$('.onglets button')) b.addEventListener('click', () => afficherVue(b.dataset.vue));
+// Chaque onglet a son adresse (robot.html#balance…) : le retour arrière revient à l'onglet précédent
+// et le raccourci « Balance » de l'icône ouvre directement le bon onglet.
+const VUES = ['piloter', 'recettes', 'balance', 'plus'];
+for (const b of $$('.onglets button')) b.addEventListener('click', () => {
+  if (location.hash !== `#${b.dataset.vue}`) location.hash = b.dataset.vue;
+  else afficherVue(b.dataset.vue);
+});
+function vueDepuisAdresse() {
+  const h = location.hash.slice(1);
+  if (VUES.includes(h)) afficherVue(h);
+  else if (!h) afficherVue('piloter');
+}
+window.addEventListener('hashchange', vueDepuisAdresse);
 
 // ---------- Connexions ----------
 
@@ -783,5 +795,6 @@ function programmeDepuisAdresse() {
   $('#erreur-piloter').textContent = erreur ?? '';
   toast(`Réglage de la recette chargé : ${resume(p)}`);
 }
+vueDepuisAdresse();
 programmeDepuisAdresse();
 window.addEventListener('hashchange', programmeDepuisAdresse);

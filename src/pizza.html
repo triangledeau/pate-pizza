@@ -952,6 +952,8 @@ td.g{transition:color .2s}
   function closeRun(){ runOpen = false; $("run").hidden = true; document.body.style.overflow = ""; N() && N().keepAwake(false); }
 
   $("runClose").addEventListener("click", closeRun);
+  // Retour arrière Android (MainActivity) : ferme d'abord le suivi pas à pas
+  window.surRetour = () => { if(!runOpen) return false; closeRun(); return true; };
   $("runOpen").addEventListener("click", openRun);
   $("runPrev").addEventListener("click", ()=>{ let i = curPhase()-1; goPhase(i); });
   $("runNext").addEventListener("click", ()=>{

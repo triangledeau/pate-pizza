@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raccourcis affichés en restant appuyé sur l'icône. L'extra « page » est ouvert par MainActivity. -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="courses"
+        android:enabled="true"
+        android:icon="@drawable/ic_raccourci_courses"
+        android:shortcutShortLabel="@string/raccourci_courses"
+        android:shortcutLongLabel="@string/raccourci_courses_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="fr.triangledeau.patepizza"
+            android:targetClass="fr.triangledeau.patepizza.MainActivity">
+            <extra android:name="page" android:value="index.html#courses" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="balance"
+        android:enabled="true"
+        android:icon="@drawable/ic_raccourci_balance"
+        android:shortcutShortLabel="@string/raccourci_balance"
+        android:shortcutLongLabel="@string/raccourci_balance_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="fr.triangledeau.patepizza"
+            android:targetClass="fr.triangledeau.patepizza.MainActivity">
+            <extra android:name="page" android:value="robot.html#balance" />
+        </intent>
+    </shortcut>
+</shortcuts>
