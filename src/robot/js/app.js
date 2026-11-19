@@ -448,13 +448,29 @@ window.addEventListener('popstate', () => fermerEcran(true));
 
 // ---------- Recettes : liste ----------
 
+// Recettes partagées : collection « robot » de data/cuisine.json (déposées par Claude), fusionnée
+// avec les recettes créées sur le téléphone. Une recette partagée modifiée ici reste modifiée localement.
+let partagees = [];
+const baseCuisine = window.Natif?.baseCuisine?.();
+const toutesRecettes = () => [...partagees, ...stock.recettes()];
+const trouverRecette = (id) => toutesRecettes().find((r) => r.id === id);
+function enregistrerRecette(r) {
+  if (!r.partagee) return stock.enregistrerRecette(r);
+  const { partagee, ...d } = r;
+  baseCuisine.doc(`robot/${r.id}`).set(d);
+}
+function supprimerRecette(r) {
+  if (r.partagee) baseCuisine.doc(`robot/${r.id}`).delete();
+  else stock.supprimerRecette(r.id);
+}
+
 function rendreRecettes() {
-  const r = stock.recettes();
+  const r = toutesRecettes();
   $('#liste-recettes').innerHTML = r.length
     ? r
         .map(
           (x) => `<li data-id="${esc(x.id)}">
-        <div class="infos"><div class="nom">${esc(x.titre)}</div><div class="discret">${x.etapes.length} étape${x.etapes.length > 1 ? 's' : ''}</div></div>
+        <div class="infos"><div class="nom">${esc(x.titre)}</div><div class="discret">${x.portions ? `${esc(x.portions)} · ` : ''}${x.etapes.length} étape${x.etapes.length > 1 ? 's' : ''}</div></div>
         <button class="btn petit" data-action="modifier" type="button">Modifier</button>
         <button class="btn petit principal" data-action="cuisiner" type="button">Cuisiner</button>
       </li>`,
@@ -466,7 +482,7 @@ function rendreRecettes() {
 $('#liste-recettes').addEventListener('click', (e) => {
   const b = e.target.closest('button[data-action]');
   if (!b) return;
-  const r = stock.recette(b.closest('li').dataset.id);
+  const r = trouverRecette(b.closest('li').dataset.id);
   if (!r) return;
   if (b.dataset.action === 'modifier') ouvrirEditeur(r);
   else ouvrirGuide(r);
@@ -600,14 +616,14 @@ function ouvrirEditeur(recette, nouvelle = false) {
       brouillon.titre = brouillon.titre.trim() || 'Sans titre';
       const fautive = brouillon.etapes.findIndex((et) => et.type === 'programme' && verifier(et));
       if (fautive >= 0) return toast(`Étape ${fautive + 1} : ${verifier(brouillon.etapes[fautive])}`);
-      stock.enregistrerRecette(brouillon);
+      enregistrerRecette(brouillon);
       rendreRecettes();
       fermerEcran();
       toast('Recette enregistrée');
       return;
     } else if (action === 'supprimer') {
       if (!confirm(`Supprimer « ${recette.titre} » ?`)) return;
-      stock.supprimerRecette(recette.id);
+      supprimerRecette(recette);
       rendreRecettes();
       fermerEcran();
       return;
@@ -851,6 +867,10 @@ majPoids();
 majBoutonNotifs();
 rendreFavoris();
 rendreRecettes();
+baseCuisine?.collection('robot').onSnapshot((s) => {
+  partagees = s.docs.map((d) => ({ ...d.data(), id: d.id, partagee: true }));
+  rendreRecettes();
+});
 // La balance enregistrée se reconnecte seule : à l'ouverture, au retour dans l'appli, sur l'onglet Balance.
 async function reconnecterBalance() {
   if (balance.connectee || balance.occupee) return;

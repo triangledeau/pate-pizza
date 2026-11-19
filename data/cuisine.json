@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-19T14:58:34Z",
+ "maj": "2026-11-19T20:52:02Z",
  "note": "Données de l'appli Cuisine. Chaque document : t = date de modification (ISO), d = contenu. Voir CLAUDE.md.",
  "docs": {
   "config/drive": {
@@ -4314,6 +4314,390 @@
       "u": "g"
      }
     }
+   }
+  },
+  "robot/riz-au-lait": {
+   "t": "2026-11-19T20:52:02Z",
+   "d": {
+    "titre": "Riz au lait onctueux",
+    "portions": "6 personnes",
+    "source": "https://www.magimix.fr/recettes/riz-au-lait-onctueux_i",
+    "etapes": [
+     {
+      "type": "pesee",
+      "ingredient": "Lait entier (1 L)",
+      "grammes": 1030
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Riz rond",
+      "grammes": 150
+     },
+     {
+      "type": "texte",
+      "texte": "Ajoute la vanille : 2 c.c. d'arôme ou les grains d'une gousse fendue et grattée."
+     },
+     {
+      "type": "programme",
+      "tempsS": 1980,
+      "temperature": 98,
+      "vitesse": 2,
+      "texte": "Cuire le riz dans le lait."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Sucre",
+      "grammes": 100
+     },
+     {
+      "type": "programme",
+      "tempsS": 180,
+      "temperature": 98,
+      "vitesse": 2,
+      "texte": "Incorporer le sucre."
+     },
+     {
+      "type": "texte",
+      "texte": "Verse dans un saladier ou des ramequins, laisse refroidir puis mets au réfrigérateur."
+     }
+    ]
+   }
+  },
+  "robot/dhal-lentilles-corail": {
+   "t": "2026-11-19T20:52:02Z",
+   "d": {
+    "titre": "Dhal de lentilles corail",
+    "portions": "6 personnes",
+    "source": "https://www.magimix.fr/recettes/dhal-de-lentilles-corail_c",
+    "etapes": [
+     {
+      "type": "texte",
+      "texte": "Épluche 1 oignon, coupe-le en quatre et mets-le dans le bol inox. Coupe 250 g de pommes de terre nouvelles en morceaux d'environ 2 cm et rince 250 g de lentilles corail."
+     },
+     {
+      "type": "programme",
+      "tempsS": 15,
+      "temperature": 29,
+      "vitesse": 13,
+      "texte": "Hacher l'oignon."
+     },
+     {
+      "type": "texte",
+      "texte": "Rabats avec la spatule et ajoute 1 c.s. d'huile d'olive."
+     },
+     {
+      "type": "programme",
+      "tempsS": 180,
+      "temperature": 120,
+      "vitesse": 3,
+      "texte": "Faire revenir l'oignon."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Lentilles corail rincées",
+      "grammes": 250
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Pommes de terre nouvelles en morceaux",
+      "grammes": 250
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Tomates entières pelées au jus",
+      "grammes": 400
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Lait de coco",
+      "grammes": 200
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Eau",
+      "grammes": 300
+     },
+     {
+      "type": "texte",
+      "texte": "Ajoute 3 c.s. de curry en poudre, 1 pincée de sel et 1 pincée de poivre."
+     },
+     {
+      "type": "programme",
+      "tempsS": 2400,
+      "temperature": 105,
+      "vitesse": 1,
+      "texte": "Mijoter (équivalent Expert du programme Mijotage)."
+     },
+     {
+      "type": "texte",
+      "texte": "Sers en bols et parsème de coriandre fraîche ciselée (½ bouquet)."
+     }
+    ]
+   }
+  },
+  "robot/risotto": {
+   "t": "2026-11-19T20:52:02Z",
+   "d": {
+    "titre": "Risotto de base",
+    "portions": "4 personnes",
+    "source": "https://www.magimix.fr/recettes?recipe-name=risotto-de-base",
+    "etapes": [
+     {
+      "type": "texte",
+      "texte": "Coupe en quatre 1 gousse d'ail, 1 oignon nouveau et 1 échalote, puis mets-les dans le bol inox."
+     },
+     {
+      "type": "programme",
+      "tempsS": 10,
+      "temperature": 29,
+      "vitesse": 13,
+      "texte": "Hacher."
+     },
+     {
+      "type": "texte",
+      "texte": "Ramène la préparation au centre du bol avec la spatule."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Beurre en morceaux",
+      "grammes": 40
+     },
+     {
+      "type": "texte",
+      "texte": "Ajoute 2 c.s. d'huile d'olive."
+     },
+     {
+      "type": "programme",
+      "tempsS": 180,
+      "temperature": 100,
+      "vitesse": 2,
+      "texte": "Faire revenir."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Riz spécial risotto",
+      "grammes": 320
+     },
+     {
+      "type": "texte",
+      "texte": "Prépare 100 ml de vin blanc : tu le verseras par l'ouverture 1 minute après le début du programme suivant, sans remettre le bouchon."
+     },
+     {
+      "type": "programme",
+      "tempsS": 180,
+      "temperature": 100,
+      "vitesse": 4,
+      "texte": "Nacrer le riz, puis verser le vin blanc au bout d'1 minute."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Eau",
+      "grammes": 750
+     },
+     {
+      "type": "texte",
+      "texte": "Ajoute 1 cube de bouillon de légumes, 1 pincée de sel et 1 pincée de poivre. Laisse le bouchon retiré."
+     },
+     {
+      "type": "programme",
+      "tempsS": 1200,
+      "temperature": 100,
+      "vitesse": 2,
+      "texte": "Cuire, sans le bouchon."
+     },
+     {
+      "type": "texte",
+      "texte": "Goûte : si le riz est encore ferme, lance les 5 minutes suivantes (beaucoup d'avis les jugent nécessaires). Sinon, passe à l'étape d'après."
+     },
+     {
+      "type": "programme",
+      "tempsS": 300,
+      "temperature": 100,
+      "vitesse": 2,
+      "texte": "Prolonger la cuisson si besoin."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Parmesan râpé",
+      "grammes": 100
+     },
+     {
+      "type": "texte",
+      "texte": "Mélange à la spatule et laisse reposer 2 minutes avant de servir."
+     }
+    ]
+   }
+  },
+  "robot/pate-crepes": {
+   "t": "2026-11-19T20:52:02Z",
+   "d": {
+    "titre": "Pâte à crêpes",
+    "portions": "15 crêpes",
+    "source": "https://www.magimix.fr/recettes/Crepes_c",
+    "etapes": [
+     {
+      "type": "pesee",
+      "ingredient": "Beurre",
+      "grammes": 50
+     },
+     {
+      "type": "programme",
+      "tempsS": 120,
+      "temperature": 60,
+      "vitesse": 2,
+      "texte": "Faire fondre le beurre."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Lait (½ L)",
+      "grammes": 515
+     },
+     {
+      "type": "texte",
+      "texte": "Ajoute 3 œufs, 1 pincée de sel, 2 c.s. d'huile de tournesol et, si tu veux, 1 bouchon de rhum."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Farine",
+      "grammes": 250
+     },
+     {
+      "type": "programme",
+      "tempsS": 60,
+      "temperature": 29,
+      "vitesse": 13,
+      "texte": "Mixer la pâte."
+     },
+     {
+      "type": "texte",
+      "texte": "Rabats avec la spatule."
+     },
+     {
+      "type": "programme",
+      "tempsS": 30,
+      "temperature": 29,
+      "vitesse": 13,
+      "texte": "Mixer à nouveau."
+     },
+     {
+      "type": "texte",
+      "texte": "Laisse reposer la pâte 30 minutes."
+     },
+     {
+      "type": "texte",
+      "texte": "Cuisson : une louche de pâte dans une poêle chaude et beurrée, environ 1 minute de chaque côté, jusqu'à épuisement de la pâte."
+     }
+    ]
+   }
+  },
+  "robot/pate-gaufres": {
+   "t": "2026-11-19T20:52:02Z",
+   "d": {
+    "titre": "Pâte à gaufres",
+    "portions": "14 gaufres",
+    "source": "https://www.magimix.fr/recettes/gaufres_c1",
+    "etapes": [
+     {
+      "type": "pesee",
+      "ingredient": "Beurre",
+      "grammes": 75
+     },
+     {
+      "type": "programme",
+      "tempsS": 120,
+      "temperature": 60,
+      "vitesse": 2,
+      "texte": "Faire fondre le beurre."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Lait (400 ml)",
+      "grammes": 410
+     },
+     {
+      "type": "texte",
+      "texte": "Ajoute 2 œufs, 1 sachet de levure chimique et 1 pincée de sel."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Sucre",
+      "grammes": 100
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Farine",
+      "grammes": 250
+     },
+     {
+      "type": "programme",
+      "tempsS": 60,
+      "temperature": 29,
+      "vitesse": 13,
+      "texte": "Mixer la pâte."
+     },
+     {
+      "type": "texte",
+      "texte": "Laisse reposer la pâte 30 minutes."
+     },
+     {
+      "type": "texte",
+      "texte": "Cuisson : une louche de pâte dans le gaufrier chaud et beurré, 3 à 5 minutes, puis décolle la gaufre. Continue jusqu'à épuisement de la pâte."
+     }
+    ]
+   }
+  },
+  "robot/salidou": {
+   "t": "2026-11-19T20:52:02Z",
+   "d": {
+    "titre": "Salidou (caramel au beurre salé)",
+    "portions": "1 pot",
+    "source": "https://www.magimix.fr/recettes/Salidou_c",
+    "etapes": [
+     {
+      "type": "pesee",
+      "ingredient": "Sucre",
+      "grammes": 125
+     },
+     {
+      "type": "texte",
+      "texte": "Ajoute 1 c.s. d'eau et retire le bouchon."
+     },
+     {
+      "type": "texte",
+      "texte": "Sur le robot, lance Cuisson › Rissolage, 160 °C, 1 min. L'appli ne peut pas l'envoyer : le mode Expert s'arrête à 140 °C."
+     },
+     {
+      "type": "pesee",
+      "ingredient": "Beurre demi-sel en morceaux",
+      "grammes": 60
+     },
+     {
+      "type": "texte",
+      "texte": "Relance Rissolage, 160 °C, 9 min, toujours sans bouchon. Le caramel doit devenir ambré."
+     },
+     {
+      "type": "texte",
+      "texte": "Prépare 100 ml de crème liquide : pendant le programme suivant, verse-la par l'ouverture en trois fois."
+     },
+     {
+      "type": "programme",
+      "tempsS": 240,
+      "temperature": 95,
+      "vitesse": 1,
+      "texte": "Incorporer la crème en trois fois."
+     },
+     {
+      "type": "programme",
+      "tempsS": 120,
+      "temperature": 110,
+      "vitesse": 2,
+      "texte": "Lier le caramel."
+     },
+     {
+      "type": "texte",
+      "texte": "Verse dans un pot, laisse refroidir puis garde au réfrigérateur (3 à 4 semaines)."
+     }
+    ]
    }
   }
  }
