@@ -64,15 +64,55 @@ export class Balance extends EventTarget {
     return suite;
   }
 
-  connecter() {
+  get occupee() {
+    return this.#connexionEnCours !== null;
+  }
+
+  /** Affiche le sélecteur ; si une balance est déjà connue et allumée, s'y connecte directement. */
+  connecter(avantConnexion) {
     // Deux appuis rapprochés ne lancent qu'une connexion.
-    this.#connexionEnCours ??= this.#connecter().finally(() => (this.#connexionEnCours = null));
+    this.#connexionEnCours ??= (async () => {
+      if (!Balance.disponible()) throw new Error('Bluetooth indisponible sur cet appareil.');
+      const connue = await this.#connue();
+      if (connue) {
+        avantConnexion?.();
+        try {
+          return await this.#connecter(connue);
+        } catch (e) {
+          this.#journal(`balance enregistrée : échec (${e.message}), choix manuel`);
+        }
+      }
+      const appareil = await bt().requestDevice({ filters: [{ services: [SERVICE_BALANCE] }] });
+      avantConnexion?.();
+      await this.#connecter(appareil);
+    })().finally(() => (this.#connexionEnCours = null));
     return this.#connexionEnCours;
   }
 
-  async #connecter() {
-    if (!Balance.disponible()) throw new Error('Bluetooth indisponible sur cet appareil.');
-    const appareil = await bt().requestDevice({ filters: [{ services: [SERVICE_BALANCE] }] });
+  /** Reconnexion silencieuse à la balance enregistrée ; false si elle est absente ou éteinte. */
+  reconnecter(avantConnexion) {
+    if (this.connectee || this.#connexionEnCours || !Balance.disponible()) return Promise.resolve(false);
+    this.#connexionEnCours = (async () => {
+      const connue = await this.#connue();
+      if (!connue) return false;
+      avantConnexion?.();
+      this.#journal('balance enregistrée trouvée : reconnexion…');
+      await this.#connecter(connue);
+      return true;
+    })().finally(() => (this.#connexionEnCours = null));
+    return this.#connexionEnCours;
+  }
+
+  // Balance enregistrée et en train d'émettre, sinon null.
+  async #connue() {
+    const appareils = (await bt().getDevices?.().catch(() => [])) ?? [];
+    const appareil = appareils[0];
+    if (!appareil) return null;
+    if (appareil.present && !(await appareil.present(4000))) return null;
+    return appareil;
+  }
+
+  async #connecter(appareil) {
     this.#appareil = appareil;
     appareil.addEventListener('gattserverdisconnected', () => {
       if (this.#ignorerDeconnexion) return;

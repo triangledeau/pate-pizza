@@ -231,7 +231,23 @@ class AppareilBle extends EventTarget {
       disconnect() { BleClient.disconnect(app.id).catch(() => {}); },
     };
   }
+  // La balance émet-elle ? Courte recherche avant de s'y connecter sans rien demander.
+  async present(ms = 5000) {
+    try { await initBle(); } catch (e) { return false; }
+    return new Promise((ok) => {
+      let fini = false;
+      const fin = (v) => {
+        if (fini) return;
+        fini = true;
+        clearTimeout(minuteur);
+        BleClient.stopLEScan().catch(() => {}).finally(() => ok(v));
+      };
+      const minuteur = setTimeout(() => fin(false), ms);
+      BleClient.requestLEScan({}, (r) => { if (r?.device?.deviceId === this.id) fin(true); }).catch(() => fin(false));
+    });
+  }
 }
+const CLE_BALANCE = "cuisine/balance";
 const bluetoothNatif = {
   async requestDevice({ filters }) {
     await initBle();
@@ -244,7 +260,15 @@ const bluetoothNatif = {
       }
       throw e;
     }
+    try { localStorage.setItem(CLE_BALANCE, JSON.stringify({ id: d.deviceId, nom: d.name || "" })); } catch (e) {}
     return new AppareilBle(d);
+  },
+  // Balance déjà choisie une fois : Android s'y connecte directement par son adresse.
+  async getDevices() {
+    try {
+      const b = JSON.parse(localStorage.getItem(CLE_BALANCE) || "null");
+      return b?.id ? [new AppareilBle({ deviceId: b.id, name: b.nom })] : [];
+    } catch (e) { return []; }
   },
 };
 

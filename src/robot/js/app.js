@@ -177,11 +177,11 @@ $('#pastille-balance').addEventListener('click', () =>
 );
 
 async function connecterBalance() {
-  robot.suspendre(true);
   $('#pastille-balance').classList.add('attente');
   toast('Connexion de la balance…');
   try {
-    await balance.connecter();
+    // Le robot n'est mis en pause qu'au moment de la connexion (pas pendant le choix).
+    await balance.connecter(() => robot.suspendre(true));
   } finally {
     robot.suspendre(false);
     $('#pastille-balance').classList.remove('attente');
@@ -777,7 +777,28 @@ majPoids();
 majBoutonNotifs();
 rendreFavoris();
 rendreRecettes();
-robot.reconnecter().catch(() => {});
+// La balance enregistrée se reconnecte seule : à l'ouverture, au retour dans l'appli, sur l'onglet Balance.
+async function reconnecterBalance() {
+  if (balance.connectee || balance.occupee) return;
+  try {
+    await balance.reconnecter(() => {
+      robot.suspendre(true);
+      $('#pastille-balance').classList.add('attente');
+    });
+  } catch (e) {
+    journal(`balance : reconnexion automatique impossible (${e.message})`);
+  } finally {
+    robot.suspendre(false);
+    $('#pastille-balance').classList.remove('attente');
+  }
+}
+robot.reconnecter().catch(() => {}).finally(reconnecterBalance);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) reconnecterBalance();
+});
+window.addEventListener('hashchange', () => {
+  if (location.hash === '#balance') reconnecterBalance();
+});
 
 $('#version').textContent = `Version ${VERSION}`;
 
