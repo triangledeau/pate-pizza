@@ -1,6 +1,30 @@
 /* Habillage commun : l'en-tête prend une ombre quand la page défile, les changements d'écran passent
    par une transition de vue quand le WebView la connaît (sinon tout se fait sans animation, sans attendre). */
 (() => {
+  // Mode jour/nuit : « auto » suit le téléphone ; « clair » ou « sombre » forcent les règles
+  // @media (prefers-color-scheme:dark) de toutes les feuilles de la page (réglage dans Repères).
+  const CLE_THEME = "cuisine/theme", SOMBRE = /prefers-color-scheme:\s*dark/;
+  const MEDIA = {auto: "(prefers-color-scheme: dark)", sombre: "all, (prefers-color-scheme: dark)", clair: "(prefers-color-scheme: dark) and (max-width: 0px)"};
+  const lireTheme = () => { try { return localStorage.getItem(CLE_THEME) || "auto"; } catch (e) { return "auto"; } };
+  const parcourir = (regles, texte) => {
+    for (const r of regles) {
+      if (r.media && SOMBRE.test(r.media.mediaText) && r.media.mediaText !== texte) r.media.mediaText = texte;
+      if (r.cssRules) parcourir(r.cssRules, texte);
+    }
+  };
+  const appliquerTheme = () => {
+    const t = lireTheme(), texte = MEDIA[t] || MEDIA.auto;
+    document.documentElement.dataset.theme = t;
+    for (const f of document.styleSheets) { let r; try { r = f.cssRules; } catch (e) { continue; } parcourir(r, texte); }
+  };
+  window.themeChoisi = lireTheme;
+  window.choisirTheme = t => { try { localStorage.setItem(CLE_THEME, t); } catch (e) {} appliquerTheme(); };
+  appliquerTheme();
+  // les <style> écrits après ce script : appliqués dès leur arrivée, avant le premier affichage
+  const suivi = new MutationObserver(ms => { if (ms.some(m => [...m.addedNodes].some(n => n.nodeName === "STYLE" || n.nodeName === "LINK"))) appliquerTheme(); });
+  suivi.observe(document.documentElement, {childList: true, subtree: true});
+  document.addEventListener("DOMContentLoaded", () => { suivi.disconnect(); appliquerTheme(); });
+  addEventListener("load", appliquerTheme);
   const calme = matchMedia("(prefers-reduced-motion: reduce)");
   // Transition de vue pour un changement fait en JS ; renvoie toujours tout de suite
   window.transitionVue = fn => {

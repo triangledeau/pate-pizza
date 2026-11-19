@@ -182,6 +182,8 @@ details.more summary::-webkit-details-marker{display:none}
 .rp{margin-top:24px}
 .rp:first-child{margin-top:8px}
 .rp-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.theme-choix{display:flex;gap:8px;padding:12px 14px;flex-wrap:wrap}
+.theme-choix .chip{flex:1;justify-content:center}
 .rp-h h2{font-family:var(--titre);font-weight:720;font-size:23px;letter-spacing:-.01em;margin:0;flex:1}
 .card{background:var(--surface);border:1px solid var(--trait);border-radius:var(--r-carte)}
 .rules{list-style:none;margin:0;padding:0}
@@ -700,6 +702,9 @@ function renderReperes() {
       <div class="equip">${eq.map(([id, e]) => `<button class="eq" data-act="eqOpen" data-id="${esc(id)}"><span class="nm">${esc(e.nom)}</span><span class="mt">${esc(e.modele || "Modèle à identifier")}${e.emplacement ? " · " + esc(e.emplacement) : ""}</span>${e.usages ? `<span class="mt muted">${esc(e.usages)}</span>` : ""}${e.ref || e.achat ? `<span class="mt muted">${esc([e.ref && "Réf. " + e.ref, e.achat].filter(Boolean).join(" · "))}</span>` : `<span class="mq">Réf. et garantie à compléter</span>`}</button>`).join("")}</div>
       <div class="card" style="margin-top:10px"><table class="tbl"><thead><tr><th>Envie</th><th>Appareil à privilégier</th></tr></thead><tbody>${(rp.usages || []).map(u => `<tr><td>${esc(u.envie)}</td><td>${esc(u.appareil)}</td></tr>`).join("")}</tbody></table></div></section>
     ${todo.length ? `<section class="rp"><div class="rp-h"><h2>À compléter</h2></div><ul class="todo-l card">${todo.map((x, i) => `<li><label class="${x.fait ? "done" : ""}"><input type="checkbox" data-act="todo" data-i="${i}" ${x.fait ? "checked" : ""}><span>${esc(x.txt)}</span></label></li>`).join("")}</ul></section>` : ""}
+    <section class="rp"><div class="rp-h"><h2>Affichage</h2></div>
+      <div class="card theme-choix" role="radiogroup" aria-label="Mode jour ou nuit">${[["auto", "Automatique"], ["clair", "Jour"], ["sombre", "Nuit"]].map(([v, t]) => `<button class="chip" role="radio" data-act="theme" data-v="${v}" aria-pressed="${(window.themeChoisi?.() || "auto") === v}" aria-checked="${(window.themeChoisi?.() || "auto") === v}">${t}</button>`).join("")}</div>
+      <p class="muted" style="font-size:14px;margin:8px 0 0">Automatique suit le réglage du téléphone.</p></section>
     <section class="rp"><div class="rp-h"><h2>Données</h2></div>
       <div class="card" style="padding:14px 16px"><p class="sync-l" style="margin:0 0 10px">${esc(texteSync())}</p>
       <div class="row"><button class="btn" data-act="actualiser">Actualiser</button><button class="btn" data-act="copyModifs">Copier mes modifications pour Claude</button></div>
@@ -1112,6 +1117,7 @@ document.addEventListener("click", ev => {
     case "noReset": $("#resetZone").innerHTML = ""; break;
     // repères
     case "rpEdit": openRpEdit(b.dataset.k); break;
+    case "theme": { window.choisirTheme?.(b.dataset.v); renderReperes(); break; }
     case "rpSave": { const rp = st.reperes || {}; rp[sheet.k] = textToLignes($("#rp-txt").value); st.reperes = rp; write("config/reperes", rp); closeSheet(); render(); toast("Règles enregistrées"); break; }
     case "eqOpen": openEq(b.dataset.id); break;
     case "eqNew": openEq(null); break;
