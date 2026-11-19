@@ -7,10 +7,13 @@
 <link rel="stylesheet" href="commun/theme.css">
 <link rel="stylesheet" href="robot/css/style.css">
 <script src="commun/natif.js"></script>
+<script src="commun/illus.js"></script>
+<script src="commun/habillage.js"></script>
 </head>
 <body>
 <header class="entete"><div class="entete-in">
-  <h1>Robot</h1>
+  <a class="marque" href="index.html#semaine" aria-label="Semaine" data-embleme></a>
+  <div class="titres"><span class="appli">Cuisine</span><h1>Robot</h1></div>
   <div class="pastilles">
     <button id="pastille-robot" class="pastille outil" type="button">Robot</button>
     <button id="pastille-balance" class="pastille outil" type="button">Balance</button>
@@ -37,6 +40,7 @@
       <!-- Piloter -->
       <section id="vue-piloter" class="vue">
         <div class="plaque eteinte" id="carte-etat">
+          <span class="etat-ill" data-illus="robot"></span>
           <div class="etat-titre" id="etat-titre">Robot non connecté</div>
           <div class="etat-grand chiffres" id="etat-temps">—</div>
           <div class="etat-details chiffres"><span id="etat-temp"></span><span id="etat-vit"></span></div>

@@ -18,4 +18,5 @@ L'appli lit ce fichier sur GitHub (raw.githubusercontent.com, branche `main`) à
 
 - Robot : ne jamais envoyer AUTO ni PULSE (touches autorisées : `TOUCHES` dans `src/robot/js/robot.js`). `src/robot/lib/` est généré, ne pas le modifier à la main. Jamais de nom ni d'adresse Bluetooth d'un robot réel dans le dépôt.
 - Thème commun dans `src/commun/theme.css` : une police (Bricolage Grotesque), basilic pour agir, tomate pour ce qui chauffe, safran pour « aujourd'hui », la plaque émaillée pour ce qui se passe maintenant. Pas de libellés en capitales.
+- Habillage : emblème (cocotte sur plaque émaillée) et illustrations de plats dans `src/commun/illus.js` (couleurs `--il-*` du thème), icône Android `ic_cuisine_fg.xml` tirée du même dessin. Mouvements dans `theme.css` et `src/commun/habillage.js` : courts (120 à 300 ms), jamais bloquants, coupés si l'appareil demande moins d'animations ; une animation d'arrivée ne se joue qu'au changement de vue, pas à chaque re-rendu.
 - Tester en local : `npm run build`, puis servir `www/` (le Bluetooth et les notifications ne fonctionnent que dans l'APK).

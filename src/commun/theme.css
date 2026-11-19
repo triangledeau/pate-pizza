@@ -1,7 +1,8 @@
-/* Cuisine d'Antoine : système visuel (une seule famille, Bricolage Grotesque : lourde et serrée pour les titres,
+/* Cuisine : système visuel (une seule famille, Bricolage Grotesque : lourde et serrée pour les titres,
    souple en texte grâce à son axe de taille optique) commun aux pages Semaine/Recettes/Courses, Pizza et Robot.
    Faïence de cuisine claire, basilic pour agir, tomate pour ce qui chauffe ou tourne, safran pour « ce soir ».
-   Une seule pièce forte : la plaque émaillée (fond plein, filet intérieur) pour ce qui se passe maintenant. */
+   Une seule pièce forte : la plaque émaillée (fond plein, filet intérieur) pour ce qui se passe maintenant ;
+   l'emblème en est une miniature. Mouvements courts (120 à 300 ms), jamais bloquants. */
 
 @font-face{font-family:"Bricolage";font-style:normal;font-display:swap;font-weight:200 800;
   src:url(fonts/bricolage-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -19,12 +20,24 @@
   --gf:#4F7A27; --gf-doux:#E6EFD9; --lec:#2D5C9A; --lec-doux:#E1E9F5; --pic:#24788A; --pic-doux:#DDEFF2; --pla:#86684A; --pla-doux:#F1EAE1;
   --voile:rgba(16,26,20,.45);
   --ombre:0 1px 2px rgba(20,40,28,.07),0 18px 40px -18px rgba(20,40,28,.35);
+  --ombre-carte:0 1px 1px rgba(20,40,28,.04),0 6px 18px -12px rgba(20,40,28,.22);
+  --ombre-haute:0 2px 4px rgba(20,40,28,.06),0 14px 30px -16px rgba(20,40,28,.32);
+  --carreau:rgba(28,52,36,.045);
   --titre:"Bricolage","Avenir Next","Segoe UI",system-ui,sans-serif;
   --texte:"Bricolage","Segoe UI",system-ui,-apple-system,sans-serif;
-  --r-plaque:20px; --r-carte:14px; --r-btn:12px;
-  --nav-h:64px;
+  --r-plaque:20px; --r-carte:16px; --r-btn:12px;
+  --nav-h:66px;
   --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
   --sal:env(safe-area-inset-left,0px); --sar:env(safe-area-inset-right,0px);
+  /* mouvement */
+  --ressort:cubic-bezier(.3,1.35,.5,1); --sortie:cubic-bezier(.2,.8,.2,1); --entree:cubic-bezier(.4,0,1,1);
+  /* illustrations (commun/illus.js) */
+  --il-trait:#22302A; --il-vapeur:rgba(34,48,42,.32); --il-creme:#FFF6E6; --il-tomate:#E0533B; --il-safran:#F2B53A; --il-basilic:#3F8F5A;
+  --il-croute:#DB9450; --il-bois:#C08A55; --il-mie:#F6DDAE; --il-nori:#2D3B31; --il-bol:#C8432F; --il-bol-2:#2F5A86;
+  --il-pate:#F5D27A; --il-saumon:#F28D6B; --il-potiron:#EE8B3A; --il-fromage:#F7D46E; --il-jambon:#EBA3A0;
+  --il-tortilla:#F2C878; --il-tortilla-2:#E0A957; --il-fonte:#33413A; --il-metal:#DCE3DE; --il-sauce:#6B3A1F; --il-verre:#D8EBEC;
+  /* emblème */
+  --em-fond:#2C6A44; --em-filet:rgba(255,255,255,.5); --em-tomate:#E0533B; --em-creme:#FFF6E6; --em-feuille:#A6DDB2;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root{
@@ -38,12 +51,20 @@
   --gf:#9CC872; --gf-doux:#22301A; --lec:#8FB1E6; --lec-doux:#1B2638; --pic:#7FC9D8; --pic-doux:#14292E; --pla:#CDB496; --pla-doux:#2B241B;
   --voile:rgba(0,0,0,.6);
   --ombre:0 1px 2px rgba(0,0,0,.4),0 18px 40px -18px rgba(0,0,0,.8);
+  --ombre-carte:0 1px 1px rgba(0,0,0,.3),0 6px 18px -12px rgba(0,0,0,.7);
+  --ombre-haute:0 2px 4px rgba(0,0,0,.35),0 14px 30px -16px rgba(0,0,0,.8);
+  --carreau:rgba(200,230,210,.035);
+  --il-trait:#121813; --il-vapeur:rgba(228,235,229,.35); --il-metal:#C9D2CC;
+  --em-fond:#2F7049;
   color-scheme:dark}}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
+/* Fond : une faïence très discrète (carreaux de 44 px) et une lueur safran en haut à droite */
 html{-webkit-text-size-adjust:100%;background:var(--fond)}
-body{margin:0;background:var(--fond);color:var(--encre);font-family:var(--texte);font-size:16px;line-height:1.5;font-optical-sizing:auto;
+body{margin:0;background-color:var(--fond);color:var(--encre);font-family:var(--texte);font-size:16px;line-height:1.5;font-optical-sizing:auto;
+  background-image:linear-gradient(var(--carreau) 1px,transparent 1px),linear-gradient(90deg,var(--carreau) 1px,transparent 1px);
+  background-size:44px 44px;background-position:-1px -1px;
   -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;
   padding-bottom:calc(var(--nav-h) + 28px + var(--sab))}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -51,63 +72,164 @@ button{cursor:pointer}
 :focus-visible{outline:2px solid var(--basilic);outline-offset:2px}
 .chiffres{font-variant-numeric:tabular-nums}
 
-/* En-tête de page : le nom de la page, grand, et une action à droite */
-.entete{position:sticky;top:0;z-index:6;background:var(--fond);
-  padding:calc(12px + var(--sat)) max(16px,var(--sar)) 10px max(16px,var(--sal))}
-.entete-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:10px;min-height:44px}
-.entete h1{font-family:var(--titre);font-weight:750;font-size:30px;line-height:1.05;letter-spacing:-.015em;margin:0;flex:1;min-width:0;text-wrap:balance}
-.entete .outil{flex:none;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--trait);background:var(--surface);border-radius:999px;min-height:40px;padding:0 14px;font-size:14px;font-weight:600;color:var(--encre)}
+/* ---------- emblème et illustrations ---------- */
+.embleme{display:block;width:100%;height:100%}
+.marque{flex:none;display:block;width:40px;height:40px;border-radius:13px;box-shadow:0 6px 14px -8px rgba(28,72,44,.7);view-transition-name:embleme}
+.marque:active{transform:scale(.94)}
+.illus{display:block;width:100%;height:100%;overflow:visible}
+.vignette{flex:none;display:grid;place-items:center;width:56px;height:56px;border-radius:14px;background:var(--surface-2);padding:7px;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--encre) 5%,transparent)}
+.vignette.t-tomate{background:var(--tomate-doux)} .vignette.t-safran{background:var(--safran-doux)} .vignette.t-basilic{background:var(--basilic-doux)}
+.vignette.t-pla{background:var(--pla-doux)} .vignette.t-pic{background:var(--pic-doux)}
+@media (prefers-color-scheme:dark){
+  .vignette.t-tomate{background:#4A2A22} .vignette.t-safran{background:#43361A} .vignette.t-basilic{background:#24402E} .vignette.t-pla{background:#3A3125} .vignette.t-pic{background:#1D3A40} .vignette{background:#26332A}}
+
+/* ---------- en-tête de page : emblème, nom de l'appli, nom de la page ---------- */
+.entete{position:sticky;top:0;z-index:6;background:radial-gradient(70% 160% at 100% 0,color-mix(in srgb,var(--safran-doux) 90%,transparent),transparent 70%),var(--fond);
+  padding:calc(12px + var(--sat)) max(16px,var(--sar)) 10px max(16px,var(--sal));
+  transition:box-shadow .2s}
+.entete.defile{box-shadow:0 1px 0 var(--trait-doux),0 10px 24px -20px rgba(20,40,28,.5)}
+.entete-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px;min-height:44px}
+.entete .titres{flex:1;min-width:0;display:flex;flex-direction:column}
+.entete .appli{font-size:13px;font-weight:700;color:var(--basilic);letter-spacing:.01em;line-height:1.1}
+.entete h1{font-family:var(--titre);font-weight:760;font-size:28px;line-height:1.05;letter-spacing:-.02em;margin:1px 0 0;flex:1;min-width:0;text-wrap:balance}
+.entete .outil{flex:none;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--trait);background:var(--surface);border-radius:999px;min-height:40px;padding:0 14px;font-size:14px;font-weight:600;color:var(--encre);
+  box-shadow:var(--ombre-carte);transition:transform .12s var(--sortie)}
+.entete .outil:active{transform:scale(.95)}
 .entete .outil svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
 .page{max-width:720px;margin:0 auto;padding:0 max(16px,var(--sar)) 0 max(16px,var(--sal))}
 
-/* Barre du bas, partagée par toutes les pages */
-.barre-bas{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--surface);border-top:1px solid var(--trait);
-  padding:0 var(--sar) var(--sab) var(--sal)}
+/* ---------- barre du bas, partagée par toutes les pages ---------- */
+.barre-bas{position:fixed;left:0;right:0;bottom:0;z-index:15;background:color-mix(in srgb,var(--surface) 97%,transparent);
+  border-top:1px solid var(--trait-doux);border-radius:20px 20px 0 0;box-shadow:0 -10px 30px -22px rgba(20,40,28,.55);
+  padding:0 var(--sar) var(--sab) var(--sal);view-transition-name:barre-bas}
 .barre-bas-in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:var(--nav-h)}
-.barre-bas a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--encre-3);font-size:12px;font-weight:600;position:relative}
-.barre-bas a svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.barre-bas a[aria-current="page"]{color:var(--basilic)}
-.barre-bas a[aria-current="page"]::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--basilic)}
-.barre-bas .vivant{position:absolute;top:10px;left:calc(50% + 8px);width:9px;height:9px;border-radius:50%;background:var(--tomate);box-shadow:0 0 0 2px var(--surface)}
+.barre-bas a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--encre-3);font-size:12px;font-weight:600;position:relative;
+  transition:color .2s}
+.barre-bas a svg{position:relative;z-index:1;width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--ressort)}
+.barre-bas a span{position:relative;z-index:1}
+.barre-bas a::before{content:"";position:absolute;top:8px;left:50%;width:58px;height:30px;margin-left:-29px;border-radius:999px;background:var(--basilic-doux);
+  opacity:0;transform:scaleX(.4);transition:opacity .18s,transform .28s var(--ressort)}
+.barre-bas a[aria-current="page"]{color:var(--basilic-fonce)}
+.barre-bas a[aria-current="page"]::before{opacity:1;transform:none;view-transition-name:nav-actif}
+.barre-bas a[aria-current="page"] svg{stroke-width:2;fill:color-mix(in srgb,var(--basilic) 18%,transparent)}
+.barre-bas a:active svg{transform:scale(.86)}
+.barre-bas .vivant{position:absolute;z-index:2;top:9px;left:calc(50% + 9px);width:9px;height:9px;border-radius:50%;background:var(--tomate);box-shadow:0 0 0 2px var(--surface);
+  animation:battement 1.6s ease-in-out infinite}
 
-/* Plaque émaillée : ce qui se passe maintenant */
-.plaque{position:relative;background:var(--plaque);color:var(--plaque-encre);border-radius:var(--r-plaque);padding:20px 20px 18px;isolation:isolate}
+/* ---------- plaque émaillée : ce qui se passe maintenant ---------- */
+.plaque{position:relative;background:radial-gradient(130% 100% at 0 0,rgba(255,255,255,.13),transparent 55%),var(--plaque);color:var(--plaque-encre);
+  border-radius:var(--r-plaque);padding:20px 20px 18px;isolation:isolate;box-shadow:0 18px 34px -22px color-mix(in srgb,var(--plaque) 90%,black),inset 0 1px 0 rgba(255,255,255,.18);
+  transition:background-color .3s}
 .plaque::before{content:"";position:absolute;inset:6px;border:1.5px solid var(--plaque-filet);border-radius:calc(var(--r-plaque) - 6px);pointer-events:none;z-index:-1}
-.plaque.chaude{background:var(--plaque-chaude)}
+.plaque.chaude{background:radial-gradient(130% 100% at 0 0,rgba(255,255,255,.13),transparent 55%),var(--plaque-chaude);box-shadow:0 18px 34px -22px color-mix(in srgb,var(--plaque-chaude) 90%,black),inset 0 1px 0 rgba(255,255,255,.18)}
 .plaque .quand{font-weight:600;font-size:15px;opacity:.92}
 .plaque .plat{font-family:var(--titre);font-weight:780;font-size:34px;line-height:1.02;letter-spacing:-.02em;margin:6px 0 8px;text-wrap:balance}
 .plaque .infos{font-size:15px;opacity:.9}
 .plaque .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.plaque .btn{background:var(--plaque-encre);color:var(--plaque);border-color:transparent}
+.plaque .btn{background:var(--plaque-encre);color:var(--plaque);border-color:transparent;box-shadow:0 6px 14px -10px rgba(0,0,0,.6)}
 .plaque.chaude .btn{color:var(--plaque-chaude)}
-.plaque .btn.ghost{background:transparent;color:var(--plaque-encre);border-color:var(--plaque-filet)}
+.plaque .btn.ghost{background:transparent;color:var(--plaque-encre);border-color:var(--plaque-filet);box-shadow:none}
+/* l'assiette illustrée, posée dans l'angle de la plaque */
+.plaque .assiette{position:absolute;top:-14px;right:-8px;width:104px;height:104px;border-radius:50%;padding:16px;
+  background:radial-gradient(circle at 50% 50%,var(--il-creme) 58%,#EFE4CF 59%,#F8EEDC 70%,#E8DCC4 71%);
+  box-shadow:0 14px 24px -12px rgba(0,0,0,.55);transform:rotate(-8deg)}
+.entree .plaque .assiette{animation:pose .5s var(--ressort) both .12s}
+.plaque.avec-assiette .quand,.plaque.avec-assiette .plat{padding-right:96px}
 
-/* Boutons, puces, champs */
+/* ---------- boutons, puces, champs ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--trait);background:var(--surface);color:var(--encre);
-  border-radius:var(--r-btn);padding:10px 16px;min-height:48px;font-size:15.5px;font-weight:600;text-decoration:none;line-height:1.2}
-.btn:active{transform:translateY(1px)}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.btn.primary,.btn.principal{background:var(--basilic);border-color:var(--basilic);color:var(--surface)}
+  border-radius:var(--r-btn);padding:10px 16px;min-height:48px;font-size:15.5px;font-weight:600;text-decoration:none;line-height:1.2;
+  transition:transform .12s var(--sortie),background-color .2s,box-shadow .2s,border-color .2s}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn.primary,.btn.principal{background:linear-gradient(180deg,color-mix(in srgb,var(--basilic) 86%,white),var(--basilic));border-color:var(--basilic);color:var(--surface);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 8px 16px -10px var(--basilic)}
+@media (prefers-color-scheme:dark){.btn.primary,.btn.principal{background:var(--basilic);color:#0F1511;box-shadow:none}}
 .btn.ghost{background:transparent}
 .btn.danger{color:var(--tomate);border-color:color-mix(in srgb,var(--tomate) 45%,transparent);background:transparent}
 .btn.icon{width:48px;padding:0;font-size:22px}
 .btn.plein{width:100%}
 .btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--trait);background:var(--surface);border-radius:999px;padding:6px 14px;min-height:38px;font-size:14px;font-weight:600;color:var(--encre-2);white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--trait);background:var(--surface);border-radius:999px;padding:6px 14px;min-height:38px;font-size:14px;font-weight:600;color:var(--encre-2);white-space:nowrap;
+  transition:background-color .2s,border-color .2s,color .2s,transform .12s var(--sortie)}
+.chip:active{transform:scale(.95)}
 .chip[aria-pressed="true"]{background:var(--basilic-doux);border-color:var(--basilic);color:var(--basilic-fonce)}
-.field{border:1px solid var(--trait);background:var(--surface);border-radius:10px;padding:10px 12px;min-height:48px;width:100%}
+.chip[aria-pressed="true"]::before{content:"";width:7px;height:12px;margin:0 2px 3px 0;border:solid currentColor;border-width:0 2.2px 2.2px 0;transform:rotate(45deg);animation:pop .22s var(--ressort)}
+.field{border:1px solid var(--trait);background:var(--surface);border-radius:12px;padding:10px 12px;min-height:48px;width:100%;transition:border-color .2s,box-shadow .2s}
+.field:focus{outline:none;border-color:var(--basilic);box-shadow:0 0 0 3px color-mix(in srgb,var(--basilic) 20%,transparent)}
 textarea.field{min-height:120px;resize:vertical;font-size:15px;line-height:1.55}
 .lab{display:block;font-size:14px;font-weight:600;color:var(--encre-2);margin-bottom:6px}
 .muted{color:var(--encre-3)}
 
-/* Feuille montante */
-.voile{position:fixed;inset:0;background:var(--voile);z-index:20}
+/* Cases à cocher : une coche qui se dessine */
+input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;display:inline-grid;place-items:center;width:26px;height:26px;margin:0;border:2px solid color-mix(in srgb,var(--encre-3) 70%,transparent);border-radius:8px;background:var(--surface);
+  cursor:pointer;transition:background-color .15s,border-color .15s}
+input[type=checkbox]::after{content:"";width:6px;height:12px;margin-top:-3px;border:solid #fff;border-width:0 2.6px 2.6px 0;transform:rotate(45deg) scale(0)}
+input[type=checkbox]:checked{background:var(--basilic);border-color:var(--basilic)}
+input[type=checkbox]:checked::after{transform:rotate(45deg) scale(1)}
+@media (prefers-color-scheme:dark){input[type=checkbox]::after{border-color:#0F1511}}
+input[type=checkbox]:disabled{opacity:.4;cursor:not-allowed}
+.vient-de-cocher input[type=checkbox]:checked{animation:pop .3s var(--ressort)}
+.vient-de-cocher input[type=checkbox]:checked::after{animation:coche .26s var(--ressort)}
+
+/* ---------- feuille montante ---------- */
+.voile,.scrim{position:fixed;inset:0;background:var(--voile);z-index:20;animation:apparait .2s ease-out}
+.feuille,.sheet{animation:feuille-monte .32s var(--sortie)}
 .feuille{position:fixed;left:0;right:0;bottom:0;z-index:21;background:var(--fond);border-radius:22px 22px 0 0;max-height:90vh;overflow-y:auto;box-shadow:var(--ombre);
   padding:8px max(18px,var(--sar)) calc(24px + var(--sab)) max(18px,var(--sal));overscroll-behavior:contain}
 @media (min-width:720px){.feuille{left:50%;right:auto;width:660px;transform:translateX(-50%);bottom:auto;top:5vh;border-radius:20px;max-height:88vh}}
 .poignee{width:44px;height:5px;border-radius:3px;background:var(--trait);margin:4px auto 12px}
+.sort.voile,.sort.scrim{animation:disparait .18s ease-in both}
+.sort.feuille,.sort.sheet{animation:feuille-descend .2s var(--entree) both}
 
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 16px + var(--sab));z-index:30;background:var(--encre);color:var(--fond);
-  padding:11px 16px;border-radius:12px;font-size:15px;font-weight:600;max-width:calc(100% - 32px);box-shadow:var(--ombre)}
+  padding:11px 18px;border-radius:999px;font-size:15px;font-weight:600;max-width:calc(100% - 32px);box-shadow:var(--ombre);animation:toast .32s var(--ressort)}
 
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+#toast.rebond,.toast.rebond{animation:rebond-toast .3s var(--ressort)}
+@keyframes rebond-toast{from{transform:translateX(-50%) scale(.92)}}
+
+/* Chargement : des cartes fantômes qui brillent */
+.squelette{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--trait-doux);border-radius:var(--r-carte);min-height:92px}
+.squelette::after{content:"";position:absolute;inset:0;transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--surface-2) 80%,var(--trait)),transparent);animation:brille 1.2s ease-in-out infinite}
+
+/* Arrivée d'une vue : les blocs montent l'un après l'autre (classe posée une fois, au changement de vue) */
+.entree > *,.entree .cascade > *{animation:monte .34s var(--sortie) both}
+.entree > :nth-child(2),.entree .cascade > :nth-child(2){animation-delay:.03s}
+.entree > :nth-child(3),.entree .cascade > :nth-child(3){animation-delay:.06s}
+.entree > :nth-child(4),.entree .cascade > :nth-child(4){animation-delay:.09s}
+.entree > :nth-child(5),.entree .cascade > :nth-child(5){animation-delay:.12s}
+.entree > :nth-child(6),.entree .cascade > :nth-child(6){animation-delay:.15s}
+.entree > :nth-child(n+7),.entree .cascade > :nth-child(n+7){animation-delay:.18s}
+
+@keyframes monte{from{opacity:0;transform:translateY(12px)}}
+@keyframes apparait{from{opacity:0}}
+@keyframes disparait{to{opacity:0}}
+@keyframes pop{0%{transform:scale(.7)}60%{transform:scale(1.08)}}
+@keyframes coche{from{transform:rotate(45deg) scale(0)}}
+@keyframes feuille-monte{from{transform:translateY(100%)}}
+@keyframes feuille-descend{to{transform:translateY(100%)}}
+@keyframes toast{from{opacity:0;transform:translate(-50%,14px) scale(.94)}}
+@keyframes brille{to{transform:translateX(100%)}}
+@keyframes battement{50%{transform:scale(1.25);box-shadow:0 0 0 2px var(--surface),0 0 0 6px color-mix(in srgb,var(--tomate) 25%,transparent)}}
+@keyframes pose{from{opacity:0;transform:rotate(-30deg) scale(.6)}}
+@keyframes glisse-d{from{opacity:0;transform:translateX(28px)}}
+@keyframes glisse-g{from{opacity:0;transform:translateX(-28px)}}
+@media (min-width:720px){
+  @keyframes feuille-monte{from{transform:translate(-50%,30px);opacity:0}}
+  @keyframes feuille-descend{to{transform:translate(-50%,30px);opacity:0}}
+}
+
+/* ---------- passage d'une page à l'autre : fondu court, la barre du bas reste en place et sa pastille glisse ---------- */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:.12s ease-in both disparait}
+::view-transition-new(root){animation:.22s var(--sortie) both monte-doux}
+::view-transition-group(nav-actif){animation-duration:.3s;animation-timing-function:var(--ressort)}
+::view-transition-group(barre-bas),::view-transition-group(embleme){animation:none}
+::view-transition-old(barre-bas),::view-transition-old(embleme){display:none}
+::view-transition-new(barre-bas),::view-transition-new(embleme){animation:none}
+@keyframes monte-doux{from{opacity:0;transform:translateY(8px)}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}

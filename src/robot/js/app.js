@@ -122,6 +122,8 @@ function lireReglage(conteneur) {
 function afficherVue(nom) {
   for (const v of $$('.vue')) v.hidden = v.id !== `vue-${nom}`;
   for (const b of $$('.onglets button')) b.classList.toggle('actif', b.dataset.vue === nom);
+  const onglets = [...$$('.onglets button')];
+  $('.onglets').style.setProperty('--i', Math.max(0, onglets.findIndex(b => b.dataset.vue === nom)));
   if (nom === 'plus') rendreJournal();
   window.scrollTo(0, 0);
 }

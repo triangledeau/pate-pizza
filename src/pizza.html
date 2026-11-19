@@ -6,6 +6,8 @@
 <title>Pizza · Cuisine</title>
 <link rel="stylesheet" href="commun/theme.css">
 <script src="commun/natif.js"></script>
+<script src="commun/illus.js"></script>
+<script src="commun/habillage.js"></script>
 <style>
 /* Layout : réglages à gauche (collants sur grand écran), pesée + planning à droite ; une colonne sur téléphone */
 :root{
@@ -46,6 +48,8 @@ select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid 
 input[type=range]{width:100%;accent-color:var(--accent);margin:0}
 .scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.row2 > *{min-width:0}
+input[type=time],input[type=date]{min-width:0}
 .stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg)}
 .stepper button{font:inherit;font-size:18px;width:44px;height:44px;border:0;background:transparent;color:var(--fg);cursor:pointer;flex:none}
 .stepper button:active{background:var(--accent-soft)}
@@ -70,7 +74,7 @@ tr.yeast td.g{color:var(--crust)}
 tr.total td{border-bottom:none;font-weight:600}
 tr.total td.g{font-size:18px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;border-top:1px solid var(--line)}
-.chip{display:inline-flex;gap:6px;align-items:baseline;padding:6px 12px;border-radius:999px;background:var(--accent-soft);border:0;min-height:0;color:var(--encre);font-size:13.5px;font-weight:400}
+.chip{display:inline-flex;gap:6px;align-items:baseline;padding:6px 12px;border-radius:999px;background:var(--accent-soft);border:0;min-height:0;color:var(--encre);font-size:13.5px;font-weight:400;white-space:normal;max-width:100%}
 .chip b{font-weight:600}
 .chip.warm{background:var(--crust-soft)}
 .dilute{margin:0 18px 16px;padding:12px 14px;border-radius:8px;border:1px dashed var(--crust);font-size:13.5px;line-height:1.45}
@@ -167,6 +171,37 @@ fieldset:disabled{opacity:.55}
 .method ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;max-width:65ch}
 .method li::marker{font-family:var(--display);font-weight:700;color:var(--accent)}
 .foot{font-size:12.5px;color:var(--muted);max-width:70ch}
+/* ---------- habillage ---------- */
+.pz-hero{position:relative;overflow:hidden;display:flex;align-items:center;min-height:112px;margin:0 0 18px;padding:18px 128px 18px 20px;border-radius:var(--r-plaque);
+  background:radial-gradient(120% 140% at 100% 50%,color-mix(in srgb,var(--il-croute) 30%,transparent),transparent 60%),var(--tomate-doux);box-shadow:var(--ombre-carte);animation:monte .35s var(--sortie) both}
+.pz-titre{margin:0;font-family:var(--display);font-weight:760;font-size:22px;line-height:1.1;letter-spacing:-.015em;color:var(--tomate)}
+.pz-acc{margin:6px 0 0;font-size:14px;line-height:1.4;color:var(--encre-2);max-width:34ch}
+.pz-ill{position:absolute;right:-22px;top:50%;width:148px;height:148px;margin-top:-74px;filter:drop-shadow(0 12px 14px rgba(120,40,20,.25));animation:tourne .7s var(--sortie) both .05s}
+@keyframes tourne{from{opacity:0;transform:rotate(-70deg) scale(.8)}}
+.panel,.weigh,.remind,.plan,.bake,.method{border-color:var(--trait-doux);box-shadow:var(--ombre-carte);animation:monte .35s var(--sortie) both}
+.results > :nth-child(2){animation-delay:.04s}.results > :nth-child(3){animation-delay:.08s}.results > :nth-child(4){animation-delay:.12s}.results > :nth-child(n+5){animation-delay:.16s}
+h2{display:flex;align-items:center;gap:10px}
+.plan h2::before,.bake h2::before,.method h2::before,.weigh h2::before{content:"";flex:none;width:10px;height:10px;border-radius:3px;background:var(--crust);transform:rotate(45deg)}
+.seg{border-radius:12px;background:var(--bg)}
+.seg label{transition:background-color .2s,color .2s}
+.seg input:checked + label{box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.stepper{border-radius:12px}
+.stepper button{transition:transform .12s var(--sortie)}
+.stepper button:active{transform:scale(.86)}
+input[type=range]{height:28px}
+.btn{transition:transform .12s var(--sortie),background-color .2s}
+.btn:active{transform:scale(.97);filter:none}
+.btn:not(.ghost):not(.link){box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 8px 16px -10px var(--accent)}
+.btn.warm:not(.ghost){box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 8px 16px -10px var(--crust)}
+.remind.on{box-shadow:0 0 0 1px var(--accent),var(--ombre-carte)}
+td.g{transition:color .2s}
+.timeline li.past + li:not(.past) .dot{animation:point 1.8s ease-in-out infinite}
+@keyframes point{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 22%,transparent)}}
+.run{animation:feuille-monte .32s var(--sortie)}
+.run-card{box-shadow:var(--ombre-haute);border-color:var(--trait-doux)}
+.run-card.change > :not(.run-foot){animation:glisse-d .3s var(--sortie) both}
+.run-bar span{transition:background-color .3s}
+.tile{border-radius:12px}
 @media (max-width:420px){
   td,th{padding-left:12px;padding-right:12px}
   td.g{font-size:19px}
@@ -176,8 +211,12 @@ fieldset:disabled{opacity:.55}
 </style>
 </head>
 <body>
-<header class="entete"><div class="entete-in"><h1>Pâte à pizza</h1></div></header>
+<header class="entete"><div class="entete-in"><a class="marque" href="index.html#semaine" aria-label="Semaine" data-embleme></a><div class="titres"><span class="appli">Cuisine</span><h1>Pâte à pizza</h1></div></div></header>
 <div class="wrap">
+  <section class="pz-hero">
+    <div class="pz-txt"><p class="pz-titre">Une pâte de pizzaïolo</p><p class="pz-acc">Pesée au gramme, pousse calée sur ta pièce, rappels jusqu'à l'enfournement.</p></div>
+    <span class="pz-ill" data-illus="pizza"></span>
+  </section>
 
   <div class="layout">
     <form class="panel controls" id="f" autocomplete="off" onsubmit="return false">
@@ -847,6 +886,7 @@ fieldset:disabled{opacity:.55}
     $("runClock").textContent = hm(new Date());
     $("runBar").innerHTML = PHASES.map((q,k)=>`<span class="${k<i?"done":k===i?"cur":""}"></span>`).join("");
     $("runCard").classList.toggle("active", p.active);
+    if($("runTitle").textContent && $("runTitle").textContent !== p.title) window.animerUneFois && animerUneFois($("runCard"), "change", 500);
     $("runTitle").textContent = p.title;
     $("runPrev").disabled = i===0;
     // le corps n'est reconstruit que s'il change, pour ne pas perdre un appui ; le compte à rebours est mis à jour à part

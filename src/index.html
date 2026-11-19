@@ -6,6 +6,8 @@
 <title>Cuisine</title>
 <link rel="stylesheet" href="commun/theme.css">
 <script src="commun/natif.js"></script>
+<script src="commun/illus.js"></script>
+<script src="commun/habillage.js"></script>
 <style>
 /* Page Cuisine : semaine, recettes, courses, repères. Le système commun est dans commun/theme.css. */
 .bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}
@@ -199,11 +201,67 @@ details.more summary::-webkit-details-marker{display:none}
 .todo-l input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--basilic)}
 .todo-l .done span{text-decoration:line-through;color:var(--encre-3)}
 .sync-l{font-size:14px;color:var(--encre-3)}
+
+/* ---------- habillage : cartes en relief, vignettes illustrées, mouvements ---------- */
+.jours,.store,.rcard,.card,.eq,.ings,.bloc,.pts li,.pick{border-color:var(--trait-doux);box-shadow:var(--ombre-carte)}
+.empty{display:flex;gap:16px;align-items:center;border-style:dashed;background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.empty .illus{flex:none;width:58px;height:58px}
+.salut{margin:0 0 12px;font-size:15px;font-weight:600;color:var(--encre-2)}
+.salut b{color:var(--encre);font-weight:700}
+/* semaine */
+.jour{transition:background-color .2s}
+.meal{transition:background-color .15s,transform .12s var(--sortie)}
+.meal:active{transform:scale(.985)}
+.meal.avec-v{display:flex;gap:12px;align-items:center}
+.meal .vignette{width:46px;height:46px;padding:6px;border-radius:13px}
+.meal-tx{display:block;min-width:0;flex:1}
+.jours.va-d,.wk-title.va-d{animation:glisse-d .3s var(--sortie)}
+.jours.va-g,.wk-title.va-g{animation:glisse-g .3s var(--sortie)}
+.wk-nav .btn.icon{border-radius:50%;box-shadow:var(--ombre-carte)}
+/* recettes */
+.rcard{flex-direction:row;align-items:center;gap:14px;transition:transform .12s var(--sortie),box-shadow .2s}
+.rcard:active{transform:scale(.985)}
+.rcard .vignette{width:68px;height:68px;padding:8px;border-radius:16px}
+.rc-tx{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.rlist .squelette{min-height:100px}
+/* fiche : la vignette en grand, comme une photo de plat */
+.vignette.hero{width:100%;height:164px;border-radius:20px;padding:20px;margin:2px 0 16px;position:relative;overflow:hidden}
+.vignette.hero .illus{width:124px;height:124px;position:relative}
+.vignette.hero::before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;left:50%;top:50%;margin:-75px 0 0 -75px;
+  background:radial-gradient(circle,color-mix(in srgb,#fff 55%,transparent),transparent 70%)}
+@media (prefers-color-scheme:dark){.vignette.hero::before{background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%)}}
+.ouverture .vignette.hero .illus{animation:pose .45s var(--ressort) both .1s}
+.etape h3{display:flex;align-items:center;gap:10px}
+.etape h3::before{content:"";flex:none;width:10px;height:10px;border-radius:3px;background:var(--safran-vif);transform:rotate(45deg)}
+/* courses */
+.store-h .ens-ico{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--cd);color:var(--c)}
+.ens-ico svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.store-prog{height:4px;margin:0 16px 10px;border-radius:2px;background:var(--trait-doux);overflow:hidden}
+.store-prog span{display:block;height:100%;border-radius:2px;background:var(--c);transition:width .3s var(--sortie)}
+.store.fini .store-h h3::after{content:" ✓";color:var(--c)}
+.it,.prod{transition:background-color .15s}
+.it:active{background:var(--surface-2)}
+.qty button{transition:transform .12s var(--sortie)}
+.qty button:active{transform:scale(.88)}
+/* mode cuisine */
+.cuisiner{animation:feuille-monte .3s var(--sortie)}
+.cuisiner.sort{animation:feuille-descend .2s var(--entree) both}
+.cu-tete .vignette{width:38px;height:38px;padding:4px;border-radius:11px}
+.cu-corps.va-d > *{animation:glisse-d .28s var(--sortie) both}
+.cu-corps.va-g > *{animation:glisse-g .28s var(--sortie) both}
+.cu-barre span{transition:background-color .3s}
+.cu-num{display:flex;align-items:baseline;gap:6px}
+/* repères */
+.rp-h h2{display:flex;align-items:center;gap:10px}
+.rp-h h2::before{content:"";flex:none;width:10px;height:10px;border-radius:3px;background:var(--basilic);transform:rotate(45deg)}
+.eq{transition:transform .12s var(--sortie)}
+.eq:active{transform:scale(.985)}
 </style>
 </head>
 <body>
 <header class="entete"><div class="entete-in">
-  <h1 id="viewTitle">Semaine</h1>
+  <a class="marque" href="#semaine" aria-label="Semaine" data-embleme></a>
+  <div class="titres"><span class="appli">Cuisine</span><h1 id="viewTitle">Semaine</h1></div>
   <a class="outil" href="#reperes" id="lienReperes"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.1"/></svg>Repères</a>
 </div></header>
 
@@ -215,7 +273,7 @@ details.more summary::-webkit-details-marker{display:none}
 
     <section id="v-courses" hidden>
       <div id="cs-top"></div>
-      <div id="cs-list"></div>
+      <div id="cs-list" class="cascade"></div>
       <form class="add" id="addForm" autocomplete="off">
         <input class="field" id="addName" placeholder="Ajouter un article (ex. papier cuisson)" aria-label="Article à ajouter">
         <select class="field" id="addEns" aria-label="Enseigne">
@@ -267,6 +325,8 @@ const ORDRE = ["GF", "LEC", "PIC", "PLA"];
 const JOURS = ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."];
 const MOIS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
 const MOM = {midi: "Midi", soir: "Dîner"};
+const JOURS_LONGS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+const MOIS_LONGS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
 const APPAREILS = ["Air-fryer", "Cook Expert", "Pummarola", "Cuiseur à riz", "Four", "Plaques"];
 const FROMAGES_NON = ["pecorino", "chèvre", "chevre", "brebis", "roquefort", "gorgonzola", "bleu d'", "camembert", "brie", "feta", "féta", "ricotta", "mascarpone", "boursin", "fromage frais", "reblochon", "munster", "burrata"];
 const FILS_NON = ["chou de bruxelles", "choux de bruxelles", "cœur de palmier", "cœurs de palmier", "coeur de palmier", "coeurs de palmier"];
@@ -307,8 +367,10 @@ function alertes(r) {
   const g = FILS_NON.filter(w => txt.includes(w)); if (g.length) out.push("Ton fils n'en mange pas : " + g[0]);
   return out;
 }
+const vide = (txt, ill = "cloche") => `<div class="empty">${window.Illus ? Illus.plat(ill) : ""}<span>${txt}</span></div>`;
+const salut = () => { const h = new Date().getHours(); return h < 5 ? "Bonne nuit" : h < 12 ? "Bonjour" : h < 18 ? "Bon après-midi" : "Bonsoir"; };
 let toastT;
-function toast(m) { const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 2600); }
+function toast(m) { const t = $("#toast"); t.textContent = m; if (t.hidden) t.hidden = false; else window.animerUneFois?.(t, "rebond", 400); clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 2600); }
 
 /* ================= écriture ================= */
 const queues = {};
@@ -402,7 +464,8 @@ function plaqueHtml() {
     act += `<button class="btn ghost" data-act="openRecipe" data-id="${esc(x.m.r)}">Recette</button>`;
     if (r.categorie === "Pizza") act += `<a class="btn ghost" href="${esc(lienPizza(x, r))}">Planifier la pâte</a>`;
   }
-  return `<section class="ce-soir plaque" aria-label="Prochain repas"><div class="quand">${esc(quand)}</div>
+  const assiette = window.Illus ? `<span class="assiette">${Illus.plat(Illus.famille(r || x.m))}</span>` : "";
+  return `<section class="ce-soir plaque${assiette ? " avec-assiette" : ""}" aria-label="Prochain repas">${assiette}<div class="quand">${esc(quand)}</div>
     <div class="plat">${esc(nom)}</div>${infos ? `<div class="infos">${esc(infos)}</div>` : ""}
     ${x.m.note ? `<div class="note">${esc(x.m.note)}</div>` : ""}${al}
     ${act ? `<div class="actions">${act}</div>` : ""}</section>`;
@@ -413,11 +476,12 @@ function renderSemaine() {
   const ws = ui.week, s = parse(ws), avec = avecFils(ws), w = st.semaines[ws] || {debut: ws, repas: {}};
   const t = today(), repas = w.repas || {};
   let nbCouv = 0, nbPlan = 0;
-  let html = (rappels.etat === "a-demander" ? `<div class="banner"><span class="grow">Reçois une notification à l'heure de lancer chaque dîner, avec ce qu'il faut sortir du congélateur.</span><button class="btn primary" data-act="rappelsOn">Activer les rappels</button></div>` : "")
+  const glisse = ui.glisse || ""; ui.glisse = "";
+  let html = `<p class="salut">${salut()} · <b>${JOURS_LONGS[t.getDay()]} ${t.getDate()} ${MOIS_LONGS[t.getMonth()]}</b></p>` + (rappels.etat === "a-demander" ? `<div class="banner"><span class="grow">Reçois une notification à l'heure de lancer chaque dîner, avec ce qu'il faut sortir du congélateur.</span><button class="btn primary" data-act="rappelsOn">Activer les rappels</button></div>` : "")
     + plaqueHtml();
   html += `<div class="wk-nav">
     <button class="btn icon" data-act="weekPrev" aria-label="Semaine précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
-    <div class="wk-title"><span class="garde ${avec ? "avec" : ""}">${avec ? "Semaine avec ton fils" : "Semaine seul"}</span>
+    <div class="wk-title ${glisse}"><span class="garde ${avec ? "avec" : ""}">${avec ? "Semaine avec ton fils" : "Semaine seul"}</span>
       <h2>Du ${fmtDay(s)} au ${fmtDay(addDays(s, 6))}</h2></div>
     <button class="btn icon" data-act="weekNext" aria-label="Semaine suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></button></div>`;
   const days = [];
@@ -437,7 +501,7 @@ function renderSemaine() {
       <div class="jour-repas">${tag ? `<span class="jour-tag">${tag}</span>` : ""}${slots}</div></div>`);
   }
   const sum = avec ? `${Math.min(nbPlan, 99)} repas planifiés sur ${nbCouv} à couvrir` : (nbPlan ? `${nbPlan} repas planifiés` : "Aucun repas planifié pour l'instant.");
-  html += `<p class="wk-sum">${sum}</p><div class="jours">${days.join("")}</div>`;
+  html += `<p class="wk-sum">${sum}</p><div class="jours cascade ${glisse}">${days.join("")}</div>`;
   const cibles = [];
   for (let k = 1; k <= 8; k++) { const c = iso(addDays(s, 7 * k)); cibles.push(`<option value="${c}">${fmtDay(parse(c))}${avecFils(c) ? ", avec ton fils" : ""}</option>`); }
   html += `<div class="wk-actions">
@@ -455,8 +519,8 @@ function mealCard(key, mom, m) {
   if (r) { bits.push(fmtMin(r.actif) + " actives"); if (r.appareils?.length) bits.push(r.appareils.join(", ")); }
   if (m.p && r && m.p !== 2) bits.push(m.p + " " + (r.unite || "portions"));
   const al = r ? alertes(r).map(a => `<span class="alert">${esc(a)}</span>`).join(" ") : "";
-  return `<button class="meal" data-act="editMeal" data-k="${key}"><span class="mom">${MOM[mom]}${m.lancer ? `, <span class="lancer">lancer à ${fmtHeure(m.lancer)}</span>` : ""}</span>
-    <span class="nm">${esc(nom)}</span>${bits.length ? `<span class="mt">${esc(bits.join(", "))}</span>` : ""}${m.note ? `<span class="nt">${esc(m.note)}</span>` : ""}${al}</button>`;
+  return `<button class="meal avec-v" data-act="editMeal" data-k="${key}">${window.Illus ? Illus.vignette(r || m) : ""}<span class="meal-tx"><span class="mom">${MOM[mom]}${m.lancer ? `, <span class="lancer">lancer à ${fmtHeure(m.lancer)}</span>` : ""}</span>
+    <span class="nm">${esc(nom)}</span>${bits.length ? `<span class="mt">${esc(bits.join(", "))}</span>` : ""}${m.note ? `<span class="nt">${esc(m.note)}</span>` : ""}${al}</span></button>`;
 }
 
 /* ================= rendu : courses ================= */
@@ -482,7 +546,9 @@ function renderCourses() {
     if (!its.length && !prods.length) continue;
     const done = its.filter(x => c.coches[x.key]).length + prods.filter(p => produitsQte(p) > 0 && c.coches["p:" + p.id]).length;
     const total = its.length + prods.filter(p => produitsQte(p) > 0).length;
-    html += `<section class="store"><div class="store-h"><span class="sw" style="background:var(--${e.toLowerCase()})"></span><h3>${ENS[e].nom}</h3><span class="cnt">${done} / ${total}</span></div>`;
+    const ec = e.toLowerCase();
+    html += `<section class="store${total && done === total ? " fini" : ""}" style="--c:var(--${ec});--cd:var(--${ec}-doux)"><div class="store-h"><span class="ens-ico">${window.Illus ? Illus.enseigne(e) : ""}</span><h3>${ENS[e].nom}</h3><span class="cnt">${done} / ${total}</span></div>
+      <div class="store-prog" aria-hidden="true"><span style="width:${total ? Math.round(done / total * 100) : 0}%"></span></div>`;
     let note = ENS[e].note;
     if (e === "LEC" && !c.picard) note += " Semaine sans Picard : les surgelés sont ici.";
     html += `<div class="store-note">${esc(note)}</div>`;
@@ -490,14 +556,14 @@ function renderCourses() {
     for (const x of its) {
       const dn = !!c.coches[x.key]; if (dn && ui.hideDone) continue;
       const q = x.hasQ ? fmtQ(x.q, x.u) : "";
-      html += `<label class="it ${dn ? "done" : ""}"><input type="checkbox" data-act="check" data-key="${esc(x.key)}" ${dn ? "checked" : ""}>
+      html += `<label class="it ${dn ? "done" : ""} ${ui.vientDe === x.key ? "vient-de-cocher" : ""}"><input type="checkbox" data-act="check" data-key="${esc(x.key)}" ${dn ? "checked" : ""}>
         <span class="tx"><b>${esc(x.n)}${x.surg && e === "LEC" ? " (surgelé)" : ""}</b><small>${esc(x.pour.join(" · "))}</small></span><span class="q">${esc(q)}</span></label>`;
     }
     if (e === "LEC" && prods.length) html += renderProduits(prods);
     html += `</section>`;
   }
-  if (!html) html = `<div class="empty">Rien à acheter pour l'instant. Planifie des repas dans l'onglet Semaine, ou ajoute un article ci-dessous.</div>`;
-  $("#cs-list").innerHTML = html;
+  if (!html) html = vide("Rien à acheter pour l'instant. Planifie des repas dans l'onglet Semaine, ou ajoute un article ci-dessous.");
+  $("#cs-list").innerHTML = html; ui.vientDe = null;
   $("#cs-foot").innerHTML = `<div class="bar" style="margin-top:20px"><button class="btn primary" data-act="copyClaude">Copier pour Claude</button>
     <button class="btn" data-act="copyGF">Copier la liste Grand Frais</button><button class="btn ghost danger" data-act="askReset">Nouvelle liste</button></div>
     <p class="muted" style="font-size:13.5px;margin-top:8px">« Copier pour Claude » prépare un message à coller dans la conversation : je remplis alors ton panier Leclerc Drive.</p><div id="resetZone"></div>`;
@@ -507,7 +573,7 @@ function renderProduits(prods) {
   const row = p => {
     const q = produitsQte(p), dn = q > 0 && !!c.coches["p:" + p.id];
     if (dn && ui.hideDone) return "";
-    return `<div class="prod ${q ? "" : "off"} ${dn ? "done" : ""}">
+    return `<div class="prod ${q ? "" : "off"} ${dn ? "done" : ""} ${ui.vientDe === "p:" + p.id ? "vient-de-cocher" : ""}">
       <input type="checkbox" data-act="check" data-key="p:${p.id}" ${dn ? "checked" : ""} ${q ? "" : "disabled"} aria-label="${esc(p.nom)} pris">
       <span class="tx"><b>${esc(p.nom)}</b><small>${esc(p.format)} · ${num(p.prix)} €${p.note ? " · " + esc(p.note) : ""}</small></span>
       <span class="qty"><button data-act="pq" data-id="${p.id}" data-d="-1" aria-label="Moins">−</button><span>${q}</span><button data-act="pq" data-id="${p.id}" data-d="1" aria-label="Plus">+</button></span></div>`;
@@ -531,13 +597,13 @@ function renderRecettes() {
   const list = all.filter(([, r]) => (!ui.rCourt || r.actif <= 20) && (!ui.rApp || (r.appareils || []).includes(ui.rApp)) && (!ui.rSrc || r.source === "carnet")
     && (!q || norm(r.nom + " " + r.categorie + " " + (r.ingredients || []).map(i => i.n).join(" ")).includes(q)))
     .sort((a, b) => a[1].nom.localeCompare(b[1].nom, "fr"));
-  if (!all.length) { $("#rlist").innerHTML = `<div class="empty">${st.loaded.r ? "Aucune recette encore. Ajoute la première avec « Nouvelle recette »." : "Chargement des recettes…"}</div>`; return; }
-  if (!list.length) { $("#rlist").innerHTML = `<div class="empty">Aucune recette ne correspond à ces filtres.</div>`; return; }
-  $("#rlist").innerHTML = `<div class="rlist">${list.map(([id, r]) => {
+  if (!all.length) { $("#rlist").innerHTML = st.loaded.r ? vide("Aucune recette encore. Ajoute la première avec « Nouvelle »." ) : `<div class="rlist">${'<div class="squelette"></div>'.repeat(4)}</div>`; return; }
+  if (!list.length) { $("#rlist").innerHTML = vide("Aucune recette ne correspond à ces filtres."); return; }
+  $("#rlist").innerHTML = `<div class="rlist cascade">${list.map(([id, r]) => {
     const al = alertes(r).map(a => `<span class="alert">${esc(a)}</span>`).join(" ");
-    return `<button class="rcard" data-act="openRecipe" data-id="${esc(id)}"><span class="src">${r.num ? "Fiche " + esc(r.num) + " · " : ""}${esc(r.categorie || "")}</span>
+    return `<button class="rcard" data-act="openRecipe" data-id="${esc(id)}">${window.Illus ? Illus.vignette(r) : ""}<span class="rc-tx"><span class="src">${r.num ? "Fiche " + esc(r.num) + " · " : ""}${esc(r.categorie || "")}</span>
       <span class="nm">${esc(r.nom)}</span><span class="mt">${fmtMin(r.actif)} actives · ${fmtMin(r.total)} en tout · ${r.portions} ${esc(r.unite || "portions")}</span>
-      ${r.appareils?.length ? `<span class="mt muted">${esc(r.appareils.join(", "))}</span>` : ""}${al}</button>`;
+      ${r.appareils?.length ? `<span class="mt muted">${esc(r.appareils.join(", "))}</span>` : ""}${al}</span></button>`;
   }).join("")}</div>`;
 }
 
@@ -595,8 +661,21 @@ function saveEq() {
 
 /* ================= feuilles ================= */
 let sheet = null;
-function openSheet(html, data) { sheet = data; const s = $("#sheet"); s.innerHTML = `<div class="grip"></div>` + html; s.hidden = false; $("#scrim").hidden = false; s.scrollTop = 0; document.body.style.overflow = "hidden"; const f = s.querySelector("[autofocus]"); if (f) f.focus(); }
-function closeSheet() { sheet = null; $("#sheet").hidden = true; $("#scrim").hidden = true; document.body.style.overflow = ""; }
+let fermeT = null;
+function openSheet(html, data) {
+  clearTimeout(fermeT); const s = $("#sheet"), v = $("#scrim");
+  const dejaOuverte = !s.hidden && !s.classList.contains("sort");
+  s.classList.remove("sort"); v.classList.remove("sort");
+  sheet = data; s.innerHTML = `<div class="grip"></div>` + html; s.hidden = false; v.hidden = false; s.scrollTop = 0; document.body.style.overflow = "hidden";
+  if (!dejaOuverte) window.animerUneFois?.(s, "ouverture", 700);
+  const f = s.querySelector("[autofocus]"); if (f) f.focus();
+}
+function closeSheet() {
+  sheet = null; document.body.style.overflow = "";
+  const s = $("#sheet"), v = $("#scrim"); if (s.hidden) return;
+  s.classList.add("sort"); v.classList.add("sort");
+  clearTimeout(fermeT); fermeT = setTimeout(() => { s.hidden = true; v.hidden = true; s.classList.remove("sort"); v.classList.remove("sort"); }, 190);
+}
 
 // --- repas ---
 function openMeal(key) {
@@ -671,7 +750,7 @@ function renderRecipeSheet() {
   // groupes d'ingrédients sans section du même nom : affichés en tête sous leur titre
   const orphelins = Object.keys(grouped).filter(g => !titres.includes(g));
   const stepper = `<div style="margin-bottom:8px"><span class="stepper"><button data-act="rP" data-d="-1" aria-label="Moins">−</button><span>${s.p} ${esc(r.unite || "portions")}</span><button data-act="rP" data-d="1" aria-label="Plus">+</button></span></div>`;
-  let html = `<div class="grip"></div><span class="eyebrow">${r.num ? `<span class="num">Fiche ${esc(r.num)}</span>` : ""}${esc(r.categorie || "Recette")}</span><h2>${esc(r.nom)}</h2>
+  let html = `<div class="grip"></div>${window.Illus ? Illus.vignette(r, "hero") : ""}<span class="eyebrow">${r.num ? `<span class="num">Fiche ${esc(r.num)}</span> · ` : ""}${esc(r.categorie || "Recette")}</span><h2>${esc(r.nom)}</h2>
     ${r.sousTitre ? `<div class="sub">${esc(r.sousTitre)}</div>` : ""}
     <div class="meta"><span>Actif <b>${fmtMin(r.actif)}</b></span><span>Total <b>${fmtMin(r.total)}</b></span>${r.niveau ? `<span>Niveau <b>${esc(r.niveau)}</b></span>` : ""}${r.appareils?.length ? `<span>${esc(r.appareils.join(", "))}</span>` : ""}</div>
     ${al.map(a => `<span class="alert">${esc(a)}</span>`).join(" ")}
@@ -781,22 +860,26 @@ function ouvrirCuisine(id, p) {
   try { const g = JSON.parse(localStorage.getItem("cuisine/en-cours") || "null"); if (g && g.id === id && g.i < etapes.length) i = g.i; } catch (e) {}
   cu = {id, p: p || r.portions, i, etapes};
   if (sheet) closeSheet();
+  clearTimeout(cuFermeT); $("#cuisiner").classList.remove("sort");
   $("#cuisiner").hidden = false; document.body.style.overflow = "hidden";
   window.Natif?.garderAllume(true);
   renderCuisine();
 }
+let cuFermeT = null;
 function fermerCuisine() {
   if (!cu) return;
-  $("#cuisiner").hidden = true; document.body.style.overflow = ""; cu = null;
+  const el = $("#cuisiner"); document.body.style.overflow = ""; cu = null;
+  el.classList.add("sort"); clearTimeout(cuFermeT); cuFermeT = setTimeout(() => { el.hidden = true; el.classList.remove("sort"); }, 190);
   window.Natif?.garderAllume(false);
 }
 function renderCuisine() {
   const r = st.recettes[cu.id], e = cu.etapes[cu.i], n = cu.etapes.length, f = cu.p / (r.portions || 1);
   try { localStorage.setItem("cuisine/en-cours", JSON.stringify({id: cu.id, i: cu.i})); } catch (er) {}
   const ings = (r.ingredients || []).filter(x => !e.sec || !x.g || x.g === e.sec);
-  $("#cuisiner").innerHTML = `<div class="cu-tete"><span class="nom">${esc(r.nom)}</span><button class="btn icon ghost" data-act="cuFermer" aria-label="Fermer le mode cuisine">✕</button></div>
+  const dir = cu.dir || ""; cu.dir = "";
+  $("#cuisiner").innerHTML = `<div class="cu-tete">${window.Illus ? Illus.vignette(r) : ""}<span class="nom">${esc(r.nom)}</span><button class="btn icon ghost" data-act="cuFermer" aria-label="Fermer le mode cuisine">✕</button></div>
     <div class="cu-barre" aria-hidden="true">${cu.etapes.map((_, k) => `<span class="${k < cu.i ? "fait" : k === cu.i ? "ici" : ""}"></span>`).join("")}</div>
-    <div class="cu-corps">${e.sec ? `<div class="cu-section">${esc(e.sec)}</div>` : ""}
+    <div class="cu-corps ${dir}">${e.sec ? `<div class="cu-section">${esc(e.sec)}</div>` : ""}
       <div class="cu-num">${cu.i + 1}<small> sur ${n}</small></div>
       ${e.txt ? `<p class="cu-texte">${esc(e.txt)}</p>${progHtml(e.txt).replace("<br>", "")}` : ""}
       ${e.tips.map(tipHtml).join("")}
@@ -882,8 +965,10 @@ function texteGF() {
 
 /* ================= rendu global ================= */
 const TITRES = {semaine: "Semaine", courses: "Courses", recettes: "Recettes", reperes: "Repères"};
+let vueAffichee = null;
 function render() {
   $("#viewTitle").textContent = TITRES[ui.view];
+  if (vueAffichee !== ui.view) { vueAffichee = ui.view; window.animerUneFois?.($("#v-" + ui.view), "entree", 700); }
   for (const v of Object.keys(TITRES)) $("#v-" + v).hidden = ui.view !== v;
   document.querySelectorAll(".barre-bas a[data-view]").forEach(a => { if (a.dataset.view === ui.view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
   $("#lienReperes").hidden = ui.view === "reperes";
@@ -891,7 +976,7 @@ function render() {
   if (sheet?.kind === "recipe") renderRecipeSheet();
 }
 function route() { const h = location.hash.replace("#", ""); ui.view = TITRES[h] ? h : "semaine"; if (cu) fermerCuisine(); render(); window.scrollTo(0, 0); }
-window.addEventListener("hashchange", route);
+window.addEventListener("hashchange", () => (window.transitionVue || (f => f()))(route));
 
 /* ================= événements ================= */
 document.addEventListener("click", ev => {
@@ -900,8 +985,8 @@ document.addEventListener("click", ev => {
   if (b.tagName === "A" && a !== "close") ev.preventDefault();
   const c = coursesDoc();
   switch (a) {
-    case "weekPrev": ui.week = iso(addDays(parse(ui.week), -7)); render(); break;
-    case "weekNext": ui.week = iso(addDays(parse(ui.week), 7)); render(); break;
+    case "weekPrev": ui.week = iso(addDays(parse(ui.week), -7)); ui.glisse = "va-g"; render(); break;
+    case "weekNext": ui.week = iso(addDays(parse(ui.week), 7)); ui.glisse = "va-d"; render(); break;
     case "toToday": ui.week = iso(weekStartOf(today())); render(); break;
     case "goCourses": ui.periode = "w:" + ui.week; saveUi(); location.hash = "courses"; break;
     case "editMeal": openMeal(b.dataset.k); break;
@@ -923,8 +1008,8 @@ document.addEventListener("click", ev => {
     case "openRecipe": if (sheet?.kind === "meal") closeSheet(); openRecipe(b.dataset.id); break;
     case "cuisiner": ouvrirCuisine(b.dataset.id, Number(b.dataset.p) || null); break;
     case "cuFermer": fermerCuisine(); break;
-    case "cuPrec": if (cu.i > 0) { cu.i--; renderCuisine(); } break;
-    case "cuSuiv": if (cu.i < cu.etapes.length - 1) { cu.i++; renderCuisine(); } break;
+    case "cuPrec": if (cu.i > 0) { cu.i--; cu.dir = "va-g"; renderCuisine(); } break;
+    case "cuSuiv": if (cu.i < cu.etapes.length - 1) { cu.i++; cu.dir = "va-d"; renderCuisine(); } break;
     case "cuFin": try { localStorage.removeItem("cuisine/en-cours"); } catch (e) {} fermerCuisine(); toast("Bon appétit"); break;
     case "rappelsOn": majRappels(true); break;
     case "actualiser": location.reload(); break;
@@ -970,7 +1055,7 @@ document.addEventListener("change", ev => {
   }
   if (t.dataset.act === "check") {
     const c = coursesDoc(), k = t.dataset.key;
-    if (t.checked) c.coches[k] = true; else delete c.coches[k];
+    if (t.checked) { c.coches[k] = true; ui.vientDe = k; } else delete c.coches[k];
     saveCourses(); renderCourses();
   }
 });
