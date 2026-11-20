@@ -320,3 +320,11 @@ body { padding-bottom: calc(var(--nav-h) + var(--sab) + 92px); }
 #carte-etat .etat-details { flex-wrap: wrap; gap: 4px 12px; }
 #carte-etat .defauts:empty { display: none; }
 #carte-etat .etat-ill { width: 56px; height: 56px; bottom: -4px; }
+/* favoris : rangée de tuiles entre les molettes et « Envoyer au robot » ; engrenage pour les gérer */
+.tete-actions { display: flex; gap: 8px; }
+.btn-gerer svg { stroke: var(--encre-2); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.btn-gerer[aria-pressed="true"] { background: var(--basilic); border-color: var(--basilic); }
+.btn-gerer[aria-pressed="true"] svg { stroke: var(--surface); }
+#carte-programme .favoris { margin-top: 8px; margin-bottom: 4px; padding-top: 8px; padding-bottom: 4px; border-top: 1px solid var(--trait-doux); }
+#carte-programme .favoris .tuile { min-height: 46px; padding: 6px 12px; }
+#carte-programme .favoris .vide { font-size: 13.5px; padding: 2px 0; }

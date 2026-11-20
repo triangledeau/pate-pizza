@@ -34,16 +34,15 @@
           <div id="bandeau-auto" class="etat-auto" hidden>Programme prêt : appuie sur <strong>AUTO</strong> sur le robot</div>
         </div>
 
-        <div class="carte carte-favoris">
-          <div class="carte-tete"><h2>Favoris</h2><button class="btn petit ghost" id="btn-gerer" type="button" hidden>Gérer</button></div>
-          <ul class="favoris" id="liste-favoris"></ul>
-        </div>
-
         <div class="carte" id="carte-programme">
           <div class="carte-tete"><h2>Programme Expert</h2>
+            <div class="tete-actions">
+            <button class="btn-etoile btn-gerer" id="btn-gerer" type="button" aria-label="Gérer les favoris" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button>
             <button class="btn-etoile" id="btn-favori" type="button" aria-label="Garder en favori"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg></button>
+            </div>
           </div>
           <div id="reglage-piloter" class="reglage"></div>
+          <ul class="favoris" id="liste-favoris" aria-label="Favoris"></ul>
           <div class="erreur" id="erreur-piloter" hidden></div>
           <button class="btn principal plein envoyer" id="btn-envoyer" type="button">Envoyer au robot</button>
         </div>

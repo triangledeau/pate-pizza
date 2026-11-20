@@ -349,7 +349,10 @@ $('#btn-favori').addEventListener('click', () => {
 function rendreFavoris() {
   const f = stock.favoris();
   $('#btn-gerer').hidden = !f.length;
-  if (!f.length) $('#liste-favoris').classList.remove('gestion');
+  if (!f.length) {
+    $('#liste-favoris').classList.remove('gestion');
+    $('#btn-gerer').setAttribute('aria-pressed', 'false');
+  }
   $('#liste-favoris').innerHTML = f.length
     ? f
         .map(
@@ -368,7 +371,7 @@ function rendreFavoris() {
 $('#btn-gerer').addEventListener('click', () => {
   const l = $('#liste-favoris');
   l.classList.toggle('gestion');
-  $('#btn-gerer').textContent = l.classList.contains('gestion') ? 'Terminé' : 'Gérer';
+  $('#btn-gerer').setAttribute('aria-pressed', String(l.classList.contains('gestion')));
 });
 
 $('#liste-favoris').addEventListener('click', (e) => {
