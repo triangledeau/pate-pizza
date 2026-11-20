@@ -277,12 +277,46 @@ body { padding-bottom: calc(var(--nav-h) + var(--sab) + 92px); }
 .erreur { padding: 8px 12px; border-radius: 10px; background: var(--tomate-doux); font-size: 14px; }
 .envoyer { min-height: 60px; font-size: 17px; margin-top: 6px; }
 
-/* touches : repliées, Stop toujours sous la main quand le robot tourne (bouton flottant) */
-.touches summary { list-style: none; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
-.touches summary::-webkit-details-marker { display: none; }
-.touches summary h2 { margin: 0; font-size: 17px; }
-.touches summary::after { content: ""; width: 9px; height: 9px; margin-right: 4px; border: solid var(--encre-3); border-width: 0 2px 2px 0;
-  transform: rotate(45deg); transition: transform .2s var(--sortie); }
-.touches[open] summary::after { transform: rotate(-135deg); }
-.touches[open] summary { margin-bottom: 12px; }
+/* touches : masquées par défaut (Plus › Affichage) ; Stop reste sous la main quand le robot tourne (bouton flottant) */
+.touches h2 { font-size: 17px; }
+.option-ligne { display: flex; align-items: center; gap: 10px; font-size: 15px; }
+.option-ligne input { width: 22px; height: 22px; flex: none; accent-color: var(--basilic); }
 .btn-stop { letter-spacing: .01em; }
+
+/* ---------- Piloter compact : tout tient sur un écran ---------- */
+#vue-piloter .carte { padding: 12px 14px; margin-bottom: 10px; }
+#vue-piloter h2 { font-size: 18px; }
+#vue-piloter .carte-tete { margin-bottom: 6px; }
+#vue-piloter .btn-etoile { width: 38px; height: 38px; }
+#vue-piloter .btn-etoile svg { width: 19px; height: 19px; }
+.carte-favoris { padding-bottom: 10px !important; }
+.favoris { margin: 0 -14px; padding: 2px 14px 2px; scroll-padding-inline: 14px; }
+.favoris .tuile { min-height: 50px; padding: 7px 12px; border-radius: 12px; }
+.reglage { gap: 2px; }
+.molette { padding: 6px 0 8px; }
+.molette-tete { margin-bottom: 2px; }
+.molette-corps { grid-template-columns: 48px 1fr 48px; }
+.pas { height: 42px; border-radius: 14px; font-size: 23px; }
+.molette-valeur { font-size: 32px; }
+.molette-valeur .unite { font-size: 16px; }
+.molette .puces { margin: 6px -14px 0; padding: 0 14px; }
+.molette .puce { min-height: 32px; padding: 4px 12px; font-size: 13.5px; }
+.envoyer { min-height: 52px; margin-top: 4px; }
+/* état (seulement quand le robot est connecté) : une bande compacte */
+#carte-etat { min-height: 0; padding: 12px 16px; margin-bottom: 10px; }
+#carte-etat .etat-ill { width: 64px; height: 64px; right: 4px; bottom: -6px; }
+#carte-etat .etat-titre, #carte-etat .etat-grand, #carte-etat .etat-details, #carte-etat .defauts { padding-right: 70px; }
+#carte-etat .etat-grand { font-size: 36px; margin: 2px 0; }
+#carte-etat .etat-details { font-size: 15px; }
+.etat-auto { margin-top: 6px; }
+#vue-piloter .btn.petit { min-height: 32px; padding: 4px 12px; }
+.molette { padding: 4px 0 6px; }
+.pas { height: 40px; }
+.molette-valeur { font-size: 30px; line-height: 1.05; }
+.molette .puces { margin-top: 5px; }
+#carte-etat { display: grid; grid-template-columns: auto 1fr; align-items: baseline; column-gap: 14px; padding: 10px 16px; }
+#carte-etat > .etat-titre, #carte-etat > .defauts, #carte-etat > .etat-auto { grid-column: 1 / -1; justify-self: start; }
+#carte-etat .etat-grand { padding-right: 0; font-size: 34px; margin: 0; }
+#carte-etat .etat-details { flex-wrap: wrap; gap: 4px 12px; }
+#carte-etat .defauts:empty { display: none; }
+#carte-etat .etat-ill { width: 56px; height: 56px; bottom: -4px; }

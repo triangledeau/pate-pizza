@@ -261,7 +261,17 @@ conteneurReglage.addEventListener('reglage', (e) => {
   $('#bandeau-auto').hidden = true;
 });
 rendreReglage(conteneurReglage, { tempsS: 300, temperature: 100, vitesse: 3 });
-$('#btn-connecter-robot').addEventListener('click', () => $('#pastille-robot').click());
+
+// Touches du robot : masquées par défaut, réaffichables dans Plus › Affichage.
+const CLE_TOUCHES = 'robot:touches';
+const optTouches = $('#opt-touches');
+const majTouches = () => { $('#carte-touches').hidden = !optTouches.checked; };
+try { optTouches.checked = localStorage.getItem(CLE_TOUCHES) === '1'; } catch {}
+majTouches();
+optTouches.addEventListener('change', () => {
+  try { localStorage.setItem(CLE_TOUCHES, optTouches.checked ? '1' : '0'); } catch {}
+  majTouches();
+});
 
 let etatPrecedent = null;
 function majEtat(etat) {
@@ -272,13 +282,13 @@ function majEtat(etat) {
     $('#etat-vit').textContent = '';
     $('#etat-defauts').textContent = '';
     $('#bandeau-auto').hidden = true;
-    $('#btn-connecter-robot').hidden = false;
+    $('#carte-etat').hidden = true;
     $('#stop-flottant').hidden = true;
     $('#carte-etat').classList.remove('chaude', 'eteinte');
     $('#carte-etat').classList.add('eteinte');
     return;
   }
-  $('#btn-connecter-robot').hidden = true;
+  $('#carte-etat').hidden = false;
   if (!etat) return;
   $('#stop-flottant').hidden = !EN_COURS.has(etat.etat);
   $('#carte-etat').classList.remove('eteinte');

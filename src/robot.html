@@ -25,14 +25,13 @@
 
       <!-- Piloter -->
       <section id="vue-piloter" class="vue">
-        <div class="plaque eteinte" id="carte-etat">
+        <div class="plaque eteinte" id="carte-etat" hidden>
           <span class="etat-ill" data-illus="robot"></span>
           <div class="etat-titre" id="etat-titre">Robot non connecté</div>
           <div class="etat-grand chiffres" id="etat-temps">—</div>
           <div class="etat-details chiffres"><span id="etat-temp"></span><span id="etat-vit"></span></div>
           <div class="defauts" id="etat-defauts"></div>
           <div id="bandeau-auto" class="etat-auto" hidden>Programme prêt : appuie sur <strong>AUTO</strong> sur le robot</div>
-          <button class="btn" id="btn-connecter-robot" type="button">Connecter le robot</button>
         </div>
 
         <div class="carte carte-favoris">
@@ -49,8 +48,8 @@
           <button class="btn principal plein envoyer" id="btn-envoyer" type="button">Envoyer au robot</button>
         </div>
 
-        <details class="carte touches">
-          <summary><h2>Touches du robot</h2></summary>
+        <div class="carte touches" id="carte-touches" hidden>
+          <h2>Touches du robot</h2>
           <div class="grille-touches">
             <button class="btn" data-touche="gauche" type="button" aria-label="Gauche">◀</button>
             <button class="btn" data-touche="ok" type="button">OK</button>
@@ -58,7 +57,7 @@
             <button class="btn" data-touche="retour" type="button" aria-label="Retour">↩</button>
           </div>
           <button class="btn-stop" data-touche="stop" type="button">Stop</button>
-        </details>
+        </div>
       </section>
 
       <!-- Recettes -->
@@ -92,6 +91,10 @@
             <button class="btn" id="btn-importer" type="button">Importer</button>
           </div>
           <input type="file" id="fichier-import" accept="application/json,.json" hidden />
+        </div>
+        <div class="carte">
+          <h2>Affichage</h2>
+          <label class="option-ligne"><input type="checkbox" id="opt-touches" /> <span>Afficher les touches du robot (◀ OK ▶ ↩ Stop) dans Piloter</span></label>
         </div>
         <div class="carte">
           <h2>Notifications</h2>
